@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.datagr4m</groupId>
+	<artifactId>datagr4m-viewer</artifactId>
+	<name>Datagr4m Viewer</name>
+
+    <parent>
+        <groupId>org.datagr4m</groupId>
+        <artifactId>datagr4m-master</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+	    <!--    <dependency org="com.netlight" name="com.netlight.geometry" rev="latest.integration" changing="true" conf="runtime->runtime"/>
+        
+
+       	<dependency org="com.google.guava" name="guava" rev="r07" conf="runtime->default"/>
+        <dependency org="com.miglayout" name="miglayout" rev="3.7.3.1" conf="runtime->default"/>
+        <dependency org="net.sf.jung" name="jung-essentials" rev="2.0.1" conf="runtime->default"/>
+        <dependency org="org.jzy3d" name="org.jzy2d" rev="0.8.4" conf="runtime->default"/>
+        <dependency org="org.jzy3d" name="org.jzy3d" rev="0.8.4" conf="runtime->default"/>
+        <dependency org="org.jzy3d" name="org.jzy3d.interpolation" rev="0.8" conf="runtime->default"/>
+        
+         
+        <dependency org="org.easymock" name="easymock" rev="2.4" conf="test->default"/>
+        <dependency org="junit" name="junit" rev="3.8" conf="test->default"/>-->
+	
+	
+	<dependencies>
+
+		<dependency>
+			<groupId>org.datagr4m</groupId>
+			<artifactId>datagr4m-geometry</artifactId>
+			<version>${version.datagr4m}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jzy3d</groupId>
+			<artifactId>jzy3d-maths</artifactId>
+			<version>${version.jzy3d}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jung</groupId>
+			<artifactId>jung-visualization</artifactId>
+			<version>${version.jung}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${version.guava}</version>
+		</dependency>
+		
+		
+		
+		<dependency>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout</artifactId>
+			<version>${version.miglayout}</version>
+		</dependency>
+		<dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${version.log4j}</version>
+        </dependency>
+
+		<!-- Scoped dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/java</source>
+                                <source>src/trials/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

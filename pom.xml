@@ -1,0 +1,119 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.datagr4m</groupId>
+	<artifactId>datagr4m-master</artifactId>
+	<version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Datagr4m Master Project</name>
+
+    <modules>
+        <module>datagr4m-core</module>
+		<module>datagr4m-io</module>
+		<module>datagr4m-topology</module>
+		<module>datagr4m-geometry</module>
+        <module>datagr4m-viewer</module>
+        <module>datagr4m-drawing</module>
+        <module>datagr4m-drawing-pathfinder</module>
+		<module>datagr4m-workspace</module>
+    </modules>
+	
+	<repositories>
+		<repository>
+			<id>jzy3d-snapshots</id>
+			<name>Jzy3d Snapshots</name>
+			<url>http://www.jzy3d.org/maven/snapshots</url>
+		</repository>
+    </repositories>
+	
+	<distributionManagement>
+        <repository>
+			<id>datagr4m-ftp-maven-release</id>
+			<name>Datagr4m Maven Release Repository</name>
+			<url>ftp://ftp.datagr4m.com/maven/releases</url>
+        </repository>
+        <snapshotRepository>
+			<id>datagr4m-ftp-maven-snapshot</id>
+			<name>Datagr4m Maven SNAPSHOT Repository</name>
+			<url>ftp://ftp.datagr4m.com/maven/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+   
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	
+        <version.java.source>1.6</version.java.source>
+        <version.java.target>1.6</version.java.target>
+	
+		<version.datagr4m>1.0-SNAPSHOT</version.datagr4m>
+		<version.jzy3d>0.9.1-SNAPSHOT</version.jzy3d>
+
+		<version.jung>2.0.1</version.jung>
+		<version.guava>r07</version.guava>
+		<version.jaxb>2.2</version.jaxb>
+		<version.collections>4.01</version.collections>
+		<version.junit>4.11</version.junit>
+		<version.awaitability>1.3.4</version.awaitability>
+		<version.log4j>1.2.16</version.log4j>
+		<version.easymock>2.4</version.easymock>
+		<version.miglayout>3.7.3.1</version.miglayout>
+		<version.jsuggest>1.0a</version.jsuggest>
+		<version.common-beanutils>1.8.3</version.common-beanutils>
+		<version.restlet>2.1-RC1</version.restlet>
+		<version.jargs>1.0</version.jargs>
+		
+		<version.awaitility>1.3.4</version.awaitility>
+		
+		<version.neo4j>1.8</version.neo4j>
+		
+		<version.maven.compiler>3.0</version.maven.compiler>
+		<version.maven.plugins.cobertura>2.6</version.maven.plugins.cobertura>
+		<version.maven.plugins.wagon>1.0-beta-6</version.maven.plugins.wagon>
+
+		<version.lookup>RELEASE731</version.lookup>
+	</properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+					<version>${version.maven.compiler}</version>
+                    <configuration>
+						<source>${version.java.source}</source>
+						<target>${version.java.target}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>${version.maven.plugins.wagon}</version>
+			</extension>
+		</extensions>
+    </build>	
+	
+	<reporting>
+		<plugins>
+		  <plugin>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>cobertura-maven-plugin</artifactId>
+			<version>${version.maven.plugins.cobertura}</version>
+			<configuration>
+				<outputDirectory>./target/tmpCobertura</outputDirectory>
+			    <formats>
+				    <format>html</format>
+			    </formats>
+			    <aggregate>true</aggregate>
+			</configuration>
+		  </plugin>
+		</plugins>
+    </reporting>
+</project>

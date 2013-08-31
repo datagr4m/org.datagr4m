@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.datagr4m</groupId>
+	<artifactId>datagr4m-io-neo4j</artifactId>
+	<name>Datagr4m IO Neo4j</name>
+
+    <parent>
+        <groupId>org.datagr4m</groupId>
+        <artifactId>datagr4m-io</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.datagr4m</groupId>
+			<artifactId>datagr4m-io-api</artifactId>
+			<version>${version.datagr4m}</version>
+		</dependency>
+		<dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-topology</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+		
+		<!-- Neo4j -->
+        <!-- <dependency>
+           <groupId>org.neo4j</groupId>
+           <artifactId>neo4j</artifactId>
+           <version>1.8</version>
+        </dependency>-->
+        <!--<dependency>
+           <groupId>org.neo4j.app</groupId>
+           <artifactId>neo4j-server</artifactId>
+           <version>${version.neo4j}</version>
+           <exclusions>
+              <exclusion>
+                 <groupId>org.slf4j</groupId>
+                 <artifactId>*</artifactId>
+              </exclusion>
+           </exclusions>
+        </dependency>
+        <dependency>
+           <groupId>org.neo4j</groupId>
+           <artifactId>server-api</artifactId>
+           <version>${version.neo4j}</version>
+        </dependency>-->
+        <dependency>
+           <groupId>org.neo4j</groupId>
+           <artifactId>neo4j-community</artifactId>
+           <version>${version.neo4j}</version>
+        </dependency>
+        <!--<dependency>
+           <groupId>org.neo4j</groupId>
+           <artifactId>neo4j-kernel</artifactId>
+           <version>${version.neo4j}</version>
+        </dependency>
+       <dependency>
+           <groupId>org.neo4j</groupId>
+           <artifactId>neo4j-shell</artifactId>
+           <version>${version.neo4j}</version>
+        </dependency>-->
+        
+
+		<!-- Other -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${version.log4j}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>${version.java.source}</source>
+					<target>${version.java.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

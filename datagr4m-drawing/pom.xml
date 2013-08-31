@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.datagr4m</groupId>
+	<artifactId>datagr4m-drawing</artifactId>
+	<name>Datagr4m Drawing API</name>
+
+    <parent>
+        <groupId>org.datagr4m</groupId>
+        <artifactId>datagr4m-master</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+	
+	<repositories>
+		<repository>
+			<id>netbeans-maven-repo</id><!--for lookup-->
+			<name>Datagr4m Maven Release Repository</name>
+			<url>http://bits.netbeans.org/maven2</url>
+        </repository>
+		
+		<repository><!--for classfind-->
+			<id>clapper-org-maven-repo</id>
+			<name>org.clapper Maven Repo</name>
+			<url>http://maven.clapper.org/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.netbeans.api</groupId>
+			<artifactId>org-openide-util-lookup</artifactId>
+			<version>${version.lookup}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.clapper</groupId>
+		    <artifactId>javautil</artifactId>
+		    <version>3.1.1</version>
+		</dependency>
+	
+		<!-- todo: merge in drawing -->
+		<dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-drawing-pathfinder</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+
+	
+		<dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-core</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+		<dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-topology</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+		<dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-viewer</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+		<dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-io-xml</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+		<dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-io-api</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+		<dependency>
+			<groupId>org.jzy3d</groupId>
+			<artifactId>jzy3d-maths</artifactId>
+			<version>${version.jzy3d}</version>
+		</dependency>
+		
+		<!-- Other -->
+		<dependency>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout</artifactId>
+			<version>${version.miglayout}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${version.log4j}</version>
+        </dependency>
+
+		<!-- Scoped dependencies -->
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-xjc</artifactId>
+			<version>${version.jaxb}</version>
+			<scope>xjc</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${version.awaitility}</version>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<!--<version>2.2</version>-->
+				<executions>
+					<execution>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

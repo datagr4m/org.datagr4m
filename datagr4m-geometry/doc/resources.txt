@@ -1,0 +1,17 @@
+Line/Circle intersection
+http://stackoverflow.com/questions/1073336/circle-line-collision-detection
+http://www.gamedev.net/topic/457727-circle---line-intersection/
+
+Rect/Circle intersection
+http://stackoverflow.com/questions/622287/area-of-intersection-between-circle-and-rectangle
+
+Line/Line intersection
+http://www.java2s.com/Code/Java/Advanced-Graphics/LinesIntersection.htm
+http://www.ahristov.com/tutorial/geometry-games/intersection-lines.html
+http://www.velocityreviews.com/forums/t141178-line-intersection-detection.html
+
+Intersections complexes:
+java.awt.geom.Area
+PathIterator
+FlatteningPathIterator
+http://www.vividsolutions.com/jts/jtshome.htm

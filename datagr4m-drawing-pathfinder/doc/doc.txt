@@ -1,0 +1,28 @@
+todoc:
+pseudocode + selection des possibilités de chemin
+figures d'intersection
+figures de contournement
+locking & remontée de pente
+
+todo algo:
+1) merging obstacle pour eviter les coudes à la con
+   -> implique de savoir traiter des formes autre que rectangulaire
+2) bypass progressif que des côtés concernés
+   -> integrer des edges avec volumes à contourner??
+   
+   
+!!! sélection du meilleur côté de bypass pour bypass créneau   
+!!! tout ce qui va à droite et à droite, etc   
+!!! ralpes-bur-ad3 -> pas de contournement   
+  
+3) ajouter les petits ponts
+   ->
+4) forcer les chemins à partir tout droit? ou avoir une taille minimale de chemin
+5) essayer tous les chemins et garder les meilleurs
+   -> bof: très couteux!!
+
+todo design:
+supporter n'importe quel type de lien dans ObstacleGroup, valider le fonctionnement des UniqueLink
+
+todo dev:
+faciliter l'affichage des chemins en exception sur le graphe

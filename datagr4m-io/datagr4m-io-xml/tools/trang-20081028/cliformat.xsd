@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="cli">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="login"/>
+        <xs:element ref="prompt"/>
+        <xs:element ref="commands"/>
+        <xs:element ref="pager"/>
+        <xs:element ref="cleaner"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="user"/>
+        <xs:element ref="password"/>
+        <xs:element ref="enable"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="user">
+    <xs:complexType>
+      <xs:attribute name="string" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="password">
+    <xs:complexType>
+      <xs:attribute name="string" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enable">
+    <xs:complexType>
+      <xs:attribute name="string" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="prompt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="default"/>
+        <xs:element ref="root"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="default">
+    <xs:complexType>
+      <xs:attribute name="string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:attribute name="string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="commands">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="command"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="command">
+    <xs:complexType>
+      <xs:attribute name="line" use="required"/>
+      <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pager">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="next"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="next">
+    <xs:complexType>
+      <xs:attribute name="string" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cleaner">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="replace"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="replace">
+    <xs:complexType>
+      <xs:attribute name="from" use="required"/>
+      <xs:attribute name="to" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

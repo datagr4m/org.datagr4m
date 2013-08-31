@@ -1,0 +1,1561 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<parc>
+    <device name="fw-col-0">
+        <system type="firewall" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.1.0.3" name="eth0-s0-p0-c0">
+            <standby ip="10.1.0.2"/>
+            <standby ip="10.1.0.2"/>
+        </interface>
+        <interface mask="28" ip="10.1.1.3" name="eth0-s0-p0-c1">
+            <standby ip="10.1.1.2"/>
+            <standby ip="10.1.1.2"/>
+        </interface>
+    </device>
+    <device name="fw-col-1">
+        <system type="firewall" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.1.0.4" name="eth0-s0-p0-c0">
+            <standby ip="10.1.0.2"/>
+            <standby ip="10.1.0.2"/>
+        </interface>
+        <interface mask="28" ip="10.1.1.4" name="eth0-s0-p0-c1">
+            <standby ip="10.1.1.2"/>
+            <standby ip="10.1.1.2"/>
+        </interface>
+    </device>
+    <device name="lb-front-modp1-2">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.1.0.6" name="eth0-s0-p0-c0">
+            <standby ip="10.1.0.5"/>
+            <standby ip="10.1.0.5"/>
+        </interface>
+        <interface mask="24" ip="10.1.2.3" name="eth0-s0-p0-c1">
+            <standby ip="10.1.2.2"/>
+            <standby ip="10.1.2.2"/>
+        </interface>
+        <interface mask="24" ip="10.1.3.3" name="eth0-s0-p0-c2">
+            <standby ip="10.1.3.2"/>
+            <standby ip="10.1.3.2"/>
+        </interface>
+    </device>
+    <device name="lb-front-modp1-3">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.1.0.7" name="eth0-s0-p0-c0">
+            <standby ip="10.1.0.5"/>
+            <standby ip="10.1.0.5"/>
+        </interface>
+        <interface mask="24" ip="10.1.2.4" name="eth0-s0-p0-c1">
+            <standby ip="10.1.2.2"/>
+            <standby ip="10.1.2.2"/>
+        </interface>
+        <interface mask="24" ip="10.1.3.4" name="eth0-s0-p0-c2">
+            <standby ip="10.1.3.2"/>
+            <standby ip="10.1.3.2"/>
+        </interface>
+    </device>
+    <device name="frm1-modp1-px-0">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-1">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-2">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-3">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-4">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-5">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-6">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-7">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-8">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-9">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-10">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-11">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-12">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-13">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp1-px-14">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.2.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.4.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-0">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-1">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-2">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-3">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-4">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-5">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-6">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-7">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-8">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-9">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-10">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-11">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-12">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-13">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp1-px-14">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.3.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.5.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="lb-front-modp2-4">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.1.1.6" name="eth0-s0-p0-c0">
+            <standby ip="10.1.1.5"/>
+            <standby ip="10.1.1.5"/>
+        </interface>
+        <interface mask="24" ip="10.1.6.3" name="eth0-s0-p0-c1">
+            <standby ip="10.1.6.2"/>
+            <standby ip="10.1.6.2"/>
+        </interface>
+        <interface mask="24" ip="10.1.7.3" name="eth0-s0-p0-c2">
+            <standby ip="10.1.7.2"/>
+            <standby ip="10.1.7.2"/>
+        </interface>
+    </device>
+    <device name="lb-front-modp2-5">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.1.1.7" name="eth0-s0-p0-c0">
+            <standby ip="10.1.1.5"/>
+            <standby ip="10.1.1.5"/>
+        </interface>
+        <interface mask="24" ip="10.1.6.4" name="eth0-s0-p0-c1">
+            <standby ip="10.1.6.2"/>
+            <standby ip="10.1.6.2"/>
+        </interface>
+        <interface mask="24" ip="10.1.7.4" name="eth0-s0-p0-c2">
+            <standby ip="10.1.7.2"/>
+            <standby ip="10.1.7.2"/>
+        </interface>
+    </device>
+    <device name="frm1-modp2-px-0">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-1">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-2">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-3">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-4">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-5">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-6">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-7">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-8">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-9">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-10">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-11">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-12">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-13">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm1-modp2-px-14">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.6.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.8.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-0">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-1">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-2">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-3">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-4">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-5">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-6">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-7">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-8">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-9">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-10">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-11">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-12">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-13">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="frm2-modp2-px-14">
+        <system type="proxy" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.1.7.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.1.9.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="fw-dmz-6">
+        <system type="firewall" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.1.3" name="eth0-s0-p0-c0">
+            <standby ip="10.2.1.2"/>
+            <standby ip="10.2.1.2"/>
+        </interface>
+        <interface mask="28" ip="10.2.2.3" name="eth0-s0-p0-c1">
+            <standby ip="10.2.2.2"/>
+            <standby ip="10.2.2.2"/>
+        </interface>
+        <interface mask="28" ip="10.2.3.3" name="eth0-s0-p0-c2">
+            <standby ip="10.2.3.2"/>
+            <standby ip="10.2.3.2"/>
+        </interface>
+        <interface mask="28" ip="10.2.4.3" name="eth0-s0-p0-c3">
+            <standby ip="10.2.4.2"/>
+            <standby ip="10.2.4.2"/>
+        </interface>
+        <interface mask="28" ip="10.2.5.3" name="eth0-s0-p0-c4">
+            <standby ip="10.2.5.2"/>
+            <standby ip="10.2.5.2"/>
+        </interface>
+        <interface mask="24" ip="10.1.4.18" name="eth0-s0-p0-c5">
+            <standby ip="10.1.4.17"/>
+            <standby ip="10.1.4.17"/>
+        </interface>
+        <interface mask="24" ip="10.1.5.18" name="eth0-s0-p0-c6">
+            <standby ip="10.1.5.17"/>
+            <standby ip="10.1.5.17"/>
+        </interface>
+        <interface mask="24" ip="10.1.8.18" name="eth0-s0-p0-c7">
+            <standby ip="10.1.8.17"/>
+            <standby ip="10.1.8.17"/>
+        </interface>
+        <interface mask="24" ip="10.1.9.18" name="eth0-s0-p0-c8">
+            <standby ip="10.1.9.17"/>
+            <standby ip="10.1.9.17"/>
+        </interface>
+        <interface mask="29" ip="10.2.255.3" name="eth0-s0-p0-c9">
+            <standby ip="10.2.255.2"/>
+            <standby ip="10.2.255.2"/>
+        </interface>
+        <interface mask="29" ip="10.100.1.3" name="eth0-s0-p0-c10">
+            <standby ip="10.100.1.2"/>
+            <standby ip="10.100.1.2"/>
+        </interface>
+    </device>
+    <device name="fw-dmz-7">
+        <system type="firewall" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.1.4" name="eth0-s0-p0-c0">
+            <standby ip="10.2.1.2"/>
+            <standby ip="10.2.1.2"/>
+        </interface>
+        <interface mask="28" ip="10.2.2.4" name="eth0-s0-p0-c1">
+            <standby ip="10.2.2.2"/>
+            <standby ip="10.2.2.2"/>
+        </interface>
+        <interface mask="28" ip="10.2.3.4" name="eth0-s0-p0-c2">
+            <standby ip="10.2.3.2"/>
+            <standby ip="10.2.3.2"/>
+        </interface>
+        <interface mask="28" ip="10.2.4.4" name="eth0-s0-p0-c3">
+            <standby ip="10.2.4.2"/>
+            <standby ip="10.2.4.2"/>
+        </interface>
+        <interface mask="28" ip="10.2.5.4" name="eth0-s0-p0-c4">
+            <standby ip="10.2.5.2"/>
+            <standby ip="10.2.5.2"/>
+        </interface>
+        <interface mask="24" ip="10.1.4.19" name="eth0-s0-p0-c5">
+            <standby ip="10.1.4.17"/>
+            <standby ip="10.1.4.17"/>
+        </interface>
+        <interface mask="24" ip="10.1.5.19" name="eth0-s0-p0-c6">
+            <standby ip="10.1.5.17"/>
+            <standby ip="10.1.5.17"/>
+        </interface>
+        <interface mask="24" ip="10.1.8.19" name="eth0-s0-p0-c7">
+            <standby ip="10.1.8.17"/>
+            <standby ip="10.1.8.17"/>
+        </interface>
+        <interface mask="24" ip="10.1.9.19" name="eth0-s0-p0-c8">
+            <standby ip="10.1.9.17"/>
+            <standby ip="10.1.9.17"/>
+        </interface>
+        <interface mask="29" ip="10.2.255.4" name="eth0-s0-p0-c9">
+            <standby ip="10.2.255.2"/>
+            <standby ip="10.2.255.2"/>
+        </interface>
+        <interface mask="29" ip="10.100.1.4" name="eth0-s0-p0-c10">
+            <standby ip="10.100.1.2"/>
+            <standby ip="10.100.1.2"/>
+        </interface>
+    </device>
+    <device name="lb-srv-mod1-8">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.1.6" name="eth0-s0-p0-c0">
+            <standby ip="10.2.1.5"/>
+            <standby ip="10.2.1.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.10.3" name="eth0-s0-p0-c1">
+            <standby ip="10.2.10.2"/>
+            <standby ip="10.2.10.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.11.3" name="eth0-s0-p0-c2">
+            <standby ip="10.2.11.2"/>
+            <standby ip="10.2.11.2"/>
+        </interface>
+    </device>
+    <device name="lb-srv-mod1-9">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.1.7" name="eth0-s0-p0-c0">
+            <standby ip="10.2.1.5"/>
+            <standby ip="10.2.1.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.10.4" name="eth0-s0-p0-c1">
+            <standby ip="10.2.10.2"/>
+            <standby ip="10.2.10.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.11.4" name="eth0-s0-p0-c2">
+            <standby ip="10.2.11.2"/>
+            <standby ip="10.2.11.2"/>
+        </interface>
+    </device>
+    <device name="mod1-frm1-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm1-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.10.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.20.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod1-frm2-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.11.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.21.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="lb-srv-mod2-10">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.2.6" name="eth0-s0-p0-c0">
+            <standby ip="10.2.2.5"/>
+            <standby ip="10.2.2.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.12.3" name="eth0-s0-p0-c1">
+            <standby ip="10.2.12.2"/>
+            <standby ip="10.2.12.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.13.3" name="eth0-s0-p0-c2">
+            <standby ip="10.2.13.2"/>
+            <standby ip="10.2.13.2"/>
+        </interface>
+    </device>
+    <device name="lb-srv-mod2-11">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.2.7" name="eth0-s0-p0-c0">
+            <standby ip="10.2.2.5"/>
+            <standby ip="10.2.2.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.12.4" name="eth0-s0-p0-c1">
+            <standby ip="10.2.12.2"/>
+            <standby ip="10.2.12.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.13.4" name="eth0-s0-p0-c2">
+            <standby ip="10.2.13.2"/>
+            <standby ip="10.2.13.2"/>
+        </interface>
+    </device>
+    <device name="mod2-frm1-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm1-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.12.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.22.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod2-frm2-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.13.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.23.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="lb-srv-mod3-12">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.3.6" name="eth0-s0-p0-c0">
+            <standby ip="10.2.3.5"/>
+            <standby ip="10.2.3.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.14.3" name="eth0-s0-p0-c1">
+            <standby ip="10.2.14.2"/>
+            <standby ip="10.2.14.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.15.3" name="eth0-s0-p0-c2">
+            <standby ip="10.2.15.2"/>
+            <standby ip="10.2.15.2"/>
+        </interface>
+    </device>
+    <device name="lb-srv-mod3-13">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.3.7" name="eth0-s0-p0-c0">
+            <standby ip="10.2.3.5"/>
+            <standby ip="10.2.3.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.14.4" name="eth0-s0-p0-c1">
+            <standby ip="10.2.14.2"/>
+            <standby ip="10.2.14.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.15.4" name="eth0-s0-p0-c2">
+            <standby ip="10.2.15.2"/>
+            <standby ip="10.2.15.2"/>
+        </interface>
+    </device>
+    <device name="mod3-frm1-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm1-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.14.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.24.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod3-frm2-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.15.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.25.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="lb-srv-mod4-14">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.4.6" name="eth0-s0-p0-c0">
+            <standby ip="10.2.4.5"/>
+            <standby ip="10.2.4.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.16.3" name="eth0-s0-p0-c1">
+            <standby ip="10.2.16.2"/>
+            <standby ip="10.2.16.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.17.3" name="eth0-s0-p0-c2">
+            <standby ip="10.2.17.2"/>
+            <standby ip="10.2.17.2"/>
+        </interface>
+    </device>
+    <device name="lb-srv-mod4-15">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.4.7" name="eth0-s0-p0-c0">
+            <standby ip="10.2.4.5"/>
+            <standby ip="10.2.4.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.16.4" name="eth0-s0-p0-c1">
+            <standby ip="10.2.16.2"/>
+            <standby ip="10.2.16.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.17.4" name="eth0-s0-p0-c2">
+            <standby ip="10.2.17.2"/>
+            <standby ip="10.2.17.2"/>
+        </interface>
+    </device>
+    <device name="mod4-frm1-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm1-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.16.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.26.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod4-frm2-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.17.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.27.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="lb-srv-mod5-16">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.5.6" name="eth0-s0-p0-c0">
+            <standby ip="10.2.5.5"/>
+            <standby ip="10.2.5.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.18.3" name="eth0-s0-p0-c1">
+            <standby ip="10.2.18.2"/>
+            <standby ip="10.2.18.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.19.3" name="eth0-s0-p0-c2">
+            <standby ip="10.2.19.2"/>
+            <standby ip="10.2.19.2"/>
+        </interface>
+    </device>
+    <device name="lb-srv-mod5-17">
+        <system type="loadbalancer" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="28" ip="10.2.5.7" name="eth0-s0-p0-c0">
+            <standby ip="10.2.5.5"/>
+            <standby ip="10.2.5.5"/>
+        </interface>
+        <interface mask="24" ip="10.2.18.4" name="eth0-s0-p0-c1">
+            <standby ip="10.2.18.2"/>
+            <standby ip="10.2.18.2"/>
+        </interface>
+        <interface mask="24" ip="10.2.19.4" name="eth0-s0-p0-c2">
+            <standby ip="10.2.19.2"/>
+            <standby ip="10.2.19.2"/>
+        </interface>
+    </device>
+    <device name="mod5-frm1-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm1-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.18.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.28.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-0">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.5" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.2" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-1">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.6" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.3" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-2">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.7" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.4" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-3">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.8" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.5" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-4">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.9" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.6" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-5">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.10" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.7" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-6">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.11" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.8" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-7">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.12" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.9" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-8">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.13" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.10" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-9">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.14" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.11" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-10">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.15" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.12" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-11">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.16" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.13" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-12">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.17" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.14" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-13">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.18" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.15" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="mod5-frm2-srv-14">
+        <system type="server" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.19.19" name="eth0-s0-p0-c0"/>
+        <interface mask="24" ip="10.2.29.16" name="eth0-s0-p0-c1"/>
+    </device>
+    <device name="fw-bak-18">
+        <system type="firewall" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.20.18" name="eth0-s0-p0-c0">
+            <standby ip="10.2.20.17"/>
+            <standby ip="10.2.20.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.21.18" name="eth0-s0-p0-c1">
+            <standby ip="10.2.21.17"/>
+            <standby ip="10.2.21.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.22.18" name="eth0-s0-p0-c2">
+            <standby ip="10.2.22.17"/>
+            <standby ip="10.2.22.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.23.18" name="eth0-s0-p0-c3">
+            <standby ip="10.2.23.17"/>
+            <standby ip="10.2.23.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.24.18" name="eth0-s0-p0-c4">
+            <standby ip="10.2.24.17"/>
+            <standby ip="10.2.24.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.25.18" name="eth0-s0-p0-c5">
+            <standby ip="10.2.25.17"/>
+            <standby ip="10.2.25.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.26.18" name="eth0-s0-p0-c6">
+            <standby ip="10.2.26.17"/>
+            <standby ip="10.2.26.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.27.18" name="eth0-s0-p0-c7">
+            <standby ip="10.2.27.17"/>
+            <standby ip="10.2.27.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.28.18" name="eth0-s0-p0-c8">
+            <standby ip="10.2.28.17"/>
+            <standby ip="10.2.28.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.29.18" name="eth0-s0-p0-c9">
+            <standby ip="10.2.29.17"/>
+            <standby ip="10.2.29.17"/>
+        </interface>
+        <interface mask="29" ip="10.2.255.6" name="eth0-s0-p0-c10">
+            <standby ip="10.2.255.5"/>
+            <standby ip="10.2.255.5"/>
+        </interface>
+    </device>
+    <device name="fw-bak-19">
+        <system type="firewall" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="24" ip="10.2.20.19" name="eth0-s0-p0-c0">
+            <standby ip="10.2.20.17"/>
+            <standby ip="10.2.20.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.21.19" name="eth0-s0-p0-c1">
+            <standby ip="10.2.21.17"/>
+            <standby ip="10.2.21.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.22.19" name="eth0-s0-p0-c2">
+            <standby ip="10.2.22.17"/>
+            <standby ip="10.2.22.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.23.19" name="eth0-s0-p0-c3">
+            <standby ip="10.2.23.17"/>
+            <standby ip="10.2.23.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.24.19" name="eth0-s0-p0-c4">
+            <standby ip="10.2.24.17"/>
+            <standby ip="10.2.24.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.25.19" name="eth0-s0-p0-c5">
+            <standby ip="10.2.25.17"/>
+            <standby ip="10.2.25.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.26.19" name="eth0-s0-p0-c6">
+            <standby ip="10.2.26.17"/>
+            <standby ip="10.2.26.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.27.19" name="eth0-s0-p0-c7">
+            <standby ip="10.2.27.17"/>
+            <standby ip="10.2.27.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.28.19" name="eth0-s0-p0-c8">
+            <standby ip="10.2.28.17"/>
+            <standby ip="10.2.28.17"/>
+        </interface>
+        <interface mask="24" ip="10.2.29.19" name="eth0-s0-p0-c9">
+            <standby ip="10.2.29.17"/>
+            <standby ip="10.2.29.17"/>
+        </interface>
+        <interface mask="29" ip="10.2.255.7" name="eth0-s0-p0-c10">
+            <standby ip="10.2.255.5"/>
+            <standby ip="10.2.255.5"/>
+        </interface>
+    </device>
+    <device name="bbr-router20">
+        <system type="router" serial="software" hostname="hostname" hardware="hardware"/>
+        <interface mask="29" ip="10.100.1.5" name="eth0-s0-p0-c0"/>
+    </device>
+    <device name="10.1.6.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.22.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.25.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.15.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.11.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.1.5.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.21.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.29.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.26.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.1.9.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.16.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.12.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.17.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.10.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.13.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.24.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.1.8.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.1.4.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.20.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.28.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.18.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.14.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.1.2.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.19.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.1.7.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.1.3.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.23.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+    <device name="10.2.27.0/24">
+        <system type="network" serial="software" hostname="hostname" hardware="hardware"/>
+    </device>
+</parc>

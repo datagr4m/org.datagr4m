@@ -1,0 +1,32 @@
+# ignore files
+*~
+*.class
+*.lic
+*.liq
+*.log
+*.log.*
+*.bak
+*.DS_Store
+nb*.xml
+.project
+.classpath
+dependency-reduced-pom.xml
+
+#ignore build, dist & settings directories
+generated/
+target/
+build/
+bin/
+dist/
+lib/
+.settings/
+tmpCobertura/
+
+#ignore miscelaneous convention directories
+data/tmp/
+data/databases/doctorwho/
+data/licenses/
+doc/javadoc/
+
+#force keep some of them
+!nomaven/

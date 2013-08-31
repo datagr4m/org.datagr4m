@@ -1,0 +1,29 @@
+Voici ma solution pour ce probl�me : elle n'est pas optimale, mais doit s'en approcher.
+Elle sera en tous les cas meilleure que ce qui est fait actuellement : cad choisir le cercle qui contient le rectangle d�fini par les min et les max des x et y du graphe local.
+
+
+INIT :
+Le layout d'un graphe local est termin�, force Atlas a frapp�.
+
+1) Calculer, pour chaque paire d'�l�ments du graphe local la distance s�parant ces deux �l�ments.
+Pour un graphe local de N �l�ments, si mes souvenirs sont bons, il y a P = ( N ) ( N - 1 ) / 2 calculs de distance � faire.
+Il est plus rapide et suffisant de calculer les distances au carr� : pour AB, la distance carr� vaut :  ( xa - xb ) ( xa - xb ) + ( ya -yb )( ya - yb)
+
+2) Trouver la distance max (pour la trouver, il suffit de comparer les carr�s des distances...)
+
+3) Trouver les coordonn�es du milieu du segment ayant la distance MAX, ce point sera nomm� I.
+
+4) Pour tous les points, calculer la distance au carr� entre ce point et I
+
+5) Trouver le max de ces distances
+
+FIN :
+Le cercle � tracer a pour centre I et pour rayon le max trouv� en 5.
+
+Complexit� du calcul :
+O( N carr� ), ce qui risque d'�tre instantan� pour la taille des graphes locaux qu'on a....
+
+
+Remarque :
+Ce cercle et optimal si la distance trouv�e en 5 vaut la moiti� du segment le plus grand....
+Sinon, il est presque optimal, mais d�j� tr�s bien.

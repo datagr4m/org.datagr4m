@@ -1,0 +1,84 @@
+<generator>
+	<perimeter name="Parc">
+		<!-- Déclaration des réseaux du parc -->
+		<networks>
+			<network name="access-front-dmz" ip="1.1.1.1" mask="28"/><!-- 15 machines -->
+			<network name="front-dmz"        ip="1.1.2.1" mask="24"/><!-- 255 machines -->
+			<network name="back-dmz"         ip="1.1.3.1" mask="24"/>
+			<network name="access-back-dmz"  ip="1.1.4.1" mask="28"/>
+
+			<network name="access-front-srv" ip="2.1.1.1" mask="28"/>
+			<network name="front-srv"        ip="2.1.2.1" mask="24"/>
+			<network name="back-srv"         ip="2.1.3.1" mask="24"/>
+			<network name="access-back-srv"  ip="2.1.4.1" mask="28"/>
+		</networks>
+		
+		<!-- Déclaration des machines du parc et des réseaux auxquels elles appartiennent -->
+		<devices>
+			<!-- Zone collecte à DMZ -->
+		
+			<device type="firewall" ha="on" pattern="collecte">
+				<in network="access-front"/>
+			</device>
+			
+			<!-- Un seul module avec deux fermes de proxy -->
+			
+			<device type="loadbalancer" ha="on" pattern="loadb-front">
+				<in network="access-front-dmz"/>
+				<in network="front-dmz"/>
+				<in network="back-dmz"/>
+				<in network="access-back-dmz"/>
+			</device>
+			
+			<farm type="proxy" pattern="farm1-px" size="10">
+				<in network="front-dmz"/>
+				<in network="back-dmz"/>
+			</farm>
+			
+			<farm type="proxy" pattern="farm2-px" size="30">
+				<in network="front-dmz"/>
+				<in network="back-dmz"/>
+			</farm>
+			
+			<!-- Zone de services -->
+			
+			<device type="firewall" ha="on" pattern="dmz">
+				<in network="access-back-dmz"/>
+				<in network="access-front-srv"/>
+			</device>
+			
+			<!-- Premier module -->
+			
+			<device type="loadbalancer" ha="on" pattern="loadb-srv1">
+				<in network="access-front-srv"/>
+				<in network="front-srv"/>
+				<in network="back-srv"/>
+			</device>			
+			<farm type="server" pattern="farm1-srv1" size="10">
+				<in network="front-srv"/>
+				<in network="back-srv"/>
+			</farm>			
+			<farm type="server" pattern="farm2-srv1" size="30">
+				<in network="front-srv"/>
+				<in network="back-srv"/>
+			</farm>
+			
+			<!-- Deuxième module -->
+			
+			<device type="loadbalancer" ha="on" pattern="loadb-srv2">
+				<in network="access-front-srv"/>
+				<in network="front-srv"/>
+				<in network="back-srv"/>
+			</device>			
+			<farm type="server" pattern="farm1-srv2" size="10">
+				<in network="front-srv"/>
+				<in network="back-srv"/>
+			</farm>			
+			<farm type="server" pattern="farm2-srv2" size="30">
+				<in network="front-srv"/>
+				<in network="back-srv"/>
+			</farm>
+			
+		</devices>
+	</perimeter>
+</generator>

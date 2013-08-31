@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wmh="http://www.wmhelp.com/2003/eGenerator" elementFormDefault="qualified">
+  <xs:element name="topology">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="groups"/>
+        <xs:element ref="globalgraph"/>
+        <xs:element ref="ngroups"/>
+        <xs:element ref="structures"/>
+      </xs:sequence>
+      <xs:attribute name="parc" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="groups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="group" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="device" maxOccurs="unbounded"/>
+        <xs:element ref="group" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="type" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="device">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="globalgraph">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="edge" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="edge">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="network" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="source" type="xs:string" use="required"/>
+      <xs:attribute name="target" type="xs:string" use="required"/>
+      <xs:attribute name="sourceIp" type="xs:string" use="optional"/>
+      <xs:attribute name="targetIp" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="network">
+    <xs:complexType>
+      <xs:attribute name="ip" type="xs:string" use="required"/>
+      <xs:attribute name="mask" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="structures">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="structure" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="structure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="group" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="r" type="xs:string" use="required"/>
+      <xs:attribute name="g" type="xs:string" use="required"/>
+      <xs:attribute name="b" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="ngroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ngroup" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="ngroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="device" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="type" type="xs:string" use="required"/>
+      <xs:attribute name="identity" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="sequence">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="item" type="xs:string" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>

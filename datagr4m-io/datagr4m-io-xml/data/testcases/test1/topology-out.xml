@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology>
+    <groups>
+        <group type="man" name="bla">
+            <device name="A8RXCAA004LC7301"/>
+            <device name="A8RXCHA001LC2601"/>
+        </group>
+        <group type="lan" name="bla"/>
+        <group type="security" name="blu">
+            <device name="RCBV-VTECH-HD0"/>
+        </group>
+    </groups>
+    <globalgraph>
+        <edge target="RCBV-SPOKE-2" source="RCBV-TRADING-EUROP"/>
+        <edge target="FW-CIFWSM-ACH-B2BINP-101" source="RCBV-SPOKE-2">
+            <network mask="0" ip="124.45.4.0"/>
+            <network mask="0" ip="124.45.14.0"/>
+        </edge>
+    </globalgraph>
+    <ngroups>
+        <ngroup type="hsrp">
+            <device name="RCBV-PRODAG1"/>
+            <device name="RCBV-PRODAD1"/>
+        </ngroup>
+    </ngroups>
+</topology>

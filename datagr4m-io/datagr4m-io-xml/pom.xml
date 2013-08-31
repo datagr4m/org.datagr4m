@@ -1,0 +1,138 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.datagr4m</groupId>
+	<artifactId>datagr4m-io-xml</artifactId>
+	<name>Datagr4m XML</name>
+
+    <parent>
+        <groupId>org.datagr4m</groupId>
+        <artifactId>datagr4m-io</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${version.jaxb}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>${version.jaxb}</version>
+		</dependency>
+
+		<dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${version.log4j}</version>
+        </dependency>
+
+		<!-- Scoped dependencies -->
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-xjc</artifactId>
+			<version>${version.jaxb}</version>
+			<scope>xjc</scope>
+		</dependency>
+        
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		
+
+    </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/java</source>
+                                <source>src/generated/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+				
+					<execution>
+						<id>dataprism-xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>src/main/resources/xsd/datagr4m/</schemaDirectory>
+							<schemaFiles>dataprism.xsd</schemaFiles>
+							<packageName>com.datagr4m.io.xml.generated.dataprism</packageName>
+							<staleFile>${project.build.directory}/jaxb2/dataprism.stale</staleFile>
+							<outputDirectory>src/generated/java</outputDirectory>
+						</configuration>
+					</execution>
+					
+					<execution>
+						<id>layout-xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>src/main/resources/xsd/datagr4m/</schemaDirectory>
+							<schemaFiles>layout.xsd</schemaFiles>
+							<packageName>com.datagr4m.io.xml.generated.layout</packageName>
+							<staleFile>${project.build.directory}/jaxb2/layout.stale</staleFile>
+							<outputDirectory>src/generated/java</outputDirectory>
+							<clearOutputDir>false</clearOutputDir>
+						</configuration>
+					</execution>
+					
+					<execution>
+						<id>topology-xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<configuration>
+							<schemaDirectory>src/main/resources/xsd/datagr4m/</schemaDirectory>
+							<schemaFiles>topology.xsd</schemaFiles>
+							<packageName>com.datagr4m.io.xml.generated.topology</packageName>
+							<staleFile>${project.build.directory}/jaxb2/topology.stale</staleFile>
+							<outputDirectory>src/generated/java</outputDirectory>
+							<clearOutputDir>false</clearOutputDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+		</plugins>
+	</build>
+</project>

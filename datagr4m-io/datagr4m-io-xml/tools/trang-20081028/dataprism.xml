@@ -1,0 +1,15 @@
+<dataprism>
+ <groupby>
+    <relation source="Character" type="COME_FROMS" target="Planet"/>
+    <andby>
+        <relation source="Character" type="IS_A" target="Planet"/>
+    </andby>
+ </groupby>
+ 
+ <groupby>
+   <rule name="notingroup"/>
+ </groupby>
+ <remove from="graph">
+   <rule name="notingroup"/>
+ </remove>
+</dataprism>
