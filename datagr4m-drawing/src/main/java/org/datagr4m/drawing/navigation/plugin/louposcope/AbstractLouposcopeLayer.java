@@ -50,7 +50,7 @@ public abstract class AbstractLouposcopeLayer<V,E,C> extends AbstractRenderer im
         if(model instanceof HierarchicalGraphModel){
             HierarchicalGraphModel graphModel = (HierarchicalGraphModel)model;
             topology = (Topology<V,E>)graphModel.getObject();
-            graph = topology.getGlobalGraph();
+            graph = topology.getGraph();
         }
         else{
             throw new RuntimeException("model is not holding a Topology<V,E> instance. Can't process " + model.getObject().getClass().getCanonicalName());

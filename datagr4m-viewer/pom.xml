@@ -36,7 +36,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jzy3d</groupId>
-			<artifactId>jzy3d-maths</artifactId>
+			<artifactId>jzy3d-api</artifactId>
+			<classifier>maths-io</classifier>
 			<version>${version.jzy3d}</version>
 		</dependency>
 		<dependency>

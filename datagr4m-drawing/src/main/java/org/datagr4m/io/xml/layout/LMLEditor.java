@@ -5,10 +5,9 @@ import java.io.FileNotFoundException;
 import javax.xml.bind.JAXBException;
 
 import org.datagr4m.io.xml.JAXBHandler;
-
-import com.datagr4m.io.xml.generated.layout.Group;
-import com.datagr4m.io.xml.generated.layout.Groups;
-import com.datagr4m.io.xml.generated.layout.Layout;
+import org.datagr4m.io.xml.generated.layout.Group;
+import org.datagr4m.io.xml.generated.layout.Groups;
+import org.datagr4m.io.xml.generated.layout.Layout;
 
 public class LMLEditor {
 	JAXBHandler h;

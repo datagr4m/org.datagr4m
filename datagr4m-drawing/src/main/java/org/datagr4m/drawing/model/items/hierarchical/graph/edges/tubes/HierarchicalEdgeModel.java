@@ -81,7 +81,7 @@ public class HierarchicalEdgeModel implements IHierarchicalEdgeModel, Serializab
      */
     @Override
     public <V,E> void build(Topology<V, E> topology, IHierarchicalModel model) {
-        Graph<V, E> graph = topology.getGlobalGraph();
+        Graph<V, E> graph = topology.getGraph();
 
         for (E edge : graph.getEdges()) {
             V source = graph.getSource(edge);

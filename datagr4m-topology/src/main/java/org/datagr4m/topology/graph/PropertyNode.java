@@ -23,6 +23,12 @@ public class PropertyNode implements IPropertyNode{
         this.type = NodeType.undefined();
     }
 
+    public PropertyNode(String label, NodeType type) {
+        this.label = label;
+        this.type = type;
+    }
+
+    
     public PropertyNode(Map<String, String> properties, GenericGraphModel<Map<String,String>> model) {
         configure(properties, model);
     }

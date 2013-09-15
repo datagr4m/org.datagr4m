@@ -20,7 +20,7 @@ public class TestForcesOnAFlatSimpleGraph extends AbstractLayoutRunnerTest {
     
     public static HierarchicalGraphModel buildGraphNested() {
         Topology<String, String> topo = new Topology<String, String>();
-        Graph<String, String> graph = topo.getGlobalGraph();
+        Graph<String, String> graph = topo.getGraph();
 
         graph.addVertex("d1");
         graph.addVertex("d2");

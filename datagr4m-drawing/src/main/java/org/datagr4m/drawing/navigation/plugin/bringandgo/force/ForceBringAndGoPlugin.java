@@ -125,7 +125,7 @@ public class ForceBringAndGoPlugin<V,E> extends SimpleBringAndGoPlugin<V,E>{
     protected void buildEdges(ForceFlowerModel<E> flower, IBoundedItem centerOriginal, IBoundedItem centerAvatar){
         ItemNameFinderVisitor finder = new ItemNameFinderVisitor();
         
-        Graph<V,E> graph = getDataModel().getTopology().getGlobalGraph();
+        Graph<V,E> graph = getDataModel().getTopology().getGraph();
         
         for(E edge: graph.getEdges()){
             Pair<V> pair = graph.getEndpoints(edge);

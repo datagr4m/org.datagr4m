@@ -130,14 +130,14 @@ public class Topology<V, E> implements Serializable {
         }
         return groups;
     }
-
+    
     /****************************/
 
     public Collection<V> getItems() {
         return graph.getVertices();
     }
 
-    public Graph<V, E> getGlobalGraph() {
+    public Graph<V, E> getGraph() {
         return graph;
     }
 
@@ -291,7 +291,7 @@ public class Topology<V, E> implements Serializable {
     /** Return an edge for each item having a neighbour in another group. */
     public List<CommutativePair<V>> getDetailedIntergroupEdges() {
         List<CommutativePair<V>> externalNeighbours = new ArrayList<CommutativePair<V>>();
-        for (V item : getGlobalGraph().getVertices()) {
+        for (V item : getGraph().getVertices()) {
             List<V> neighbours = computeExternalNeighbors(item);
             for (V item2 : neighbours) {
                 CommutativePair<V> pair = new CommutativePair<V>(item, item2);
@@ -381,7 +381,7 @@ public class Topology<V, E> implements Serializable {
      */
     public void createDefaultRootGroup(String name, String type) {
         Group<V> perimeter = new Group<V>(name, type);
-        for (V d : getGlobalGraph().getVertices())
+        for (V d : getGraph().getVertices())
             perimeter.add(d);
         getGroups().add(perimeter);
     }

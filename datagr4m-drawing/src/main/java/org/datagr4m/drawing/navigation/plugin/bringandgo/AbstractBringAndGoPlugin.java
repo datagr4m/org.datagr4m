@@ -49,7 +49,7 @@ public abstract class AbstractBringAndGoPlugin<V,E> extends AbstractNavigationPl
         
         this.deviceNeighbours = new HashMap<V, List<IBoundedItem>>();
         
-        Graph<V,E> graph = getDataModel().getTopology().getGlobalGraph();
+        Graph<V,E> graph = getDataModel().getTopology().getGraph();
         this.deviceNetworks = lookupNetworks(graph);
     }
     
@@ -86,7 +86,7 @@ public abstract class AbstractBringAndGoPlugin<V,E> extends AbstractNavigationPl
         List<IBoundedItem> neighbours = null;// deviceNeighbours.get(device);
         if (neighbours == null) {
             neighbours = new ArrayList<IBoundedItem>();
-            Collection<V> devices = getDataModel().getTopology().getGlobalGraph().getNeighbors(device);
+            Collection<V> devices = getDataModel().getTopology().getGraph().getNeighbors(device);
             for (V dd : devices) {
                 IBoundedItem it = model.getItem(dd);
                 if (it == null)

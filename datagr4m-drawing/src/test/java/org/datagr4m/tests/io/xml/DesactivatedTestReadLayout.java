@@ -1,9 +1,8 @@
 package org.datagr4m.tests.io.xml;
 
+import org.datagr4m.io.xml.generated.layout.Group;
+import org.datagr4m.io.xml.generated.layout.Layout;
 import org.datagr4m.io.xml.layout.LMLEditor;
-
-import com.datagr4m.io.xml.generated.layout.Group;
-import com.datagr4m.io.xml.generated.layout.Layout;
 
 public class DesactivatedTestReadLayout{
     public void testReadLayout() throws Exception{

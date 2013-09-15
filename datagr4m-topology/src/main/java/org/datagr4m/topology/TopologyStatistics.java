@@ -13,8 +13,8 @@ public class TopologyStatistics {
         super();
         this.t = t;
         
-        nNodes = t.getGlobalGraph().getVertexCount();
-        nEdges = t.getGlobalGraph().getEdgeCount();
+        nNodes = t.getGraph().getVertexCount();
+        nEdges = t.getGraph().getEdgeCount();
         nGroups = t.getGroups().size();
         depth = t.getDepth();
         nZones = t.getZones().size();

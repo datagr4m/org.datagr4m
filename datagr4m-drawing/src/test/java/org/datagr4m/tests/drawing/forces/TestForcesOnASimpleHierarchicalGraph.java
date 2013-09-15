@@ -23,7 +23,7 @@ public class TestForcesOnASimpleHierarchicalGraph extends AbstractLayoutRunnerTe
     public void testForces() {
         // build a model with forces
         Topology<String, String> topo = new Topology<String, String>();
-        Graph<String, String> graph = topo.getGlobalGraph();
+        Graph<String, String> graph = topo.getGraph();
         graph.addVertex("d1");
         graph.addVertex("d2");
         graph.addVertex("d3");

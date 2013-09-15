@@ -43,7 +43,7 @@ public class TopologyGenerator {
     }
     
     protected static void generateGraph(Topology<String,String> topo, int maxEdges){
-        Graph<String,String> graph = topo.getGlobalGraph();
+        Graph<String,String> graph = topo.getGraph();
         List<String> vertices = new ArrayList<String>(graph.getVertices());
         Collections.shuffle(vertices);
         

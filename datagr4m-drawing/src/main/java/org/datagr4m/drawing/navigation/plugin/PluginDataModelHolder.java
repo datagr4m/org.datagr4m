@@ -29,7 +29,7 @@ public class PluginDataModelHolder<V,E> {
 	
 	public Graph<V,E> getGraph(){
 		if(getTopology()!=null)
-			return getTopology().getGlobalGraph();
+			return getTopology().getGraph();
 		else
 			return null;
 	}

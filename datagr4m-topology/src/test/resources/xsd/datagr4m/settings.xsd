@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="wizards"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="wizards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="parsing"/>
+        <xs:element ref="topologies"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="parsing">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="source"/>
+        <xs:element ref="dns"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="source">
+    <xs:complexType>
+      <xs:attribute name="folder" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dns">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="suffixes"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="suffixes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="suffixe"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="suffixe">
+    <xs:complexType>
+      <xs:attribute name="string" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="topologies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ip"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ip">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ignores"/>
+        <xs:element ref="zones"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ignores">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="device"/>
+        <xs:element maxOccurs="unbounded" ref="interface"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="device">
+    <xs:complexType>
+      <xs:attribute name="pattern" type="xs:NCName"/>
+      <xs:attribute name="type" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interface">
+    <xs:complexType>
+      <xs:attribute name="ip" type="xs:NMTOKEN"/>
+      <xs:attribute name="name" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="zones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="zone"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="zone">
+    <xs:complexType>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="pattern" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

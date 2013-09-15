@@ -8,18 +8,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.datagr4m.io.xml.generated.dataprism.Andby;
+import org.datagr4m.io.xml.generated.dataprism.Attribute;
+import org.datagr4m.io.xml.generated.dataprism.Dataprism;
+import org.datagr4m.io.xml.generated.dataprism.Groupby;
+import org.datagr4m.io.xml.generated.dataprism.Relation;
+import org.datagr4m.io.xml.generated.dataprism.Remove;
+import org.datagr4m.io.xml.generated.dataprism.Rule;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
 import org.datagr4m.topology.graph.NodeType;
 
-import com.datagr4m.io.xml.generated.dataprism.Andby;
-import com.datagr4m.io.xml.generated.dataprism.Attribute;
-import com.datagr4m.io.xml.generated.dataprism.Dataprism;
-import com.datagr4m.io.xml.generated.dataprism.Groupby;
-import com.datagr4m.io.xml.generated.dataprism.Relation;
-import com.datagr4m.io.xml.generated.dataprism.Remove;
-import com.datagr4m.io.xml.generated.dataprism.Rule;
 import com.google.common.collect.Multimap;
 
 import edu.uci.ics.jung.graph.Graph;
@@ -193,7 +193,7 @@ public class TopologyEditor {
      */
     public TopologyEditor groupBy(GroupByRelation groupBy) {
         Logger.getLogger(TopologyEditor.class).info("groupBy relation " + groupBy);
-        Collection<IPropertyNode> scope = topology.getGlobalGraph().getVertices();
+        Collection<IPropertyNode> scope = topology.getGraph().getVertices();
 
         groupBy(groupBy, scope);
 
@@ -245,7 +245,7 @@ public class TopologyEditor {
 
         // remove node than have changed to
         for (IPropertyNode remove : removeLater)
-            topology.getGlobalGraph().removeVertex(remove);
+            topology.getGraph().removeVertex(remove);
 
         return this;
     }
@@ -324,7 +324,7 @@ public class TopologyEditor {
             srcGroup.remove(remove);
         }
         for (IPropertyNode remove : removeFromTopologyLater) {
-            topology.getGlobalGraph().removeVertex(remove);
+            topology.getGraph().removeVertex(remove);
         }
 
         return this;
@@ -334,7 +334,7 @@ public class TopologyEditor {
 
     public TopologyEditor groupBy(GroupByAttribute groupBy) {
         Logger.getLogger(TopologyEditor.class).info("groupBy attribute " + groupBy);
-        Collection<IPropertyNode> scope = topology.getGlobalGraph().getVertices();
+        Collection<IPropertyNode> scope = topology.getGraph().getVertices();
 
         groupBy(groupBy, scope);
 
@@ -374,7 +374,7 @@ public class TopologyEditor {
     
     public TopologyEditor groupByType() {
         Logger.getLogger(TopologyEditor.class).info("groupBy node type");
-        Collection<IPropertyNode> scope = topology.getGlobalGraph().getVertices();
+        Collection<IPropertyNode> scope = topology.getGraph().getVertices();
 
         groupByType(scope);
 
@@ -473,7 +473,7 @@ public class TopologyEditor {
         
         if(RULE_NAME_ISOLATED.equals(groupBy.name)){
         	for(IPropertyNode n: srcGroup){
-                if(topology.getGlobalGraph().getNeighborCount(n)==0){
+                if(topology.getGraph().getNeighborCount(n)==0){
                     group.add(n);
                     removeFromGroupLater.add(n);
                 }
@@ -500,7 +500,7 @@ public class TopologyEditor {
         Logger.getLogger(TopologyEditor.class).info("removeSingles " + singles.size());
 
         for (IPropertyNode single : singles) {
-            topology.getGlobalGraph().removeVertex(single);
+            topology.getGraph().removeVertex(single);
         }
 
         // update and exit
@@ -539,7 +539,7 @@ public class TopologyEditor {
     }
 
     public TopologyEditor removeNodesOfType(String type) {
-        Collection<IPropertyNode> nodes = topology.getGlobalGraph().getVertices();
+        Collection<IPropertyNode> nodes = topology.getGraph().getVertices();
         List<IPropertyNode> remove = new ArrayList<IPropertyNode>();
         for (IPropertyNode node : nodes) {
             NodeType t = node.getType();
@@ -549,7 +549,7 @@ public class TopologyEditor {
         }
         for (IPropertyNode node : remove) {
             Logger.getLogger(TopologyEditor.class).info("ignore " + node + " type:" + node.getType().getName());
-            topology.getGlobalGraph().removeVertex(node);
+            topology.getGraph().removeVertex(node);
         }
         topology.index();
 
@@ -557,7 +557,7 @@ public class TopologyEditor {
     }
 
     public TopologyEditor removeEdgeMadeOf(String typeNode1, String typeNode2) {
-        Graph<IPropertyNode, IPropertyEdge> graph = topology.getGlobalGraph();
+        Graph<IPropertyNode, IPropertyEdge> graph = topology.getGraph();
         Collection<IPropertyEdge> edges = graph.getEdges();
         List<IPropertyEdge> remove = new ArrayList<IPropertyEdge>();
         for (IPropertyEdge edge : edges) {

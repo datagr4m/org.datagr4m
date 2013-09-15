@@ -14,7 +14,7 @@ import edu.uci.ics.jung.graph.Graph;
 public class TestTopology extends TestCase{
     public void testSubgraph(){
         Topology<String, String> topo = new Topology<String, String>();
-        Graph<String, String> graph = topo.getGlobalGraph();
+        Graph<String, String> graph = topo.getGraph();
 
         graph.addVertex("d1");
         graph.addVertex("d2");
@@ -38,7 +38,7 @@ public class TestTopology extends TestCase{
     
     public void testTopoFilterNoGroup(){
         Topology<String, String> topo = new Topology<String, String>();
-        Graph<String, String> graph = topo.getGlobalGraph();
+        Graph<String, String> graph = topo.getGraph();
 
         graph.addVertex("d1");
         graph.addVertex("d2");
@@ -52,19 +52,19 @@ public class TestTopology extends TestCase{
         filter.add("d2");
         
         Topology<String, String> topo2 = topo.filter(filter);
-        assertTrue(topo2.getGlobalGraph().getVertices().contains("d1"));
-        assertTrue(topo2.getGlobalGraph().getVertices().contains("d2"));
-        assertFalse(topo2.getGlobalGraph().getVertices().contains("d3"));
-        assertFalse(topo2.getGlobalGraph().getVertices().contains("d4"));
+        assertTrue(topo2.getGraph().getVertices().contains("d1"));
+        assertTrue(topo2.getGraph().getVertices().contains("d2"));
+        assertFalse(topo2.getGraph().getVertices().contains("d3"));
+        assertFalse(topo2.getGraph().getVertices().contains("d4"));
 
-        assertTrue(topo2.getGlobalGraph().getEdges().contains("1>2"));
-        assertFalse(topo2.getGlobalGraph().getEdges().contains("1>3"));
+        assertTrue(topo2.getGraph().getEdges().contains("1>2"));
+        assertFalse(topo2.getGraph().getEdges().contains("1>3"));
 
     }
     
     public void testTopoFilterGroup(){
         Topology<String, String> topo = new Topology<String, String>();
-        Graph<String, String> graph = topo.getGlobalGraph();
+        Graph<String, String> graph = topo.getGraph();
 
         graph.addVertex("d1");
         graph.addVertex("d2");
@@ -92,13 +92,13 @@ public class TestTopology extends TestCase{
         filter.add("d2");
         
         Topology<String, String> topo2 = topo.filter(filter);
-        assertTrue(topo2.getGlobalGraph().getVertices().contains("d1"));
-        assertTrue(topo2.getGlobalGraph().getVertices().contains("d2"));
-        assertFalse(topo2.getGlobalGraph().getVertices().contains("d3"));
-        assertFalse(topo2.getGlobalGraph().getVertices().contains("d4"));
+        assertTrue(topo2.getGraph().getVertices().contains("d1"));
+        assertTrue(topo2.getGraph().getVertices().contains("d2"));
+        assertFalse(topo2.getGraph().getVertices().contains("d3"));
+        assertFalse(topo2.getGraph().getVertices().contains("d4"));
 
-        assertTrue(topo2.getGlobalGraph().getEdges().contains("1>2"));
-        assertFalse(topo2.getGlobalGraph().getEdges().contains("1>3"));
+        assertTrue(topo2.getGraph().getEdges().contains("1>2"));
+        assertFalse(topo2.getGraph().getEdges().contains("1>3"));
 
         assertTrue("filtered topology should contain group 1", topo2.getGroups().contains(g1));
         assertFalse("filtered topology should NOT contain group 2", topo2.getGroups().contains(g2));
@@ -108,7 +108,7 @@ public class TestTopology extends TestCase{
     
     public void testTopoFilterHierarchicalGroup(){
         Topology<String, String> topo = new Topology<String, String>();
-        Graph<String, String> graph = topo.getGlobalGraph();
+        Graph<String, String> graph = topo.getGraph();
 
         graph.addVertex("d1");
         graph.addVertex("d2");
@@ -145,13 +145,13 @@ public class TestTopology extends TestCase{
         filter.add("d2");
         
         Topology<String, String> topo2 = topo.filter(filter);
-        assertTrue(topo2.getGlobalGraph().getVertices().contains("d1"));
-        assertTrue(topo2.getGlobalGraph().getVertices().contains("d2"));
-        assertFalse(topo2.getGlobalGraph().getVertices().contains("d3"));
-        assertFalse(topo2.getGlobalGraph().getVertices().contains("d4"));
+        assertTrue(topo2.getGraph().getVertices().contains("d1"));
+        assertTrue(topo2.getGraph().getVertices().contains("d2"));
+        assertFalse(topo2.getGraph().getVertices().contains("d3"));
+        assertFalse(topo2.getGraph().getVertices().contains("d4"));
 
-        assertTrue(topo2.getGlobalGraph().getEdges().contains("1>2"));
-        assertFalse(topo2.getGlobalGraph().getEdges().contains("1>3"));
+        assertTrue(topo2.getGraph().getEdges().contains("1>2"));
+        assertFalse(topo2.getGraph().getEdges().contains("1>3"));
 
         topo2.toConsole();
 

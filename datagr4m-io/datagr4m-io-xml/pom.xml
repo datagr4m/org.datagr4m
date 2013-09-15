@@ -94,7 +94,7 @@
 						<configuration>
 							<schemaDirectory>src/main/resources/xsd/datagr4m/</schemaDirectory>
 							<schemaFiles>dataprism.xsd</schemaFiles>
-							<packageName>com.datagr4m.io.xml.generated.dataprism</packageName>
+							<packageName>org.datagr4m.io.xml.generated.dataprism</packageName>
 							<staleFile>${project.build.directory}/jaxb2/dataprism.stale</staleFile>
 							<outputDirectory>src/generated/java</outputDirectory>
 						</configuration>
@@ -108,7 +108,7 @@
 						<configuration>
 							<schemaDirectory>src/main/resources/xsd/datagr4m/</schemaDirectory>
 							<schemaFiles>layout.xsd</schemaFiles>
-							<packageName>com.datagr4m.io.xml.generated.layout</packageName>
+							<packageName>org.datagr4m.io.xml.generated.layout</packageName>
 							<staleFile>${project.build.directory}/jaxb2/layout.stale</staleFile>
 							<outputDirectory>src/generated/java</outputDirectory>
 							<clearOutputDir>false</clearOutputDir>
@@ -123,7 +123,7 @@
 						<configuration>
 							<schemaDirectory>src/main/resources/xsd/datagr4m/</schemaDirectory>
 							<schemaFiles>topology.xsd</schemaFiles>
-							<packageName>com.datagr4m.io.xml.generated.topology</packageName>
+							<packageName>org.datagr4m.io.xml.generated.topology</packageName>
 							<staleFile>${project.build.directory}/jaxb2/topology.stale</staleFile>
 							<outputDirectory>src/generated/java</outputDirectory>
 							<clearOutputDir>false</clearOutputDir>

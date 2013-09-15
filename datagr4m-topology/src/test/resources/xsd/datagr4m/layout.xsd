@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wmh="http://www.wmhelp.com/2003/eGenerator" elementFormDefault="qualified">
+  <xs:element name="layout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="defaults"/>
+        <xs:element ref="edges" maxOccurs="1"/>
+        <xs:element ref="group" maxOccurs="unbounded"/>
+        <xs:element ref="groups" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="defaults">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="group"/>
+        <xs:element ref="iconsettings"/>
+        <xs:element ref="factories"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="edges">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="label" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="label">
+    <xs:complexType>
+        <xs:attribute name="type" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="grouplayout"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string"/>
+      <xs:attribute name="shape" type="xs:string"/>
+      <xs:attribute name="color" type="xs:string"/>
+      <xs:attribute name="label" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  
+    <xs:element name="groups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="grouplayout"/>
+      </xs:sequence>
+      <xs:attribute name="names" type="xs:string"/>
+      <xs:attribute name="shape" type="xs:string"/>
+      <xs:attribute name="color" type="xs:string"/>
+      <xs:attribute name="label" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="iconsettings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="iconsetting" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="iconsetting">
+    <xs:complexType>
+      <xs:attribute name="type" type="xs:string" use="required"/>
+      <xs:attribute name="icon" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="factories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="modelfactory"/>
+        <xs:element ref="layoutfactory"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="modelfactory">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="layoutfactory">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="grouplayout">
+    <xs:complexType>
+      <xs:choice>
+        <xs:sequence>
+          <xs:element ref="orthogonal"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element ref="stratums"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element ref="matrix"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element ref="row"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element ref="column"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element ref="forces"/>
+        </xs:sequence>
+      </xs:choice>
+      <xs:attribute name="scrollable" type="xs:string"/>
+      <xs:attribute name="maxwidth" type="xs:string"/>
+      <xs:attribute name="maxheight" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="orthogonal">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="stratums">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="stratum" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="stratum">
+    <xs:complexType>
+      <xs:attribute name="header" type="xs:string" use="required"/>
+      <xs:attribute name="group" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="matrix">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cell" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="lines" type="xs:string" use="required"/>
+      <xs:attribute name="columns" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cell">
+    <xs:complexType>
+      <xs:attribute name="line" type="xs:string"/>
+      <xs:attribute name="column" type="xs:string"/>
+      <xs:attribute name="group" type="xs:string" use="required"/>
+      <xs:attribute name="width" type="xs:string"/>
+      <xs:attribute name="height" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="row">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cell" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="column">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cell" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  
+  <xs:element name="forces">
+    <xs:complexType>
+     
+     <xs:sequence>
+        <xs:element ref="attract" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="repulse" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="maxsteps" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="break" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="attract">
+    <xs:complexType>
+      <xs:attribute name="value" type="xs:double" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="repulse">
+    <xs:complexType>
+      <xs:attribute name="value" type="xs:double" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+    <xs:element name="break">
+    <xs:complexType>
+      <xs:attribute name="condition" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="maxsteps">
+    <xs:complexType>
+      <xs:attribute name="value" type="xs:int" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

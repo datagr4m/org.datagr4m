@@ -3,9 +3,8 @@ package org.datagr4m.drawing.layout.runner;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.io.xml.generated.layout.Layout;
 import org.datagr4m.viewer.IView;
-
-import com.datagr4m.io.xml.generated.layout.Layout;
 
 
 public interface ILayoutRunner {

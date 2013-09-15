@@ -1,8 +1,10 @@
 package org.datagr4m.workspace;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,9 @@ import org.datagr4m.drawing.model.items.hierarchical.visitor.ModelEditor;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.renderer.items.hierarchical.hit.HierarchicalHitPolicy;
 import org.datagr4m.drawing.renderer.policy.IRenderingPolicy;
+import org.datagr4m.io.xml.generated.layout.Edges;
+import org.datagr4m.io.xml.generated.layout.Grouplayout;
+import org.datagr4m.io.xml.generated.layout.Layout;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.utils.BinaryFiles;
@@ -37,10 +42,6 @@ import org.datagr4m.viewer.layered.LayeredRenderer;
 import org.datagr4m.viewer.model.annotations.AnnotationModel;
 import org.datagr4m.workspace.configuration.ConfigurationFacade;
 import org.jzy3d.maths.Coord2d;
-
-import com.datagr4m.io.xml.generated.layout.Edges;
-import com.datagr4m.io.xml.generated.layout.Grouplayout;
-import com.datagr4m.io.xml.generated.layout.Layout;
 
 /**
  * A workspace gather:
@@ -218,7 +219,7 @@ public class Workspace implements Serializable, IWorkspace{
     protected static Map<String,String> extractModelLayoutMapping(Layout layoutML){
         Map<String,String> modelLayoutMapping = new HashMap<String,String>();
 
-        for(com.datagr4m.io.xml.generated.layout.Group g: layoutML.getGroup()){
+        for(org.datagr4m.io.xml.generated.layout.Group g: layoutML.getGroup()){
             String gname = g.getName();
             Grouplayout glayout = g.getGrouplayout();
 
@@ -245,7 +246,7 @@ public class Workspace implements Serializable, IWorkspace{
             return;
         IHierarchicalModel model = layout.getModel();
 
-        for(com.datagr4m.io.xml.generated.layout.Group g: layoutML.getGroup()){
+        for(org.datagr4m.io.xml.generated.layout.Group g: layoutML.getGroup()){
             String gname = g.getName();
             Grouplayout glayout = g.getGrouplayout();
 
@@ -278,7 +279,7 @@ public class Workspace implements Serializable, IWorkspace{
         // build stratum sequence
         List<IBoundedItem> sequence = new ArrayList<IBoundedItem>();
         ItemNameFinderVisitor itemFinder = new ItemNameFinderVisitor();
-        for(com.datagr4m.io.xml.generated.layout.Stratum stratum: glayout.getStratums().getStratum()){
+        for(org.datagr4m.io.xml.generated.layout.Stratum stratum: glayout.getStratums().getStratum()){
             String stratumGroupName = stratum.getGroup();
 
             List<IBoundedItem> results = itemFinder.find(stratumGroupName, model);
@@ -525,6 +526,7 @@ public class Workspace implements Serializable, IWorkspace{
         else
             throw new RuntimeException("no layout model in this workspace");
     }
+	
 
     /***********/
 

@@ -280,7 +280,7 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 			HierarchicalGraphModel parent, V item) {
 		if (verifyNoExistYet(parent, item)) {
 			IBoundedItem itemModel = getItemLayoutModel(item);
-			if (!topology.getGlobalGraph().containsVertex(item)) {
+			if (!topology.getGraph().containsVertex(item)) {
 				Logger.getLogger(this.getClass()).error(
 						"a topology group contains " + item
 								+ " but it is not referenced in the graph");

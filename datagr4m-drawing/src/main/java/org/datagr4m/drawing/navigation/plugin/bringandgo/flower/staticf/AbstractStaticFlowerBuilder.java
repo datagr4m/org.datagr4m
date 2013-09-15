@@ -80,7 +80,7 @@ public abstract class AbstractStaticFlowerBuilder<V,E> implements IStaticFlowerB
 
     	// cherche le voisin de l'objet cliqué
     	V objCenter = (V)center.getObject();
-    	Graph<V,E> graph = data.getGlobalGraph();
+    	Graph<V,E> graph = data.getGraph();
     	
     	// Build 2 datastructures: individual edges, and hyperedges
     	Map<String,HyperEdgeStructure> hyperEdgeByName = new HashMap<String, HyperEdgeStructure>();

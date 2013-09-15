@@ -1,4 +1,4 @@
-package com.datagr4m.graphml;
+package com.datagr4m.tests.graphml;
 
 import java.io.FileWriter;
 import java.io.IOException;
