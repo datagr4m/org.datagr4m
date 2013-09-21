@@ -3,9 +3,9 @@ package org.datagr4m.tests.datastructures.pairs;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.datagr4m.datastructures.pairs.UniquePair;
-
 import junit.framework.TestCase;
+
+import org.datagr4m.datastructures.pairs.UniquePair;
 
 
 public class TestUniquePair extends TestCase{

@@ -2,7 +2,6 @@ package org.datagr4m.topology.graph;
 
 import java.util.Set;
 
-
 import com.google.common.collect.SetMultimap;
 
 public interface IPropertyNode {

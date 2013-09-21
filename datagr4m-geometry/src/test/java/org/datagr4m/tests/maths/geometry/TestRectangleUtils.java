@@ -2,9 +2,9 @@ package org.datagr4m.tests.maths.geometry;
 
 import java.awt.geom.Rectangle2D;
 
-import org.datagr4m.maths.geometry.RectangleUtils;
-
 import junit.framework.TestCase;
+
+import org.datagr4m.maths.geometry.RectangleUtils;
 
 
 public class TestRectangleUtils extends TestCase{

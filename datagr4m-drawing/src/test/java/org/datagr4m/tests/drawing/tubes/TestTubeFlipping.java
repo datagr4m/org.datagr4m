@@ -2,6 +2,8 @@ package org.datagr4m.tests.drawing.tubes;
 
 import java.io.IOException;
 
+import junit.framework.TestCase;
+
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
@@ -9,8 +11,6 @@ import org.datagr4m.drawing.model.items.hierarchical.graph.edges.Edge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.TubeUtils;
 import org.datagr4m.drawing.model.pathfinder.path.PathFactory;
-
-import junit.framework.TestCase;
 
 
 public class TestTubeFlipping extends TestCase{

@@ -5,12 +5,12 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.framework.TestCase;
+
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.pathfinder.path.IPath;
 import org.datagr4m.drawing.model.pathfinder.path.LockablePath;
 import org.datagr4m.maths.geometry.PointUtils;
-
-import junit.framework.TestCase;
 
 
 public class TestPath extends TestCase{

@@ -1,10 +1,10 @@
 package org.datagr4m.tests.drawing.model.pathfinder;
 
-import org.datagr4m.tests.drawing.model.pathfinder.impl.TestPathFinderPrimitives;
-import org.datagr4m.tests.drawing.model.pathfinder.slots.TestSlotTarget;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
+
+import org.datagr4m.tests.drawing.model.pathfinder.impl.TestPathFinderPrimitives;
+import org.datagr4m.tests.drawing.model.pathfinder.slots.TestSlotTarget;
 
 
 public class TestPathfinderSuite {

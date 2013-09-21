@@ -1,11 +1,11 @@
 package org.datagr4m.tests.drawing.model.pathfinder;
 
+import junit.framework.TestCase;
+
 import org.datagr4m.drawing.model.pathfinder.path.IPath;
 import org.datagr4m.drawing.model.pathfinder.path.LockablePath;
 import org.datagr4m.drawing.model.pathfinder.path.PathEditHistory;
 import org.datagr4m.drawing.model.pathfinder.path.PathEditLog;
-
-import junit.framework.TestCase;
 
 
 public class TestPathHistory extends TestCase{

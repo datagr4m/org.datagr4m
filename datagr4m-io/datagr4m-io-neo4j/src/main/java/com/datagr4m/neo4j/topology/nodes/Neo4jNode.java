@@ -9,6 +9,7 @@ import org.datagr4m.topology.graph.IPropertyNode;
 import org.datagr4m.topology.graph.NodeType;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
+
 import com.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.SetMultimap;

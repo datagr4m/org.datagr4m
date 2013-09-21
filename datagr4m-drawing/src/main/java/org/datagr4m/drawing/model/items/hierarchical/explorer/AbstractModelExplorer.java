@@ -2,8 +2,6 @@ package org.datagr4m.drawing.model.items.hierarchical.explorer;
 
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
-import javax.swing.event.PopupMenuEvent;
-import javax.swing.event.PopupMenuListener;
 
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.viewer.IDisplay;

@@ -3,10 +3,10 @@ package org.datagr4m.tests.maths.geometry;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
+import junit.framework.TestCase;
+
 import org.datagr4m.maths.geometry.LineUtils;
 import org.datagr4m.maths.geometry.PointUtils;
-
-import junit.framework.TestCase;
 
 
 public class TestIntersectionUtils extends TestCase {

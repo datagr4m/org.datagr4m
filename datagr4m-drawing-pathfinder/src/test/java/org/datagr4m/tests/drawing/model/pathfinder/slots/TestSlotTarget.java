@@ -2,13 +2,13 @@ package org.datagr4m.tests.drawing.model.pathfinder.slots;
 
 import java.awt.geom.Rectangle2D;
 
+import junit.framework.TestCase;
+
 import org.datagr4m.drawing.model.links.DirectedLink;
 import org.datagr4m.drawing.model.links.UniqueLink;
 import org.datagr4m.drawing.model.pathfinder.obstacle.IPathObstacle;
 import org.datagr4m.drawing.model.pathfinder.obstacle.PathObstacle;
 import org.datagr4m.drawing.model.slots.SlotTarget;
-
-import junit.framework.TestCase;
 
 
 public class TestSlotTarget extends TestCase{

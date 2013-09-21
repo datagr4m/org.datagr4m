@@ -14,7 +14,6 @@ import org.datagr4m.tests.drawing.AbstractLayoutRunnerTest;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.Topology;
 
-
 import edu.uci.ics.jung.graph.Graph;
 
 public class TestForcesOnASimpleHierarchicalGraph extends AbstractLayoutRunnerTest {

@@ -5,11 +5,11 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 
+import junit.framework.TestCase;
+
 import org.datagr4m.drawing.layout.pathfinder.impl.PathFinder;
 import org.datagr4m.drawing.model.pathfinder.obstacle.IPathObstacle;
 import org.datagr4m.drawing.model.pathfinder.obstacle.PathObstacle;
-
-import junit.framework.TestCase;
 
 
 public class TestPathFinderPrimitives extends TestCase{

@@ -1,10 +1,10 @@
 package org.datagr4m.tests.drawing.tubes;
 
+import junit.framework.TestCase;
+
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.HierarchicalEdgeLayout;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
 import org.datagr4m.tests.drawing.tubes.data.HsrpFullMeshDataTestWithInsertion;
-
-import junit.framework.TestCase;
 
 
 public class TestTubeHierarchicalInsertion extends TestCase{

@@ -1,10 +1,10 @@
 package org.datagr4m.tests.drawing.items;
 
+import junit.framework.TestCase;
+
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.pair.HierarchicalPairModel;
-
-import junit.framework.TestCase;
 
 
 public class TestHierarchicalPair extends TestCase{

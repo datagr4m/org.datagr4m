@@ -2,9 +2,9 @@ package org.datagr4m.tests.maths.geometry;
 
 import java.awt.geom.Point2D;
 
-import org.datagr4m.maths.geometry.PointUtils;
-
 import junit.framework.TestCase;
+
+import org.datagr4m.maths.geometry.PointUtils;
 
 
 public class TestPointUtils extends TestCase{

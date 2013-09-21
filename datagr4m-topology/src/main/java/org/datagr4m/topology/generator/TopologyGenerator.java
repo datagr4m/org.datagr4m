@@ -7,7 +7,6 @@ import java.util.List;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.Topology;
 
-
 import edu.uci.ics.jung.graph.Graph;
 
 /**

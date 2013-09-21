@@ -3,11 +3,10 @@ package org.datagr4m.tests.topology;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.datagr4m.topology.Group;
-import org.datagr4m.topology.Topology;
-
 import junit.framework.TestCase;
 
+import org.datagr4m.topology.Group;
+import org.datagr4m.topology.Topology;
 
 import edu.uci.ics.jung.graph.Graph;
 

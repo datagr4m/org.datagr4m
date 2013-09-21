@@ -2,10 +2,8 @@ package org.datagr4m.drawing.renderer.policy;
 
 import java.awt.Color;
 
-import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.drawing.renderer.items.hierarchical.graph.edges.hierarchical.MonochromeTubeRendererSettings;
-import org.datagr4m.topology.Group;
 
 
 public class ShadeGrayRendereringPolicy extends RenderingPolicy implements IRenderingPolicy {

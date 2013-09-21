@@ -13,7 +13,6 @@ import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
 import org.datagr4m.drawing.layout.hierarchical.stratum.HierarchicalStratumLayout;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.factory.ILayoutRunnerFactory;
-import org.datagr4m.drawing.layout.runner.factory.LayoutRunnerLookup;
 import org.datagr4m.drawing.layout.runner.factory.LookupLayoutRunnerFactory;
 import org.datagr4m.drawing.model.factories.HierarchicalModelFactory;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
