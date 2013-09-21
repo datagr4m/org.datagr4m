@@ -1,12 +1,9 @@
-package org.datagr4m.drawing.layout.runner;
+package org.datagr4m.drawing.layout.runner.factory;
 
-import org.apache.log4j.Logger;
-import org.datagr4m.drawing.animation.ForceLayoutAnimation;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
-import org.datagr4m.viewer.IView;
-import org.openide.util.Lookup;
 
 public class LayoutRunnerLookup {
+	/*
+	
 	public static ILayoutRunner get() {
 		ILayoutRunner runner = Lookup.getDefault().lookup(ILayoutRunner.class);
 		if (runner == null)
@@ -31,5 +28,5 @@ public class LayoutRunnerLookup {
     	ILayoutRunner runner = get();
     	runner.configure(root, view, settings);
     	return runner;
-    }
+    }*/
 }

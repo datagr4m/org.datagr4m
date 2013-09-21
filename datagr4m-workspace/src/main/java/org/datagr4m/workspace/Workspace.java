@@ -1,10 +1,8 @@
 package org.datagr4m.workspace;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +12,9 @@ import org.datagr4m.drawing.layout.factories.IHierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
 import org.datagr4m.drawing.layout.hierarchical.stratum.HierarchicalStratumLayout;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
-import org.datagr4m.drawing.layout.runner.LayoutRunnerLookup;
+import org.datagr4m.drawing.layout.runner.factory.ILayoutRunnerFactory;
+import org.datagr4m.drawing.layout.runner.factory.LayoutRunnerLookup;
+import org.datagr4m.drawing.layout.runner.factory.LookupLayoutRunnerFactory;
 import org.datagr4m.drawing.model.factories.HierarchicalModelFactory;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.factories.filters.GroupFilter;
@@ -59,6 +59,8 @@ public class Workspace implements Serializable, IWorkspace{
     
     public static IHierarchicalModelFactory defaultModelFactory = new HierarchicalModelFactory<Object, Object>(); 
     public static IHierarchicalLayoutFactory defaultLayoutFactory = new HierarchicalLayoutFactory(); 
+    public static ILayoutRunnerFactory defaultRunnerFactory = new LookupLayoutRunnerFactory();
+    
     public static IRenderingPolicy defaultRenderingPolicy = null; 
     
 	public static IHierarchicalModelFactory getDefaultHierarchicalModelFactory(){
@@ -356,7 +358,7 @@ public class Workspace implements Serializable, IWorkspace{
 
     protected ILayoutRunner getOrCreateRunner(IHierarchicalLayout root, IView view) {
         if(runner==null){
-            runner = LayoutRunnerLookup.get(root, view);
+            runner = defaultRunnerFactory.newLayoutRunner(root, view);
         }
         return runner;
     }

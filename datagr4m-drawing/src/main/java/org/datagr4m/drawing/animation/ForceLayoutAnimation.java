@@ -2,7 +2,8 @@ package org.datagr4m.drawing.animation;
 
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
-import org.datagr4m.drawing.layout.runner.LayoutRunnerLookup;
+import org.datagr4m.drawing.layout.runner.factory.ILayoutRunnerFactory;
+import org.datagr4m.drawing.layout.runner.factory.LookupLayoutRunnerFactory;
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
 import org.datagr4m.drawing.layout.runner.stop.MeanMoveCriteria;
 import org.datagr4m.viewer.animation.AbstractAnimation;
@@ -10,6 +11,8 @@ import org.datagr4m.viewer.animation.IAnimation;
 
 
 public class ForceLayoutAnimation extends AbstractAnimation implements IAnimation{
+	public static ILayoutRunnerFactory defaultRunnerFactory = new LookupLayoutRunnerFactory();
+	
     public ForceLayoutAnimation(IHierarchicalLayout root){
         this(root, 10);
     }
@@ -27,7 +30,7 @@ public class ForceLayoutAnimation extends AbstractAnimation implements IAnimatio
     
     public ForceLayoutAnimation(IHierarchicalLayout root, IBreakCriteria criteria){
         super();
-        runner = LayoutRunnerLookup.get(root);
+        runner = defaultRunnerFactory.newLayoutRunner(root);
         if(criteria!=null)
         	runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(criteria);
         started = false;
