@@ -66,7 +66,7 @@ public class MeanMoveCriteria implements IBreakCriteria{
     }
     
     protected IHierarchicalLayout findHighestRelevantLayoutInHierarchy(IHierarchicalLayout layout){
-        if(layout.getModel().getChildren().size()==1){
+        if(layout./*getModel().*/getChildren().size()>0){
             try{
                 IHierarchicalLayout sublayout = layout.getChildren().get(0);
                 return findHighestRelevantLayoutInHierarchy(sublayout);
@@ -82,6 +82,7 @@ public class MeanMoveCriteria implements IBreakCriteria{
     
     @Override 
     public void onBreak(){  
+    	int a = 1;
     }
 
     

@@ -77,6 +77,9 @@ public class RectangleUtils {
     }
     
     public static boolean contains(Rectangle2D r, Coord2d point, boolean ignoreBorder){
+    	if(point==null || r==null)
+    		return false;
+    	
         if(ignoreBorder){
             if(point.x<=r.getMinX())
                 return false;

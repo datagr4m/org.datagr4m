@@ -62,10 +62,22 @@ public class ObstacleGroupModel implements ISlotableSetModel, Serializable{
         return slotables;
     }
     
+
+    /**
+     * warning, using dupplicate link
+     */
     @Override
     public ILink<Pair<ISlotableItem,Object>> addPath(ISlotableItem source, Object srcInterface, IPath p, ISlotableItem target, Object trgInterface) {
-    	throw new RuntimeException("ObstacleGroup.addPath with interface: not implemented");
-        //return null;
+    	ILink<ISlotableItem> link = getLinkFactory().getLink(source, target);
+        pathExtremities.put(p, link); //1->1
+        itemsPathes.put(link, p); //1->N
+        links.add(link);
+        pathes.add(p);
+ 
+        // TODO: fix me dupplicate link
+    	ILink<Pair<ISlotableItem,Object>> linkOut =  getLinkFactory().getLink(source, srcInterface, target, trgInterface);
+    	return linkOut;
+    	//return null;
     }
 
     @Override

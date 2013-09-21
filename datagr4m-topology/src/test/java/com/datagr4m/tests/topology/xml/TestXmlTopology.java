@@ -1,7 +1,5 @@
 package com.datagr4m.tests.topology.xml;
 
-import java.io.File;
-
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
@@ -21,6 +19,8 @@ public class TestXmlTopology {
 		Topology<IPropertyNode, IPropertyEdge> topology  = xmlt.loadTopology("data/workspaces/xmltopo/topology.xml");
 		topology.toConsole();
 		
+		
+		//topology.g
 	}
 
 }
