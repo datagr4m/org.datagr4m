@@ -112,15 +112,15 @@ public class Tube implements IHierarchicalEdge {
     }
 
     @Override
-    public boolean acceptChild(IEdge path) {
-        boolean ok1 = path.getSourceItem().getParent() == sourceItem && path.getTargetItem().getParent() == targetItem;
-        boolean ok2 = path.getSourceItem().getParent() == targetItem && path.getTargetItem().getParent() == sourceItem;
+    public boolean acceptChild(IEdge edge) {
+        boolean ok1 = edge.getSourceItem().getParent() == sourceItem && edge.getTargetItem().getParent() == targetItem;
+        boolean ok2 = edge.getSourceItem().getParent() == targetItem && edge.getTargetItem().getParent() == sourceItem;
 
-        boolean ok3 = path.getSourceItem() == sourceItem && path.getTargetItem().getParent() == targetItem;
-        boolean ok4 = path.getSourceItem().getParent() == sourceItem && path.getTargetItem() == targetItem;
+        boolean ok3 = edge.getSourceItem() == sourceItem && edge.getTargetItem().getParent() == targetItem;
+        boolean ok4 = edge.getSourceItem().getParent() == sourceItem && edge.getTargetItem() == targetItem;
 
-        boolean ok5 = path.getSourceItem() == targetItem && path.getTargetItem().getParent() == sourceItem;
-        boolean ok6 = path.getSourceItem().getParent() == targetItem && path.getTargetItem() == sourceItem;
+        boolean ok5 = edge.getSourceItem() == targetItem && edge.getTargetItem().getParent() == sourceItem;
+        boolean ok6 = edge.getSourceItem().getParent() == targetItem && edge.getTargetItem() == sourceItem;
 
         // TODO: optimiser, pas la peine de tout calculer
         return (ok1 || ok2 || ok3 || ok4 || ok5 || ok6);
@@ -138,12 +138,12 @@ public class Tube implements IHierarchicalEdge {
 
     @Override
     public boolean hasDescendant(IEdge child) {
-        for (IEdge path : children) {
-            if (path instanceof Tube) {
-                if (((Tube) path).hasDescendant(child))
+        for (IEdge edge : children) {
+            if (edge instanceof Tube) {
+                if (((Tube) edge).hasDescendant(child))
                     return true;
             } else {
-                if (path == child)
+                if (edge == child)
                     return true;
             }
         }

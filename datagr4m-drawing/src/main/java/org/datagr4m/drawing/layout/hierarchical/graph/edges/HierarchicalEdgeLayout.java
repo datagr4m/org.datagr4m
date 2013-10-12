@@ -71,7 +71,7 @@ public class HierarchicalEdgeLayout implements Serializable, IHierarchicalEdgeLa
             edgePostProcess.postProcess(model);
     }
     
-    /************/
+    /* */
 
     @Override
     public List<ILayoutListener> getListeners() {
@@ -93,8 +93,6 @@ public class HierarchicalEdgeLayout implements Serializable, IHierarchicalEdgeLa
             listener.onStepDone(n, total);
     }
     
-    /*****************/
-
 	@Override
 	public IItemSlotLayout getItemSlotLayout() {
 		return itemSlotLayout;
@@ -124,8 +122,4 @@ public class HierarchicalEdgeLayout implements Serializable, IHierarchicalEdgeLa
 	public void setEdgePostProcess(IEdgePostProcessor edgePostProcess) {
 		this.edgePostProcess = edgePostProcess;
 	}
-    
-    /***********/
-    
-    
 }

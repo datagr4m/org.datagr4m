@@ -137,15 +137,12 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 		model.setZoningModel(zoningModel);
 	}
 
-	@SuppressWarnings("unchecked")
-	protected void createEdgeModel(Topology<V, E> topology,
-			HierarchicalGraphModel model) {
+	protected void createEdgeModel(Topology<V, E> topology, IHierarchicalGraphModel model) {
 		ModelEdgesVisitor edgeFinder = new ModelEdgesVisitor();
 		edgeFinder.visit(model);
-		IHierarchicalEdgeModel tubeModel = getHierarchicalEdgeModel();
-		tubeModel.build(topology, model);
-		// tubeModel.toConsole();
-		model.setEdgeModel(tubeModel);
+		IHierarchicalEdgeModel edgeModel = getHierarchicalEdgeModel();
+		edgeModel.build(topology, model);
+		model.setEdgeModel(edgeModel);
 	}
 
 	/*************/
@@ -360,7 +357,7 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 			IBoundedItem item1 = parentModel.getItem(v1);
 			IBoundedItem item2 = parentModel.getItem(v2);
 
-			if (item1 != null && item2 != null && item1 != item2) {
+			if (item1 instanceof HierarchicalGraphModel && item1 != null && item2 != null && item1 != item2) {
 				HierarchicalGraphModel parent = (HierarchicalGraphModel) item1
 						.getParent();
 
@@ -369,9 +366,9 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 				if (!parent.hasAttractionEdges(e)) {
 					parent.addAttractionEdgeForce(e);
 				}
-			} else
-				throw new RuntimeException("did not find either item 1 or 2: "
-						+ v1 + ", " + v2);
+			} //else
+			//	throw new RuntimeException("did not find either item 1 or 2: "
+			//			+ v1 + ", " + v2);
 		}
 	}
 

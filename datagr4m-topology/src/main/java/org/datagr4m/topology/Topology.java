@@ -573,6 +573,8 @@ public class Topology<V, E> implements Serializable {
         for (Group<V> group : hierarchy) {
             toConsole(group, stringIt, 0);
         }
+        System.out.println(getGraph().getVertexCount() + " vertices");
+        System.out.println(getGraph().getEdgeCount() + " edges");
     }
 
     public void toConsole(Group<V> group, ToString<V> stringIt, int depth) {

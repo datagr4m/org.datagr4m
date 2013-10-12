@@ -1,6 +1,5 @@
 package org.datagr4m.topology.io;
 
-import java.io.File;
 import java.util.Collection;
 
 import org.apache.log4j.Logger;
@@ -18,23 +17,20 @@ import org.datagr4m.topology.graph.NodeType;
 import org.datagr4m.topology.graph.PropertyEdge;
 import org.datagr4m.topology.graph.PropertyNode;
 
-public class XmlTopology {
+public class TopologyIOXML {
 	static JAXBHandler handler = JAXBHandler.xmlHandlerTopology();
 
 	public org.datagr4m.topology.Topology<IPropertyNode, IPropertyEdge> loadTopology(
 			String file) throws Exception {
 		org.datagr4m.topology.Topology<IPropertyNode, IPropertyEdge> topology = new org.datagr4m.topology.Topology<IPropertyNode, IPropertyEdge>();
-		Topology xmlTopo = loadTopologyML(file);
+		Topology xmlTopo = readXmlObject(file);
 		readTopology(topology, xmlTopo);
 		return topology;
 	}
 	
 
-	public Topology loadTopologyML(String file) throws Exception {
-		System.err.println(new File(file).getAbsolutePath());
-		
-		System.err.println(new File(file).exists());
-		//Logger.getL
+	public Topology readXmlObject(String file) throws Exception {
+		Logger.getLogger(TopologyIOXML.class).info("reading topology from " + file);
 		return (Topology) handler.unmarshall(file);
 	}
 	
@@ -75,14 +71,14 @@ public class XmlTopology {
 			srcNode = srcs.iterator().next();
 		}
 		else
-			Logger.getLogger(XmlTopology.class).warn("no src node for label " + src);
+			Logger.getLogger(TopologyIOXML.class).warn("no src node for label " + src);
 
 		IPropertyNode trgNode = null;
 		if(trgs.size()>0){
 			trgNode = trgs.iterator().next();
 		}
 		else
-			Logger.getLogger(XmlTopology.class).warn("no trg node for label " + trg);
+			Logger.getLogger(TopologyIOXML.class).warn("no trg node for label " + trg);
 
 		if(srcNode!=null && trgNode!=null)
 			graph.addEdge(edge, srcNode, trgNode);

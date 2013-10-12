@@ -7,7 +7,13 @@ import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Hierarchi
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ModelEdgesVisitor;
 import org.datagr4m.topology.Topology;
 
-
+/**
+ * A default factory 
+ * @author martin
+ *
+ * @param <V>
+ * @param <E>
+ */
 public class HierarchicalModelFactory<V,E> implements IHierarchicalModelFactory{
     @Override
     public IBoundedItem getLayoutModel(Object data) {

@@ -48,7 +48,8 @@ public class NavigationController implements INavigationController {
     public void initRenderingPolicy(IHierarchicalModel model, IRenderingPolicy policy) {
         // rendering policies init
         defaultPolicy = policy;
-        defaultPolicy.setup(model);
+        if(policy!=null)
+        	defaultPolicy.setup(model);
     }
 
     public void initPlugins(IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay) {

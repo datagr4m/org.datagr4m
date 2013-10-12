@@ -28,7 +28,7 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
 
     @Override
     public IHierarchicalLayout getLayout(IHierarchicalModel model){
-        IHierarchicalLayout layout = getRootLayout(model, null);
+        IHierarchicalLayout layout = getRootLayout(model, model.getEdgeModel());
         return layout;
     }
 

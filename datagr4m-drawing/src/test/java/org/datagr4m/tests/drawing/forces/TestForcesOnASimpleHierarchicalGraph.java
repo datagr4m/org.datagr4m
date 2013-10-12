@@ -2,6 +2,7 @@ package org.datagr4m.tests.drawing.forces;
 
 import java.util.Collection;
 
+import org.apache.log4j.Logger;
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.forces.FAAttraction;
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.forces.FARepulsion;
 import org.datagr4m.drawing.layout.algorithms.forces.IForce;
@@ -66,6 +67,7 @@ public class TestForcesOnASimpleHierarchicalGraph extends AbstractLayoutRunnerTe
 
         // -------------------
         // ASSERT REPULSION
+        Logger.getLogger(TestForcesOnASimpleHierarchicalGraph.class).warn("SOME TESTS ARE COMMENTED!!!!");
 
         // d1 forces
         /*Collection<IForce> forcesD1 = gm1.getRepulsors(d1);
@@ -120,7 +122,7 @@ public class TestForcesOnASimpleHierarchicalGraph extends AbstractLayoutRunnerTe
                     
         // ---------------------
         // ATTRACTION
-        
+        Logger.getLogger(TestForcesOnASimpleHierarchicalGraph.class).warn("SOME TESTS ARE COMMENTED!!!!");
         // d1            
         /*Collection<IForce> attractD1 = gm1.getAttractionEdgeForces(d1);
         if (console) {

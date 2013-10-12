@@ -15,4 +15,6 @@ public class AbstractLayoutRunnerTest extends TestCase{
         layout.initAlgo();
         return layout;
     }
+    
+    public void testNothing(){}
 }

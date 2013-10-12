@@ -24,8 +24,8 @@ public interface IWorkspace {
 	public void createView(IDisplay display);
 
 	public Topology<?, ?> getTopology();
-	public IHierarchicalModel getLayoutModel();
-	public IHierarchicalEdgeModel getTubeModel();
+	public IHierarchicalModel getModel();
+	public IHierarchicalEdgeModel getEdgeModel();
 	public AnnotationModel getAnnotationModel();
 	public IHierarchicalLayout getLayout();
 	public PluginLayeredRenderer getRenderer();

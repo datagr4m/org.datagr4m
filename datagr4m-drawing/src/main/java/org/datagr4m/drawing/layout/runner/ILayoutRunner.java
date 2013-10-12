@@ -50,5 +50,6 @@ public interface ILayoutRunner {
     @Deprecated
     public void setBreakCriteria(IBreakCriteria breakCriteria);
     
+    public Thread getThread();
 
 }
