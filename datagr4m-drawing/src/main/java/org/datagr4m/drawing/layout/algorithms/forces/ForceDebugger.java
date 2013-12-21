@@ -16,7 +16,12 @@ import org.datagr4m.drawing.renderer.items.hierarchical.pair.IHierarchicalPairRe
 import org.datagr4m.drawing.viewer.mouse.items.MouseHitModelAdapter;
 import org.datagr4m.drawing.viewer.mouse.items.MouseItemViewController;
 
-
+/**
+ * Enable debugging forces in a graph by showing attracting/repeling nodes of a selected node using colors.
+ * 
+ * @see {@link NodeForceRendererSettings}
+ * @author martin
+ */
 public class ForceDebugger {
     public static void attach(MouseItemViewController mouse, IHierarchicalModel model, IHierarchicalRenderer renderer){
         // Add tools to show force on selection
@@ -32,6 +37,9 @@ public class ForceDebugger {
                 Collection<IBoundedItem> repulsors = forceIndex.getRepulsors(object);
                 Collection<IBoundedItem> attractors = forceIndex.getAttractors(object);
                 
+                log(repulsors, attractors);
+            }
+            public void log(Collection<IBoundedItem> repulsors, Collection<IBoundedItem> attractors) {
                 Logger.getLogger(ForceDebugger.class).info("--------------------------");
                 Logger.getLogger(ForceDebugger.class).info(repulsors.size() + " repulsors: ");
                 int k=0;

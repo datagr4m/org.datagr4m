@@ -7,9 +7,16 @@ import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.renderer.items.IItemRendererSettings;
 import org.datagr4m.drawing.renderer.items.ItemRendererSettings;
 
-
+/**
+ * Paint neighbour nodes according to the attraction/repulsion settings:
+ * <ul>
+ * <li>white : default
+ * <li>yellow : node attracting the currently selected node
+ * <li>red : node repulsing the currently selected node
+ * <li>orange : node having both repulsing and attracting the currently selected node
+ */
 public class NodeForceRendererSettings extends ItemRendererSettings implements IItemRendererSettings{
-    protected Color DEFAULT_COLOR = null;//Color.WHITE;
+    protected Color DEFAULT_COLOR = Color.WHITE;
     
     public NodeForceRendererSettings(Selection selection, ForceIndex fi){
         this.selection = selection;
@@ -32,7 +39,7 @@ public class NodeForceRendererSettings extends ItemRendererSettings implements I
                 if(isAttractor && isRepulsor)
                     return Color.ORANGE;
                 else if(isAttractor)
-                    return Color.YELLOW;
+                    return Color.GREEN;
                 else if(isRepulsor)
                     return Color.RED;
                 else
