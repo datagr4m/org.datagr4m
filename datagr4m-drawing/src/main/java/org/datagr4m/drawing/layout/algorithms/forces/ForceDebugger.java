@@ -37,24 +37,7 @@ public class ForceDebugger {
                 Collection<IBoundedItem> repulsors = forceIndex.getRepulsors(object);
                 Collection<IBoundedItem> attractors = forceIndex.getAttractors(object);
                 
-                log(repulsors, attractors);
-            }
-            public void log(Collection<IBoundedItem> repulsors, Collection<IBoundedItem> attractors) {
-                Logger.getLogger(ForceDebugger.class).info("--------------------------");
-                Logger.getLogger(ForceDebugger.class).info(repulsors.size() + " repulsors: ");
-                int k=0;
-                for(IBoundedItem r: repulsors){
-                    Logger.getLogger(ForceDebugger.class).info(r.getObject());
-                    k++;
-                    if(k>20){
-                        Logger.getLogger(ForceDebugger.class).info("...");
-                        break;
-                    }
-                        
-                }
-                Logger.getLogger(ForceDebugger.class).info(attractors.size() + " attractors: ");
-                for(IBoundedItem a: attractors)
-                    Logger.getLogger(ForceDebugger.class).info(a.getObject());
+                //log(repulsors, attractors);
             }
             @Override
             public void itemReleased(IBoundedItem object) {
@@ -84,4 +67,23 @@ public class ForceDebugger {
         for(IHierarchicalRenderer subr: renderer.getChildren())
             setBoundedRenderer(subr, nrs);
     }
+    
+    public static void log(Collection<IBoundedItem> repulsors, Collection<IBoundedItem> attractors) {
+        Logger.getLogger(ForceDebugger.class).info("--------------------------");
+        Logger.getLogger(ForceDebugger.class).info(repulsors.size() + " repulsors: ");
+        int k=0;
+        for(IBoundedItem r: repulsors){
+            Logger.getLogger(ForceDebugger.class).info(r.getObject());
+            k++;
+            if(k>20){
+                Logger.getLogger(ForceDebugger.class).info("...");
+                break;
+            }
+                
+        }
+        Logger.getLogger(ForceDebugger.class).info(attractors.size() + " attractors: ");
+        for(IBoundedItem a: attractors)
+            Logger.getLogger(ForceDebugger.class).info(a.getObject());
+    }
+
 }

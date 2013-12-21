@@ -11,7 +11,8 @@ import org.datagr4m.drawing.renderer.items.ItemRendererSettings;
  * Paint neighbour nodes according to the attraction/repulsion settings:
  * <ul>
  * <li>white : default
- * <li>yellow : node attracting the currently selected node
+ * <li>cyan : currently selected node
+ * <li>green : node attracting the currently selected node
  * <li>red : node repulsing the currently selected node
  * <li>orange : node having both repulsing and attracting the currently selected node
  */
