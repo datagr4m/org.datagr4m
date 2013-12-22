@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology>
+    <groups>
+        <group name="firewalls" type="firewall">
+            <node name="fw1" type="firewall"/>
+            <node name="fw2" type="firewall"/>
+        </group>
+        <group name="platform1" type="platform" >
+	        <group name="routers" type="router" >
+	            <node name="rt1" type="router"/>
+	            <node name="rt2" type="router"/>
+	            <node name="rt3" type="router"/>
+	        </group>
+	        <group name="farm" type="router" >
+	            <node name="srv1" type="server"/>
+	            <node name="srv2" type="server"/>
+	            <node name="srv3" type="server"/>
+	        </group>
+        </group>
+    </groups>
+    <graph>
+        <edge source="fw1" sourceSlot="Interface1" target="rt1" targetSlot="Interface1"/>
+        <edge source="fw1" sourceSlot="Interface1" target="rt2" targetSlot="Interface1"/>
+        <edge source="fw1" sourceSlot="Interface2" target="rt3" targetSlot="Interface1"/>
+        <edge source="fw2" sourceSlot="Interface1" target="rt1" targetSlot="Interface1"/>
+        <edge source="fw2" sourceSlot="Interface2" target="rt2" targetSlot="Interface2"/>
+        <edge source="fw2" sourceSlot="Interface2" target="rt3" targetSlot="Interface1"/>
+    </graph>
+</topology>

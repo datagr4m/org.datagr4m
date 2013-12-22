@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.datagr4m</groupId>
+	<artifactId>com-datagr4m-application-upload</artifactId>
+	<name>Datagr4m Application</name>
+
+    <parent>
+        <groupId>com.datagr4m</groupId>
+        <artifactId>com-datagr4m-master</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+	<distributionManagement>
+      <repository>
+        <id>datagr4m-ftp-download</id>
+        <name>Jzy3d Maven Folder</name>
+        <url>ftp://ftp.datagr4m.com/files/current</url>
+      </repository>
+      <!--<snapshotRepository>
+        <id>jzy3d-ftp-maven</id>
+        <name>Jzy3d Maven Folder SNAPSHOTS</name>
+        <url>ftp://www.jzy3d.org/v1/maven/snapshots</url>
+      </snapshotRepository>-->
+    </distributionManagement>
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ftp</artifactId>
+				<version>${version.maven.plugins.wagon}</version>
+			</extension>
+		</extensions>
+	
+		<plugins>
+			
+			<!-- Upload ZIP distro to FTP -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>1.0-beta-3</version>
+				<executions>
+					<execution>
+						<id>upload-jar-to-folder</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+					</execution>
+				</executions>
+					<configuration>
+					<fromDir>${project.build.directory}</fromDir>
+					<includes>datagr4m-${pom.version}-distribution.zip</includes>
+					<url>file://ftp.datagr4m.com/files/current</url>
+					<toDir>current</toDir>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+</project>

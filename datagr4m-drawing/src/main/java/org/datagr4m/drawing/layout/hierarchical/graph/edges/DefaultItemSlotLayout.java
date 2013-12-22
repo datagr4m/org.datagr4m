@@ -11,6 +11,7 @@ import org.datagr4m.drawing.layout.slots.geometry.ISlotGeometryPostProcessor;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.links.DirectedLink;
+import org.datagr4m.drawing.model.links.DirectedLinkWithInterface;
 import org.datagr4m.drawing.model.links.ILink;
 import org.datagr4m.drawing.model.pathfinder.path.IPath;
 import org.datagr4m.drawing.model.pathfinder.path.IPathFactory;
@@ -84,8 +85,14 @@ public class DefaultItemSlotLayout implements IItemSlotLayout {
 
     @Override
 	public DirectedLink newLink(IEdge e) {
-        DirectedLink link = new DirectedLink(e.getSourceItem(), e.getTargetItem());
-        return link;
+        if(e.getSourceInterface() != null && e.getTargetInterface()!=null){
+            return new DirectedLink(e.getSourceItem(), e.getTargetItem());
+
+            //            return new DirectedLinkWithInterface(e.getSourceItem(), e.getSourceInterface(), e.getTargetItem(), e.getT);
+        }
+        else{
+            return new DirectedLink(e.getSourceItem(), e.getTargetItem());
+        }
     }
 
     /***********************/

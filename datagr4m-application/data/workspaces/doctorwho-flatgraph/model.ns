@@ -1,0 +1,160 @@
+type Property{
+ property: prop
+ relation: MEMBER_OF
+ relation: ORIGINAL_PROP
+ relation: COMPOSED_OF
+ 
+  label: prop
+ icon: doctorwho/property.png
+ 
+ propertynode
+}
+
+type Part{
+ property: part
+ relation: MEMBER_OF
+ relation: ORIGINAL_PROP
+ relation: COMPOSED_OF
+ 
+  label: part
+ icon: doctorwho/part.png
+ 
+ propertynode
+}
+
+type Properties{
+ property: props
+ relation: MEMBER_OF
+ relation: USED_IN
+ 
+ label: props
+ icon: doctorwho/properties.png
+ 
+ propertynode
+}
+
+type Undef{
+}
+
+// ----------------
+
+type Specy{
+ property: species
+ relation: APPEARED_IN
+ relation: ALLY_OF
+ relation: ENEMY_OF
+ relation: IS_A
+ relation: COMES_FROM
+ 
+ label: species
+ icon: doctorwho/species.png
+}
+
+
+
+type Character{
+ property: character
+ 
+ relation: PLAYED
+ relation: LOVES
+ relation: OWNS
+ relation: APPEARED_IN
+ relation: ALLY_OF
+ relation: COMPANION_OF
+ relation: FATHER_OF
+ relation: FIRST_APPEARED
+ relation: ENEMY_OF
+ relation: IS_A
+ relation: COMES_FROM
+ relation: DIED_IN
+ 
+ label: character
+ icon: doctorwho/character.png
+}
+
+type Character2{
+ extends: Character
+ 
+ property: character
+ property: wikipedia
+ 
+ relation: PLAYED
+ relation: LOVES
+ relation: APPEARED_IN
+ relation: COMPANION_OF
+ relation: FATHER_OF
+ relation: FIRST_APPEARED
+ relation: IS_A
+ relation: COMES_FROM
+ relation: DIED_IN
+ 
+ label: character
+ icon: doctorwho/character.png
+}
+
+type Episode{
+ property: episode
+ property: title
+ relation: NEXT
+ relation: APPEARED_IN
+ relation: FIRST_APPEARED
+ relation: PREVIOUS
+ relation: DIED_IN
+ relation: USED_IN
+ 
+ label: episode
+ icon: doctorwho/episode.png
+}
+
+
+
+type Actor{
+ property: actor
+ relation: PLAYED
+ relation: REGENERATED_TO
+ relation: APPEARED_IN
+ 
+ label: actor
+ icon: doctorwho/actor.png
+}
+
+type Actor2{
+ extends: Actor
+ 
+ property: actor
+ property: wikipedia
+ 
+ label: actor
+ icon: doctorwho/actor.png
+}
+
+type Actor3{
+ extends: Actor
+ 
+ property: actor
+ property: salary
+ property: wikipedia
+ 
+ relation: PLAYED
+ relation: REGENERATED_TO
+ relation: APPEARED_IN
+ 
+ label: actor
+ icon: doctorwho/actor.png 
+}
+
+type Thing{
+ property: thing
+ relation: OWNS
+ 
+ label: thing
+ icon: doctorwho/thing.png
+}
+
+type Planet{
+ property: planet
+ relation: COMES_FROM
+ 
+ label: planet
+ icon: doctorwho/planet.png
+}

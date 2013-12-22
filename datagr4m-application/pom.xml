@@ -1,0 +1,176 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.datagr4m</groupId>
+	<artifactId>datagr4m-application</artifactId>
+	<name>Datagr4m Application</name>
+
+    <parent>
+        <groupId>org.datagr4m</groupId>
+        <artifactId>datagr4m-master</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+	<dependencies>
+		<!-- Datagr4m.com -->
+		<dependency>
+            <groupId>com.datagr4m</groupId>
+            <artifactId>datagr4m-runtime-community</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+		
+		<!-- Datagr4m.org -->
+		<dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-workspace</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.datagr4m</groupId>
+            <artifactId>datagr4m-io-neo4j</artifactId>
+            <version>${version.datagr4m}</version>
+        </dependency>
+        
+		<!-- <dependency>
+			<groupId>org.datagr4m</groupId>
+			<artifactId>datagr4m-io-api</artifactId>
+			<version>${version.datagr4m}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.datagr4m</groupId>
+			<artifactId>datagr4m-io-xml</artifactId>
+			<version>${version.datagr4m}</version>
+		</dependency> -->
+
+        
+		<!-- Other -->
+		<dependency>
+			<groupId>net.sf</groupId>
+			<artifactId>jargs</artifactId>
+			<version>${version.jargs}</version>
+		</dependency>
+	
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${version.log4j}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>		
+			<!-- Obfuscate -->
+			<plugin>
+                <groupId>com.github.wvengen</groupId>
+                <artifactId>proguard-maven-plugin</artifactId>
+                <version>${version.maven.plugins.proguard}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.proguard</groupId>
+                        <artifactId>proguard-base</artifactId>
+                        <version>${version.proguard}</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+                
+                <executions>
+                   <execution>
+                       <phase>package</phase>
+                       <goals><goal>proguard</goal></goals>
+                   </execution>
+                </executions>
+                <configuration>
+                    <options>
+                        <option>-keepclasseswithmembers public class * {public static void main(java.lang.String[]);}</option>
+						<option>-keepnames public class com.datagr4m.applications.gui.toolbar.Datagr4mToolbar</option>
+                    </options>
+                    <libs>
+						<!--Win/Mac settings differ and are setup in parent pom << FIXMEE-->
+						<lib>${java.jars.rt.location}</lib>
+						<lib>${java.jars.location}/jce.jar</lib>
+						<lib>${java.jars.location}/jsse.jar</lib>
+                    </libs>
+                </configuration>
+            </plugin>
+			
+			<!-- Build a single jar -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${version.maven.plugins.shade}</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<artifactSet>
+								<excludes>
+									<exclude>classworlds:classworlds</exclude> 
+									<exclude>*:xml-apis</exclude>
+									<exclude>junit:junit</exclude>
+									<exclude>jmock:*</exclude>
+									<exclude>org.apache.maven:lib:tests</exclude>
+								</excludes>
+							</artifactSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- Zip -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>create-distribution</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/distribute-as-zip.xml</descriptor>
+							</descriptors>
+							<finalName>datagr4m-${pom.version}</finalName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+			<!-- Upload ZIP distro to FTP -->
+			<!-- weird: uploading jar and not zip :(
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>1.0-beta-3</version>
+				<executions>
+					<execution>
+						<id>upload-distribution</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>upload-single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<fromFile>${project.build.directory}/datagr4m-${pom.version}-distribution.zip</fromFile>
+					<url>file://ftp.datagr4m.com/files/releases/</url>
+				</configuration>
+			</plugin>-->
+			
+		</plugins>
+	</build>
+</project>

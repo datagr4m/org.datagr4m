@@ -1,0 +1,20 @@
+<dataprism>
+  <groupby>
+    <relation source="Actor" type="PLAYED" target="Character"/>
+ </groupby>
+ 
+<!-- <groupby>
+   <rule name="node_in_no_group"/>
+ </groupby>-->
+ 
+<remove from="graph"><rule name="type:Planet"/></remove>
+<remove from="graph"><rule name="type:Part"/></remove>
+<remove from="graph"><rule name="type:Thing"/></remove>
+<remove from="graph"><rule name="type:Specy"/></remove>
+<remove from="graph"><rule name="edgemadeof:Character:Character"/></remove>
+<remove from="graph"><rule name="edgemadeof:Character:Character2"/></remove>
+<remove from="graph"><rule name="edgemadeof:Character2:Character"/></remove>
+<remove from="graph"><rule name="edgemadeof:Character:Specy"/></remove>
+<remove from="graph"><rule name="edgemadeof:Specy:Character"/></remove>
+
+</dataprism>

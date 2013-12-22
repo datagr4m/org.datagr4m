@@ -1,0 +1,8 @@
+<dataprism>
+ <groupby>
+    <attribute name="lob" for="Employee"/>
+    <andby>
+        <attribute name="job" for="Employee"/>
+    </andby>
+ </groupby>
+</dataprism>

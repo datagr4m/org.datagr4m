@@ -11,6 +11,8 @@
 
     <name>Datagr4m Master Project</name>
 
+    <!-- mvn eclipse:eclipse -Declipse.workspace=/Users/martin/Dev/workspace-main -->
+
     <modules>
         <module>datagr4m-core</module>
 		<module>datagr4m-io</module>
@@ -18,8 +20,10 @@
 		<module>datagr4m-geometry</module>
         <module>datagr4m-viewer</module>
         <module>datagr4m-drawing</module>
-        <module>datagr4m-drawing-pathfinder</module>
 		<module>datagr4m-workspace</module>
+
+        <module>datagr4m-application</module>
+        <module>datagr4m-demos</module>
     </modules>
 	
 	<repositories>
@@ -73,8 +77,26 @@
 		<version.maven.compiler>3.0</version.maven.compiler>
 		<version.maven.plugins.cobertura>2.6</version.maven.plugins.cobertura>
 		<version.maven.plugins.wagon>1.0-beta-6</version.maven.plugins.wagon>
+        <version.maven.plugins.shade>1.7.1</version.maven.plugins.shade>
+        <!-- shade version > 1.7.1 require maven 3 -->
 
 		<version.lookup>RELEASE731</version.lookup>
+
+
+        <version.maven.plugins.proguard>2.0.6</version.maven.plugins.proguard>
+        <version.proguard>4.10</version.proguard>
+
+        <!--For Proguard
+         > Win: <java.jars.location>${java.home}/lib</java.jars.location>
+         > Mac: see belows
+        -->
+        <java.jars.location>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes</java.jars.location>
+        <!--For Proguard
+         > Win: <java.jars.rt.location>${java.jars.location}/rt.jar</java.jars.rt.location>
+         > Mac: see belows
+        -->
+        <java.jars.rt.location>${java.jars.location}/classes.jar</java.jars.rt.location>
+
 	</properties>
 
     <build>

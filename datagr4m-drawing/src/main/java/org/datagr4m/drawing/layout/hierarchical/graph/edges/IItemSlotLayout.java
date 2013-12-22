@@ -8,6 +8,8 @@ import org.datagr4m.drawing.layout.slots.geometry.ISlotGeometryPostProcessor;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.links.DirectedLink;
+import org.datagr4m.drawing.model.links.ILink;
+import org.datagr4m.drawing.model.slots.ISlotableItem;
 
 
 public interface IItemSlotLayout extends Serializable{
@@ -20,5 +22,5 @@ public interface IItemSlotLayout extends Serializable{
 	public void setSlotGroupLayout(ISlotGroupLayout slotGroupLayout);
 	public void setSlotGeometryGeomPostProcessor(ISlotGeometryPostProcessor slotGeometryGeomPostProcessor);
 	
-	public DirectedLink newLink(IEdge e);
+	public ILink<ISlotableItem> newLink(IEdge e);
 }

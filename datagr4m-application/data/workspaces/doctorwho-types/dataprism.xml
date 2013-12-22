@@ -1,0 +1,8 @@
+<dataprism>
+  <groupby>
+    <type/>
+    <andby>
+      <rule name="isolated"/>
+    </andby>
+  </groupby>
+</dataprism>

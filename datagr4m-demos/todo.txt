@@ -1,0 +1,16 @@
+BUGS sur les démos
+
+bounds: réactiver la coloration des bounds
+graphnested2: les forces ne marchent pas alors que oui pour le 1
+graphnested3: bugs sur hierarchie 2 niveau: (1) les arcs sont décallé (2) les bounds sont mal foutues
+		CF TestBounds desactivés
+graphnestedgenerated: pas de lien entre les bulles
+zones: la zone doit se mettre à jour lorsque l'on déplace un élément
+pathfinderman: 
+
+
+
+TODO code refactor/deplace
+
+topology tree move to GUI 
+ 1 point bloquant: TopologyTreeCellRenderer.isRelationshipType & edgeRendererSettings.getRelationshipTypeColor (TubeRSettings)

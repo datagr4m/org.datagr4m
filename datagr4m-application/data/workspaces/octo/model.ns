@@ -1,0 +1,11 @@
+type Employee{
+ property: anciennete
+ property: id
+ property: job
+ property: label
+ property: lob
+ relation: unknown
+ 
+ label: id
+ icon: doctorwho/character.png
+}

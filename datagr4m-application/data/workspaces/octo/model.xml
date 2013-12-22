@@ -1,0 +1,12 @@
+<type name="Employee" extends="?">
+ <label property="id"/>
+ <icon resource="doctorwho/character.png"/>
+
+ <property name="id"/>
+ <property name="job"/>
+ <property name="lob"/>
+ <property name="label"/>
+ <property name="anciennete"/>
+
+ <relation name="unknown"/>
+</type>

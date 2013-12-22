@@ -1,0 +1,60 @@
+<layout>
+	<defaults> 
+		<group shape="circle" color="00FFFF"/>
+	</defaults>
+
+    <!-- specific layout settings -->
+    <groups names="*">
+      <grouplayout scrollable="true" maxwidth="" maxheight="">
+            <forces>
+                <attract value="10"/>
+                <repulse value="800000"/>
+            </forces>
+        </grouplayout>
+    </groups>
+    
+    <group name="Part" shape="rectangle" color="FFFF00"/>
+    
+    
+    <!-- <group name="Character">
+      <grouplayout scrollable="true" maxwidth="" maxheight="">
+            <forces>
+                <attract value="10"/>
+                <repulse value="20000"/>
+            </forces>
+        </grouplayout>
+    </group>-->
+    
+    <!-- <group name="g1"/>
+    <group name="g2" shape="circle"/>
+    <group name="g3" shape="rectangle" color="00FF00"/>
+    <group name="g4" shape="rectangle" color="FFFF00"/>
+
+
+    <group name="g5" shape="circle" color="00FFFF">
+        <grouplayout scrollable="true" maxwidth="" maxheight="">
+            <orthogonal>
+            </orthogonal>
+        </grouplayout>
+    </group>    
+
+    <group name="g6" shape="rectangle" color="00FFFF">
+        <grouplayout scrollable="true" maxwidth="" maxheight="">
+            <stratums>
+                <stratum header="PRAFWCOL" group="security_PRAFWCOL0"/>
+                <stratum header="PRAFWDMZ" group="security_PRAFWDMZ0"/>
+                <stratum header="PRAFWBAK" group="security_PRAFWBAK0"/>
+            </stratums>
+        </grouplayout>
+    </group>
+
+    <group name="g7" shape="rectangle" color="00FFFF" label="">
+        <grouplayout>
+            <matrix lines="1" columns="3">
+                <cell line="1" column="1" group="g6" width="400" height="300"/>
+                <cell line="1" column="2" group="g5" width="100" height="300"/>
+                <cell line="1" column="3" group="g4" width="400" height="300"/>
+            </matrix>
+        </grouplayout>
+    </group> -->
+</layout>

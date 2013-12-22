@@ -1,0 +1,15 @@
+<dataprism>
+  <!--<groupby>
+    <relation source="Actor" type="APPEARED_IN" target="Episode"/>
+ </groupby>-->
+ 
+<!-- <groupby>
+   <rule name="node_in_no_group"/>
+ </groupby>-->
+ 
+<remove from="graph"><rule name="type:Character"/></remove>
+<remove from="graph"><rule name="type:Planet"/></remove>
+<remove from="graph"><rule name="type:Part"/></remove>
+<remove from="graph"><rule name="type:Property"/></remove>
+<remove from="graph"><rule name="type:Properties"/></remove>
+</dataprism>

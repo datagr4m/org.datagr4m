@@ -1,0 +1,8 @@
+<dataprism>
+ <groupby>
+    <relation source="Character" type="COMES_FROM" target="Planet"/>
+    <andby><relation source="Character" type="IS_A" target="Specy"/></andby>
+ </groupby>
+ <remove from="graph"><rule name="node_in_no_group"/></remove>
+ <remove from="topology"><rule name="empty_groups"/></remove>
+</dataprism>
