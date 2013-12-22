@@ -81,7 +81,7 @@ public class SlotLayout implements ISlotLayout{
         if(links!=null)
             set.fillMissingItems(links);
         clearSlots(set);
-        prepareGroups(links);
+        initializeSlotTargets(links);
         initializeSlots();
         organizeSlotTargets(set);
         
@@ -118,7 +118,7 @@ public class SlotLayout implements ISlotLayout{
      * Once this method finishes, we have a map (source,side)->(target,link)
      * that is made for both source and target, but slot are not initialized yet.
      */
-    protected void prepareGroups(List<ILink<ISlotableItem>> links){
+    protected void initializeSlotTargets(List<ILink<ISlotableItem>> links){
         slotNorthList.clear();
         slotSouthList.clear();
         slotWestList.clear();
@@ -129,6 +129,10 @@ public class SlotLayout implements ISlotLayout{
             ISlotableItem o2 = link.getDestination();
             SlotSide o1Slot = slotGroupLayout.getTargetBestSlotSide(o1, o2);
             SlotSide o2Slot = slotGroupLayout.getTargetBestSlotSide(o2, o1);   
+            
+            Object modelEdge = link.getModelEdge();
+            //if(modelEdge!=null && (modelEdge instanceof HierarchicalEdgeModel))
+                
             
             incrementSlotList(o1, o1Slot, new SlotTarget(o2, null /*"to " + o2*/, link));
             incrementSlotList(o2, o2Slot, new SlotTarget(o1, null/*"to " + o1*/, link));
@@ -159,7 +163,7 @@ public class SlotLayout implements ISlotLayout{
     
     /**
      * 2) Create slot groups for each item, containing "unattached" targets,
-     * meaning their slot id is not setup.
+     * meaning their slot id is not setup yet.
      */
     protected void initializeSlots(){
         for(ISlotableItem o: slotNorthList.keySet())
