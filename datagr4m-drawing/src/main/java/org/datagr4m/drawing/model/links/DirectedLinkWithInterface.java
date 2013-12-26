@@ -13,6 +13,8 @@ public class DirectedLinkWithInterface extends TypedPair<Pair<ISlotableItem,Obje
 
     public DirectedLinkWithInterface(Pair<ISlotableItem,Object> a, Pair<ISlotableItem,Object> b) {
         super(a, b);
+        sourceInterface = a.b;
+        targetInterface = b.b;
     }
     
     public DirectedLinkWithInterface(ISlotableItem a, Object ainf, ISlotableItem b, Object binf) {
@@ -35,5 +37,24 @@ public class DirectedLinkWithInterface extends TypedPair<Pair<ISlotableItem,Obje
         this.modelEdge = modelEdge;
     }
     
+    protected Object sourceInterface;
+    protected Object targetInterface;
     
+    @Override
+    public Object getSourceInterface() {
+        return sourceInterface;
+    }
+
+    public void setSourceInterface(Object sourceInterface) {
+        this.sourceInterface = sourceInterface;
+    }
+
+    @Override
+    public Object getTargetInterface() {
+        return targetInterface;
+    }
+
+    public void setTargetInterface(Object targetInterface) {
+        this.targetInterface = targetInterface;
+    }
 }

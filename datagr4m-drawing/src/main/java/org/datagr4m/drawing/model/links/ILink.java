@@ -6,4 +6,7 @@ public interface ILink<T> extends ITypedPair<T> {
     /** Returns the instance that actually involved the creation of this link. */
     public Object getModelEdge();
     public void setModelEdge(Object modelEdge);
+    public Object getSourceInterface();
+    public Object getTargetInterface();
+    
 }

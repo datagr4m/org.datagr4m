@@ -33,4 +33,25 @@ public class UniqueLink extends UniquePair<ISlotableItem> implements ILink<ISlot
 	public void setModelEdge(Object modelEdge) {
         this.modelEdge = modelEdge;
     }
+    
+    protected Object sourceInterface;
+    protected Object targetInterface;
+    
+    @Override
+    public Object getSourceInterface() {
+        return sourceInterface;
+    }
+
+    public void setSourceInterface(Object sourceInterface) {
+        this.sourceInterface = sourceInterface;
+    }
+
+    @Override
+    public Object getTargetInterface() {
+        return targetInterface;
+    }
+
+    public void setTargetInterface(Object targetInterface) {
+        this.targetInterface = targetInterface;
+    }
 }

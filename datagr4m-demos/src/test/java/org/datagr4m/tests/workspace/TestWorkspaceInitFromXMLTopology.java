@@ -1,11 +1,8 @@
 package org.datagr4m.tests.workspace;
 
-import junit.framework.TestCase;
-
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
-import org.datagr4m.drawing.layout.runner.stop.MeanMoveCriteria;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.graph.IPropertyEdge;
@@ -42,7 +39,7 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         Topology<IPropertyNode, IPropertyEdge> topology = xmlt.loadTopology("src/test/resources/topology.xml");
         // topology.toConsole();
         if (test)
-            assertTopology(topology);
+            assertTopology(topology, 8, 6, 2, 2);
 
         Workspace w = new Workspace(topology);
         // w.getEdgeModel().toConsole();
@@ -81,11 +78,11 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         Assert.assertEquals("tube at level 1 has 6 children edge", tube2.getChildren().size(), 6);
     }
 
-    public void assertTopology(Topology<IPropertyNode, IPropertyEdge> topology) {
-        Assert.assertEquals(topology.getGraph().getVertexCount(), 8);
-        Assert.assertEquals(topology.getGraph().getEdgeCount(), 6);
-        Assert.assertEquals(topology.getGroups().size(), 2);
-        Assert.assertEquals(topology.getDepth(), 2);
+    public void assertTopology(Topology<IPropertyNode, IPropertyEdge> topology, int vertexCount, int edgeCount, int groupCount, int depth) {
+        Assert.assertEquals(topology.getGraph().getVertexCount(), vertexCount);
+        Assert.assertEquals(topology.getGraph().getEdgeCount(), edgeCount);
+        Assert.assertEquals(topology.getGroups().size(), groupCount);
+        Assert.assertEquals(topology.getDepth(), depth);
     }
 
     public void assertWorkspaceNotNull(Workspace w) {

@@ -23,4 +23,24 @@ public class UndirectedLink extends CommutativePair<ISlotableItem> implements IL
         this.modelEdge = modelEdge;
     }
     
+    protected Object sourceInterface;
+    protected Object targetInterface;
+    
+    @Override
+    public Object getSourceInterface() {
+        return sourceInterface;
+    }
+
+    public void setSourceInterface(Object sourceInterface) {
+        this.sourceInterface = sourceInterface;
+    }
+
+    @Override
+    public Object getTargetInterface() {
+        return targetInterface;
+    }
+
+    public void setTargetInterface(Object targetInterface) {
+        this.targetInterface = targetInterface;
+    }
 }

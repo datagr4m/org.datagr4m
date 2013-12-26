@@ -85,14 +85,10 @@ public class DefaultItemSlotLayout implements IItemSlotLayout {
 
     @Override
 	public DirectedLink newLink(IEdge e) {
-        if(e.getSourceInterface() != null && e.getTargetInterface()!=null){
-            return new DirectedLink(e.getSourceItem(), e.getTargetItem());
-
-            //            return new DirectedLinkWithInterface(e.getSourceItem(), e.getSourceInterface(), e.getTargetItem(), e.getT);
-        }
-        else{
-            return new DirectedLink(e.getSourceItem(), e.getTargetItem());
-        }
+        DirectedLink link = new DirectedLink(e.getSourceItem(), e.getTargetItem());
+        link.setSourceInterface(e.getSourceInterface());
+        link.setTargetInterface(e.getTargetInterface());
+        return link;
     }
 
     /***********************/
