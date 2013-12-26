@@ -64,6 +64,8 @@ public class CircleItemIconRenderer extends AbstractShapedItemIconRenderer imple
         // border
         if(settings.isNodeBorderDisplayed(item)){
             Color borderColor = settings.getNodeBorderColor(item);
+            if(borderColor==null)
+                borderColor = Color.red;
             drawCircle(graphic, shape, borderColor, null);
         }
         //drawText(graphic, "r="+item.getRadialBounds(), item.getAbsolutePosition());
