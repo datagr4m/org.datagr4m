@@ -56,9 +56,9 @@ public class PluginLayeredRenderer extends LayeredRenderer{
 
     public void initLayerLouposcope(IDisplay display, IHierarchicalModel model) {
         //louposcopeLayer = new LouposcopeNetworksLayer(model, display);
-        //louposcopeLayer = new LouposcopeInterfaceLayer(model, display);
+        // = new LouposcopeInterfaceLayer(model, display);
         //addLayer(louposcopeLayer);
-    	Logger.getLogger(PluginLayeredRenderer.class).warn("no louposcope impl");
+    	Logger.getLogger(PluginLayeredRenderer.class).warn("no louposcope implementation available at initialization");
     }
 
     public ILouposcopeLayer<?,?,?> getLouposcopeLayer(){

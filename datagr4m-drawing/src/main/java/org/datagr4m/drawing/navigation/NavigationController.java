@@ -1,5 +1,6 @@
 package org.datagr4m.drawing.navigation;
 
+import org.apache.log4j.Logger;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
@@ -11,6 +12,7 @@ import org.datagr4m.drawing.navigation.plugin.edgetables.EdgeLabelsAndTablesPlug
 import org.datagr4m.drawing.navigation.plugin.louposcope.LouposcopePlugin;
 import org.datagr4m.drawing.navigation.plugin.tooltips.TooltipPlugin;
 import org.datagr4m.drawing.renderer.policy.IRenderingPolicy;
+import org.datagr4m.drawing.renderer.policy.RenderingPolicy;
 import org.datagr4m.viewer.IDisplay;
 import org.datagr4m.viewer.animation.IAnimation;
 import org.datagr4m.viewer.animation.IAnimationMonitor;
@@ -48,8 +50,9 @@ public class NavigationController implements INavigationController {
     public void initRenderingPolicy(IHierarchicalModel model, IRenderingPolicy policy) {
         // rendering policies init
         defaultPolicy = policy;
-        if(policy!=null)
-        	defaultPolicy.setup(model);
+        if(defaultPolicy==null)
+            defaultPolicy = new RenderingPolicy();
+        defaultPolicy.setup(model);
     }
 
     public void initPlugins(IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay) {
@@ -61,7 +64,10 @@ public class NavigationController implements INavigationController {
         //bringAndGoPlugin = new ForceFlowerBringAndGoPlugin(workspace, this, display, layered, animator, mouse, model);
         //bringAndGoPlugin = new ForceBringAndGoPlugin(workspace, this, display, layered, animator, mouse, model);
         
-        pluginRenderer.getLouposcopeLayer().setPlugin(louposcopePlugin);
+        if(pluginRenderer.getLouposcopeLayer()!=null)
+            pluginRenderer.getLouposcopeLayer().setPlugin(louposcopePlugin);
+        else
+            Logger.getLogger(NavigationController.class).error("no rendering layer avaiable for louposcope plugin");
         apply(new NavigationContext());// default context
         tooltipsPlugin.setup();
     }

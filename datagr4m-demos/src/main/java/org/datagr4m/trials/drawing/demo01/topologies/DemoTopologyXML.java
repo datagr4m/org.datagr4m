@@ -2,6 +2,7 @@ package org.datagr4m.trials.drawing.demo01.topologies;
 
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
+import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
 import org.datagr4m.drawing.layout.runner.stop.MeanMoveCriteria;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.topology.Topology;
@@ -56,7 +57,9 @@ public class DemoTopologyXML {
 		
 		// TODO test: add test on mean move criteria (Here we never stop!!)
 		ILayoutRunner runner = w.getRunner();
-		runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(new MeanMoveCriteria(1000));
+		//runner.getConfiguration().getSequence()runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(new MeanMoveCriteria(1000));
+		runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(new MaxStepCriteria(100));
+        
 		runner.start();
     }
 }

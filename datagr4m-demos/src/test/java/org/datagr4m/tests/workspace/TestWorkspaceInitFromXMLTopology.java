@@ -3,6 +3,8 @@ package org.datagr4m.tests.workspace;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
+import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceSinglePhase;
+import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.graph.IPropertyEdge;
@@ -14,6 +16,7 @@ import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeComputationP
 import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeRenderingPolicy;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.ViewPolicy;
 import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Integration test: load an XML topology and verify that the workspace has the
@@ -29,7 +32,7 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         t.loadAndTest(false, -1);
     }
 
-    // @Test
+    @Test
     public void testLoad() throws Exception {
         loadAndTest(true, 10);
     }
@@ -49,14 +52,25 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         }
 
         display(w);
+        
+        
         ILayoutRunner runner = w.getRunner();
-
-        // TODO test: add test on mean move criteria (Here we never stop!!)
-        //runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(new MeanMoveCriteria(10000000));
-
+        /*runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(new MeanMoveCriteria(1, 10));
         if (test && waitFor > 0)
             ((LayoutRunner) runner).startAndAwaitAtMost(waitFor);
-
+*/
+        
+        Workspace.defaultRunnerFactory = new LayoutRunnerFactory();
+        runner.getConfiguration().setAllowAutoFitAtStepEnd(true);
+        LayoutRunnerSequenceSinglePhase seq = (LayoutRunnerSequenceSinglePhase)runner.getConfiguration().getSequence();
+        seq.setFirstPhaseBreakCriteria(new MaxStepCriteria(100));
+        
+        if (test && waitFor > 0)
+            ((LayoutRunner) runner).startAndAwaitAtMost(waitFor);
+        else
+            runner.start();
+        
+        
         // final tests
         if (test) {
             assertPathes(w);

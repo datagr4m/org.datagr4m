@@ -48,7 +48,7 @@ public class DisplayInitilizer {
     	IDisplay display  = initializeDisplay(workspace);
     	
     	configureDisplayRenderers(display, workspace);
-    	//configureNavigation(display, workspace, (MouseEdgeViewController)display.getMouse());
+    	configureNavigation(display, workspace, (MouseEdgeViewController)display.getMouse());
     	configureMouse(display, workspace);
     	configureComputationPolicies(workspace);
     	return display;
@@ -102,6 +102,7 @@ public class DisplayInitilizer {
 		mouse.setRootModel(workspace.getModel());
 		mouse.setRunner(workspace.getRunner(workspace.getLayout(),
 				display.getView()));
+		
 		return mouse;
 	}
 

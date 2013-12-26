@@ -69,7 +69,7 @@
 	<build>
 		<plugins>		
 			<!-- Obfuscate -->
-			<plugin>
+			<!--<plugin>
                 <groupId>com.github.wvengen</groupId>
                 <artifactId>proguard-maven-plugin</artifactId>
                 <version>${version.maven.plugins.proguard}</version>
@@ -94,13 +94,12 @@
 						<option>-keepnames public class com.datagr4m.applications.gui.toolbar.Datagr4mToolbar</option>
                     </options>
                     <libs>
-						<!--Win/Mac settings differ and are setup in parent pom << FIXMEE-->
 						<lib>${java.jars.rt.location}</lib>
 						<lib>${java.jars.location}/jce.jar</lib>
 						<lib>${java.jars.location}/jsse.jar</lib>
                     </libs>
                 </configuration>
-            </plugin>
+            </plugin>-->
 			
 			<!-- Build a single jar -->
 			<plugin>
