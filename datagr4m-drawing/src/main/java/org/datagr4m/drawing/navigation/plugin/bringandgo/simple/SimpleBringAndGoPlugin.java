@@ -9,7 +9,7 @@ import org.datagr4m.drawing.layout.geometrical.RectangleLayoutTable;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
-import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemNameFinderVisitor;
+import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.AbstractBringAndGoPlugin;
@@ -81,7 +81,7 @@ public class SimpleBringAndGoPlugin<V,E> extends AbstractBringAndGoPlugin<V,E>  
     }
     
     protected void setState(String label, String state){
-        ItemNameFinderVisitor f = new ItemNameFinderVisitor();
+        ItemLabelFinder f = new ItemLabelFinder();
         f.setSearchString(label);
         f.visit(model);
         List<IBoundedItem> is = f.getResults();

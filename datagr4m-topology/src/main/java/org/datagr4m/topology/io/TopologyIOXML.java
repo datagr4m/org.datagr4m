@@ -61,8 +61,13 @@ public class TopologyIOXML {
 		
 		String src = xmlEdge.getSource();
 		String trg = xmlEdge.getTarget();
-		//String srcSlot = xmlEdge.getSourceSlot();
-		//String trgSlot = xmlEdge.getTargetSlot();
+		String srcSlot = xmlEdge.getSourceSlot();
+		String trgSlot = xmlEdge.getTargetSlot();
+		
+		edge.getProperties().put(IPropertyEdge.PROPERTY_SOURCE_INTERFACE, srcSlot);
+        edge.getProperties().put(IPropertyEdge.PROPERTY_TARGET_INTERFACE, trgSlot);
+        
+		//edge.set
 		Collection<IPropertyNode> srcs = labelIndex.find(src);
 		Collection<IPropertyNode> trgs = labelIndex.find(trg);
 		

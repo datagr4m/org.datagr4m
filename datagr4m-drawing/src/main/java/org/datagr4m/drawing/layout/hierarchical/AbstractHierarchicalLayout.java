@@ -12,7 +12,7 @@ import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
-import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemNameFinderVisitor;
+import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 
 
 public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
@@ -80,7 +80,7 @@ public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
     
     @Override
 	public IHierarchicalLayout findLayoutHoldingModel(String model){
-        ItemNameFinderVisitor v = new ItemNameFinderVisitor();
+        ItemLabelFinder v = new ItemLabelFinder();
         List<IBoundedItem> list = v.find(model, getModel());
         
         if(list.size()==0)

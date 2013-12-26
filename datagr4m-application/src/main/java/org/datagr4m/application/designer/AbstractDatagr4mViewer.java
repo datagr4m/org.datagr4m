@@ -26,7 +26,7 @@ import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.LayoutUtils;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
-import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemNameFinderVisitor;
+import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.NavigationController;
 import org.datagr4m.drawing.renderer.items.hierarchical.IHierarchicalRenderer;
@@ -298,7 +298,7 @@ public abstract class AbstractDatagr4mViewer extends JFrame implements
 
 	@Override
 	public void moveToNode(String device) {
-		ItemNameFinderVisitor visitor = new ItemNameFinderVisitor();
+		ItemLabelFinder visitor = new ItemLabelFinder();
 		visitor.setSearchString(device);
 		visitor.visit(dataController.getCurrentWorkspace().getModel());
 

@@ -1,5 +1,7 @@
 package com.datagr4m.neo4j.topology.edges;
 
+import java.util.Map;
+
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.neo4j.graphdb.Relationship;
 
@@ -44,5 +46,10 @@ public class Neo4jEdge implements IPropertyEdge{
         } else if (!relationship.equals(other.relationship))
             return false;
         return true;
+    }
+
+    @Override
+    public Map<String, Object> getProperties() {
+        throw new RuntimeException("not implemented");
     }  
 }

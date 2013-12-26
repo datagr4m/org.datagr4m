@@ -30,6 +30,7 @@ import org.datagr4m.drawing.model.pathfinder.path.PathFactory;
 import org.datagr4m.drawing.model.slots.ISlotableItem;
 import org.datagr4m.maths.geometry.PointUtils;
 import org.datagr4m.topology.Topology;
+import org.datagr4m.topology.graph.IPropertyEdge;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.BiMap;
@@ -38,6 +39,8 @@ import com.google.common.collect.HashBiMap;
 import edu.uci.ics.jung.graph.Graph;
 
 public class HierarchicalEdgeModel implements IHierarchicalEdgeModel, Serializable {
+    private static final String DEFAULT_INTERFACE_OBJECT = "interface";
+
     private static final long serialVersionUID = 3206985350656775071L;
 
     public static boolean DEBUG = false;    
@@ -111,7 +114,19 @@ public class HierarchicalEdgeModel implements IHierarchicalEdgeModel, Serializab
     
     protected <E> void handleEdge(E edge, IBoundedItem is, IBoundedItem it){
         CommutativePair<IBoundedItem> link = new CommutativePair<IBoundedItem>(is, it);
-        build(link, "interface", "interface", new DefaultEdgeInfo(){});
+        
+        // Define interface if any or default
+        String srcInterface = DEFAULT_INTERFACE_OBJECT;
+        String trgInterface = DEFAULT_INTERFACE_OBJECT;
+        if(edge instanceof IPropertyEdge){
+            IPropertyEdge pe = (IPropertyEdge)edge;
+            if(pe.getProperties().containsKey(IPropertyEdge.PROPERTY_SOURCE_INTERFACE))
+                srcInterface = pe.getProperties().get(IPropertyEdge.PROPERTY_SOURCE_INTERFACE).toString();
+            if(pe.getProperties().containsKey(IPropertyEdge.PROPERTY_TARGET_INTERFACE))
+                trgInterface = pe.getProperties().get(IPropertyEdge.PROPERTY_TARGET_INTERFACE).toString();
+        }
+        
+        build(link, srcInterface, trgInterface, new DefaultEdgeInfo(){});
     }
     
     /* BUILDING TUBE MODEL */

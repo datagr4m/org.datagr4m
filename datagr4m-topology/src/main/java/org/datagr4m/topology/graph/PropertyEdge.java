@@ -1,11 +1,15 @@
 package org.datagr4m.topology.graph;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 
 public class PropertyEdge implements IPropertyEdge{
 	public static final String UNTYPED = "untyped";
     protected String name;
     protected String typeName;
+    protected Map<String,Object> properties;
     
     public PropertyEdge() {
         this("", UNTYPED);
@@ -30,4 +34,12 @@ public class PropertyEdge implements IPropertyEdge{
 	public String getTypeName() {
 		return typeName;
 	}
+	
+
+    @Override
+    public Map<String, Object> getProperties() {
+        if(properties==null)
+            properties = new HashMap<String,Object>();
+        return properties;
+    }  
 }

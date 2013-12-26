@@ -12,7 +12,7 @@ import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.ForceFlowerModel;
-import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemNameFinderVisitor;
+import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.simple.SimpleBringAndGoPlugin;
@@ -123,7 +123,7 @@ public class ForceBringAndGoPlugin<V,E> extends SimpleBringAndGoPlugin<V,E>{
     /*** ONLY FOR THOSE USING FLOWER MODEL ***/
     
     protected void buildEdges(ForceFlowerModel<E> flower, IBoundedItem centerOriginal, IBoundedItem centerAvatar){
-        ItemNameFinderVisitor finder = new ItemNameFinderVisitor();
+        ItemLabelFinder finder = new ItemLabelFinder();
         
         Graph<V,E> graph = getDataModel().getTopology().getGraph();
         

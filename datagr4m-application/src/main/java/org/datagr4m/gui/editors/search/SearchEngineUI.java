@@ -12,7 +12,7 @@ import javax.swing.event.DocumentListener;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
-import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemNameFinderVisitor;
+import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 
 
 public class SearchEngineUI extends JPanel{
@@ -41,7 +41,7 @@ public class SearchEngineUI extends JPanel{
     }
     
     protected void wire(){
-        visitor = new ItemNameFinderVisitor();
+        visitor = new ItemLabelFinder();
         listeners = new ArrayList<ISearchEngineListener>();        
     }
     
@@ -78,7 +78,7 @@ public class SearchEngineUI extends JPanel{
     protected JButton button;
 
     protected IHierarchicalModel model;
-    protected ItemNameFinderVisitor visitor;
+    protected ItemLabelFinder visitor;
     
     protected List<ISearchEngineListener> listeners;
     

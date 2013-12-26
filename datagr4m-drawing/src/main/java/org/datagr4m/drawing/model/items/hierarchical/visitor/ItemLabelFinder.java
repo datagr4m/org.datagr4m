@@ -7,8 +7,8 @@ import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 
 
-public class ItemNameFinderVisitor extends AbstractItemVisitor{
-	public ItemNameFinderVisitor(){
+public class ItemLabelFinder extends AbstractItemVisitor{
+	public ItemLabelFinder(){
 	    results = new ArrayList<IBoundedItem>();
 	    searchString = "";
 	}

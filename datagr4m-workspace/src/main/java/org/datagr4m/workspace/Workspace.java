@@ -24,7 +24,7 @@ import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphMod
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.LabelMode;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.AbstractItemVisitor;
-import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemNameFinderVisitor;
+import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ModelEditor;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.renderer.items.hierarchical.IHierarchicalRenderer;
@@ -326,7 +326,7 @@ public class Workspace implements Serializable, IWorkspace {
 
         // build stratum sequence
         List<IBoundedItem> sequence = new ArrayList<IBoundedItem>();
-        ItemNameFinderVisitor itemFinder = new ItemNameFinderVisitor();
+        ItemLabelFinder itemFinder = new ItemLabelFinder();
         for (org.datagr4m.io.xml.generated.layout.Stratum stratum : glayout.getStratums().getStratum()) {
             String stratumGroupName = stratum.getGroup();
 

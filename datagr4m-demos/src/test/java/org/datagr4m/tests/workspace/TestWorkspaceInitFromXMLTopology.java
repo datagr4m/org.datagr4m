@@ -1,11 +1,18 @@
 package org.datagr4m.tests.workspace;
 
+import java.util.List;
+
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
 import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceSinglePhase;
 import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
+import org.datagr4m.drawing.model.items.IBoundedItem;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
+import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
+import org.datagr4m.drawing.model.slots.SlotGroup;
+import org.datagr4m.drawing.model.slots.SlotTarget;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
@@ -78,8 +85,31 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
     }
 
     public void assertPathes(Workspace w) {
+        // valider que l'item TRUC contient l'interface machin dans ses slot target en face
+        String itemToFind = "fw1";
+        Object interfaceToFind = "Interface1";
+        //Object interfaceToFind = "interface";
+
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), itemToFind, interfaceToFind));
+        
         Tube tube1 = w.getEdgeModel().getRootTubes().get(0);
         Assert.assertTrue(tube1.getPathGeometry().getPointNumber() > 0);
+    }
+
+    private boolean checkItemHasInterface(IHierarchicalModel model, String itemToFind, Object interfaceToFind) {
+        ItemLabelFinder finder = new ItemLabelFinder();
+        List<IBoundedItem> results = finder.find(itemToFind, model);
+        if(results.size()>0){
+            IBoundedItem i = results.get(0);
+            for(SlotGroup slotGroup: i.getSlotGroups()){
+                for(SlotTarget slotTarget: slotGroup.getAllSlotTargets().values()){
+                    if(slotTarget.getInterface().equals(interfaceToFind))
+                        return true;
+                }
+            }
+            
+        }
+        return false;
     }
 
     public void assertEdgeModel(Workspace w) {
