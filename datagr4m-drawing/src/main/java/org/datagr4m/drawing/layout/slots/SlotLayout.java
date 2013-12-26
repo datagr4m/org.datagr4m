@@ -132,8 +132,8 @@ public class SlotLayout implements ISlotLayout{
             SlotSide o1Slot = slotGroupLayout.getTargetBestSlotSide(o1, o2);
             SlotSide o2Slot = slotGroupLayout.getTargetBestSlotSide(o2, o1);   
             
-            incrementSlotList(o1, o1Slot, new SlotTarget(o2, link.getTargetInterface() /*"to " + o2*/, link));
-            incrementSlotList(o2, o2Slot, new SlotTarget(o1, link.getSourceInterface()/*"to " + o1*/, link));
+            incrementSlotList(o1, o1Slot, new SlotTarget(o2, link.getSourceInterface() /*"to " + o2*/, link));
+            incrementSlotList(o2, o2Slot, new SlotTarget(o1, link.getTargetInterface()/*"to " + o1*/, link));
         }
     }
     

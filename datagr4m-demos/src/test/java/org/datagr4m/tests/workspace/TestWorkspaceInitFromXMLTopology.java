@@ -85,13 +85,19 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
     }
 
     public void assertPathes(Workspace w) {
-        // valider que l'item TRUC contient l'interface machin dans ses slot target en face
-        String itemToFind = "fw1";
-        Object interfaceToFind = "Interface1";
-        //Object interfaceToFind = "interface";
+        Assert.assertFalse(checkItemHasInterface(w.getModel(), "rt1", "InterfaceNotDeclaredInXml"));
 
-        Assert.assertTrue(checkItemHasInterface(w.getModel(), itemToFind, interfaceToFind));
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), "fw1", "Interface1"));
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), "fw1", "Interface2"));
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), "fw2", "Interface1"));
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), "fw2", "Interface2"));
         
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), "rt1", "Interface1"));
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), "rt3", "Interface1"));
+        
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), "rt2", "Interface1"));
+        Assert.assertTrue(checkItemHasInterface(w.getModel(), "rt2", "Interface2"));
+
         Tube tube1 = w.getEdgeModel().getRootTubes().get(0);
         Assert.assertTrue(tube1.getPathGeometry().getPointNumber() > 0);
     }
@@ -107,7 +113,6 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
                         return true;
                 }
             }
-            
         }
         return false;
     }
