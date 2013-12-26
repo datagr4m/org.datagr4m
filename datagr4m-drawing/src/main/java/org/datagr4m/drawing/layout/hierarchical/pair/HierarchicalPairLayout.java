@@ -4,6 +4,7 @@ package org.datagr4m.drawing.layout.hierarchical.pair;
 import java.awt.geom.CubicCurve2D;
 
 import org.datagr4m.drawing.layout.hierarchical.AbstractHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.HierarchicalPairModel;
@@ -41,6 +42,9 @@ public class HierarchicalPairLayout extends AbstractHierarchicalLayout implement
         
         compute();
     }
+    
+    
+
     
     @Override
 	public void compute(){
@@ -113,6 +117,7 @@ public class HierarchicalPairLayout extends AbstractHierarchicalLayout implement
     public void goAlgo(){
         //super.goAlgo(); // goAlgo on children first
         compute();
+        computeSpline();
     }
     
     @Override
