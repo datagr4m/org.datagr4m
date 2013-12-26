@@ -15,16 +15,24 @@ public class HierarchicalRendererFactory implements IHierarchicalRendererFactory
     @Override
     public IHierarchicalRenderer getRenderer(IDisplay display, IHierarchicalModel model) {
         if(model instanceof IHierarchicalGraphModel){
-            HierarchicalGraphRenderer renderer=new HierarchicalGraphRenderer(display, (IHierarchicalGraphModel)model);
-            attachChildren(renderer, model);
-            return renderer;
+            return getHierarchicalGraphRenderer(display, model);
         }
         else if(model instanceof IHierarchicalPairModel){
-            HierarchicalPairRenderer renderer = new HierarchicalPairRenderer(display, (IHierarchicalPairModel)model);
-            attachChildren(renderer, model);
-            return renderer;
+            return getHierarchicalPairRenderer(display, model);
         }
         return null;
+    }
+
+    private IHierarchicalRenderer getHierarchicalPairRenderer(IDisplay display, IHierarchicalModel model) {
+        HierarchicalPairRenderer renderer = new HierarchicalPairRenderer(display, (IHierarchicalPairModel)model);
+        attachChildren(renderer, model);
+        return renderer;
+    }
+
+    private IHierarchicalRenderer getHierarchicalGraphRenderer(IDisplay display, IHierarchicalModel model) {
+        HierarchicalGraphRenderer renderer=new HierarchicalGraphRenderer(display, (IHierarchicalGraphModel)model);
+        attachChildren(renderer, model);
+        return renderer;
     }
     
     /** recursively handle children renderers.*/

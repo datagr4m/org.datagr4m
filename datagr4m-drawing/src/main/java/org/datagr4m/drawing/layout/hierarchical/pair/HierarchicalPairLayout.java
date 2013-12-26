@@ -22,6 +22,8 @@ public class HierarchicalPairLayout extends AbstractHierarchicalLayout implement
     public static int VERTICAL = 1;
     public static int DEFAULT_INTER_ITEM_MARGIN = 30;
     
+    protected boolean showSpline = false;
+    
     public HierarchicalPairLayout(IHierarchicalPairModel model){
         setModel(model);
     }
@@ -89,24 +91,28 @@ public class HierarchicalPairLayout extends AbstractHierarchicalLayout implement
     
     @Override
 	public void computeSpline(){
-        if(model.getFirst()!=null && model.getSecond()!=null){
-            Coord2d ac1 = model.getFirst().getAbsolutePosition();
-            Coord2d ac2 = model.getSecond().getAbsolutePosition();
-            ac1.addSelfY(-model.getFirst().getRadialBounds());
-            ac2.addSelfY(-model.getSecond().getRadialBounds());
-            
-            Coord2d cc1 = ac1.interpolation(ac2, 0.75f);
-            Coord2d cc2 = ac1.interpolation(ac2, 0.25f);
-            
-            float height = Math.max(model.getFirst().getRadialBounds(), model.getSecond().getRadialBounds());
-            height /= 2;
-            cc1.addSelfY(-height);
-            cc2.addSelfY(-height);
-            
-            model.setCurve(new CubicCurve2D.Float(ac1.x, ac1.y, cc1.x, cc1.y, cc2.x, cc2.y, ac2.x, ac2.y));
+        if(showSpline && model.getFirst()!=null && model.getSecond()!=null){
+            doComputeSpline();
         }
         else
             resetSpline();
+    }
+
+    private void doComputeSpline() {
+        Coord2d ac1 = model.getFirst().getAbsolutePosition();
+        Coord2d ac2 = model.getSecond().getAbsolutePosition();
+        ac1.addSelfY(-model.getFirst().getRadialBounds());
+        ac2.addSelfY(-model.getSecond().getRadialBounds());
+        
+        Coord2d cc1 = ac1.interpolation(ac2, 0.75f);
+        Coord2d cc2 = ac1.interpolation(ac2, 0.25f);
+        
+        float height = Math.max(model.getFirst().getRadialBounds(), model.getSecond().getRadialBounds());
+        height /= 2;
+        cc1.addSelfY(-height);
+        cc2.addSelfY(-height);
+        
+        model.setCurve(new CubicCurve2D.Float(ac1.x, ac1.y, cc1.x, cc1.y, cc2.x, cc2.y, ac2.x, ac2.y));
     }
     
     public void resetSpline(){
@@ -138,6 +144,14 @@ public class HierarchicalPairLayout extends AbstractHierarchicalLayout implement
     @Override
     public void setOrientation(int orientation) {
         this.orientation = orientation;
+    }
+
+    public boolean isShowSpline() {
+        return showSpline;
+    }
+
+    public void setShowSpline(boolean showSpline) {
+        this.showSpline = showSpline;
     }
 
     /** Must be a {@link IHierarchicalPairModel}, otherwise crashes 

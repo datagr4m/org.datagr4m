@@ -34,6 +34,7 @@ public class HierarchicalPairRenderer extends AbstractHierarchicalRenderer imple
         //if(model.getFirst() instanceof IBoundedItemIcon)
         //    nodeIconRenderer.render(graphic, model.getFirst(), settings.getNodeSettings());
         //else
+        //settings.getNodeSettings().setNodeBorderDisplayed(null, true);
         if(model.getFirst()!=null)
             itemRenderer.render(graphic, model.getFirst(), settings.getNodeSettings());
     
