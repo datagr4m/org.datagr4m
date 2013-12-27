@@ -14,6 +14,8 @@ import org.datagr4m.drawing.layout.hierarchical.stratum.HierarchicalStratumLayou
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.factory.ILayoutRunnerFactory;
 import org.datagr4m.drawing.layout.runner.factory.LookupLayoutRunnerFactory;
+import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceSinglePhase;
+import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
 import org.datagr4m.drawing.model.factories.HierarchicalTopologyModelFactory;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.factories.filters.GroupFilter;
@@ -395,6 +397,15 @@ public class Workspace implements Serializable, IWorkspace {
             runner = defaultRunnerFactory.newLayoutRunner(root, view);
         }
         return runner;
+    }
+    
+    public void run(IBreakCriteria criteria) {
+        ILayoutRunner runner = getRunner();
+        runner.getConfiguration().setAllowAutoFitAtStepEnd(true);
+        
+        LayoutRunnerSequenceSinglePhase seq = (LayoutRunnerSequenceSinglePhase)runner.getConfiguration().getSequence();
+        seq.setFirstPhaseBreakCriteria(criteria);
+        runner.start();
     }
 
     @Override

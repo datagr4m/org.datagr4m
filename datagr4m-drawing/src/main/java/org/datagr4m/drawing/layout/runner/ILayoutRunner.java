@@ -27,6 +27,8 @@ public interface ILayoutRunner {
     public boolean isDoRunEdge();    
     
     public LayoutRunnerConfiguration getConfiguration();
+    public LayoutLevelSettings getLayoutSettings(IHierarchicalLayout layout);
+    
     
     public void addListener(ILayoutRunnerListener listener);
     public void removeListener(ILayoutRunnerListener listener);
