@@ -17,7 +17,7 @@ import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
 import org.datagr4m.topology.io.TopologyIOXML;
-import org.datagr4m.trials.drawing.demo01.topologies.DisplayInitilizer;
+import org.datagr4m.trials.drawing.DisplayInitilizer;
 import org.datagr4m.workspace.Workspace;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeComputationPolicy;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeRenderingPolicy;

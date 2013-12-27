@@ -1,4 +1,4 @@
-package org.datagr4m.trials.drawing.demo01.topologies;
+package org.datagr4m.trials.drawing;
 
 import org.datagr4m.drawing.layout.algorithms.forces.ForceDebugger;
 import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceTwoPhase;

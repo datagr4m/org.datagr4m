@@ -10,7 +10,6 @@ import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.QualityScores;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
-import org.datagr4m.tests.drawing.AbstractLayoutRunnerTest;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.trials.drawing.DisplayLauncher;
@@ -20,6 +19,28 @@ import edu.uci.ics.jung.graph.Graph;
 
 public class TestLayoutNoOverlapOnGeneratedGraph extends AbstractLayoutRunnerTest {
     public void testNoOverlap() throws Exception{
+        Topology<String, String> topo = buildTopology();
+        HierarchicalGraphModel model = buildModel(topo);
+        HierarchicalGraphLayout layout = buildLayout(model);
+        display(model, layout);
+        Set<CommutativePair<IBoundedItem>> overlapping = QualityScores.countOverlappingItems(model);
+        
+        assertTrue("no item overlap any other", overlapping.size()==0);
+    }
+
+    private void display(HierarchicalGraphModel model, HierarchicalGraphLayout layout) throws Exception {
+        IDisplay d = DisplayLauncher.display(model);
+        final LayoutRunner runner = new LayoutRunner(layout, d.getView());
+        runner.startAndAwaitAtMost(10);
+    }
+
+    private HierarchicalGraphModel buildModel(Topology<String, String> topo) {
+        IHierarchicalModelFactory factory = new HierarchicalTopologyModelFactory<String, String>();
+        HierarchicalGraphModel model = (HierarchicalGraphModel) factory.getLayoutModel(topo);
+        return model;
+    }
+
+    private Topology<String, String> buildTopology() {
         Topology<String, String> topo = new Topology<String, String>();
         Graph<String, String> graph = topo.getGraph();
         graph.addVertex("d1");
@@ -37,24 +58,6 @@ public class TestLayoutNoOverlapOnGeneratedGraph extends AbstractLayoutRunnerTes
         topo.getGroups().add(g1);
         topo.getGroups().add(g2);
         topo.index();
-
-        IHierarchicalModelFactory factory = new HierarchicalTopologyModelFactory<String, String>();
-        HierarchicalGraphModel model = (HierarchicalGraphModel) factory.getLayoutModel(topo);
-        HierarchicalGraphLayout layout = getInitializedLayout(model);
-        
-        IDisplay d = DisplayLauncher.display(model);
-        final LayoutRunner runner = new LayoutRunner(layout, d.getView());
-        runner.startAndAwaitAtMost(10);
-
-        
-        Set<CommutativePair<IBoundedItem>> overlapping = QualityScores.countOverlappingItems(model);
-        
-        
-        
-        assertTrue("no item overlap any other", overlapping.size()==0);
+        return topo;
     }
-
-    
-
-    
 }

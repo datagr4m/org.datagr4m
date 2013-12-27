@@ -17,7 +17,6 @@ import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.QualityScores;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
-import org.datagr4m.tests.drawing.AbstractLayoutRunnerTest;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.generator.TopologyGenerator;
 import org.datagr4m.trials.drawing.DisplayLauncher;
@@ -28,10 +27,8 @@ public class TestLayoutNoOverlapOnSimpleHierarchicalGraph extends AbstractLayout
         int MAX_TIME = 10; //s
         
         Topology<String,String> topology = TopologyGenerator.buildGraphNested(2, 3, 100);
-
-        IHierarchicalModelFactory factory = new HierarchicalTopologyModelFactory<String, String>();
-        HierarchicalGraphModel model = (HierarchicalGraphModel) factory.getLayoutModel(topology);
-        HierarchicalGraphLayout layout = getInitializedLayout(model);
+        HierarchicalGraphModel model = buildModel(topology);
+        HierarchicalGraphLayout layout = buildLayout(model);
         
         IDisplay d = DisplayLauncher.display(model);
         
@@ -58,7 +55,9 @@ public class TestLayoutNoOverlapOnSimpleHierarchicalGraph extends AbstractLayout
         assertTrue("no item overlap any other", overlapping.size()==0);
     }
 
-    
-
-    
+    private HierarchicalGraphModel buildModel(Topology<String, String> topology) {
+        IHierarchicalModelFactory factory = new HierarchicalTopologyModelFactory<String, String>();
+        HierarchicalGraphModel model = (HierarchicalGraphModel) factory.getLayoutModel(topology);
+        return model;
+    }
 }
