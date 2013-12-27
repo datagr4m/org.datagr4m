@@ -10,8 +10,10 @@ import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
 import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
+import org.datagr4m.drawing.model.items.hierarchical.pair.HierarchicalPairModel;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.model.slots.SlotGroup;
 import org.datagr4m.drawing.model.slots.SlotTarget;
@@ -36,7 +38,7 @@ import org.junit.Test;
  * w.getEdgeModel().toConsole();
  * 
  */
-public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
+public class TestWorkspaceInitFromXMLTopology{
     public static void main(String[] str) throws Exception {
         TestWorkspaceInitFromXMLTopology t = new TestWorkspaceInitFromXMLTopology();
         t.loadAndTest(false, -1);
@@ -58,6 +60,7 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         // w.getEdgeModel().toConsole();
         if (test) {
             assertWorkspaceNotNull(w);
+            assertDrawingModel(w);
             assertEdgeModel(w);
         }
 
@@ -65,8 +68,6 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         
         //new MeanMoveCriteria(1, 10));
         IBreakCriteria criteria = new MaxStepCriteria(100);
-        criteria.notify();
-        EasyMock.expectLastCall().times(100);
         runAndTest(test, waitFor, w, criteria);
         
         
@@ -113,8 +114,6 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
             Assert.assertTrue(edge.getPathGeometry().getPointNumber() > 0);
     }
 
-    
-
     public void assertEdgeModel(Workspace w) {
         Assert.assertEquals("model contains one tube at level 0", w.getEdgeModel().getRootTubes().size(), 1);
 
@@ -138,6 +137,18 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         Assert.assertNotNull("has layout", w.getLayout());
         Assert.assertNotNull("has layout with reference on edge model", w.getLayout().getTubeModel());
         Assert.assertNotNull("has layout with an edge layout", w.getLayout().getTubeLayout());
+    }
+
+    private void assertDrawingModel(Workspace w) {
+        HierarchicalGraphModel root = (HierarchicalGraphModel)w.getModel();
+        Assert.assertEquals("root", w.getModel().getLabel());
+        Assert.assertEquals(2, w.getModel().getChildren().size());
+
+        Assert.assertTrue(root.getChildren().get(0) instanceof HierarchicalPairModel);
+
+        HierarchicalGraphModel graph = (HierarchicalGraphModel)w.getModel().getChildren().get(1);
+        Assert.assertEquals("routers", graph.getChildren().get(0).getLabel());
+        Assert.assertEquals("farm", graph.getChildren().get(1).getLabel());
     }
     
     public boolean checkItemHasInterface(IHierarchicalModel model, String itemToFind, Object interfaceToFind) {
