@@ -46,17 +46,6 @@ import org.datagr4m.viewer.model.annotations.AnnotationModel;
 import org.datagr4m.workspace.configuration.ConfigurationFacade;
 import org.jzy3d.maths.Coord2d;
 
-/**
- * A workspace gather:
- * <ul>
- * <li>a device repository (i.e. list)
- * <li>a device topology (i.e. graph structures and groups)
- * <li>a hierarchical layout model
- * <li>an annotation model
- * </ul>
- * 
- * @author Martin Pernollet
- */
 public class Workspace implements Serializable, IWorkspace {
     private static final long serialVersionUID = -3491251741544103630L;
 

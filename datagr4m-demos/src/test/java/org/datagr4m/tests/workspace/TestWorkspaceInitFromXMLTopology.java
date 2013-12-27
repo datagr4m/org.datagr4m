@@ -6,9 +6,11 @@ import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
 import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceSinglePhase;
+import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
 import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.model.slots.SlotGroup;
@@ -22,6 +24,7 @@ import org.datagr4m.workspace.Workspace;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeComputationPolicy;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeRenderingPolicy;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.ViewPolicy;
+import org.easymock.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -60,22 +63,11 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
 
         display(w);
         
-        
-        ILayoutRunner runner = w.getRunner();
-        /*runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(new MeanMoveCriteria(1, 10));
-        if (test && waitFor > 0)
-            ((LayoutRunner) runner).startAndAwaitAtMost(waitFor);
-*/
-        
-        Workspace.defaultRunnerFactory = new LayoutRunnerFactory();
-        runner.getConfiguration().setAllowAutoFitAtStepEnd(true);
-        LayoutRunnerSequenceSinglePhase seq = (LayoutRunnerSequenceSinglePhase)runner.getConfiguration().getSequence();
-        seq.setFirstPhaseBreakCriteria(new MaxStepCriteria(100));
-        
-        if (test && waitFor > 0)
-            ((LayoutRunner) runner).startAndAwaitAtMost(waitFor);
-        else
-            runner.start();
+        //new MeanMoveCriteria(1, 10));
+        IBreakCriteria criteria = new MaxStepCriteria(100);
+        criteria.notify();
+        EasyMock.expectLastCall().times(100);
+        runAndTest(test, waitFor, w, criteria);
         
         
         // final tests
@@ -84,7 +76,19 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         }
     }
 
-    public void assertPathes(Workspace w) {
+    private void runAndTest(boolean test, int waitFor, Workspace w, IBreakCriteria criteria) throws Exception {
+        ILayoutRunner runner = w.getRunner();
+        
+        runner.getConfiguration().setAllowAutoFitAtStepEnd(true);
+        LayoutRunnerSequenceSinglePhase seq = (LayoutRunnerSequenceSinglePhase)runner.getConfiguration().getSequence();
+        seq.setFirstPhaseBreakCriteria(criteria);
+        
+        if (test && waitFor > 0)
+            ((LayoutRunner) runner).startAndAwaitAtMost(waitFor);
+        else
+            runner.start();
+    }
+    public void assertInterface(Workspace w) {
         Assert.assertFalse(checkItemHasInterface(w.getModel(), "rt1", "InterfaceNotDeclaredInXml"));
 
         Assert.assertTrue(checkItemHasInterface(w.getModel(), "fw1", "Interface1"));
@@ -97,25 +101,19 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         
         Assert.assertTrue(checkItemHasInterface(w.getModel(), "rt2", "Interface1"));
         Assert.assertTrue(checkItemHasInterface(w.getModel(), "rt2", "Interface2"));
-
+    }
+    
+    public void assertPathes(Workspace w) {
         Tube tube1 = w.getEdgeModel().getRootTubes().get(0);
         Assert.assertTrue(tube1.getPathGeometry().getPointNumber() > 0);
+        
+        Tube tube2 = (Tube) tube1.getChildren().get(0);
+        Assert.assertEquals("tube at level 1 has 6 children edge", tube2.getChildren().size(), 6);
+        for(IEdge edge: tube2.getChildren())
+            Assert.assertTrue(edge.getPathGeometry().getPointNumber() > 0);
     }
 
-    private boolean checkItemHasInterface(IHierarchicalModel model, String itemToFind, Object interfaceToFind) {
-        ItemLabelFinder finder = new ItemLabelFinder();
-        List<IBoundedItem> results = finder.find(itemToFind, model);
-        if(results.size()>0){
-            IBoundedItem i = results.get(0);
-            for(SlotGroup slotGroup: i.getSlotGroups()){
-                for(SlotTarget slotTarget: slotGroup.getAllSlotTargets().values()){
-                    if(slotTarget.getInterface().equals(interfaceToFind))
-                        return true;
-                }
-            }
-        }
-        return false;
-    }
+    
 
     public void assertEdgeModel(Workspace w) {
         Assert.assertEquals("model contains one tube at level 0", w.getEdgeModel().getRootTubes().size(), 1);
@@ -140,6 +138,21 @@ public class TestWorkspaceInitFromXMLTopology /* extends TestCase */{
         Assert.assertNotNull("has layout", w.getLayout());
         Assert.assertNotNull("has layout with reference on edge model", w.getLayout().getTubeModel());
         Assert.assertNotNull("has layout with an edge layout", w.getLayout().getTubeLayout());
+    }
+    
+    public boolean checkItemHasInterface(IHierarchicalModel model, String itemToFind, Object interfaceToFind) {
+        ItemLabelFinder finder = new ItemLabelFinder();
+        List<IBoundedItem> results = finder.find(itemToFind, model);
+        if(results.size()>0){
+            IBoundedItem i = results.get(0);
+            for(SlotGroup slotGroup: i.getSlotGroups()){
+                for(SlotTarget slotTarget: slotGroup.getAllSlotTargets().values()){
+                    if(slotTarget.getInterface().equals(interfaceToFind))
+                        return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void display(Workspace w) {

@@ -101,6 +101,8 @@
 			<version>${version.jaxb}</version>
 			<scope>xjc</scope>
 		</dependency>
+		
+		<!-- Test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -111,6 +113,12 @@
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${version.awaitility}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>${version.easymock}</version>
             <scope>test</scope>
         </dependency>
 	</dependencies>
