@@ -33,7 +33,7 @@ public interface IHierarchicalRenderer extends IRenderer, IHasDifferedRenderingS
     public IDisplay getDisplay();
     
     
-    public void addRenderer(IRenderer renderer);
+    public void addPostRenderer(IRenderer renderer);
     public List<IRenderer> getPostRenderers();
     
     // settings

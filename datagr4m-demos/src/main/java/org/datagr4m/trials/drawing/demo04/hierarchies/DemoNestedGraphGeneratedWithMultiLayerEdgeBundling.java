@@ -27,7 +27,7 @@ public class DemoNestedGraphGeneratedWithMultiLayerEdgeBundling {
         final Display display = new Display(true, new MouseItemControllerFactory());
         IHierarchicalRendererFactory rendererFactory = new HierarchicalRendererFactory();
         IHierarchicalRenderer renderer = rendererFactory.getRenderer(display, model);
-        renderer.addRenderer(new TubeRenderer(display, model.getEdgeModel()));
+        renderer.addPostRenderer(new TubeRenderer(display, model.getEdgeModel()));
         display.setView(new View(renderer, display));
         display.openFrame();
         

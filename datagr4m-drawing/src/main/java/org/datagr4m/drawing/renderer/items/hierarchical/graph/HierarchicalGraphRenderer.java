@@ -59,25 +59,18 @@ public class HierarchicalGraphRenderer extends AbstractHierarchicalRenderer impl
     public void render(Graphics2D graphic) {
         if (model.isCollapsed())
             return;
+        
+        if (!configuration.isAllowHierarchicalEdgeManagement())
+            super.render(graphic);
+        
+        drawBounds(graphic);
+        drawLocalEdges(graphic);
+        drawNodes(graphic);
+        drawDiffered(graphic);
+//        TextUtils.changeFontSize(graphic, 12);
+    }
 
-        // Draw border
-        if (settings.getBoundsSettings().isBoundDisplayed(model))
-            boundsRenderer.render(graphic, model);
-
-        // Draw all edges
-        if (settings.isLocalEdgeDisplayed())
-            for (Pair<IBoundedItem, IBoundedItem> e : model.getLocalEdges())
-                edgeRenderer.render(graphic, e, settings.getEdgeSettings());
-
-        // Draw all nodes
-        itemRenderer.clearDiffered();
-        for (IBoundedItem item : model.getChildren()) {
-            // if(item.isDisplayed(display)){
-            itemRenderer.render(graphic, item, settings.getNodeSettings());
-            // }
-        }
-
-        // Draw differed labels
+    public void drawDiffered(Graphics2D graphic) {
         if (configuration.isAllowHierarchicalEdgeManagement()) {
             addDiffered(itemRenderer.getDiffered());
             itemRenderer.clearDiffered();
@@ -98,7 +91,7 @@ public class HierarchicalGraphRenderer extends AbstractHierarchicalRenderer impl
                 clearDiffered();
             }
         } else {
-            super.render(graphic);
+            //super.render(graphic);
             List<DifferedRenderer> differed = itemRenderer.getDiffered();
 
             addRootTubeInfoDifferedLabels(differed);
@@ -106,8 +99,26 @@ public class HierarchicalGraphRenderer extends AbstractHierarchicalRenderer impl
             renderDiffered(graphic, differed);
             itemRenderer.clearDiffered();
         }
+    }
 
-        TextUtils.changeFontSize(graphic, 12);
+    public void drawNodes(Graphics2D graphic) {
+        itemRenderer.clearDiffered();
+        for (IBoundedItem item : model.getChildren()) {
+            // if(item.isDisplayed(display)){
+            itemRenderer.render(graphic, item, settings.getNodeSettings());
+            // }
+        }
+    }
+
+    public void drawLocalEdges(Graphics2D graphic) {
+        if (settings.isLocalEdgeDisplayed())
+            for (Pair<IBoundedItem, IBoundedItem> e : model.getLocalEdges())
+                edgeRenderer.render(graphic, e, settings.getEdgeSettings());
+    }
+
+    public void drawBounds(Graphics2D graphic) {
+        if (settings.getBoundsSettings().isBoundDisplayed(model))
+            boundsRenderer.render(graphic, model);
     }
 
     public void addRootTubeInfoDifferedLabels(List<DifferedRenderer> differed) {

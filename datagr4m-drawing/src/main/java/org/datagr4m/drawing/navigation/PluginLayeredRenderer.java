@@ -39,7 +39,7 @@ public class PluginLayeredRenderer extends LayeredRenderer{
         tubeRenderer = new TubeRenderer(display, tubeModel);
         IHierarchicalRendererFactory rendererFactory = RENDERER_FACTORY;
         IHierarchicalRenderer renderer = rendererFactory.getRenderer(display, model);
-        renderer.addRenderer(tubeRenderer); // <<< TUBES
+        renderer.addPostRenderer(tubeRenderer); // <<< TUBES
         tubeRenderer.setParent(renderer);
         setMainLayer(renderer);
     }

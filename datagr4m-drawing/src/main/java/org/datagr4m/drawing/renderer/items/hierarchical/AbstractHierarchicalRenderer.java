@@ -88,7 +88,7 @@ public abstract class AbstractHierarchicalRenderer extends AbstractRenderer impl
     }
     
     @Override
-    public void addRenderer(IRenderer renderer){
+    public void addPostRenderer(IRenderer renderer){
         postRenderers.add(renderer);
     }
     
