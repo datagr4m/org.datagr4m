@@ -58,8 +58,14 @@ public class TubeRenderer extends HierarchicalEdgeRenderer implements IRenderer 
         if(!isEnable()){
             return;
         }
-            
-    	//makeFirstRenderingActions();
+            //synchronized(model){
+                doRender(graphic);
+            //}
+    }
+
+
+    public void doRender(Graphics2D graphic) {
+        //makeFirstRenderingActions();
         
         clearAnnotationSquatting();
         //applyAlpha(graphic, 0.5f);

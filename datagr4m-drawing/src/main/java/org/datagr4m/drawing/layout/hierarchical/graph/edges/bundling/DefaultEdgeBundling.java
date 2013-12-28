@@ -31,7 +31,13 @@ public class DefaultEdgeBundling implements IEdgeBundling{
 
 	@Override
 	public void bundle(IHierarchicalEdgeModel model){
-	    groupSlotProcessor.clear();
+	    //synchronized(model){
+	        doBundle(model);
+	    //}
+    }
+
+    public void doBundle(IHierarchicalEdgeModel model) {
+        groupSlotProcessor.clear();
 	    
         for(Tube tube: model.getRootTubes()){
             clear(tube);

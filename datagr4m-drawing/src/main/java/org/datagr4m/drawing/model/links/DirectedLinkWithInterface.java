@@ -57,4 +57,49 @@ public class DirectedLinkWithInterface extends TypedPair<Pair<ISlotableItem,Obje
     public void setTargetInterface(Object targetInterface) {
         this.targetInterface = targetInterface;
     }
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((a == null) ? 0 : a.hashCode());
+        result = prime * result + ((b == null) ? 0 : b.hashCode());
+        result = prime * result + ((sourceInterface == null) ? 0 : sourceInterface.hashCode());
+        result = prime * result + ((targetInterface == null) ? 0 : targetInterface.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        DirectedLinkWithInterface other = (DirectedLinkWithInterface) obj;
+        if (a == null) {
+            if (other.a != null)
+                return false;
+        } else if (!a.equals(other.a))
+            return false;
+        if (b == null) {
+            if (other.b != null)
+                return false;
+        } else if (!b.equals(other.b))
+            return false;
+
+        
+        if (sourceInterface == null) {
+            if (other.sourceInterface != null)
+                return false;
+        } else if (!sourceInterface.equals(other.sourceInterface))
+            return false;
+        if (targetInterface == null) {
+            if (other.targetInterface != null)
+                return false;
+        } else if (!targetInterface.equals(other.targetInterface))
+            return false;
+        return true;
+    }
 }

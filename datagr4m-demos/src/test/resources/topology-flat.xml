@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology>
+	<groups>
+		<group name="all" type="devices">
+			<node name="fw1" type="firewall" />
+			<node name="fw2" type="firewall" />
+			<node name="rt1" type="router" />
+			<node name="rt2" type="router" />
+			<node name="rt3" type="router" />
+			<node name="srv1" type="server" />
+			<node name="srv2" type="server" />
+			<node name="srv3" type="server" />
+		</group>
+	</groups>
+	<graph>
+		<edge source="fw1" sourceSlot="fwi1" target="rt1" targetSlot="rti1" />
+		<edge source="fw1" sourceSlot="fwi2" target="rt1" targetSlot="rti2" />
+<!-- 		<edge source="fw1" sourceSlot="Interface3" target="rt1" targetSlot="Interface3" />
+		<edge source="fw1" sourceSlot="Interface4" target="rt1" targetSlot="Interface4" />
+
+		<edge source="fw1" sourceSlot="Interface5" target="rt2" targetSlot="Interface1" />
+		<edge source="fw1" sourceSlot="Interface6" target="rt2" targetSlot="Interface2" />
+		<edge source="fw1" sourceSlot="Interface7" target="rt2" targetSlot="Interface3" />
+		<edge source="fw1" sourceSlot="Interface8" target="rt2" targetSlot="Interface4" />
+
+		<edge source="fw1" sourceSlot="Interface2" target="rt3" targetSlot="Interface1" />
+		<edge source="fw2" sourceSlot="Interface1" target="rt1" targetSlot="Interface1" />
+		<edge source="fw2" sourceSlot="Interface2" target="rt2" targetSlot="Interface2" />
+		<edge source="fw2" sourceSlot="Interface2" target="rt3" targetSlot="Interface1" />
+		 -->
+	</graph>
+</topology>

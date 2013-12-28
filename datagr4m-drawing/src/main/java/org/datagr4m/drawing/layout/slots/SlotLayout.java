@@ -271,7 +271,6 @@ public class SlotLayout implements ISlotLayout{
             else{
                 // Retrieve path to be modified
                 List<IPath> pathes = null;
-                //System.err.println("MODIF MODE");
                 
                 if(!configuration.isConsiderInterfaceForPath())
                     pathes = group.getPathes(source, target);
