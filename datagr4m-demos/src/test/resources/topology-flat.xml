@@ -4,18 +4,27 @@
 		<group name="all" type="devices">
 			<node name="fw1" type="firewall" />
 			<node name="fw2" type="firewall" />
+			
 			<node name="rt1" type="router" />
 			<node name="rt2" type="router" />
 			<node name="rt3" type="router" />
+			<node name="rt4" type="router" />
+			<node name="rt5" type="router" />
+			<node name="rt6" type="router" />
+
 			<node name="srv1" type="server" />
 			<node name="srv2" type="server" />
 			<node name="srv3" type="server" />
+			<node name="srv4" type="server" />
+			<node name="srv5" type="server" />
+			<node name="srv6" type="server" />
+
 		</group>
 	</groups>
 	<graph>
-		<edge source="fw1" sourceSlot="fwi1" target="rt1" targetSlot="rti1" />
-		<edge source="fw1" sourceSlot="fwi2" target="rt1" targetSlot="rti2" />
-<!-- 		<edge source="fw1" sourceSlot="Interface3" target="rt1" targetSlot="Interface3" />
+		<edge source="fw1" sourceSlot="Interface1" target="rt1" targetSlot="Interface1" />
+		<edge source="fw1" sourceSlot="Interface2" target="rt1" targetSlot="Interface2" />
+		<edge source="fw1" sourceSlot="Interface3" target="rt1" targetSlot="Interface3" />
 		<edge source="fw1" sourceSlot="Interface4" target="rt1" targetSlot="Interface4" />
 
 		<edge source="fw1" sourceSlot="Interface5" target="rt2" targetSlot="Interface1" />
@@ -27,6 +36,15 @@
 		<edge source="fw2" sourceSlot="Interface1" target="rt1" targetSlot="Interface1" />
 		<edge source="fw2" sourceSlot="Interface2" target="rt2" targetSlot="Interface2" />
 		<edge source="fw2" sourceSlot="Interface2" target="rt3" targetSlot="Interface1" />
-		 -->
+
+		<edge source="rt1" sourceSlot="Interface2" target="srv1" targetSlot="Interface1" />
+		<edge source="rt2" sourceSlot="Interface2" target="srv2" targetSlot="Interface1" />
+		<edge source="rt3" sourceSlot="Interface2" target="srv3" targetSlot="Interface1" />
+
+		<edge source="fw2" sourceSlot="Interface2" target="rt4" targetSlot="Interface1" />
+
+		<edge source="rt4" sourceSlot="Interface2" target="srv4" targetSlot="Interface1" />
+		<edge source="rt5" sourceSlot="Interface2" target="srv5" targetSlot="Interface1" />
+		<edge source="rt6" sourceSlot="Interface2" target="srv6" targetSlot="Interface1" />
 	</graph>
 </topology>

@@ -33,7 +33,6 @@ public class DemoMatrixCol {
         display.setView(new View(renderer, display));
         display.openFrame();
         ((MouseItemViewController)display.getMouse()).addMouseHitListener(new MouseHitModelAdapter());
-        
-        ((View)display.getView()).fit(model);
+        model.fit(display.getView());
     }
 }

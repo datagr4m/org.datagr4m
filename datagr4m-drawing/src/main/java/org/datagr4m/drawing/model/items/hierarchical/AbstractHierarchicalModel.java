@@ -32,6 +32,7 @@ import org.datagr4m.drawing.model.slots.SlotGroup;
 import org.datagr4m.drawing.model.slots.SlotSide;
 import org.datagr4m.drawing.model.slots.SlotTarget;
 import org.datagr4m.viewer.IDisplay;
+import org.datagr4m.viewer.IView;
 import org.jzy3d.maths.Coord2d;
 
 import com.google.common.collect.BiMap;
@@ -1033,6 +1034,11 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
     }
     protected Point2D buildWestSlotCenter(){
         return new Point2D.Double(getSlotableCenter().x - (getSlotableBounds().getWidth()/2+getSlotMargin()/2), getSlotableCenter().y);
+    }
+    
+    @Override
+    public void fit(IView view){
+        view.fit(getRawRectangleBounds().cloneAsRectangle2D());
     }
     
     

@@ -12,6 +12,7 @@ import org.datagr4m.drawing.model.items.hierarchical.explorer.ICollapsable;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.zones.ZoningModel;
 import org.datagr4m.viewer.IDisplay;
+import org.datagr4m.viewer.IView;
 import org.jzy3d.maths.Coord2d;
 
 
@@ -249,4 +250,5 @@ public interface IHierarchicalModel extends IBoundedItem, ICollapsable{
     
     public Map<IBoundedItem,IBoundedItem> changeChildrenLayoutModels(IHierarchicalModelFactory factory);
 
+    public void fit(IView view);
 }

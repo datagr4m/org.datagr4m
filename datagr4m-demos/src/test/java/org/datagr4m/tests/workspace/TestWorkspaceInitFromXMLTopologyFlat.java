@@ -3,6 +3,7 @@ package org.datagr4m.tests.workspace;
 import java.util.List;
 
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
+import org.datagr4m.drawing.layout.runner.LayoutLevelSettings;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
 import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceSinglePhase;
@@ -88,6 +89,11 @@ public class TestWorkspaceInitFromXMLTopologyFlat{
         LayoutRunnerSequenceSinglePhase seq = (LayoutRunnerSequenceSinglePhase)runner.getConfiguration().getSequence();
         seq.setFirstPhaseBreakCriteria(criteria);
         
+        LayoutLevelSettings settings = runner.getLayoutSettings(w.getLayout().getChildren().get(0));
+        System.out.println(settings.getRepulsion());
+        settings.setRepulsion(500);
+        settings.setAttraction(1);
+
         if (test && waitFor > 0)
             ((LayoutRunner) runner).startAndAwaitAtMost(waitFor);
         else

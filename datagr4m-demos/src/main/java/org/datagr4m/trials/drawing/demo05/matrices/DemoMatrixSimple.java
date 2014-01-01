@@ -101,6 +101,6 @@ public class DemoMatrixSimple {
 
         //BulkRendererSettings.debug(renderer, false);
         
-        ((View)display.getView()).fit(model);
+        model.fit(display.getView());
     }
 }

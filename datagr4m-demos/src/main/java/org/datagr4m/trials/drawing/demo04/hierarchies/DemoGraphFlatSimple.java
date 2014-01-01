@@ -42,7 +42,7 @@ public class DemoGraphFlatSimple {
         for (int i = 0; i < 1000; i++) {
             layout.goAlgo();
         }
-        ((View)display.getView()).fit(model);
+        model.fit(display.getView());
 
     }
 

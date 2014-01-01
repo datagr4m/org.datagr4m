@@ -35,8 +35,7 @@ public class DemoNestedGraphWithSingleLayerEdges {
             @Override
 			public void onBreak(){  
                 System.out.println(getMaxSteps() + " steps with: \n" + runner.getConfiguration());
-                ((View)display.getView()).fit(model);
-
+                model.fit(display.getView());
             }
         };
         runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(criteria);

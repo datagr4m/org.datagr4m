@@ -12,14 +12,6 @@
     </parent>
 
 	<dependencies>
-		<!-- Datagr4m.com -->
-		<dependency>
-            <groupId>com.datagr4m</groupId>
-            <artifactId>datagr4m-runtime-community</artifactId>
-            <version>${version.datagr4m}</version>
-        </dependency>
-		
-		<!-- Datagr4m.org -->
 		<dependency>
             <groupId>org.datagr4m</groupId>
             <artifactId>datagr4m-workspace</artifactId>

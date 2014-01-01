@@ -41,12 +41,6 @@
     
         <!-- Datagr4m -->
 		<dependency>
-            <groupId>com.datagr4m</groupId>
-            <artifactId>datagr4m-runtime-community</artifactId>
-            <version>${version.datagr4m}</version>
-        </dependency>
-		
-		<dependency>
 			<groupId>org.datagr4m</groupId>
 			<artifactId>datagr4m-workspace</artifactId>
 			<version>${version.datagr4m}</version>

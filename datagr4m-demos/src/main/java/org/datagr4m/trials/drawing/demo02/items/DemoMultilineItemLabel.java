@@ -35,7 +35,8 @@ public class DemoMultilineItemLabel {
         IHierarchicalRenderer renderer = rendererFactory.getRenderer(display, model);
         display.setView(new View(renderer, display));
         display.openFrame();
-        ((View)display.getView()).fit(model);
+        model.fit(display.getView());
+
     }
     
     public static IHierarchicalModel pairGraph() throws Exception{

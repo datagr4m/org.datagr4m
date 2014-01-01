@@ -54,7 +54,7 @@ public class TestWorkspaceInitFromXMLTopology{
         Topology<IPropertyNode, IPropertyEdge> topology = xmlt.loadTopology("src/test/resources/topology.xml");
         // topology.toConsole();
         if (test)
-            assertTopology(topology, 8, 6, 2, 2);
+            assertTopology(topology, 14, 19, 3, 2);
 
         Workspace w = new Workspace(topology);
         // w.getEdgeModel().toConsole();
@@ -67,7 +67,7 @@ public class TestWorkspaceInitFromXMLTopology{
         display(w);
         
         //new MeanMoveCriteria(1, 10));
-        IBreakCriteria criteria = new MaxStepCriteria(100);
+        IBreakCriteria criteria = new MaxStepCriteria(300);
         runAndTest(test, waitFor, w, criteria);
         
         
@@ -115,7 +115,7 @@ public class TestWorkspaceInitFromXMLTopology{
     }
 
     public void assertEdgeModel(Workspace w) {
-        Assert.assertEquals("model contains one tube at level 0", w.getEdgeModel().getRootTubes().size(), 1);
+        Assert.assertEquals("model contains two tubes at level 0", w.getEdgeModel().getRootTubes().size(), 2);
 
         Tube tube1 = w.getEdgeModel().getRootTubes().get(0);
         Assert.assertEquals("tube at level 0 has 1 children tube", tube1.getChildren().size(), 1);
@@ -125,10 +125,10 @@ public class TestWorkspaceInitFromXMLTopology{
     }
 
     public void assertTopology(Topology<IPropertyNode, IPropertyEdge> topology, int vertexCount, int edgeCount, int groupCount, int depth) {
-        Assert.assertEquals(topology.getGraph().getVertexCount(), vertexCount);
-        Assert.assertEquals(topology.getGraph().getEdgeCount(), edgeCount);
-        Assert.assertEquals(topology.getGroups().size(), groupCount);
-        Assert.assertEquals(topology.getDepth(), depth);
+        Assert.assertEquals(vertexCount, topology.getGraph().getVertexCount());
+        Assert.assertEquals(edgeCount, topology.getGraph().getEdgeCount());
+        Assert.assertEquals(groupCount, topology.getGroups().size());
+        Assert.assertEquals(depth, topology.getDepth());
     }
 
     public void assertWorkspaceNotNull(Workspace w) {
@@ -142,13 +142,13 @@ public class TestWorkspaceInitFromXMLTopology{
     private void assertDrawingModel(Workspace w) {
         HierarchicalGraphModel root = (HierarchicalGraphModel)w.getModel();
         Assert.assertEquals("root", w.getModel().getLabel());
-        Assert.assertEquals(2, w.getModel().getChildren().size());
+        Assert.assertEquals(3, w.getModel().getChildren().size());
 
         Assert.assertTrue(root.getChildren().get(0) instanceof HierarchicalPairModel);
 
         HierarchicalGraphModel graph = (HierarchicalGraphModel)w.getModel().getChildren().get(1);
         Assert.assertEquals("routers", graph.getChildren().get(0).getLabel());
-        Assert.assertEquals("farm", graph.getChildren().get(1).getLabel());
+        Assert.assertEquals("servers", graph.getChildren().get(1).getLabel());
     }
     
     public boolean checkItemHasInterface(IHierarchicalModel model, String itemToFind, Object interfaceToFind) {

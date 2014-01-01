@@ -305,7 +305,7 @@ public class MouseEdgeViewController extends MouseItemViewController {
                             TicToc clock = new TicToc();
                             clock.tic();
                             layout.goAlgoEdge();
-                            Logger.getLogger(this.getClass()).info("done edge @ mouse drag " + clock.toc() + " s");
+                            //Logger.getLogger(this.getClass()).info("done edge @ mouse drag " + clock.toc() + " s");
                             tubeRenderer.setEnable(true);
                             AbstractShapedItemRenderer.ALLOW_SLOT_RENDERING = true;
                         }

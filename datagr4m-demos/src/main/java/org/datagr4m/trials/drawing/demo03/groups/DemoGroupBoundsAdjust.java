@@ -76,7 +76,6 @@ public class DemoGroupBoundsAdjust extends AbstractDemo{
         p.getBoundsSettings().setBoundDisplayed(null, false); // desactivate node group bounds
         p.apply(renderer);
         
-        ((View)display.getView()).fit(model);
-
+        model.fit(display.getView());
 	}
 }
