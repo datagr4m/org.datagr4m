@@ -8,17 +8,6 @@ import org.datagr4m.viewer.Display;
 import org.datagr4m.workspace.Workspace;
 import org.datagr4m.workspace.WorkspaceSettings;
 
-/**
- * Start a designer application according to command line arguments.
- * 
- * Performs, if flags set to true:
- * <ul>
- * <li>licence checking 
- * <li>token server communication
- * </ul>
- * 
- * @author Martin
- */
 public class Datagr4mLauncher {
 	public static void main(String[] args) throws Exception{
         new Datagr4mLauncher().start();  

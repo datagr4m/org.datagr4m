@@ -60,8 +60,8 @@ public class HierarchicalGraphRenderer extends AbstractHierarchicalRenderer impl
         if (model.isCollapsed())
             return;
         
-        if (!configuration.isAllowHierarchicalEdgeManagement())
-            super.render(graphic);
+//        if (!configuration.isAllowHierarchicalEdgeManagement())
+//            super.render(graphic);
         
         drawBounds(graphic);
         drawLocalEdges(graphic);
@@ -91,7 +91,7 @@ public class HierarchicalGraphRenderer extends AbstractHierarchicalRenderer impl
                 clearDiffered();
             }
         } else {
-            //super.render(graphic);
+            super.render(graphic);
             List<DifferedRenderer> differed = itemRenderer.getDiffered();
 
             addRootTubeInfoDifferedLabels(differed);
