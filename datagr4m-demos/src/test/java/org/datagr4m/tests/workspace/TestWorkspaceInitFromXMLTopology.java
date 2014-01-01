@@ -118,10 +118,10 @@ public class TestWorkspaceInitFromXMLTopology{
         Assert.assertEquals("model contains two tubes at level 0", w.getEdgeModel().getRootTubes().size(), 2);
 
         Tube tube1 = w.getEdgeModel().getRootTubes().get(0);
-        Assert.assertEquals("tube at level 0 has 1 children tube", tube1.getChildren().size(), 1);
+        Assert.assertEquals("tube at level 0 has N children tube", 1, tube1.getChildren().size());
 
         Tube tube2 = (Tube) tube1.getChildren().get(0);
-        Assert.assertEquals("tube at level 1 has 6 children edge", tube2.getChildren().size(), 6);
+        Assert.assertEquals("tube at level 1 has N children edge", 12, tube2.getChildren().size());
     }
 
     public void assertTopology(Topology<IPropertyNode, IPropertyEdge> topology, int vertexCount, int edgeCount, int groupCount, int depth) {
