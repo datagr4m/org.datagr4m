@@ -12,10 +12,13 @@ import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.QualityScores;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.topology.Topology;
+import org.junit.Assert;
+import org.junit.Test;
 
 import edu.uci.ics.jung.graph.Graph;
 
 public class TestLayoutNoOverlapOnFlatSimpleGraph extends AbstractLayoutRunnerTest {
+    @Test
     public void testNoOverlap() throws Exception{
         HierarchicalGraphModel model = buildModel();
         HierarchicalGraphLayout layout = buildLayout(model);
@@ -27,7 +30,7 @@ public class TestLayoutNoOverlapOnFlatSimpleGraph extends AbstractLayoutRunnerTe
         List<IBoundedItem> candidates = model.getChildren();
         Set<CommutativePair<IBoundedItem>> overlapping = QualityScores.countOverlappingItems(candidates);
         
-        assertTrue("no item overlap any other", overlapping.size()==0);
+        Assert.assertTrue("no item overlap any other", overlapping.size()==0);
     }
     
     public HierarchicalGraphModel buildModel() {

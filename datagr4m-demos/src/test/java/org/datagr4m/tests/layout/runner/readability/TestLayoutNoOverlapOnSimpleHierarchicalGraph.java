@@ -21,8 +21,11 @@ import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.generator.TopologyGenerator;
 import org.datagr4m.trials.drawing.DisplayLauncher;
 import org.datagr4m.viewer.IDisplay;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class TestLayoutNoOverlapOnSimpleHierarchicalGraph extends AbstractLayoutRunnerTest {
+    @Test
     public void testNoOverlap() throws Exception{
         int MAX_TIME = 10; //s
         
@@ -52,7 +55,7 @@ public class TestLayoutNoOverlapOnSimpleHierarchicalGraph extends AbstractLayout
         
         if(overlapping.size()>0)
             System.out.println(overlapping);
-        assertTrue("no item overlap any other", overlapping.size()==0);
+        Assert.assertTrue("no item overlap any other", overlapping.size()==0);
     }
 
     private HierarchicalGraphModel buildModel(Topology<String, String> topology) {
