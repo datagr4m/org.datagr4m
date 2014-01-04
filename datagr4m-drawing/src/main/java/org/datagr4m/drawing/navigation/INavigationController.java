@@ -3,7 +3,7 @@ package org.datagr4m.drawing.navigation;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.drawing.navigation.context.NavigationContext;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.IBringAndGoPlugin;
-import org.datagr4m.drawing.navigation.plugin.edgetables.EdgeLabelsAndTablesPlugin;
+import org.datagr4m.drawing.navigation.plugin.edgetables.EdgeInfoTablePlugin;
 import org.datagr4m.drawing.navigation.plugin.louposcope.LouposcopePlugin;
 import org.datagr4m.drawing.navigation.plugin.tooltips.TooltipPlugin;
 import org.datagr4m.drawing.renderer.policy.IRenderingPolicy;
@@ -55,9 +55,9 @@ public interface INavigationController {
     //public void setWorkspace(IWorkspace workspace);
     //public void setDataController(IWorkspaceController dataController);
 
-    public EdgeLabelsAndTablesPlugin getEdgeTablesPlugin();
+    public EdgeInfoTablePlugin getEdgeTablesPlugin();
 
-    public void setEdgeTablesPlugin(EdgeLabelsAndTablesPlugin edgeTablesPlugin);
+    public void setEdgeTablesPlugin(EdgeInfoTablePlugin edgeTablesPlugin);
 
     public PluginLayeredRenderer getPluginRenderer();
 

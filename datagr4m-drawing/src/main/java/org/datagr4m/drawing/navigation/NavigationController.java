@@ -8,7 +8,7 @@ import org.datagr4m.drawing.model.items.hierarchical.visitor.AbstractItemVisitor
 import org.datagr4m.drawing.navigation.context.ContextType;
 import org.datagr4m.drawing.navigation.context.NavigationContext;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.IBringAndGoPlugin;
-import org.datagr4m.drawing.navigation.plugin.edgetables.EdgeLabelsAndTablesPlugin;
+import org.datagr4m.drawing.navigation.plugin.edgetables.EdgeInfoTablePlugin;
 import org.datagr4m.drawing.navigation.plugin.louposcope.LouposcopePlugin;
 import org.datagr4m.drawing.navigation.plugin.tooltips.TooltipPlugin;
 import org.datagr4m.drawing.renderer.policy.IRenderingPolicy;
@@ -34,7 +34,7 @@ public class NavigationController implements INavigationController {
     protected IBringAndGoPlugin bringAndGoPlugin;
     protected LouposcopePlugin louposcopePlugin;
     protected TooltipPlugin tooltipsPlugin;
-    protected EdgeLabelsAndTablesPlugin edgeTablesPlugin;
+    protected EdgeInfoTablePlugin edgeTablesPlugin;
     
     public NavigationController(IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay, IRenderingPolicy policy) {
         this.display = display;
@@ -58,7 +58,7 @@ public class NavigationController implements INavigationController {
 
     public void initPlugins(IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay) {
         // navigation plugins
-        edgeTablesPlugin = new EdgeLabelsAndTablesPlugin(this, display, layered, animator, mouse, model, layeredDisplay);
+        edgeTablesPlugin = new EdgeInfoTablePlugin(this, display, layered, animator, mouse, model, layeredDisplay);
         tooltipsPlugin = new TooltipPlugin(this, display, layered, animator, mouse, model);
         louposcopePlugin = new LouposcopePlugin(this, display, layered, animator, mouse, model);
         //bringAndGoPlugin = new StaticFlowerBringAndGoPlugin(workspace, this, display, layered, animator, mouse, model);
@@ -201,12 +201,12 @@ public class NavigationController implements INavigationController {
 
     
     @Override
-    public EdgeLabelsAndTablesPlugin getEdgeTablesPlugin() {
+    public EdgeInfoTablePlugin getEdgeTablesPlugin() {
         return edgeTablesPlugin;
     }
 
     @Override
-    public void setEdgeTablesPlugin(EdgeLabelsAndTablesPlugin edgeTablesPlugin) {
+    public void setEdgeTablesPlugin(EdgeInfoTablePlugin edgeTablesPlugin) {
         this.edgeTablesPlugin = edgeTablesPlugin;
     }
 

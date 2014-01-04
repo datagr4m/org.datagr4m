@@ -20,10 +20,10 @@ import org.datagr4m.viewer.mouse.ILocalizedMouse;
 
 
 @SuppressWarnings("rawtypes")
-public class EdgeLabelsAndTablesPlugin extends AbstractNavigationPlugin {
+public class EdgeInfoTablePlugin extends AbstractNavigationPlugin {
     protected IPopupLayer layeredDisplay;
     
-    public EdgeLabelsAndTablesPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay) {
+    public EdgeInfoTablePlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay) {
         super(controller, display, layered, animator, mouse, model);
         this.layeredDisplay = layeredDisplay;
     }
@@ -35,7 +35,7 @@ public class EdgeLabelsAndTablesPlugin extends AbstractNavigationPlugin {
             JPanel table = getTable(tube.flatten());
             layeredDisplay.addPopupLayer(table, "Tube", (int) screen.getX(), (int) screen.getY(), 400, 200);
         } else {
-            Logger.getLogger(EdgeLabelsAndTablesPlugin.class).info("not a tube instance");
+            Logger.getLogger(EdgeInfoTablePlugin.class).info("not a tube instance");
             //List<String> infos = edge.getEdgeInfo().flattenInfoAsString();
             //layered.addLayer(infos, "Edge", 50,50, 100, 200);
             //JPanel table = getTable(tube.flatten());
