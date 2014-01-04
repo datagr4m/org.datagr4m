@@ -29,4 +29,8 @@ public class Neo4jEdgeInfo implements IEdgeInfo{
 		
 		return relationship.getType().name();
 	}
+	
+	public String toString(){
+	    return relationship.getType().name();
+	}
 }
