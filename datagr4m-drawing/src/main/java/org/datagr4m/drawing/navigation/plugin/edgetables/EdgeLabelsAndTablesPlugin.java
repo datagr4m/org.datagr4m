@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
+import org.apache.log4j.Logger;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
@@ -32,14 +33,12 @@ public class EdgeLabelsAndTablesPlugin extends AbstractNavigationPlugin {
         if (edge instanceof Tube) {
             Tube tube = (Tube) edge;
             JPanel table = getTable(tube.flatten());
-            // List<String> infos =
-            // NetworkEdgeInfo.flattenInfoAsString(tube.flattenInfos());
-            
-            display.getLayeredDisplay().addPopupLayer(table, "Tube", (int) screen.getX(), (int) screen.getY(), 400, 200);
+            layeredDisplay.addPopupLayer(table, "Tube", (int) screen.getX(), (int) screen.getY(), 400, 200);
         } else {
-            List<String> infos = edge.getEdgeInfo().flattenInfoAsString();
-            // layered.addLayer(infos, "Edge", 50,50, 100, 200);
-            // JPanel table = getTable(tube.flatten());
+            Logger.getLogger(EdgeLabelsAndTablesPlugin.class).info("not a tube instance");
+            //List<String> infos = edge.getEdgeInfo().flattenInfoAsString();
+            //layered.addLayer(infos, "Edge", 50,50, 100, 200);
+            //JPanel table = getTable(tube.flatten());
             // List<String> infos =
             // NetworkEdgeInfo.flattenInfoAsString(tube.flattenInfos());
             // layered.addLayer(table, "Tube", (int)screen.getX(),
@@ -48,11 +47,8 @@ public class EdgeLabelsAndTablesPlugin extends AbstractNavigationPlugin {
     }
     
     protected JPanel getTable(List<IEdge> edges) {
-        /*JEdgeTable table = new JEdgeTable("");
+        JEdgeTable table = new JEdgeTable("");
         table.setEdges(edges);
-        return table;*/
-    	throw new RuntimeException("no generic edge table implementation. see JEdgeTable");
+        return table;
     }
-
-    
 }

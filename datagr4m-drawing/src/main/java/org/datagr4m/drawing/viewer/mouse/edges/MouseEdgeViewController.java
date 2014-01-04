@@ -76,7 +76,9 @@ public class MouseEdgeViewController extends MouseItemViewController {
                 grabObject = (IBoundedItem) rawClick;
             else if(rawClick instanceof ClickedEdge){
                 Logger.getLogger(MouseEdgeViewController.class).info("clicked edge: " + rawClick);
-                navigation.apply(new NavigationContext(ContextType.EDGE_DETAILS, rawClick));
+                NavigationContext context = new NavigationContext(ContextType.EDGE_DETAILS, rawClick);
+                context.setScreen(screen);
+                navigation.apply(context);
                 grabObject = null;
             }
             else

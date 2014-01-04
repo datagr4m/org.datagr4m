@@ -1,6 +1,7 @@
 package org.datagr4m.application.gui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Collection;
@@ -49,6 +50,7 @@ import org.datagr4m.topology.graph.IPropertyNode;
 import org.datagr4m.viewer.Display;
 import org.datagr4m.viewer.keyboard.PrintScreenObfuscator;
 import org.datagr4m.viewer.layered.IPopupLayer;
+import org.datagr4m.viewer.layered.LayeredDisplay;
 import org.datagr4m.workspace.IWorkspace;
 import org.datagr4m.workspace.WorkspaceSettings;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeComputationPolicy;
@@ -67,6 +69,7 @@ public class Datagr4mViewer extends AbstractDatagr4mViewer implements IDesktopDe
     protected Datagr4mToolbar toolbar;
     protected PrintScreenObfuscator pso;
     
+    protected LayeredDisplay layered;
 
     public Datagr4mViewer() {
         super();
@@ -97,6 +100,9 @@ public class Datagr4mViewer extends AbstractDatagr4mViewer implements IDesktopDe
     @Override
     protected void initDisplay() {
         this.display = new Display(true, factories.getMouseFactory());
+        this.layered = new LayeredDisplay(display);
+        this.display.setLayeredDisplay(layered);
+
         // pso = new PrintScreenObfuscator(display);
 
         setF5Behaviour();
@@ -141,7 +147,8 @@ public class Datagr4mViewer extends AbstractDatagr4mViewer implements IDesktopDe
         };
         topologyTree.addItemSelectionListener(listener);
 
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topologyTree, display);
+        Component toBeDisplayed = layered;//display;
+        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, topologyTree, toBeDisplayed);
         splitPane.setOneTouchExpandable(true);
         splitPane.setDividerLocation(200);
         // splitPane.setMinimumSize(new Dimension(800,600));
@@ -337,7 +344,7 @@ public class Datagr4mViewer extends AbstractDatagr4mViewer implements IDesktopDe
             
             // Navigation controller
             PluginLayeredRenderer plr = workspace.getRenderer();
-            navigationController = new NavigationController(display, plr, display.getAnimator(), mouse, workspace.getModel(), null, policy);
+            navigationController = new NavigationController(display, plr, display.getAnimator(), mouse, workspace.getModel(), getPopupLayer(), policy);
             mouse.setNavigation(navigationController);
             
             // Custom plugins
@@ -354,8 +361,7 @@ public class Datagr4mViewer extends AbstractDatagr4mViewer implements IDesktopDe
     
     @Override
     public IPopupLayer getPopupLayer() {
-        // TODO Auto-generated method stub
-        return null;
+        return layered;
     }
 
     public JPanel getMainPanel() {

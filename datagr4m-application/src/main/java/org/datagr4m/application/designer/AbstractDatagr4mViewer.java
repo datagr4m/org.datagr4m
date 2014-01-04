@@ -135,7 +135,7 @@ public abstract class AbstractDatagr4mViewer extends JFrame implements
 	public void configureNavigation(IWorkspace workspace,
 			MouseEdgeViewController mouse) {
 		navigationController = new NavigationController(display, workspace.getRenderer(),
-				display.getAnimator(), mouse, workspace.getModel(), null, workspace.getRenderingPolicy());
+				display.getAnimator(), mouse, workspace.getModel(), getPopupLayer(), workspace.getRenderingPolicy());
 		mouse.setNavigation(navigationController);
 	}
 

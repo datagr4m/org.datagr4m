@@ -13,6 +13,7 @@ import org.datagr4m.drawing.navigation.plugin.louposcope.LouposcopePlugin;
 import org.datagr4m.drawing.navigation.plugin.tooltips.TooltipPlugin;
 import org.datagr4m.drawing.renderer.policy.IRenderingPolicy;
 import org.datagr4m.drawing.renderer.policy.RenderingPolicy;
+import org.datagr4m.drawing.viewer.mouse.edges.ClickedEdge;
 import org.datagr4m.viewer.IDisplay;
 import org.datagr4m.viewer.animation.IAnimation;
 import org.datagr4m.viewer.animation.IAnimationMonitor;
@@ -99,7 +100,7 @@ public class NavigationController implements INavigationController {
         } 
         // select an edge or tube to query details
         else if (context.is(ContextType.EDGE_DETAILS)){
-            //edgeTablesPlugin.click((ClickedEdge)context.getClickableItem(), context.getScreen());
+            edgeTablesPlugin.click((ClickedEdge)context.getClickableItem(), context.getScreen());
         }
         // no other possiblity
         else
