@@ -26,7 +26,6 @@ import org.datagr4m.maths.geometry.PointUtils;
 import org.datagr4m.maths.geometry.Pt;
 import org.datagr4m.viewer.IDisplay;
 import org.datagr4m.viewer.renderer.DifferedRenderer;
-import org.datagr4m.viewer.renderer.TextUtils;
 
 
 public class HierarchicalGraphRenderer extends AbstractHierarchicalRenderer implements IHierarchicalGraphRenderer {

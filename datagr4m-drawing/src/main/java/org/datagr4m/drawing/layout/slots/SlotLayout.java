@@ -4,9 +4,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.layout.slots.geometry.ISlotGeometryPostProcessor;
-import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.HierarchicalEdgeModel;
 import org.datagr4m.drawing.model.links.ILink;
 import org.datagr4m.drawing.model.pathfinder.obstacle.ObstacleGroupModel;
 import org.datagr4m.drawing.model.pathfinder.path.IPath;

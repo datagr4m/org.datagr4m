@@ -4,7 +4,6 @@ package org.datagr4m.drawing.layout.hierarchical.pair;
 import java.awt.geom.CubicCurve2D;
 
 import org.datagr4m.drawing.layout.hierarchical.AbstractHierarchicalLayout;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.HierarchicalPairModel;

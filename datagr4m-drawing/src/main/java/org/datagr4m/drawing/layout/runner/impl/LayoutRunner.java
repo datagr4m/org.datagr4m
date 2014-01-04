@@ -14,7 +14,6 @@ import org.apache.log4j.Logger;
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.BoundedForceAtlasLayout;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
-import org.datagr4m.drawing.layout.hierarchical.pair.IHierarchicalPairLayout;
 import org.datagr4m.drawing.layout.hierarchical.visitor.AbstractLayoutVisitor;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.ILayoutRunnerListener;
@@ -34,7 +33,6 @@ import org.datagr4m.io.xml.generated.layout.Layout;
 import org.datagr4m.io.xml.generated.layout.Repulse;
 import org.datagr4m.io.xml.layout.LMLEditor;
 import org.datagr4m.viewer.IView;
-import org.jzy3d.maths.TicToc;
 import org.openide.util.lookup.ServiceProvider;
 
 /**
