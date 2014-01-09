@@ -1,4 +1,4 @@
-package org.datagr4m.neo4j.navigation.plugins.louposcope;
+package org.datagr4m.application.neo4j.navigation.plugins.louposcope;
 
 import java.util.ArrayList;
 import java.util.List;

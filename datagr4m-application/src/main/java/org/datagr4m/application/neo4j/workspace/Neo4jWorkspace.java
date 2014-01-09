@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.datagr4m.application.neo4j.factories.Neo4jLayoutFactory;
 import org.datagr4m.application.neo4j.factories.Neo4jModelFactory;
 import org.datagr4m.application.neo4j.factories.Neo4jTopologyFactory;
+import org.datagr4m.application.neo4j.navigation.plugins.louposcope.Neo4jLouposcopeLayer;
 import org.datagr4m.application.neo4j.renderers.Neo4jRelationshipRendererSettings;
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
@@ -21,7 +22,6 @@ import org.datagr4m.drawing.renderer.items.hierarchical.hit.HierarchicalHitPolic
 import org.datagr4m.io.xml.JAXBHandler;
 import org.datagr4m.io.xml.generated.dataprism.Dataprism;
 import org.datagr4m.io.xml.generated.layout.Layout;
-import org.datagr4m.neo4j.navigation.plugins.louposcope.Neo4jLouposcopeLayer;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
 import org.datagr4m.viewer.IDisplay;
