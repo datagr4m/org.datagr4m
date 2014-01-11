@@ -10,19 +10,19 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
 /**
- * La position de la matrice est la position du mod�le associ� � ce layout
- * La position des cellules est donc relative � la position du mod�le
+ * La position de la matrice est la position du mod�le associ� � ce layout La position des cellules est donc relative �
+ * la position du mod�le
  */
-public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout implements IHierarchicalMatrixLayout{
-    public HierarchicalMatrixLayout(){
+public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout implements IHierarchicalMatrixLayout {
+    public HierarchicalMatrixLayout() {
         init();
     }
-    
+
     public HierarchicalMatrixLayout(IHierarchicalLayout parent) {
         super(parent);
         init();
     }
-    
+
     @Override
     public void setModel(IHierarchicalModel model) {
         this.model = model;
@@ -35,24 +35,24 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
 
     @Override
     public void setItemCell(IBoundedItem item, int lineIndex, int columnIndex) throws IllegalArgumentException {
-        if(!model.hasChild(item))
+        if (!model.hasChild(item))
             System.err.println("Item " + item + " is not an IMMEDIATE child of current model " + model);
-            //throw new IllegalArgumentException("Item " + item + " is not child of current model " + model);
+        // throw new IllegalArgumentException("Item " + item + " is not child of current model " + model);
         else
             mapIndex.put(item, new CellIndex(lineIndex, columnIndex));
     }
-    
-    protected void autoColumnGrid(){
+
+    protected void autoColumnGrid() {
         int k = 0;
-        for(IBoundedItem i: getModel().getChildren()){
+        for (IBoundedItem i : getModel().getChildren()) {
             setItemCell(i, k, 0);
             k++;
         }
     }
-    
-    protected void autoLineGrid(){
+
+    protected void autoLineGrid() {
         int k = 0;
-        for(IBoundedItem i: getModel().getChildren()){
+        for (IBoundedItem i : getModel().getChildren()) {
             setItemCell(i, 0, k);
             k++;
         }
@@ -67,10 +67,10 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
         this.lineHeight = new float[nLine];
         this.columnWidth = new float[nColumn];
     }
-    
+
     @Override
     public void setLineHeight(float height) {
-        if(!isReady())
+        if (!isReady())
             throw new RuntimeException("Algorithm not ready. Missing some parameters. Maybe Size?");
         for (int i = 0; i < lineHeight.length; i++)
             setLineHeight(i, height);
@@ -79,17 +79,17 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
 
     @Override
     public void setColumnWidth(float width) {
-        for (int i = 0; i < columnWidth.length; i++) 
+        for (int i = 0; i < columnWidth.length; i++)
             setColumnWidth(i, width);
         allColumnWidth = width;
     }
 
-    //@Override
+    // @Override
     protected void setLineHeight(int line, float height) {
         lineHeight[line] = height;
     }
 
-    //@Override
+    // @Override
     protected void setColumnWidth(int column, float width) {
         columnWidth[column] = width;
     }
@@ -103,99 +103,102 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
     public float getColumnWidth(int column) {
         return columnWidth[column];
     }
-    
+
     /******************/
-    
+
     @Override
     public void initAlgo() {
-        if(!isReady())
-            throw new RuntimeException("Layout has not been completely set!");
-        super.initAlgo(); // handle children first
-        computeLayout();
-    } 
-    
+        if (isReady()) {
+            super.initAlgo(); // handle children first
+            computeLayout();
+        } else
+            ;//throw new RuntimeException("Layout has not been completely set!");
+
+    }
+
     @Override
-    public void goAlgo(){
-        if(!isReady())
-            throw new RuntimeException("Layout has not been completely set!");
-        super.goAlgo();
-        computeLayout();
+    public void goAlgo() {
+        if (isReady()) {
+            super.goAlgo();
+            computeLayout();
+
+        } else
+            ;//throw new RuntimeException("Layout has not been completely set!");
+
     }
-    
+
     /********* ACTUAL MATRIX LAYOUT ********/
-    
-    protected void computeLayout(){
-        for(IBoundedItem item: mapIndex.keySet()){
+
+    protected void computeLayout() {
+        for (IBoundedItem item : mapIndex.keySet()) {
             CellIndex index = mapIndex.get(item);
-            //System.out.println(item + " " + index);
+            // System.out.println(item + " " + index);
             item.changePosition(getXPosition(index), getYPosition(index));
-        }        
-    }
-    
-    protected float getXPosition(CellIndex index){
-        if(isEven(nColumn)){
-            //float middle = nColumn/2f;
-            //return (index.getColumnIndex()-middle+0.5f) * allColumnWidth;
-            float start = -(allColumnWidth/2 + nColumn/2);
-            return index.getColumnIndex()*allColumnWidth+start;
-        }
-        else{
-            int middle = (nColumn-1)/2;
-            return (index.getColumnIndex()-middle) * allColumnWidth;
         }
     }
-    
-    protected float getYPosition(CellIndex index){
-        if(isEven(nLine)){
-            float start = -(allLineHeight/2 + nLine/2);
-            return index.getLineIndex()*allLineHeight+start;
-            //float middle = nLine/2f;
-            ////(index.getLineIndex()-middle+0.5f) * allLineHeight;
-        }
-        else{
-            int middle = (nLine-1)/2;
-            return (index.getLineIndex()-middle) * allLineHeight;
+
+    protected float getXPosition(CellIndex index) {
+        if (isEven(nColumn)) {
+            // float middle = nColumn/2f;
+            // return (index.getColumnIndex()-middle+0.5f) * allColumnWidth;
+            float start = -(allColumnWidth / 2 + nColumn / 2);
+            return index.getColumnIndex() * allColumnWidth + start;
+        } else {
+            int middle = (nColumn - 1) / 2;
+            return (index.getColumnIndex() - middle) * allColumnWidth;
         }
     }
-    
-    protected boolean isEven(int value){
-        return value%2==0;
+
+    protected float getYPosition(CellIndex index) {
+        if (isEven(nLine)) {
+            float start = -(allLineHeight / 2 + nLine / 2);
+            return index.getLineIndex() * allLineHeight + start;
+            // float middle = nLine/2f;
+            // //(index.getLineIndex()-middle+0.5f) * allLineHeight;
+        } else {
+            int middle = (nLine - 1) / 2;
+            return (index.getLineIndex() - middle) * allLineHeight;
+        }
     }
-    
-    protected void autoRowSize(){
+
+    protected boolean isEven(int value) {
+        return value % 2 == 0;
+    }
+
+    protected void autoRowSize() {
         float max = 0;
-        for(IBoundedItem i: getModel().getChildren()){
-            RectangleBounds b = i.getRawCorridorRectangleBounds();            
+        for (IBoundedItem i : getModel().getChildren()) {
+            RectangleBounds b = i.getRawCorridorRectangleBounds();
             float h = b.getHeight();
-            if(h>max)
+            if (h > max)
                 max = h;
         }
         allLineHeight = max;
     }
-    
-    protected void autoColSize(){
+
+    protected void autoColSize() {
         float max = 0;
-        for(IBoundedItem i: getModel().getChildren()){
-            RectangleBounds b = i.getRawCorridorRectangleBounds(); 
+        for (IBoundedItem i : getModel().getChildren()) {
+            RectangleBounds b = i.getRawCorridorRectangleBounds();
             float w = b.getWidth();
-            if(w>max)
+            if (w > max)
                 max = w;
         }
         allColumnWidth = max;
     }
-    
+
     /************************/
-    
-    public boolean isReady(){
-        if(nLine==-1)
+
+    public boolean isReady() {
+        if (nLine == -1)
             return false;
-        if(nColumn==-1)
+        if (nColumn == -1)
             return false;
-        
+
         return true;
     }
-    
-    protected void init(){
+
+    protected void init() {
         nLine = -1;
         nColumn = -1;
         lineHeight = null;
@@ -204,18 +207,22 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
     }
 
     /*************/
-    
+
     protected int nLine;
+
     protected int nColumn;
-    
+
     protected float[] lineHeight;
+
     protected float[] columnWidth;
+
     protected float allLineHeight;
+
     protected float allColumnWidth;
-    
+
     protected IHierarchicalModel model;
-    
-    protected BiMap<IBoundedItem,CellIndex> mapIndex;
-    
+
+    protected BiMap<IBoundedItem, CellIndex> mapIndex;
+
     private static final long serialVersionUID = 2988838649895956485L;
 }

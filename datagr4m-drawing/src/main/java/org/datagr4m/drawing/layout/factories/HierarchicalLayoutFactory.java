@@ -23,6 +23,12 @@ import org.datagr4m.drawing.model.pathfinder.path.PathFactory;
 
 public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
     protected IPathFactory pathFactory = new PathFactory();
+    protected Map<String,String> modelNameToLayoutName;
+    
+    public static String LAYOUT_STRATUMS_NAME = "stratums";
+    public static String LAYOUT_MATRIX_NAME = "matrix";
+    public static String LAYOUT_COLUMN_NAME = "column";
+    public static String LAYOUT_ROW_NAME = "row";
     
     public HierarchicalLayoutFactory(){}
 
@@ -46,6 +52,17 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
         return layout;
     }
     
+    @Override 
+    public IHierarchicalLayout getHierarchicalNodeLayout(IHierarchicalModel model){
+        IHierarchicalLayout layout = null;
+        if(hasLayoutForModel(model.getLabel()))
+            layout = getNodeLayoutByModelName(model);
+        else
+            layout = getNodeLayoutByModelType(model);
+        attachChildren(layout, model);
+        return layout;
+    }
+    
     /** recursively handle children models.*/
     protected void attachChildren(IHierarchicalLayout layout, IHierarchicalModel model){
         for(IBoundedItem child: model.getChildren()){
@@ -56,17 +73,6 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
                     layout.addChild(sublayout);
             }
         }
-    }
-    
-    @Override 
-    public IHierarchicalLayout getHierarchicalNodeLayout(IHierarchicalModel model){
-        IHierarchicalLayout layout = null;
-        if(hasLayoutForModel(model.getLabel()))
-            layout = getNodeLayoutByModelName(model);
-        else
-            layout = getNodeLayoutByModelType(model);
-        attachChildren(layout, model);
-        return layout;
     }
     
     @Override
@@ -148,14 +154,4 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
     public Map<String,String> getModelLayoutMapping(){
         return modelNameToLayoutName;
     }
-
-        
-    /**************************/
-
-    protected Map<String,String> modelNameToLayoutName;
-    
-    public static String LAYOUT_STRATUMS_NAME = "stratums";
-    public static String LAYOUT_MATRIX_NAME = "matrix";
-    public static String LAYOUT_COLUMN_NAME = "column";
-    public static String LAYOUT_ROW_NAME = "row";
 }

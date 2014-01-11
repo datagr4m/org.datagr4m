@@ -8,6 +8,7 @@ import org.datagr4m.drawing.layout.algorithms.forceAtlas.forces.standalone.Stand
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.items.IBoundedItem;
+import org.datagr4m.drawing.model.items.ItemShape;
 import org.datagr4m.drawing.model.items.hierarchical.explorer.ICollapsable;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.zones.ZoningModel;
@@ -220,6 +221,7 @@ public interface IHierarchicalModel extends IBoundedItem, ICollapsable{
     @Override
 	public RectangleBounds getRawRectangleBounds();
     
+    public void setShape(ItemShape shape, boolean recursive);
     
     public void compact(boolean callParents);
     public void compact();

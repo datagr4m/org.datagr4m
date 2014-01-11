@@ -15,9 +15,9 @@ import org.datagr4m.trials.drawing.IDemo;
 import org.datagr4m.viewer.View;
 import org.datagr4m.viewer.renderer.AbstractRenderer;
 
-public class DemoGroupBoundsAdjust extends AbstractDemo{
+public class DemoRectangularGroupBoundsAdjust extends AbstractDemo{
     public static void main(String[] args){
-    	IDemo demo = new DemoGroupBoundsAdjust();
+    	IDemo demo = new DemoRectangularGroupBoundsAdjust();
     	demo.show();        
     }
 

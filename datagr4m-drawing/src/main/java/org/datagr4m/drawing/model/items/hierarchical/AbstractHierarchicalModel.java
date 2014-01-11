@@ -110,6 +110,23 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
         //return DefaultBoundedItem.isDisplayed(this, display);
     }
 
+    @Override
+    public void setShape(ItemShape shape){
+        this.shape = shape;
+    }
+
+    @Override
+    public void setShape(ItemShape shape, boolean recursive){
+        this.shape = shape;
+        
+        for(IBoundedItem i: children){
+            if(i instanceof IHierarchicalModel){
+                ((IHierarchicalModel)i).setShape(shape, recursive);
+            }
+        }
+    }
+
+    
     /************* HIERARCHY *************/
     
     @Override

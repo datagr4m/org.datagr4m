@@ -3,6 +3,7 @@ package org.datagr4m.trials.drawing.demo04.hierarchies;
 import java.util.Set;
 
 import org.datagr4m.datastructures.pairs.CommutativePair;
+import org.datagr4m.drawing.layout.factories.AlternateRowColumnLayoutFactory;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
@@ -18,15 +19,21 @@ import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeComputationP
 import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeRenderingPolicy;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.ViewPolicy;
 
-public class DemoRunHierarchicalLayout {
+public class DemoRunLargeHierarchicalRowColumnLayout {
     public static void main(String[] args) throws Exception {
-        Topology<String, String> topology = TopologyGenerator.buildGraphNested(2, 3, 100);
-        //graph.setShape(ItemShape.RECTANGLE);
+        Topology<String, String> topology = TopologyGenerator.buildGraphNested(3, 7, 100);
 
+        //-------------
         Workspace.defaultRunnerFactory = new LayoutRunnerFactory();
+        Workspace.defaultLayoutFactory = new AlternateRowColumnLayoutFactory();
         Workspace w = new Workspace(topology);
-        show(w, new MaxStepCriteria(10000));
+        w.getModel().setShape(ItemShape.RECTANGLE, true);
+        
+        //-------------
+        show(w, new MaxStepCriteria(1000));
         //show(w, new MeanMoveCriteria(1000));
+        
+        //-------------
         Set<CommutativePair<IBoundedItem>> overlapping = QualityScores.countOverlappingItems(w.getModel());
         if (overlapping.size() > 0)
             System.out.println(overlapping);
