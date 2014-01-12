@@ -37,11 +37,11 @@ public class CommonParentExtractor {
         }
     }
     
-    public Set<IHierarchicalModel> getParents(){
+    public Set<IHierarchicalNodeModel> getParents(){
         return parentGroups.keySet();
     }
     
-    public List<IBoundedItem> getChildren(IHierarchicalModel item){
+    public List<IBoundedItem> getChildren(IHierarchicalNodeModel item){
         return parentGroups.get(item);
     }
     
@@ -49,8 +49,8 @@ public class CommonParentExtractor {
         return items;
     }
     
-    public IHierarchicalModel getParent(IBoundedItem item){
-        for(IHierarchicalModel parent: getParents()){
+    public IHierarchicalNodeModel getParent(IBoundedItem item){
+        for(IHierarchicalNodeModel parent: getParents()){
             if(getChildren(parent).contains(item))
                 return parent;
         }
@@ -58,7 +58,7 @@ public class CommonParentExtractor {
     }
     
     public boolean contains(IBoundedItem item){
-        for(IHierarchicalModel parent: getParents()){
+        for(IHierarchicalNodeModel parent: getParents()){
             if(getChildren(parent).contains(item))
                 return true;
         }
@@ -72,8 +72,8 @@ public class CommonParentExtractor {
     public boolean canCollapse(IBoundedItem item){
         if(item==null)
             return false;
-        else if(item instanceof IHierarchicalModel)
-            return ((IHierarchicalModel)item).canCollapse();
+        else if(item instanceof IHierarchicalNodeModel)
+            return ((IHierarchicalNodeModel)item).canCollapse();
         else
             return false;
     }
@@ -81,5 +81,5 @@ public class CommonParentExtractor {
     /********/
     
     protected List<IBoundedItem> items;
-    protected ArrayListMultimap<IHierarchicalModel,IBoundedItem> parentGroups = ArrayListMultimap.create();
+    protected ArrayListMultimap<IHierarchicalNodeModel,IBoundedItem> parentGroups = ArrayListMultimap.create();
 }

@@ -1,6 +1,6 @@
 package org.datagr4m.drawing.navigation.plugin.louposcope;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.navigation.plugin.AbstractNavigationPlugin;
@@ -25,7 +25,7 @@ import org.datagr4m.viewer.mouse.ILocalizedMouse;
  *
  */
 public class LouposcopePlugin extends AbstractNavigationPlugin{
-    public LouposcopePlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model) {
+    public LouposcopePlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model) {
         super(controller, display, layered, animator, mouse, model);
     }
 

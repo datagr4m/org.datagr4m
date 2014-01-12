@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.datagr4m.datastructures.pairs.CommutativePair;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 
 public class QualityScores {
@@ -35,13 +35,13 @@ public class QualityScores {
     /**
      * Compute overlapping items in a hierarchical structure
      */
-    public static Set<CommutativePair<IBoundedItem>> countOverlappingItems(IHierarchicalModel model) {
+    public static Set<CommutativePair<IBoundedItem>> countOverlappingItems(IHierarchicalNodeModel model) {
         Set<CommutativePair<IBoundedItem>> overlapping = new HashSet<CommutativePair<IBoundedItem>>();
         List<IBoundedItem> candidates = model.getChildren();
         overlapping.addAll(QualityScores.countOverlappingItems(candidates));
         for(IBoundedItem candidate: candidates){
-            if(candidate instanceof IHierarchicalModel){
-                overlapping.addAll(countOverlappingItems((IHierarchicalModel)candidate));
+            if(candidate instanceof IHierarchicalNodeModel){
+                overlapping.addAll(countOverlappingItems((IHierarchicalNodeModel)candidate));
             }
         }
         return overlapping;

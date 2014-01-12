@@ -1,18 +1,19 @@
 package org.datagr4m.drawing.layout.runner;
 
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.io.xml.generated.layout.Layout;
+import org.datagr4m.monitors.ITimeMonitorable;
 import org.datagr4m.viewer.IView;
 
 
-public interface ILayoutRunner {
-	public void configure(IHierarchicalLayout root);
-	public void configure(IHierarchicalLayout root, IView view);
-	public void configure(IHierarchicalLayout root, IView view,	LayoutRunnerConfiguration settings);
+public interface ILayoutRunner extends ITimeMonitorable{
+	public void configure(IHierarchicalNodeLayout root);
+	public void configure(IHierarchicalNodeLayout root, IView view);
+	public void configure(IHierarchicalNodeLayout root, IView view,	LayoutRunnerConfiguration settings);
 	
-	public IHierarchicalLayout getLayout();
+	public IHierarchicalNodeLayout getLayout();
 	
 	public IView getView();
 	
@@ -27,14 +28,14 @@ public interface ILayoutRunner {
     public boolean isDoRunEdge();    
     
     public LayoutRunnerConfiguration getConfiguration();
-    public LayoutLevelSettings getLayoutSettings(IHierarchicalLayout layout);
+    public LayoutLevelSettings getLayoutSettings(IHierarchicalNodeLayout layout);
     
     
     public void addListener(ILayoutRunnerListener listener);
     public void removeListener(ILayoutRunnerListener listener);
     
-    public void visit(IHierarchicalLayout root);
-    public void autoFit(IHierarchicalModel model);
+    public void visit(IHierarchicalNodeLayout root);
+    public void autoFit(IHierarchicalNodeModel model);
         
     public void repulsionMultiplyAllBy(double i);
     public void repulsionSetAllTo(double i);

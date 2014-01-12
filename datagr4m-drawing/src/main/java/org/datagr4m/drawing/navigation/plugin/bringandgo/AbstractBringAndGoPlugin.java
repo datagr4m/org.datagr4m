@@ -15,7 +15,7 @@ import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.AvatarManager;
 import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.StaticFlowerModel;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
@@ -43,7 +43,7 @@ import edu.uci.ics.jung.graph.Graph;
 public abstract class AbstractBringAndGoPlugin<V,E> extends AbstractNavigationPlugin<V,E> implements IBringAndGoPlugin{
     public static int DURATION = 1000;
 
-    public AbstractBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model) {
+    public AbstractBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model) {
         super(controller, display, layered, animator, mouse, model);
         
         

@@ -1,6 +1,6 @@
 package org.datagr4m.drawing.navigation.plugin;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.topology.Topology;
 
@@ -14,7 +14,7 @@ import edu.uci.ics.jung.graph.Graph;
  * @param <E> topology edge type
  */
 public class PluginDataModelHolder<V,E> {
-	public PluginDataModelHolder(IHierarchicalModel model){
+	public PluginDataModelHolder(IHierarchicalNodeModel model){
 		if (model instanceof HierarchicalGraphModel) {
             HierarchicalGraphModel graphModel = (HierarchicalGraphModel) model;
             if(graphModel.getObject() instanceof Topology<?,?>){

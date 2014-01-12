@@ -10,12 +10,12 @@ import java.util.List;
 import javax.swing.JComponent;
 
 import org.apache.log4j.Logger;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.runner.LayoutUtils;
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.navigation.context.ContextType;
 import org.datagr4m.drawing.navigation.context.NavigationContext;
@@ -91,7 +91,7 @@ public class MouseEdgeViewController extends MouseItemViewController {
         if (grabObject != null) {
             if(navigation!=null && keyMemory!=null){
                 if (keyMemory.isHold('b')) {
-                    if(!(grabObject instanceof IHierarchicalModel)){
+                    if(!(grabObject instanceof IHierarchicalNodeModel)){
                         if(!navigation.getContext().is(ContextType.BRING))
                             doBring(grabObject);
                         else
@@ -138,8 +138,8 @@ public class MouseEdgeViewController extends MouseItemViewController {
         if (mouseHits != null && mouseHits.size() > 0) {
             
             for(IClickableItem item: mouseHits){
-                if(item instanceof IHierarchicalModel){
-                    IHierarchicalModel m = (IHierarchicalModel)item;
+                if(item instanceof IHierarchicalNodeModel){
+                    IHierarchicalNodeModel m = (IHierarchicalNodeModel)item;
                     if(m.hasPopupMenuController()) // si cette fonctionnalit� est support�e
                         m.showPopupMenuController(display, (int)screen.getX(), (int)screen.getY());
                 }
@@ -350,19 +350,19 @@ public class MouseEdgeViewController extends MouseItemViewController {
             return null;
     }
     
-    IHierarchicalLayout layoutToUpdate;
+    IHierarchicalNodeLayout layoutToUpdate;
 
     
     /**********************************/
 
-    protected IHierarchicalLayout layout;
+    protected IHierarchicalNodeLayout layout;
     protected TubeRenderer tubeRenderer;
 
-    public IHierarchicalLayout getLayout() {
+    public IHierarchicalNodeLayout getLayout() {
         return layout;
     }
 
-    public void setLayout(IHierarchicalLayout tgLayout) {
+    public void setLayout(IHierarchicalNodeLayout tgLayout) {
         this.layout = tgLayout;
     }
 
@@ -376,7 +376,7 @@ public class MouseEdgeViewController extends MouseItemViewController {
 
     protected void applyDynamicBarycenterShift(IModelChange change) {
         // apply parent change and brothers change
-        final IHierarchicalModel parent = change.who().getParent();
+        final IHierarchicalNodeModel parent = change.who().getParent();
         if (parent == null) {
             change.apply();
         } else {
@@ -415,7 +415,7 @@ public class MouseEdgeViewController extends MouseItemViewController {
 
     @Override
 	protected void updateParentPosition(IBoundedItem movedObject) {
-        IHierarchicalModel parent = movedObject.getParent();
+        IHierarchicalNodeModel parent = movedObject.getParent();
 
         if (parent != null) {
 

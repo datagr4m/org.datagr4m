@@ -1,6 +1,6 @@
 package org.datagr4m.drawing.navigation.plugin;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.renderer.policy.ShadeGrayRendereringPolicy;
@@ -17,11 +17,11 @@ public class AbstractNavigationPlugin<V,E> implements INavigationPlugin<V,E> {
     protected PluginLayeredRenderer layered;
     protected IAnimationStack animator;
     protected ILocalizedMouse mouse;
-    protected IHierarchicalModel model;
+    protected IHierarchicalNodeModel model;
     
     protected PluginDataModelHolder<V, E> data;
     
-    public AbstractNavigationPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model) {
+    public AbstractNavigationPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model) {
         this.navigationController = controller;
         this.display = display;
         this.layered = layered;
@@ -61,7 +61,7 @@ public class AbstractNavigationPlugin<V,E> implements INavigationPlugin<V,E> {
     }
 
     @Override
-	public IHierarchicalModel getModel() {
+	public IHierarchicalNodeModel getModel() {
         return model;
     }
     

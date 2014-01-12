@@ -11,7 +11,7 @@ import java.awt.geom.Rectangle2D;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.renderer.items.IItemRenderer;
 import org.datagr4m.drawing.renderer.items.IItemRendererSettings;
 import org.datagr4m.drawing.renderer.pathfinder.view.slots.SlotableItemRenderer;
@@ -24,7 +24,7 @@ import org.jzy3d.maths.Coord2d;
 public class RectangleItemIconRenderer extends AbstractShapedItemIconRenderer implements IItemRenderer{
     protected Rectangle2D shape;
 
-    public RectangleItemIconRenderer(IHierarchicalModel root, IDisplay display){
+    public RectangleItemIconRenderer(IHierarchicalNodeModel root, IDisplay display){
         this.root = root;
         this.display = display;
         this.slotableItemRenderer = new SlotableItemRenderer();
@@ -33,7 +33,7 @@ public class RectangleItemIconRenderer extends AbstractShapedItemIconRenderer im
     }
 
     protected RectangleBounds selectRectangleBounds(IBoundedItem item) {
-        if(item instanceof IHierarchicalModel)
+        if(item instanceof IHierarchicalNodeModel)
             return item.getRawExternalRectangleBounds();
         else
             return item.getRawRectangleBounds();

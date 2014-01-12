@@ -1,7 +1,8 @@
 package org.datagr4m.drawing.layout.runner.stop;
 
+import org.apache.log4j.Logger;
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.BoundedForceAtlasLayout;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 
 
 /**
@@ -28,7 +29,7 @@ public class MeanMoveCriteria implements IBreakCriteria{
     }
 
     @Override
-    public boolean shouldBreak(IHierarchicalLayout layout) {
+    public boolean shouldBreak(IHierarchicalNodeLayout layout) {
         if(currentInactiveSteps<nInactiveSteps){
             currentInactiveSteps++;
             return false;
@@ -43,7 +44,7 @@ public class MeanMoveCriteria implements IBreakCriteria{
                 else{
                     double lastMeanMove = f.getMeanMoveAnalysis().getLastMeanPositionChange();
                     if(console)
-                        System.out.println("lastMeanMove for " + f.getModel().getLabel() + " : " + lastMeanMove);
+                        Logger.getLogger(MeanMoveCriteria.class).info("lastMeanMove for " + f.getModel().getLabel() + " : " + lastMeanMove);
                     if(lastMeanMove!=-1 && lastMeanMove<meanMoveThreshold)
                         return true;
                     else
@@ -60,15 +61,15 @@ public class MeanMoveCriteria implements IBreakCriteria{
      * @param layout
      * @return
      */
-    protected BoundedForceAtlasLayout findHighestRelevantLayout(IHierarchicalLayout layout){
-        IHierarchicalLayout first = findHighestRelevantLayoutInHierarchy(layout);
+    protected BoundedForceAtlasLayout findHighestRelevantLayout(IHierarchicalNodeLayout layout){
+        IHierarchicalNodeLayout first = findHighestRelevantLayoutInHierarchy(layout);
         return first.getDelegate();
     }
     
-    protected IHierarchicalLayout findHighestRelevantLayoutInHierarchy(IHierarchicalLayout layout){
+    protected IHierarchicalNodeLayout findHighestRelevantLayoutInHierarchy(IHierarchicalNodeLayout layout){
         if(layout./*getModel().*/getChildren().size()>0){
             try{
-                IHierarchicalLayout sublayout = layout.getChildren().get(0);
+                IHierarchicalNodeLayout sublayout = layout.getChildren().get(0);
                 return findHighestRelevantLayoutInHierarchy(sublayout);
             }
             catch(Exception e){

@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.slots.ISlotableItem;
 import org.datagr4m.drawing.model.slots.SlotGroup;
 import org.datagr4m.drawing.renderer.items.hierarchical.IHierarchicalRenderer;
@@ -81,8 +81,8 @@ public class HierarchicalHitPolicy extends DefaultHitProcessor{
         Collection<IBoundedItem> items = renderer.getModel().getChildren(); 
         for(IBoundedItem item: items){
             // groupe: traite le cas du collaps�
-            if(item instanceof IHierarchicalModel){
-                IHierarchicalModel m = (IHierarchicalModel)item;
+            if(item instanceof IHierarchicalNodeModel){
+                IHierarchicalNodeModel m = (IHierarchicalNodeModel)item;
                 if(m.isCollapsed())
                     hitItem(m.getCollapsedModel(), x, y, hitStack);
                 hitItem(m, x, y, hitStack);
@@ -108,7 +108,7 @@ public class HierarchicalHitPolicy extends DefaultHitProcessor{
         Collection<IBoundedItem> items = renderer.getModel().getChildren(); 
 
         for(ISlotableItem o: items){
-            if(o instanceof IHierarchicalModel)
+            if(o instanceof IHierarchicalNodeModel)
                 continue;
             
             synchronized(o.getSlotGroups()){

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 import net.miginfocom.swing.MigLayout;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.viewer.IView;
 import org.datagr4m.viewer.ImagePanel;
 import org.jzy3d.io.FileImage;
@@ -25,13 +25,13 @@ public class ViewScaleUI extends JPanel{
     public static int DEFAULT_HEIGHT = 30;
     protected JButton button;
     protected IView view;
-    protected IHierarchicalModel model;
+    protected IHierarchicalNodeModel model;
     
     public ViewScaleUI() {
         this(null, null);
     }
     
-    public ViewScaleUI(IView view, IHierarchicalModel model) {
+    public ViewScaleUI(IView view, IHierarchicalNodeModel model) {
         this.view = view;
         this.model = model;
         BufferedImage img = null;
@@ -46,7 +46,7 @@ public class ViewScaleUI extends JPanel{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                IHierarchicalModel model = ViewScaleUI.this.model;
+                IHierarchicalNodeModel model = ViewScaleUI.this.model;
                 IView view = ViewScaleUI.this.view;
                 
                 if(model!=null && view!=null){
@@ -97,10 +97,10 @@ public class ViewScaleUI extends JPanel{
     public void setView(IView view) {
         this.view = view;
     }
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
-    public void setModel(IHierarchicalModel model) {
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = model;
     }
 }

@@ -5,9 +5,11 @@ import java.awt.geom.CubicCurve2D;
 
 import org.datagr4m.drawing.layout.hierarchical.AbstractHierarchicalLayout;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.HierarchicalPairModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.IHierarchicalPairModel;
+import org.datagr4m.monitors.ITimeMonitor;
+import org.datagr4m.monitors.TimeMonitor;
 import org.jzy3d.maths.Coord2d;
 
 
@@ -23,8 +25,24 @@ public class HierarchicalPairLayout extends AbstractHierarchicalLayout implement
     
     protected boolean showSpline = false;
     
+    private ITimeMonitor timeMonitor;
+
+    public HierarchicalPairLayout(){
+        this(null);
+    }
+    
     public HierarchicalPairLayout(IHierarchicalPairModel model){
         setModel(model);
+        initMonitor();
+    }
+    
+    private void initMonitor() {
+        timeMonitor = new TimeMonitor(this);
+    }
+    
+    @Override
+    public ITimeMonitor getTimeMonitor() {
+        return timeMonitor;
     }
     
     @Override
@@ -157,7 +175,7 @@ public class HierarchicalPairLayout extends AbstractHierarchicalLayout implement
      * with a cast exception.
      */
     @Override
-    public void setModel(IHierarchicalModel model) {
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = (HierarchicalPairModel)model;
     }
 

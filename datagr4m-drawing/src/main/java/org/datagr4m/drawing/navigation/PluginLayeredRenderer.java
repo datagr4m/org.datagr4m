@@ -1,7 +1,7 @@
 package org.datagr4m.drawing.navigation;
 
 import org.apache.log4j.Logger;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.IBringAndGoLayer;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.simple.SimpleBringAndGoLayer;
@@ -21,12 +21,12 @@ public class PluginLayeredRenderer extends LayeredRenderer{
     //TODO: remove static factory from here > dupplicate with workspace
     public static IHierarchicalRendererFactory RENDERER_FACTORY = new HierarchicalRendererFactory();
 
-    public PluginLayeredRenderer(IDisplay display, IHierarchicalModel model, IHierarchicalEdgeModel tubeModel, AnnotationModel amodel) {
+    public PluginLayeredRenderer(IDisplay display, IHierarchicalNodeModel model, IHierarchicalEdgeModel tubeModel, AnnotationModel amodel) {
         super(null);
         initLayers(display, model, tubeModel, amodel);
     }
 
-    public void initLayers(IDisplay display, IHierarchicalModel model, IHierarchicalEdgeModel tubeModel, AnnotationModel amodel) {
+    public void initLayers(IDisplay display, IHierarchicalNodeModel model, IHierarchicalEdgeModel tubeModel, AnnotationModel amodel) {
         initLayerMain(display, model, tubeModel);
         // plugins
         initLayerLouposcope(display, model);
@@ -34,7 +34,7 @@ public class PluginLayeredRenderer extends LayeredRenderer{
         initLayerTooltip(amodel);
     }
 
-    public void initLayerMain(IDisplay display, IHierarchicalModel model, IHierarchicalEdgeModel tubeModel) {
+    public void initLayerMain(IDisplay display, IHierarchicalNodeModel model, IHierarchicalEdgeModel tubeModel) {
         // main layer
         tubeRenderer = new TubeRenderer(display, tubeModel);
         IHierarchicalRendererFactory rendererFactory = RENDERER_FACTORY;
@@ -49,12 +49,12 @@ public class PluginLayeredRenderer extends LayeredRenderer{
         addLayer(tooltipLayer);
     }
 
-    public void initLayerBringAndGo(IDisplay display, IHierarchicalModel model) {
+    public void initLayerBringAndGo(IDisplay display, IHierarchicalNodeModel model) {
         bringAndGoLayer = new SimpleBringAndGoLayer(model, display);
         addLayer(bringAndGoLayer);
     }
 
-    public void initLayerLouposcope(IDisplay display, IHierarchicalModel model) {
+    public void initLayerLouposcope(IDisplay display, IHierarchicalNodeModel model) {
         //louposcopeLayer = new LouposcopeNetworksLayer(model, display);
         // = new LouposcopeInterfaceLayer(model, display);
         //addLayer(louposcopeLayer);

@@ -3,7 +3,7 @@ package org.datagr4m.drawing.model.items;
 import java.io.Serializable;
 
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.jzy3d.maths.Coord2d;
 
 
@@ -81,10 +81,10 @@ public class GeometryCache  implements Serializable{
     public void setAbsoluteBounds(RectangleBounds absoluteBounds) {
         this.absoluteBounds = absoluteBounds;
     }
-    public IHierarchicalModel getRoot() {
+    public IHierarchicalNodeModel getRoot() {
         return cachedRoot;
     }
-    public void setRoot(IHierarchicalModel cachedRoot) {
+    public void setRoot(IHierarchicalNodeModel cachedRoot) {
         this.cachedRoot = cachedRoot;
     }
     public int getDepth() {
@@ -109,7 +109,7 @@ public class GeometryCache  implements Serializable{
     protected RectangleBounds corridorBounds;
     protected RectangleBounds absoluteBounds;
     
-    protected IHierarchicalModel cachedRoot;
+    protected IHierarchicalNodeModel cachedRoot;
     protected int cachedDepth = UNDEFINED_DEPTH;
 
     public static int UNDEFINED_DEPTH = -1;

@@ -12,7 +12,7 @@ import org.datagr4m.drawing.layout.pathfinder.view.debugger.PathFinderDebugger;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.BoundsType;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.ModelGeometryProcessor;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdge;
@@ -130,8 +130,8 @@ public class StratumEdgePostProcess implements IEdgePostProcessor {
     	IBoundedItem i1 = edge.getSourceItem();
     	IBoundedItem i2 = edge.getTargetItem();
     	
-    	IHierarchicalModel m1 = i1.getParent();
-    	IHierarchicalModel m2 = i2.getParent();
+    	IHierarchicalNodeModel m1 = i1.getParent();
+    	IHierarchicalNodeModel m2 = i2.getParent();
     	
     	if(m1==m2){
     		if(m1.getDepth()<maxDepth){

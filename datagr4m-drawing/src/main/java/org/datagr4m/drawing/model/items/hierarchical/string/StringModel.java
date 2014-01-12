@@ -11,7 +11,7 @@ import org.datagr4m.drawing.layout.algorithms.forceAtlas.forces.FARepulsion;
 import org.datagr4m.drawing.layout.algorithms.forces.IForce;
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.maths.geometry.Pt;
 import org.jzy3d.maths.Coord2d;
@@ -238,11 +238,11 @@ public class StringModel extends HierarchicalGraphModel{
         obstacles.add(item);
     }
     
-    public void addModelChildrenAsObstacles(IHierarchicalModel model){
+    public void addModelChildrenAsObstacles(IHierarchicalNodeModel model){
         addModelChildrenAsObstacles(model, true);
     }
     
-    public void addModelChildrenAsObstacles(IHierarchicalModel model, boolean forbidDuplicates){
+    public void addModelChildrenAsObstacles(IHierarchicalNodeModel model, boolean forbidDuplicates){
         for(IBoundedItem i: model.getChildren()){
             if(!forbidDuplicates)
                 addObstacle(i.getLabel(), i.getAbsolutePosition(), i.getRadialBounds(), i);

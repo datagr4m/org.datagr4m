@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.EdgeSection;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.AbstractTubeVisitor;
@@ -23,7 +23,7 @@ public class TubeSectionsVisitor extends AbstractTubeVisitor{
         tmpSections = new ArrayList<EdgeSection>();
     }
     
-    public List<EdgeSection> getSectionsIn(List<Tube> edges, IHierarchicalModel group){
+    public List<EdgeSection> getSectionsIn(List<Tube> edges, IHierarchicalNodeModel group){
         tmpSections.clear();
         
         //select all

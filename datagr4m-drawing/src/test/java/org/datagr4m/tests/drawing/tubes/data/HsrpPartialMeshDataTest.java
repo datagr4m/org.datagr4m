@@ -1,9 +1,9 @@
 package org.datagr4m.tests.drawing.tubes.data;
 
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.HierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
@@ -61,7 +61,7 @@ public class HsrpPartialMeshDataTest extends AbstractTubeDataTest implements ITu
     }
     
     @Override
-    public IHierarchicalModel getItemModel() {
+    public IHierarchicalNodeModel getItemModel() {
         return items;
     }
 
@@ -71,9 +71,9 @@ public class HsrpPartialMeshDataTest extends AbstractTubeDataTest implements ITu
     }
 
     @Override
-    public IHierarchicalLayout makeTestLayout(){
+    public IHierarchicalNodeLayout makeTestLayout(){
         HierarchicalLayoutFactory layoutFactory = new HierarchicalLayoutFactory();
-        IHierarchicalLayout layout = layoutFactory.getLayout(items, edges);
+        IHierarchicalNodeLayout layout = layoutFactory.getLayout(items, edges);
         layout.initAlgo();
         
         items.changePosition(0,0);

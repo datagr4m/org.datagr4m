@@ -10,7 +10,7 @@ import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
 import org.datagr4m.drawing.layout.runner.stop.MeanMoveOrMaxStepCriteria;
 import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.ForceFlowerModel;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.navigation.INavigationController;
@@ -36,7 +36,7 @@ public class ForceBringAndGoPlugin<V,E> extends SimpleBringAndGoPlugin<V,E>{
     public static double MOVE_THRESHOLD = 10;
     public static int MAX_STEPS = 10000;
     
-    public ForceBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model) {
+    public ForceBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model) {
         super(controller, display, layered, animator, mouse, model);
     }
 

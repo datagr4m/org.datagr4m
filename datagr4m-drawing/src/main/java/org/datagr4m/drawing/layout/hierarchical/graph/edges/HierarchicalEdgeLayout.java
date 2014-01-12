@@ -9,10 +9,13 @@ import org.datagr4m.drawing.layout.hierarchical.graph.edges.bundling.DefaultEdge
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.bundling.IEdgeBundling;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.post.IEdgePostProcessor;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.post.StratumEdgePostProcess;
+import org.datagr4m.drawing.layout.hierarchical.matrix.HierarchicalRowLayout;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.pathfinder.path.IPathFactory;
 import org.datagr4m.drawing.model.pathfinder.path.PathFactory;
 import org.datagr4m.drawing.model.slots.ISlotableItem;
+import org.datagr4m.monitors.ITimeMonitor;
+import org.datagr4m.monitors.TimeMonitor;
 
 
 /**
@@ -35,6 +38,21 @@ public class HierarchicalEdgeLayout implements Serializable, IHierarchicalEdgeLa
     protected IEdgePostProcessor edgePostProcess = new StratumEdgePostProcess();
     protected List<ILayoutListener> listeners = new ArrayList<ILayoutListener>();
     
+    private ITimeMonitor timeMonitor;
+    
+    public HierarchicalEdgeLayout(){
+        initMonitor();
+    }
+    
+    private void initMonitor() {
+        timeMonitor = new TimeMonitor(this);
+    }
+    
+    @Override
+    public ITimeMonitor getTimeMonitor() {
+        return timeMonitor;
+    }
+    
     /** Build the complete edge model:
      * <ul>
      * <li> Item slot layout
@@ -44,9 +62,13 @@ public class HierarchicalEdgeLayout implements Serializable, IHierarchicalEdgeLa
      */
     @Override
     public void build(IHierarchicalEdgeModel model){
+        timeMonitor.startMonitor();
+        
         doBuildItemSlotLayout(model);
         doBuildEdgeAndTubeLayout(model);
         doPostProcessTubeAndEdgeLayout(model);
+        
+        timeMonitor.stopMonitor();
     }
     
     protected void doBuildItemSlotLayout(IHierarchicalEdgeModel model) {

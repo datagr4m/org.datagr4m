@@ -12,8 +12,9 @@ import java.util.concurrent.Executor;
 
 import org.apache.log4j.Logger;
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.BoundedForceAtlasLayout;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
+import org.datagr4m.drawing.layout.hierarchical.matrix.HierarchicalMatrixLayout;
 import org.datagr4m.drawing.layout.hierarchical.visitor.AbstractLayoutVisitor;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.ILayoutRunnerListener;
@@ -23,7 +24,7 @@ import org.datagr4m.drawing.layout.runner.LayoutRunnerListenerAdapter;
 import org.datagr4m.drawing.layout.runner.sequence.ILayoutRunnerSequence;
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.viewer.mouse.items.MouseItemViewController;
 import org.datagr4m.io.xml.generated.layout.Attract;
 import org.datagr4m.io.xml.generated.layout.Forces;
@@ -32,12 +33,14 @@ import org.datagr4m.io.xml.generated.layout.Groups;
 import org.datagr4m.io.xml.generated.layout.Layout;
 import org.datagr4m.io.xml.generated.layout.Repulse;
 import org.datagr4m.io.xml.layout.LMLEditor;
+import org.datagr4m.monitors.ITimeMonitor;
+import org.datagr4m.monitors.TimeMonitor;
 import org.datagr4m.viewer.IView;
 import org.openide.util.lookup.ServiceProvider;
 
 /**
- * Layout runner is able to compute {@link IHierarchicalLayout}s of
- * {@link IHierarchicalModel}. It can be finely tuned to enable or disable part
+ * Layout runner is able to compute {@link IHierarchicalNodeLayout}s of
+ * {@link IHierarchicalNodeModel}. It can be finely tuned to enable or disable part
  * of the general layout, by using a {@link LayoutRunnerConfiguration}. For
  * example, one can use the configuration to indicate:
  * <ul>
@@ -79,34 +82,46 @@ import org.openide.util.lookup.ServiceProvider;
 public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner {
 	// http://netbeans.dzone.com/news/mini-tutorial-netbeans-lookup
 	
+    private ITimeMonitor timeMonitor;
+    
     public LayoutRunner() {
         this(null);
     }
 
-    public LayoutRunner(IHierarchicalLayout root) {
+    public LayoutRunner(IHierarchicalNodeLayout root) {
         this(root, null);
     }
 
-    public LayoutRunner(IHierarchicalLayout root, IView view) {
+    public LayoutRunner(IHierarchicalNodeLayout root, IView view) {
         this(root, view, LayoutRunnerConfiguration.getDefault());
     }
 
-    public LayoutRunner(IHierarchicalLayout root, IView view, LayoutRunnerConfiguration settings) {
+    public LayoutRunner(IHierarchicalNodeLayout root, IView view, LayoutRunnerConfiguration settings) {
         configure(root, view, settings);
+        initMonitor();
+    }
+    
+    private void initMonitor() {
+        timeMonitor = new TimeMonitor(this);
+    }
+    
+    @Override
+    public ITimeMonitor getTimeMonitor() {
+        return timeMonitor;
     }
 
     @Override
-	public void configure(IHierarchicalLayout root) {
+	public void configure(IHierarchicalNodeLayout root) {
     	configure(root, null);
 	}
 	
 	@Override
-	public void configure(IHierarchicalLayout root, IView view) {
+	public void configure(IHierarchicalNodeLayout root, IView view) {
 		configure(root, view, LayoutRunnerConfiguration.getDefault());
 	}
 	
 	@Override
-	public void configure(IHierarchicalLayout root, IView view,
+	public void configure(IHierarchicalNodeLayout root, IView view,
 			LayoutRunnerConfiguration settings) {
 		this.layout = root;
         this.view = view;
@@ -117,7 +132,7 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
     /* MAKE ORDERED LAYOUT COMPUTATION */
 
     @Override
-	public void visit(IHierarchicalLayout root) {
+	public void visit(IHierarchicalNodeLayout root) {
         super.visit(root);
 
         // compute edge
@@ -131,7 +146,7 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
     }
 
     @Override
-    public void preVisit(IHierarchicalLayout layout) {
+    public void preVisit(IHierarchicalNodeLayout layout) {
         if (layout instanceof HierarchicalGraphLayout) {
             runGraphLayout(layout);
         } else {
@@ -139,7 +154,7 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
         }
     }
 
-    private void runGraphLayout(IHierarchicalLayout layout) {
+    private void runGraphLayout(IHierarchicalNodeLayout layout) {
         LayoutLevelSettings levelSettings = getLayoutSettings(layout);
         runGraphLayoutLevelAndFirePositionChanged((HierarchicalGraphLayout) layout, levelSettings);
     }
@@ -151,7 +166,7 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
      * @return
      */
     @Override
-    public LayoutLevelSettings getLayoutSettings(IHierarchicalLayout layout) {
+    public LayoutLevelSettings getLayoutSettings(IHierarchicalNodeLayout layout) {
         LayoutLevelSettings settings = layoutSettings.get(layout);
         if (settings == null) {
             settings = resolveFromXML(layout);
@@ -196,7 +211,7 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
     /**
      * Search the layout ML configuration of a group layout to setup its forces, max loop per visit, and break criteria.
      */
-    protected LayoutLevelSettings resolveFromXML(IHierarchicalLayout layout2) {
+    protected LayoutLevelSettings resolveFromXML(IHierarchicalNodeLayout layout2) {
         int LOOPS = 100;
 
         String label = layout2.getModel().getLabel();
@@ -232,7 +247,7 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
     }
 
     @Override
-    public void postVisit(IHierarchicalLayout layout) {
+    public void postVisit(IHierarchicalNodeLayout layout) {
     }
 
     /** Runs the delegate ForceAtlas layout at the given layout level. */
@@ -262,13 +277,13 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
     }
 
     @Override
-    public void autoFit(IHierarchicalModel model) {
+    public void autoFit(IHierarchicalNodeModel model) {
         if (model != null && view != null) {
-            IHierarchicalModel modelToFit = model;
+            IHierarchicalNodeModel modelToFit = model;
             while (modelToFit.getChildren().size() == 1) {
                 IBoundedItem soleChild = modelToFit.getChildren().get(0);
-                if (soleChild instanceof IHierarchicalModel)
-                    modelToFit = (IHierarchicalModel) soleChild;
+                if (soleChild instanceof IHierarchicalNodeModel)
+                    modelToFit = (IHierarchicalNodeModel) soleChild;
                 else
                     break;
             }
@@ -286,6 +301,8 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
      * prefered to other start method.
      */
     public void start(Executor exec) {
+        timeMonitor.startMonitor();
+
         isRunning = true;
 
         ILayoutRunnerSequence sequence = configuration.getSequence();
@@ -297,6 +314,8 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
 
     @Override
 	public void start() {
+        timeMonitor.startMonitor();
+        
         isRunning = true;
         if (mainThread == null) {
             ILayoutRunnerSequence sequence = configuration.getSequence();
@@ -406,7 +425,7 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
     }
 
     @Override
-	public IHierarchicalLayout getLayout() {
+	public IHierarchicalNodeLayout getLayout() {
         return layout;
     }
 
@@ -449,6 +468,8 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
         for (ILayoutRunnerListener listener : listeners) {
             listener.runnerStopped();
         }
+        
+        timeMonitor.stopMonitor();
     }
     
     protected void fireFailed(String message, Exception e) {
@@ -513,7 +534,7 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
     protected int counter;
     // protected int[] levelCounter;
 
-    protected Map<IHierarchicalLayout, LayoutLevelSettings> layoutSettings = new HashMap<IHierarchicalLayout, LayoutLevelSettings>();
-    protected IHierarchicalLayout layout;
+    protected Map<IHierarchicalNodeLayout, LayoutLevelSettings> layoutSettings = new HashMap<IHierarchicalNodeLayout, LayoutLevelSettings>();
+    protected IHierarchicalNodeLayout layout;
     protected List<ILayoutRunnerListener> listeners = new ArrayList<ILayoutRunnerListener>();
 }

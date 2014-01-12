@@ -1,7 +1,7 @@
 package org.datagr4m.trials.drawing;
 
 import org.datagr4m.drawing.layout.algorithms.forces.ForceDebugger;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.renderer.factories.HierarchicalRendererFactory;
 import org.datagr4m.drawing.renderer.factories.IHierarchicalRendererFactory;
 import org.datagr4m.drawing.renderer.items.hierarchical.IHierarchicalRenderer;
@@ -12,7 +12,7 @@ import org.datagr4m.viewer.IDisplay;
 import org.datagr4m.viewer.View;
 
 public class DisplayLauncher {
-	public static IDisplay display(IHierarchicalModel model) {
+	public static IDisplay display(IHierarchicalNodeModel model) {
 		// display
 		final Display display = new Display(true,
 				new MouseItemControllerFactory());

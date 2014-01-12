@@ -7,7 +7,7 @@ import java.awt.geom.Point2D;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemShape;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.maths.geometry.Pt;
 import org.datagr4m.maths.geometry.RectangleUtils;
 import org.datagr4m.maths.geometry.ShapeUtils;
@@ -21,7 +21,7 @@ public class DefaultGroupSlotProcessor implements IGroupSlotProcessor{
     public Coord2d computeBorderCoord(IBoundedItem model, Coord2d target){
         // on veut toujours un rond autour d'un item carr�, sinon les tubes directement
         // connect� � un item sont coll�s � la bordure de l'item.
-        if(model.getShape()==ItemShape.CIRCLE || !(model instanceof IHierarchicalModel)){
+        if(model.getShape()==ItemShape.CIRCLE || !(model instanceof IHierarchicalNodeModel)){
             return computeRadialBorderCoord(model.getAbsolutePosition(), model.getRadialBounds(), target);
         }
         // bordure rectangle
@@ -33,7 +33,7 @@ public class DefaultGroupSlotProcessor implements IGroupSlotProcessor{
     /* */
     
     protected RectangleBounds selectRectangleBounds(IBoundedItem item) {
-        if(item instanceof IHierarchicalModel)
+        if(item instanceof IHierarchicalNodeModel)
             return item.getRawCorridorRectangleBounds();
         else
             return item.getRawRectangleBounds();

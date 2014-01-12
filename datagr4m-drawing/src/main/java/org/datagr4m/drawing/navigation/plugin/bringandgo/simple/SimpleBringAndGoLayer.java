@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.datagr4m.drawing.layout.geometrical.RectangleLayout;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.BringAndGoLayerHitProcessor;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.IBringAndGoLayer;
 import org.datagr4m.drawing.renderer.items.IItemRenderer;
@@ -20,7 +20,7 @@ import org.jzy3d.maths.Coord2d;
 public class SimpleBringAndGoLayer extends AbstractRenderer implements IBringAndGoLayer{
     private static final long serialVersionUID = -7626982957490135258L;
         
-    public SimpleBringAndGoLayer(IHierarchicalModel model, IDisplay display){
+    public SimpleBringAndGoLayer(IHierarchicalNodeModel model, IDisplay display){
         this.model = model;
         this.display = display;
 
@@ -92,7 +92,7 @@ public class SimpleBringAndGoLayer extends AbstractRenderer implements IBringAnd
     protected IItemRenderer itemRenderer;
     protected IItemRendererSettings itemSettings;
     
-    protected IHierarchicalModel model;
+    protected IHierarchicalNodeModel model;
     protected IDisplay display;
 
     protected IBoundedItem currentItem;

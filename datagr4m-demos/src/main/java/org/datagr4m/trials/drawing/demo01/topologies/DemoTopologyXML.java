@@ -41,8 +41,8 @@ public class DemoTopologyXML {
         
         // TODO test: assert root layout has tubeModel and tubeLayout defined
         // otherwise no path computed
-        System.out.println("edge model:"+w.getLayout().getTubeModel());
-        System.out.println("edge layout:"+w.getLayout().getTubeLayout());
+        System.out.println("edge model:"+w.getNodeLayout().getTubeModel());
+        System.out.println("edge layout:"+w.getNodeLayout().getEdgeLayout());
         // TODO test: verifier couverture des tests sur tube in datagr4m-drawing/org.datagr4m.tests.drawing.tubes.data
         
 		show(w);

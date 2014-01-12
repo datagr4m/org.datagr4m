@@ -1,16 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.datagr4m</groupId>
 	<artifactId>datagr4m-core</artifactId>
 	<name>Datagr4m Core</name>
 
-    <parent>
-        <groupId>org.datagr4m</groupId>
-        <artifactId>datagr4m-master</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>org.datagr4m</groupId>
+		<artifactId>datagr4m-master</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
 
 	<dependencies>
 		<dependency>
@@ -19,16 +18,24 @@
 			<version>${version.guava}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.jzy3d</groupId>
+			<artifactId>jzy3d-api</artifactId>
+			<classifier>maths-io</classifier>
+			<version>${version.jzy3d}</version>
+		</dependency>
+
+
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${version.log4j}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${version.junit}</version>
 			<scope>test</scope>
 		</dependency>
-    </dependencies>
+	</dependencies>
 </project>

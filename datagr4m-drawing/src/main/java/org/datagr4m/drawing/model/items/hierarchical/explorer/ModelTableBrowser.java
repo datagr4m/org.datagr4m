@@ -14,7 +14,7 @@ import org.datagr4m.drawing.editors.tables.JItemTable;
 import org.datagr4m.drawing.editors.tables.JItemTableEntry;
 import org.datagr4m.drawing.editors.tables.JItemTableModel;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.viewer.IDisplay;
 import org.datagr4m.viewer.layered.LayeredDisplay;
 
@@ -23,7 +23,7 @@ public class ModelTableBrowser extends AbstractModelExplorer implements IModelEx
     protected JMenuItem exploreMenuItem;
     protected ActionListener exploreActionListener;
     
-    public ModelTableBrowser(IHierarchicalModel model){
+    public ModelTableBrowser(IHierarchicalNodeModel model){
         this.model = model;
     }
 

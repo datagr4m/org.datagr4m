@@ -25,7 +25,7 @@ import org.datagr4m.drawing.layout.algorithms.forces.ForceDebugger;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.LayoutUtils;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.NavigationController;
@@ -109,7 +109,7 @@ public abstract class AbstractDatagr4mViewer extends JFrame implements
 		// or simply compute edge layout
 		else {
 			workspace.getRunner().oneEdgeStep();
-			LayoutUtils.updatePairSplines(workspace.getLayout());
+			LayoutUtils.updatePairSplines(workspace.getNodeLayout());
 		}
 	}
 
@@ -142,10 +142,10 @@ public abstract class AbstractDatagr4mViewer extends JFrame implements
 	protected MouseEdgeViewController configureMouse(final IWorkspace workspace) {
 		MouseEdgeViewController mouse = ((MouseEdgeViewController) display
 				.getMouse());
-		mouse.setLayout(workspace.getLayout());
+		mouse.setLayout(workspace.getNodeLayout());
 		mouse.setTubeRenderer(workspace.getRenderer().getTubeRenderer());
 		mouse.setRootModel(workspace.getModel());
-		mouse.setRunner(workspace.getRunner(workspace.getLayout(),
+		mouse.setRunner(workspace.getRunner(workspace.getNodeLayout(),
 				display.getView()));
 		return mouse;
 	}
@@ -162,7 +162,7 @@ public abstract class AbstractDatagr4mViewer extends JFrame implements
 			display.getUnderlay().addRenderer(new AbstractRenderer() {
 				@Override
 				public void render(Graphics2D graphic) {
-					IHierarchicalModel model = workspace.getModel();
+					IHierarchicalNodeModel model = workspace.getModel();
 					Coord2d topLeft = model.getRawRectangleBounds()
 							.getTopLeftCorner();
 					Coord2d bottomRight = model.getRawRectangleBounds()
@@ -286,7 +286,7 @@ public abstract class AbstractDatagr4mViewer extends JFrame implements
 	public void autoFit() {
 		IWorkspace workspace = dataController.getCurrentWorkspace();
 		if (workspace != null) {
-			IHierarchicalModel model = workspace.getModel();
+			IHierarchicalNodeModel model = workspace.getModel();
 			if (model != null) {
 				Rectangle2D bounds = model.getRawRectangleBounds()
 						.cloneAsRectangle2D();

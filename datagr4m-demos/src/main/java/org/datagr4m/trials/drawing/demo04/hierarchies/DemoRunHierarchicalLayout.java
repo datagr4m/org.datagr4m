@@ -6,9 +6,8 @@ import org.datagr4m.datastructures.pairs.CommutativePair;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
-import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
+import org.datagr4m.drawing.layout.runner.stop.MeanMoveCriteria;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.ItemShape;
 import org.datagr4m.drawing.model.items.QualityScores;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.generator.TopologyGenerator;
@@ -25,8 +24,8 @@ public class DemoRunHierarchicalLayout {
 
         Workspace.defaultRunnerFactory = new LayoutRunnerFactory();
         Workspace w = new Workspace(topology);
-        show(w, new MaxStepCriteria(10000));
-        //show(w, new MeanMoveCriteria(1000));
+        //show(w, new MaxStepCriteria(10000));
+        show(w, new MeanMoveCriteria(1000));
         Set<CommutativePair<IBoundedItem>> overlapping = QualityScores.countOverlappingItems(w.getModel());
         if (overlapping.size() > 0)
             System.out.println(overlapping);

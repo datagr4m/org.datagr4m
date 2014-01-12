@@ -1,6 +1,6 @@
 package org.datagr4m.drawing.navigation;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.context.NavigationContext;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.IBringAndGoPlugin;
 import org.datagr4m.drawing.navigation.plugin.edgetables.EdgeInfoTablePlugin;
@@ -71,9 +71,9 @@ public interface INavigationController {
 
     public void setMouse(ILocalizedMouse mouse);
 
-    public IHierarchicalModel getModel();
+    public IHierarchicalNodeModel getModel();
 
-    public void setModel(IHierarchicalModel model);
+    public void setModel(IHierarchicalNodeModel model);
 
 
     public void setContext(NavigationContext context);

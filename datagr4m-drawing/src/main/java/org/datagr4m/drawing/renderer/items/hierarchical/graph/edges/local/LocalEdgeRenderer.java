@@ -6,13 +6,13 @@ import java.awt.geom.QuadCurve2D;
 
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.viewer.renderer.AbstractExtendedRenderer;
 import org.jzy3d.maths.Coord2d;
 
 
 public class LocalEdgeRenderer extends AbstractExtendedRenderer implements IEdgeRenderer{
-    public LocalEdgeRenderer(IHierarchicalModel model){
+    public LocalEdgeRenderer(IHierarchicalNodeModel model){
         this.model = model;
     }
     
@@ -46,5 +46,5 @@ public class LocalEdgeRenderer extends AbstractExtendedRenderer implements IEdge
     
     protected static QuadCurve2D instance = new QuadCurve2D.Float();
 
-    protected IHierarchicalModel model;
+    protected IHierarchicalNodeModel model;
 }

@@ -3,7 +3,7 @@ package org.datagr4m.drawing.layout.factories;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.IHierarchicalEdgeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.SlotedTubeLayout;
@@ -13,7 +13,7 @@ import org.datagr4m.drawing.layout.hierarchical.matrix.HierarchicalRowLayout;
 import org.datagr4m.drawing.layout.hierarchical.pair.HierarchicalPairLayout;
 import org.datagr4m.drawing.layout.hierarchical.stratum.HierarchicalStratumLayout;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.IHierarchicalPairModel;
@@ -33,28 +33,28 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
     public HierarchicalLayoutFactory(){}
 
     @Override
-    public IHierarchicalLayout getLayout(IHierarchicalModel model){
-        IHierarchicalLayout layout = getRootLayout(model, model.getEdgeModel());
+    public IHierarchicalNodeLayout getLayout(IHierarchicalNodeModel model){
+        IHierarchicalNodeLayout layout = getRootLayout(model, model.getEdgeModel());
         return layout;
     }
 
     @Override
-    public IHierarchicalLayout getLayout(IHierarchicalModel model, final IHierarchicalEdgeModel tubeModel){
-        IHierarchicalLayout layout = getRootLayout(model, tubeModel);
+    public IHierarchicalNodeLayout getLayout(IHierarchicalNodeModel model, final IHierarchicalEdgeModel tubeModel){
+        IHierarchicalNodeLayout layout = getRootLayout(model, tubeModel);
         return layout;
     }
 
-    protected IHierarchicalLayout getRootLayout(IHierarchicalModel model, final IHierarchicalEdgeModel tubeModel) {
+    protected IHierarchicalNodeLayout getRootLayout(IHierarchicalNodeModel model, final IHierarchicalEdgeModel tubeModel) {
         IHierarchicalEdgeLayout tubeLayout = getHierarchicalEdgeLayout(model);
-        IHierarchicalLayout layout = getHierarchicalNodeLayout(model);
+        IHierarchicalNodeLayout layout = getHierarchicalNodeLayout(model);
         layout.setTubeModel(tubeModel);
         layout.setTubeLayout(tubeLayout);
         return layout;
     }
     
     @Override 
-    public IHierarchicalLayout getHierarchicalNodeLayout(IHierarchicalModel model){
-        IHierarchicalLayout layout = null;
+    public IHierarchicalNodeLayout getHierarchicalNodeLayout(IHierarchicalNodeModel model){
+        IHierarchicalNodeLayout layout = null;
         if(hasLayoutForModel(model.getLabel()))
             layout = getNodeLayoutByModelName(model);
         else
@@ -64,11 +64,11 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
     }
     
     /** recursively handle children models.*/
-    protected void attachChildren(IHierarchicalLayout layout, IHierarchicalModel model){
+    protected void attachChildren(IHierarchicalNodeLayout layout, IHierarchicalNodeModel model){
         for(IBoundedItem child: model.getChildren()){
-            if(child instanceof IHierarchicalModel){
-                IHierarchicalModel submodel = (IHierarchicalModel)child;
-                IHierarchicalLayout sublayout = getHierarchicalNodeLayout(submodel);
+            if(child instanceof IHierarchicalNodeModel){
+                IHierarchicalNodeModel submodel = (IHierarchicalNodeModel)child;
+                IHierarchicalNodeLayout sublayout = getHierarchicalNodeLayout(submodel);
                 if(sublayout!=null)
                     layout.addChild(sublayout);
             }
@@ -76,14 +76,14 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
     }
     
     @Override
-    public IHierarchicalEdgeLayout getHierarchicalEdgeLayout(IHierarchicalModel model){
+    public IHierarchicalEdgeLayout getHierarchicalEdgeLayout(IHierarchicalNodeModel model){
         return new SlotedTubeLayout(pathFactory);
     }
         
     /***********************/
     
     @Override
-    public IHierarchicalLayout getNodeLayoutByModelType(IHierarchicalModel model){
+    public IHierarchicalNodeLayout getNodeLayoutByModelType(IHierarchicalNodeModel model){
         if(model instanceof IHierarchicalPairModel){
             HierarchicalPairLayout layout = new HierarchicalPairLayout((IHierarchicalPairModel)model);
             return layout;
@@ -97,11 +97,11 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
     }
     
     @Override
-    public IHierarchicalLayout getNodeLayoutByModelName(IHierarchicalModel model){
+    public IHierarchicalNodeLayout getNodeLayoutByModelName(IHierarchicalNodeModel model){
         if(modelNameToLayoutName!=null){
             String name = modelNameToLayoutName.get(model.getLabel());
             if(name!=null){
-                IHierarchicalLayout layout = getNodeLayoutByName(name);
+                IHierarchicalNodeLayout layout = getNodeLayoutByName(name);
                 layout.setModel(model);
                 
                 String initInfo = info(model, layout);
@@ -115,13 +115,13 @@ public class HierarchicalLayoutFactory implements IHierarchicalLayoutFactory{
             throw new RuntimeException("layout factory does not have a model<->layout mapping by name");
     }
     
-    protected String info(IHierarchicalModel model, IHierarchicalLayout layout){
+    protected String info(IHierarchicalNodeModel model, IHierarchicalNodeLayout layout){
     	return model.getClass().getSimpleName() + model.getLabel() + layout.getClass().getSimpleName();
     	
     }
     
     @Override
-    public IHierarchicalLayout getNodeLayoutByName(String name) throws IllegalArgumentException{
+    public IHierarchicalNodeLayout getNodeLayoutByName(String name) throws IllegalArgumentException{
         if(LAYOUT_MATRIX_NAME.equals(name))
         	return new HierarchicalMatrixLayout();
         else if(LAYOUT_COLUMN_NAME.equals(name))

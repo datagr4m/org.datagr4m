@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.groupslot.IGroupSlotProcessor;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.groupslot.StratumGroupSlotProcessor;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
@@ -246,8 +246,8 @@ public class DefaultEdgeBundling implements IEdgeBundling{
     protected boolean isSameOrDescendant(IBoundedItem model, IBoundedItem child){
         if(model==child)
             return true;
-        else if(model instanceof IHierarchicalModel){
-            if(((IHierarchicalModel)model).hasDescendant(child))            
+        else if(model instanceof IHierarchicalNodeModel){
+            if(((IHierarchicalNodeModel)model).hasDescendant(child))            
                 return true;
             else
                 return false;

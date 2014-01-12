@@ -1,7 +1,7 @@
 package org.datagr4m.application.neo4j.navigation.plugins.bringandgo;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.IEdgeFactory;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.navigation.INavigationController;
@@ -21,7 +21,7 @@ import com.google.common.collect.Multimap;
 import edu.uci.ics.jung.graph.Graph;
 
 public class Neo4jBringAndGoPlugin extends AbstractBringAndGoPlugin<IPropertyNode,IPropertyEdge>{
-    public Neo4jBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model) {
+    public Neo4jBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model) {
         super(controller, display, layered, animator, mouse, model);
         init();
     }

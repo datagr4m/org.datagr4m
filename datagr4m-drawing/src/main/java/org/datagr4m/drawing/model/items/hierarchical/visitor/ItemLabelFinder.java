@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 
 public class ItemLabelFinder extends AbstractItemVisitor{
@@ -14,13 +14,13 @@ public class ItemLabelFinder extends AbstractItemVisitor{
 	}
 	
 	@Override
-	public void visit(IHierarchicalModel element){
+	public void visit(IHierarchicalNodeModel element){
         clearResults();
         super.visit(element);
     }
 	
 	@Override
-	public void doVisitElement(IHierarchicalModel parent, IBoundedItem element, int depth){
+	public void doVisitElement(IHierarchicalNodeModel parent, IBoundedItem element, int depth){
 	    String label = element.getLabel();
         if(label!=null && searchString!=null && label.equals(searchString)){
             results.add(element);
@@ -29,7 +29,7 @@ public class ItemLabelFinder extends AbstractItemVisitor{
 	
     /******************/
 	
-	public List<IBoundedItem> find(String query, IHierarchicalModel model){
+	public List<IBoundedItem> find(String query, IHierarchicalNodeModel model){
 	    searchString = query;
 	    visit(model);
 	    return new ArrayList<IBoundedItem>(results);

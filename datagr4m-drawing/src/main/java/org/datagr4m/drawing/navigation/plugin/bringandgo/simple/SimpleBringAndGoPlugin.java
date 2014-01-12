@@ -8,7 +8,7 @@ import org.datagr4m.drawing.layout.geometrical.CircleLayoutTable;
 import org.datagr4m.drawing.layout.geometrical.RectangleLayoutTable;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
@@ -30,7 +30,7 @@ import com.google.common.collect.Multimap;
 import edu.uci.ics.jung.graph.Graph;
 
 public class SimpleBringAndGoPlugin<V,E> extends AbstractBringAndGoPlugin<V,E>  implements IBringAndGoPlugin {
-    public SimpleBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model){
+    public SimpleBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model){
         super(controller, display, layered, animator, mouse, model);
     }
 

@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.renderer.bounds.IBoundsRendererSettings;
 import org.datagr4m.drawing.renderer.items.hierarchical.IHierarchicalRenderer;
 import org.datagr4m.drawing.renderer.items.hierarchical.graph.HierarchicalGraphRenderer;
@@ -194,7 +194,7 @@ public class BulkRendererSettings {
     public static void colorDeviceNodes(IHierarchicalRenderer renderer, Color color){
         for(IHierarchicalRenderer rr: renderer.getChildren()){
             for(IBoundedItem item: rr.getModel().getChildren()){
-                if(!(item instanceof IHierarchicalModel)){
+                if(!(item instanceof IHierarchicalNodeModel)){
                     if(rr instanceof IHierarchicalGraphRenderer)
                         ((IHierarchicalGraphRenderer)rr).getRendererSettings().getNodeSettings().setNodeBodyColor(item, color);
                     else if(rr instanceof IHierarchicalPairRenderer)

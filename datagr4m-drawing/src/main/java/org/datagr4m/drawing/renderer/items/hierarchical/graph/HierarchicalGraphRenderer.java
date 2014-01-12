@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.infos.IEdgeInfo;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
@@ -45,12 +45,12 @@ public class HierarchicalGraphRenderer extends AbstractHierarchicalRenderer impl
     }
 
     @Override
-    public void setModel(IHierarchicalModel model) {
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = (IHierarchicalGraphModel) model;
     }
 
     @Override
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
 

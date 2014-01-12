@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphModel;
 
 
@@ -15,7 +15,7 @@ public class ModelEdgesVisitor extends AbstractItemVisitor{
 	}
 	
 	@Override
-	public void doVisitElement(IHierarchicalModel parent, IBoundedItem element, int depth){
+	public void doVisitElement(IHierarchicalNodeModel parent, IBoundedItem element, int depth){
         if(element instanceof IHierarchicalGraphModel){
             IHierarchicalGraphModel graph = (IHierarchicalGraphModel)element;
             edges.addAll(graph.getLocalEdges());

@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.factories.IHierarchicalLayoutFactory;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.HierarchicalPairModel;
 import org.datagr4m.drawing.renderer.factories.HierarchicalRendererFactory;
@@ -22,11 +22,11 @@ import org.jzy3d.maths.Coord2d;
 
 public class DemoMultilineItemLabel {
     public static void main(String[] args) throws Exception{
-        IHierarchicalModel model = pairGraph();
+        IHierarchicalNodeModel model = pairGraph();
         
         // layout
         IHierarchicalLayoutFactory layoutFactory = new HierarchicalLayoutFactory();
-        IHierarchicalLayout layout = layoutFactory.getNodeLayoutByModelType(model);
+        IHierarchicalNodeLayout layout = layoutFactory.getNodeLayoutByModelType(model);
         layout.initAlgo();
          
         // display
@@ -39,7 +39,7 @@ public class DemoMultilineItemLabel {
 
     }
     
-    public static IHierarchicalModel pairGraph() throws Exception{
+    public static IHierarchicalNodeModel pairGraph() throws Exception{
     	List<String> labels = new ArrayList<String>();
     	labels.add("left1.line1");
     	labels.add("left1.line2");

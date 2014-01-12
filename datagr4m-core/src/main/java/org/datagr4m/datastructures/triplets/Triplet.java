@@ -2,13 +2,6 @@ package org.datagr4m.datastructures.triplets;
 
 import java.io.Serializable;
 
-/**
- * Class Pair. Represents a mathematical pair of objects (a, b) which can be
- * of different types.
- * {@link equals(Object o)} and {@link hashCode()} are fully implemented, so
- * that equality relies on the held objects' {@link equals(Object o)} 
- * and {@link hashCode()} method
- */
 public class Triplet<X, Y, Z> implements Serializable{
     private static final long serialVersionUID = 4246736946032440512L;
 

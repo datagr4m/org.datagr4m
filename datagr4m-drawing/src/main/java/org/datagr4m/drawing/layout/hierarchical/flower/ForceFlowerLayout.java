@@ -1,6 +1,6 @@
 package org.datagr4m.drawing.layout.hierarchical.flower;
 
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
 import org.datagr4m.drawing.model.items.hierarchical.flower.IFlowerModel;
 
@@ -14,7 +14,7 @@ public class ForceFlowerLayout extends HierarchicalGraphLayout{
         setup();
     }
 
-    public ForceFlowerLayout(IHierarchicalLayout parent, IFlowerModel<?> model) {
+    public ForceFlowerLayout(IHierarchicalNodeLayout parent, IFlowerModel<?> model) {
         super(parent, model);
         this.fmodel = model;
         setup();

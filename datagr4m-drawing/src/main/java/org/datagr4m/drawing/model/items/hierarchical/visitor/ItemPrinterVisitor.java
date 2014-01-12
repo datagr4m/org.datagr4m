@@ -1,7 +1,7 @@
 package org.datagr4m.drawing.model.items.hierarchical.visitor;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 public class ItemPrinterVisitor extends AbstractItemVisitor{
 	public ItemPrinterVisitor(){
@@ -13,13 +13,13 @@ public class ItemPrinterVisitor extends AbstractItemVisitor{
     }
 	
 	@Override
-	public void doVisitElement(IHierarchicalModel parent, IBoundedItem element, int depth){
+	public void doVisitElement(IHierarchicalNodeModel parent, IBoundedItem element, int depth){
         //an opened node
-        if(isParent(element) && !isForbidden((IHierarchicalModel)element))
+        if(isParent(element) && !isForbidden((IHierarchicalNodeModel)element))
             System.out.println( blanks(depth) + "|- " + toString.apply(element) );
         
         //a closed node
-        else if(isParent(element) && isForbidden((IHierarchicalModel)element))
+        else if(isParent(element) && isForbidden((IHierarchicalNodeModel)element))
             System.out.println( blanks(depth) + "|+ " + toString.apply(element) );
         
         //a leaf

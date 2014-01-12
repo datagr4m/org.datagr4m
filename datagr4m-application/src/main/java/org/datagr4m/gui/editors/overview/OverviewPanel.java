@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.SwingUtilities;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.listeners.IItemListener;
 import org.datagr4m.drawing.model.items.listeners.ScheduledItemListener;
 import org.datagr4m.viewer.Display;
@@ -74,7 +74,7 @@ public class OverviewPanel extends ImagePanel {
         });
     }
 
-    public void register(final IHierarchicalModel model) {
+    public void register(final IHierarchicalNodeModel model) {
         listener = new ScheduledItemListener();
         listener.addItemListener(new IItemListener() {
             @Override

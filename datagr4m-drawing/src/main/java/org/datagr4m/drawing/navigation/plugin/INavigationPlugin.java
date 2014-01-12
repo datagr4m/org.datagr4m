@@ -1,6 +1,6 @@
 package org.datagr4m.drawing.navigation.plugin;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.viewer.IDisplay;
@@ -34,7 +34,7 @@ public interface INavigationPlugin<V,E> {
 
 	public ILocalizedMouse getMouse();
 
-	public IHierarchicalModel getModel();
+	public IHierarchicalNodeModel getModel();
 
 	public PluginDataModelHolder<V,E> getDataModel();
 }

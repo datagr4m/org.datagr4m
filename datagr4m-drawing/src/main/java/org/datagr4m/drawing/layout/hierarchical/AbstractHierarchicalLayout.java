@@ -10,21 +10,22 @@ import org.datagr4m.drawing.layout.hierarchical.visitor.LayoutModelFinderVisitor
 import org.datagr4m.drawing.model.bounds.IBounds;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ItemLabelFinder;
+import org.datagr4m.monitors.TimeMonitor;
 
 
-public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
+public abstract class AbstractHierarchicalLayout implements IHierarchicalNodeLayout{
     private static final long serialVersionUID = 4457921907995201196L;
 
     public AbstractHierarchicalLayout() {
         this(null);
     }
     
-    public AbstractHierarchicalLayout(IHierarchicalLayout parent) {
+    public AbstractHierarchicalLayout(IHierarchicalNodeLayout parent) {
         this.parent = parent;
-        this.children = new ArrayList<IHierarchicalLayout>();
+        this.children = new ArrayList<IHierarchicalNodeLayout>();
     }
     
     @Override
@@ -33,30 +34,30 @@ public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
     }
 
     @Override
-    public List<IHierarchicalLayout> getChildren() {
+    public List<IHierarchicalNodeLayout> getChildren() {
         return children;
     }
 
     @Override
-    public List<IHierarchicalLayout> getNeighbours() {
+    public List<IHierarchicalNodeLayout> getNeighbours() {
         return neighbours;
     }
 
     @Override
-    public IHierarchicalLayout getParent() {
+    public IHierarchicalNodeLayout getParent() {
         return parent;
     }
     
     @Override
-    public boolean addChild(IHierarchicalLayout item){
+    public boolean addChild(IHierarchicalNodeLayout item){
         boolean s = children.add(item);
         ((AbstractHierarchicalLayout)item).setParent(this);
         return s;
     }
     
-    public boolean addChildren(Collection<IHierarchicalLayout> items){
+    public boolean addChildren(Collection<IHierarchicalNodeLayout> items){
         boolean s = children.addAll(items);
-        for(IHierarchicalLayout item: items)
+        for(IHierarchicalNodeLayout item: items)
             ((AbstractHierarchicalLayout)item).setParent(this);
         return s;
     }
@@ -74,25 +75,25 @@ public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
             return 1+parent.getDepth();
     }
     
-    public void setParent(IHierarchicalLayout layout){
+    public void setParent(IHierarchicalNodeLayout layout){
         parent = layout;
     }
     
     @Override
-	public IHierarchicalLayout findLayoutHoldingModel(String model){
+	public IHierarchicalNodeLayout findLayoutHoldingModel(String model){
         ItemLabelFinder v = new ItemLabelFinder();
         List<IBoundedItem> list = v.find(model, getModel());
         
         if(list.size()==0)
             return null;
         else if(list.size()==1)
-            return findLayoutHoldingModel((IHierarchicalModel)list.get(0));
+            return findLayoutHoldingModel((IHierarchicalNodeModel)list.get(0));
         else
             throw new RuntimeException("found several result matching model name " + model + ": " + list);
     }
     
     @Override
-	public IHierarchicalLayout findLayoutHoldingModel(IHierarchicalModel model){
+	public IHierarchicalNodeLayout findLayoutHoldingModel(IHierarchicalNodeModel model){
         LayoutModelFinderVisitor finder = new LayoutModelFinderVisitor();
         return finder.findLayoutHolding(this, model);
     }
@@ -100,7 +101,7 @@ public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
     /********************/
 
     @Override
-    public IHierarchicalLayout getLayout(IHierarchicalModel model) {
+    public IHierarchicalNodeLayout getLayout(IHierarchicalNodeModel model) {
         throw new RuntimeException("not implemented");
     }    
 
@@ -123,26 +124,26 @@ public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
 
     @Override
     public void resetPropertiesValues() {
-        for(IHierarchicalLayout child: getChildren())
+        for(IHierarchicalNodeLayout child: getChildren())
             child.resetPropertiesValues();
     } 
     
     @Override
     public void initAlgo() {
-        for(IHierarchicalLayout child: getChildren())
+        for(IHierarchicalNodeLayout child: getChildren())
             child.initAlgo();
     } 
     
     @Override
     public void goAlgo(){
-        for(IHierarchicalLayout child: getChildren())
+        for(IHierarchicalNodeLayout child: getChildren())
             child.goAlgo();
         getModel().refreshBounds(false);
     }
 
     @Override
     public void endAlgo() {
-        for(IHierarchicalLayout child: getChildren())
+        for(IHierarchicalNodeLayout child: getChildren())
             child.endAlgo();
 		algoEnded = true;
     }
@@ -151,7 +152,7 @@ public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
     public boolean canAlgo() {
     	//if(algoEnded)
     	//	return false;
-        for(IHierarchicalLayout child: getChildren())
+        for(IHierarchicalNodeLayout child: getChildren())
             if(child.canAlgo())
                 return true;
         		
@@ -204,7 +205,7 @@ public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
     }
 
     @Override
-    public IHierarchicalEdgeLayout getTubeLayout() {
+    public IHierarchicalEdgeLayout getEdgeLayout() {
         return tubeLayout;
     }
     
@@ -225,9 +226,9 @@ public abstract class AbstractHierarchicalLayout implements IHierarchicalLayout{
     
     /*******************/
     
-    protected List<IHierarchicalLayout> children;
-    protected List<IHierarchicalLayout> neighbours;
-    protected IHierarchicalLayout parent;
+    protected List<IHierarchicalNodeLayout> children;
+    protected List<IHierarchicalNodeLayout> neighbours;
+    protected IHierarchicalNodeLayout parent;
     protected IBounds bounds;
     protected int counter = 0;
     protected boolean algoEnded = false;

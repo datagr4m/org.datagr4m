@@ -1,7 +1,10 @@
 package org.datagr4m.drawing.layout.runner.stop;
 
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 
+/**
+ * Allow to break when counter reach a given
+ */
 public class MaxStepCriteria implements IBreakCriteria{
     public MaxStepCriteria() {
         this(10);
@@ -12,7 +15,10 @@ public class MaxStepCriteria implements IBreakCriteria{
     }
 
     @Override
-    public boolean shouldBreak(IHierarchicalLayout layout) {
+    public boolean shouldBreak(IHierarchicalNodeLayout layout) {
+        if(layout.getDelegate()==null) // TODO : do not point on delegate but on MultiStepLayout.getCounter
+            return true;
+        
         if(layout.getDelegate().getCounter()>maxSteps)
             return true;
         else

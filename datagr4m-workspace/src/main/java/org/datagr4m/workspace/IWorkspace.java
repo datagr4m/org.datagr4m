@@ -3,10 +3,10 @@ package org.datagr4m.workspace;
 import java.util.Map;
 
 import org.datagr4m.drawing.layout.factories.IHierarchicalLayoutFactory;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.renderer.policy.IRenderingPolicy;
@@ -24,17 +24,17 @@ public interface IWorkspace {
 	public void createView(IDisplay display);
 
 	public Topology<?, ?> getTopology();
-	public IHierarchicalModel getModel();
+	public IHierarchicalNodeModel getModel();
 	public IHierarchicalEdgeModel getEdgeModel();
 	public AnnotationModel getAnnotationModel();
-	public IHierarchicalLayout getLayout();
+	public IHierarchicalNodeLayout getNodeLayout();
 	public PluginLayeredRenderer getRenderer();
 
 	/** create or get a runner able to notify the given view for refresh*/
 	public ILayoutRunner getRunner(IView view);
 	/** create or get a runner.*/
 	public ILayoutRunner getRunner();
-	public ILayoutRunner getRunner(IHierarchicalLayout root, IView view);
+	public ILayoutRunner getRunner(IHierarchicalNodeLayout root, IView view);
 
 	public Map<String, Object> getMetadata();
 

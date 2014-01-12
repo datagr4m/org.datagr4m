@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 
 
 public class ScheduledItemListener implements IItemListener {
     public static int INTERVAL = 1000;
     
-    public void listen(IHierarchicalModel model){
+    public void listen(IHierarchicalNodeModel model){
         model.addItemListener(this);
         thread = getThread();
         thread.start();

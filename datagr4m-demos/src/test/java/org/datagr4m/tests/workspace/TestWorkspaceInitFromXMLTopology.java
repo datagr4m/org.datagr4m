@@ -9,7 +9,7 @@ import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceSinglePha
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
 import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
@@ -133,9 +133,9 @@ public class TestWorkspaceInitFromXMLTopology{
     public void assertWorkspaceNotNull(Workspace w) {
         Assert.assertNotNull("has item model", w.getModel());
         Assert.assertNotNull("has edge model", w.getEdgeModel());
-        Assert.assertNotNull("has layout", w.getLayout());
-        Assert.assertNotNull("has layout with reference on edge model", w.getLayout().getTubeModel());
-        Assert.assertNotNull("has layout with an edge layout", w.getLayout().getTubeLayout());
+        Assert.assertNotNull("has layout", w.getNodeLayout());
+        Assert.assertNotNull("has layout with reference on edge model", w.getNodeLayout().getTubeModel());
+        Assert.assertNotNull("has layout with an edge layout", w.getNodeLayout().getEdgeLayout());
     }
 
     private void assertDrawingModel(Workspace w) {
@@ -150,7 +150,7 @@ public class TestWorkspaceInitFromXMLTopology{
         Assert.assertEquals("servers", graph.getChildren().get(1).getLabel());
     }
     
-    public boolean checkItemHasInterface(IHierarchicalModel model, String itemToFind, Object interfaceToFind) {
+    public boolean checkItemHasInterface(IHierarchicalNodeModel model, String itemToFind, Object interfaceToFind) {
         ItemLabelFinder finder = new ItemLabelFinder();
         List<IBoundedItem> results = finder.find(itemToFind, model);
         if(results.size()>0){

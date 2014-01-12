@@ -1,10 +1,10 @@
 package org.datagr4m.drawing.layout.runner.sequence.phase;
 
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.LayoutRunnerConfiguration;
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 
 public class LayoutRunnerPhaseDefault implements ILayoutRunnerPhase {
@@ -22,8 +22,8 @@ public class LayoutRunnerPhaseDefault implements ILayoutRunnerPhase {
      */
     @Override
     public void execute(ILayoutRunner runner, boolean stopThreadWhenDone) {
-        IHierarchicalLayout layout = runner.getLayout();
-        IHierarchicalModel model = layout.getModel();
+        IHierarchicalNodeLayout layout = runner.getLayout();
+        IHierarchicalNodeModel model = layout.getModel();
         IBreakCriteria criteria = runner.getBreakCriteria();
         LayoutRunnerConfiguration settings = runner.getConfiguration();
         

@@ -6,10 +6,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.viewer.mouse.edges.slothit.SlotHitPolicy;
 import org.datagr4m.drawing.viewer.mouse.edges.slothit.SlotHitPolicy2;
@@ -159,7 +159,7 @@ public class MouseItemViewController extends AbstractMouseViewController {
     
     protected void applyDynamicBarycenterShift(IModelChange change){
         // apply parent change and brothers change
-        final IHierarchicalModel parent = change.who().getParent();
+        final IHierarchicalNodeModel parent = change.who().getParent();
         if(parent==null){
             change.apply();
         }
@@ -195,7 +195,7 @@ public class MouseItemViewController extends AbstractMouseViewController {
     }
     
     protected void updateParentPosition(IBoundedItem movedObject){
-        IHierarchicalModel parent = movedObject.getParent();
+        IHierarchicalNodeModel parent = movedObject.getParent();
         
         if(parent!=null){
         
@@ -244,19 +244,19 @@ public class MouseItemViewController extends AbstractMouseViewController {
     
     /************************/
     
-    public IHierarchicalLayout getRootLayout() {
+    public IHierarchicalNodeLayout getRootLayout() {
         return rootLayout;
     }
 
-    public void setRootLayout(IHierarchicalLayout rootLayout) {
+    public void setRootLayout(IHierarchicalNodeLayout rootLayout) {
         this.rootLayout = rootLayout;
     }
     
-    public IHierarchicalModel getRootModel() {
+    public IHierarchicalNodeModel getRootModel() {
         return rootModel;
     }
 
-    public void setRootModel(IHierarchicalModel rootModel) {
+    public void setRootModel(IHierarchicalNodeModel rootModel) {
         this.rootModel = rootModel;        
         this.allItems = rootModel.getDescendants(true);
     }
@@ -279,8 +279,8 @@ public class MouseItemViewController extends AbstractMouseViewController {
     }
 
     protected IBoundedItem grabObject;
-	protected IHierarchicalLayout rootLayout;
-    protected IHierarchicalModel rootModel;
+	protected IHierarchicalNodeLayout rootLayout;
+    protected IHierarchicalNodeModel rootModel;
     protected Collection<IBoundedItem> allItems;
 
     protected ILayoutRunner runner;

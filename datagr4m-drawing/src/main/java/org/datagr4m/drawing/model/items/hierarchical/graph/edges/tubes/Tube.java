@@ -11,7 +11,7 @@ import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
 import org.datagr4m.drawing.model.items.annotations.ClickableRectangleAnnotationItem;
 import org.datagr4m.drawing.model.items.annotations.IClickableItemAnnotation;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.IIconHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.IconHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.Edge;
@@ -261,7 +261,7 @@ public class Tube implements IHierarchicalEdge {
                 
         // -------------------------------------
         // Cas o� l'item de d�part est un modele
-        if(item instanceof IHierarchicalModel){
+        if(item instanceof IHierarchicalNodeModel){
             
             for(IEdge tubeChild: children){                
                 // --------------------
@@ -272,12 +272,12 @@ public class Tube implements IHierarchicalEdge {
                     // un tube enfant comporte forc�ment des cibles ayant l'item source comme parent
                     IBoundedItem childSourceParent = tubeChild.getSourceItem().getParent();
                     if(/*childSourceParent == item*/isSameOrDescendant(childSourceParent, item)){
-                        IHierarchicalModel childSourceTree = childTube.getSourceItemHierarchy();
+                        IHierarchicalNodeModel childSourceTree = childTube.getSourceItemHierarchy();
                         model.addChild(childSourceTree, false);
                     }
                     IBoundedItem childTargetParent = tubeChild.getTargetItem().getParent();
                     if(/*childTargetParent == item*/isSameOrDescendant(childTargetParent, item)){
-                        IHierarchicalModel childTargetTree = childTube.getTargetItemHierarchy();
+                        IHierarchicalNodeModel childTargetTree = childTube.getTargetItemHierarchy();
                         model.addChild(childTargetTree, false);
                     }
 
@@ -369,8 +369,8 @@ public class Tube implements IHierarchicalEdge {
     protected boolean isSameOrDescendant(IBoundedItem model, IBoundedItem child){
         if(model==child)
             return true;
-        else if(model instanceof IHierarchicalModel){
-            if(((IHierarchicalModel)model).hasDescendant(child))            
+        else if(model instanceof IHierarchicalNodeModel){
+            if(((IHierarchicalNodeModel)model).hasDescendant(child))            
                 return true;
             else
                 return false;

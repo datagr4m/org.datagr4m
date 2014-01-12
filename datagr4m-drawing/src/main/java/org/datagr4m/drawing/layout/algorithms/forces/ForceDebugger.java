@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import org.apache.log4j.Logger;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.renderer.bounds.BoundsRendererSettings;
 import org.datagr4m.drawing.renderer.bounds.IBoundsRendererSettings;
 import org.datagr4m.drawing.renderer.items.IItemRendererSettings;
@@ -23,7 +23,7 @@ import org.datagr4m.drawing.viewer.mouse.items.MouseItemViewController;
  * @author martin
  */
 public class ForceDebugger {
-    public static void attach(MouseItemViewController mouse, IHierarchicalModel model, IHierarchicalRenderer renderer){
+    public static void attach(MouseItemViewController mouse, IHierarchicalNodeModel model, IHierarchicalRenderer renderer){
         // Add tools to show force on selection
         final ForceIndex forceIndex = new ForceIndex();
         forceIndex.register(model);

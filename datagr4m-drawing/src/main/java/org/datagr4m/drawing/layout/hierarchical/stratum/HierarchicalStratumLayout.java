@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import org.datagr4m.drawing.layout.hierarchical.matrix.HierarchicalMatrixLayout;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 
 
@@ -26,7 +26,7 @@ public class HierarchicalStratumLayout extends HierarchicalMatrixLayout{
         sequence = null;
     }
     
-    public HierarchicalStratumLayout(IHierarchicalModel model, List<IBoundedItem> sequence) {
+    public HierarchicalStratumLayout(IHierarchicalNodeModel model, List<IBoundedItem> sequence) {
         this.model = model;
         this.sequence = sequence;
     }
@@ -79,15 +79,15 @@ public class HierarchicalStratumLayout extends HierarchicalMatrixLayout{
             allItemsInStratum.add(in);
             //allItemsInStratum.addAll(betweens);
             for(IBoundedItem item: betweens){
-                if(item instanceof IHierarchicalModel){
-                    allItemsInStratum.addAll(((IHierarchicalModel) item).getDescendants(true));
+                if(item instanceof IHierarchicalNodeModel){
+                    allItemsInStratum.addAll(((IHierarchicalNodeModel) item).getDescendants(true));
                 }
             }
         }
         allItemsInStratum.add(last(stratums).getOutput());
         
         // Try to connect models connected to only one side of the stratum (IN)
-        List<IHierarchicalModel> descendants = model.getDescendantModels();
+        List<IHierarchicalNodeModel> descendants = model.getDescendantModels();
         List<IBoundedItem> unhandledModels = ListUtils.subtract(descendants, allItemsInStratum);
         Logger.getLogger(HierarchicalStratumLayout.class).info("Unhandled: "+unhandledModels);
         

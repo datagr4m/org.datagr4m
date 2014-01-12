@@ -55,12 +55,12 @@ public class ModelGeometryProcessor implements IGeometryProcessor{
 
     @Override
     public RectangleBounds computeRawRectangleBounds(IBoundedItem input) {
-        IHierarchicalModel model = subtype(input);
+        IHierarchicalNodeModel model = subtype(input);
         
         BoundsMerger merger = new BoundsMerger();
         for (IBoundedItem item: model.getChildren()) {
             RectangleBounds b;
-            if(item instanceof IHierarchicalModel){
+            if(item instanceof IHierarchicalNodeModel){
                 //b = item.getRelativeRectangleBounds();
                 b = item.getExternalRectangleBounds();
             }
@@ -167,7 +167,7 @@ public class ModelGeometryProcessor implements IGeometryProcessor{
 
     @Override
     public RectangleBounds computeAbsoluteBounds(IBoundedItem input) {
-        IHierarchicalModel model = subtype(input);
+        IHierarchicalNodeModel model = subtype(input);
         
         if(COMPUTE_ABS_BOUNDS_USING_CORNER){
             RectangleBounds relativeBounds = model.getRawRectangleBounds();
@@ -205,7 +205,7 @@ public class ModelGeometryProcessor implements IGeometryProcessor{
     
     /************/
 
-    protected IHierarchicalModel subtype(IBoundedItem item){
-        return (IHierarchicalModel) item;
+    protected IHierarchicalNodeModel subtype(IBoundedItem item){
+        return (IHierarchicalNodeModel) item;
     }
 }

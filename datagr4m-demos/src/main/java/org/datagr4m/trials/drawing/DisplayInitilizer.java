@@ -97,10 +97,10 @@ public class DisplayInitilizer {
 	public MouseEdgeViewController configureMouse(IDisplay display, final IWorkspace workspace) {
 		MouseEdgeViewController mouse = ((MouseEdgeViewController) display
 				.getMouse());
-		mouse.setLayout(workspace.getLayout());
+		mouse.setLayout(workspace.getNodeLayout());
 		mouse.setTubeRenderer(workspace.getRenderer().getTubeRenderer());
 		mouse.setRootModel(workspace.getModel());
-		mouse.setRunner(workspace.getRunner(workspace.getLayout(),
+		mouse.setRunner(workspace.getRunner(workspace.getNodeLayout(),
 				display.getView()));
 		
 		return mouse;

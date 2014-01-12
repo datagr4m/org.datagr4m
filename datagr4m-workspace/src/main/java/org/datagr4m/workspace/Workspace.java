@@ -9,11 +9,11 @@ import java.util.Map;
 
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.factories.IHierarchicalLayoutFactory;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.hierarchical.stratum.HierarchicalStratumLayout;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.factory.ILayoutRunnerFactory;
-import org.datagr4m.drawing.layout.runner.factory.LookupLayoutRunnerFactory;
+import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
 import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceSinglePhase;
 import org.datagr4m.drawing.layout.runner.stop.IBreakCriteria;
 import org.datagr4m.drawing.model.factories.HierarchicalTopologyModelFactory;
@@ -21,7 +21,7 @@ import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.factories.filters.GroupFilter;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemShape;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.LabelMode;
@@ -53,7 +53,7 @@ public class Workspace implements Serializable, IWorkspace {
 
     public static IHierarchicalModelFactory defaultModelFactory = new HierarchicalTopologyModelFactory<Object, Object>();
     public static IHierarchicalLayoutFactory defaultLayoutFactory = new HierarchicalLayoutFactory();
-    public static ILayoutRunnerFactory defaultRunnerFactory = new LookupLayoutRunnerFactory();
+    public static ILayoutRunnerFactory defaultRunnerFactory = new LayoutRunnerFactory();
 
     public static IRenderingPolicy defaultRenderingPolicy = null;
 
@@ -82,6 +82,27 @@ public class Workspace implements Serializable, IWorkspace {
     }
 
     /* */
+    
+    protected String name;
+
+    protected Topology<?, ?> topology;
+    protected IHierarchicalNodeModel model;
+    protected IHierarchicalEdgeModel edgeModel;
+    protected IHierarchicalNodeLayout layout;
+    protected AnnotationModel annotationModel;
+    protected transient LayeredRenderer pluginRenderer;
+    protected transient ILayoutRunner runner;
+
+    protected Map<String, Object> metadata;
+
+    protected IHierarchicalModelFactory modelFactory;
+    protected IHierarchicalLayoutFactory layoutFactory;
+    protected IRenderingPolicy renderingPolicy;// = new
+                                               // AbstractRenderingPolicy();
+    protected ConfigurationFacade configuration;
+
+    protected WorkspaceFiles files;
+    protected boolean coordinatesAvailable = false;
 
     public Workspace() {
         modelFactory = getDefaultHierarchicalModelFactory();
@@ -89,7 +110,7 @@ public class Workspace implements Serializable, IWorkspace {
         renderingPolicy = getDefaultRenderingPolicy();
     }
 
-    public Workspace(Topology<?, ?> topology, IHierarchicalModel model, IHierarchicalEdgeModel edgeModel, AnnotationModel amodel, IHierarchicalLayout layout,
+    public Workspace(Topology<?, ?> topology, IHierarchicalNodeModel model, IHierarchicalEdgeModel edgeModel, AnnotationModel amodel, IHierarchicalNodeLayout layout,
             Map<String, Object> metadata) {
         this();
 
@@ -108,10 +129,10 @@ public class Workspace implements Serializable, IWorkspace {
         setName("#no workspace");
 
         this.topology = topology;
-        this.model = (IHierarchicalModel) modelFactory.getLayoutModel(topology);
+        this.model = (IHierarchicalNodeModel) modelFactory.getLayoutModel(topology);
         this.edgeModel = model.getEdgeModel();
         this.layout = layoutFactory.getLayout(model);
-        this.layout.getTubeLayout().setEdgePostProcess(null);
+        this.layout.getEdgeLayout().setEdgePostProcess(null);
         this.annotationModel = new AnnotationModel();
         this.configuration = new ConfigurationFacade(this);
     }
@@ -194,7 +215,7 @@ public class Workspace implements Serializable, IWorkspace {
             Map<String, String> mapping = extractModelLayoutMapping(layoutML);
             layoutFactory.setModelLayoutMapping(mapping);
         }
-        IHierarchicalLayout layout = layoutFactory.getLayout(model, model.getEdgeModel()); // with
+        IHierarchicalNodeLayout layout = layoutFactory.getLayout(model, model.getEdgeModel()); // with
                                                                                            // tube
                                                                                            // layout
         // LayoutPrinter p = new LayoutPrinter();
@@ -214,7 +235,7 @@ public class Workspace implements Serializable, IWorkspace {
      * Read the default group shape, and apply it to ALL elements in the
      * hierarchy.
      */
-    protected static void applyLayoutMLConfiguration(IHierarchicalModel model, Layout layoutML) {
+    protected static void applyLayoutMLConfiguration(IHierarchicalNodeModel model, Layout layoutML) {
         if (layoutML != null) {
             if (layoutML.getDefaults() == null)
                 return;
@@ -281,10 +302,10 @@ public class Workspace implements Serializable, IWorkspace {
      * Read parameters that are specific to a given layout, find this layout,
      * and setup its parameters.
      */
-    protected static void applySpecificLayoutSettings(IHierarchicalLayout layout, Layout layoutML) {
+    protected static void applySpecificLayoutSettings(IHierarchicalNodeLayout layout, Layout layoutML) {
         if (layoutML == null)
             return;
-        IHierarchicalModel model = layout.getModel();
+        IHierarchicalNodeModel model = layout.getModel();
 
         for (org.datagr4m.io.xml.generated.layout.Group g : layoutML.getGroup()) {
             String gname = g.getName();
@@ -294,7 +315,7 @@ public class Workspace implements Serializable, IWorkspace {
             if (glayout != null) {
                 // applique les settings de stratum layout
                 if (glayout.getStratums() != null) {
-                    IHierarchicalLayout found = null;
+                    IHierarchicalNodeLayout found = null;
                     if (gname.equals(layout.getModel().getLabel()))
                         found = layout;
                     else
@@ -312,7 +333,7 @@ public class Workspace implements Serializable, IWorkspace {
     /**
      * Extract stratum sequence and configure stratum layout.
      */
-    protected static void applyStratumParameters(IHierarchicalModel model, Grouplayout glayout, IHierarchicalLayout found) throws RuntimeException {
+    protected static void applyStratumParameters(IHierarchicalNodeModel model, Grouplayout glayout, IHierarchicalNodeLayout found) throws RuntimeException {
         HierarchicalStratumLayout stratumLayout = (HierarchicalStratumLayout) found;
 
         // build stratum sequence
@@ -351,7 +372,7 @@ public class Workspace implements Serializable, IWorkspace {
     }
 
     @Override
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
 
@@ -366,7 +387,7 @@ public class Workspace implements Serializable, IWorkspace {
     }
 
     @Override
-    public IHierarchicalLayout getLayout() {
+    public IHierarchicalNodeLayout getNodeLayout() {
         return layout;
     }
 
@@ -378,21 +399,21 @@ public class Workspace implements Serializable, IWorkspace {
     /** create or get a runner able to notify the given view for refresh */
     @Override
     public ILayoutRunner getRunner(IView view) {
-        return getOrCreateRunner(getLayout(), view);
+        return getOrCreateRunner(getNodeLayout(), view);
     }
 
     /** create or get a runner. */
     @Override
     public ILayoutRunner getRunner() {
-        return getOrCreateRunner(getLayout(), null);
+        return getOrCreateRunner(getNodeLayout(), null);
     }
 
     @Override
-    public ILayoutRunner getRunner(IHierarchicalLayout root, IView view) {
+    public ILayoutRunner getRunner(IHierarchicalNodeLayout root, IView view) {
         return getOrCreateRunner(root, view);
     }
 
-    protected ILayoutRunner getOrCreateRunner(IHierarchicalLayout root, IView view) {
+    protected ILayoutRunner getOrCreateRunner(IHierarchicalNodeLayout root, IView view) {
         if (runner == null) {
             runner = defaultRunnerFactory.newLayoutRunner(root, view);
         }
@@ -531,7 +552,7 @@ public class Workspace implements Serializable, IWorkspace {
 
         AbstractItemVisitor v = new AbstractItemVisitor() {
             @Override
-            public void doVisitElement(IHierarchicalModel parent, IBoundedItem element, int depth) {
+            public void doVisitElement(IHierarchicalNodeModel parent, IBoundedItem element, int depth) {
                 if (element.getLabel() != null) // root
                     map.put(element.getLabel(), element.getPosition());
             }
@@ -555,7 +576,7 @@ public class Workspace implements Serializable, IWorkspace {
     }
 
     public void applyMap(Map<String, Coord2d> map) {
-        IHierarchicalModel model = getModel();
+        IHierarchicalNodeModel model = getModel();
         if (model != null) {
             for (Map.Entry<String, Coord2d> info : map.entrySet()) {
                 IBoundedItem i = null;
@@ -574,26 +595,4 @@ public class Workspace implements Serializable, IWorkspace {
             throw new RuntimeException("no layout model in this workspace");
     }
 
-    /***********/
-
-    protected String name;
-
-    protected Topology<?, ?> topology;
-    protected IHierarchicalModel model;
-    protected IHierarchicalLayout layout;
-    protected IHierarchicalEdgeModel edgeModel;
-    protected AnnotationModel annotationModel;
-    protected transient LayeredRenderer pluginRenderer;
-    protected transient ILayoutRunner runner;
-
-    protected Map<String, Object> metadata;
-
-    protected IHierarchicalModelFactory modelFactory;
-    protected IHierarchicalLayoutFactory layoutFactory;
-    protected IRenderingPolicy renderingPolicy;// = new
-                                               // AbstractRenderingPolicy();
-    protected ConfigurationFacade configuration;
-
-    protected WorkspaceFiles files;
-    protected boolean coordinatesAvailable = false;
 }

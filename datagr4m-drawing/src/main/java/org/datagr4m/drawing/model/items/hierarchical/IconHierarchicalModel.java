@@ -12,7 +12,7 @@ import org.jzy3d.maths.Coord2d;
 
 
 public class IconHierarchicalModel extends AbstractHierarchicalModel implements IIconHierarchicalModel {
-    public IconHierarchicalModel(IHierarchicalModel parent, List<IBoundedItem> children, Collection<IBoundedItem> neighbours, Icon icon) {
+    public IconHierarchicalModel(IHierarchicalNodeModel parent, List<IBoundedItem> children, Collection<IBoundedItem> neighbours, Icon icon) {
         super(parent, children, neighbours);
         setIcon(icon);
     }

@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.IHierarchicalPairModel;
 import org.datagr4m.drawing.renderer.bounds.BoundsRenderer;
 import org.datagr4m.drawing.renderer.items.hierarchical.AbstractHierarchicalRenderer;
@@ -73,14 +73,14 @@ public class HierarchicalPairRenderer extends AbstractHierarchicalRenderer imple
      * Set the model and build all renderer that require a reference to this model.
      */
     @Override
-    public void setModel(IHierarchicalModel model) {
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = (IHierarchicalPairModel)model;
         this.boundsRenderer = new BoundsRenderer();
         this.itemRenderer = new MultiShapeItemIconRenderer(model.getRoot(), display);
     }
 
     @Override
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
     

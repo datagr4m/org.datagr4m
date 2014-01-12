@@ -4,12 +4,12 @@ import org.datagr4m.drawing.layout.algorithms.forceAtlas.BoundedForceAtlasLayout
 import org.datagr4m.drawing.layout.algorithms.forces.ForceDebugger;
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.factories.IHierarchicalLayoutFactory;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
 import org.datagr4m.drawing.model.factories.HierarchicalModelFactory;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.items.hierarchical.AbstractHierarchicalModel;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.renderer.factories.HierarchicalRendererFactory;
 import org.datagr4m.drawing.renderer.factories.IHierarchicalRendererFactory;
@@ -28,8 +28,8 @@ public class DemoGraphFlatSimple {
     public static boolean DISPLAY_EDGE_EMBEDDED = true;
     
     public static void main(String[] args){
-        final IHierarchicalModel model = model();
-        final IHierarchicalLayout layout = layout(model);
+        final IHierarchicalNodeModel model = model();
+        final IHierarchicalNodeLayout layout = layout(model);
         
         // display
         final Display display = new Display(true, new MouseItemControllerFactory());
@@ -46,7 +46,7 @@ public class DemoGraphFlatSimple {
 
     }
 
-	public static IHierarchicalRenderer renderer(IHierarchicalModel model,
+	public static IHierarchicalRenderer renderer(IHierarchicalNodeModel model,
 			final Display display) {
 		// renderer
         IHierarchicalRendererFactory rendererFactory = new HierarchicalRendererFactory();
@@ -57,9 +57,9 @@ public class DemoGraphFlatSimple {
 		return renderer;
 	}
 
-	public static IHierarchicalLayout layout(IHierarchicalModel model) {
+	public static IHierarchicalNodeLayout layout(IHierarchicalNodeModel model) {
 		IHierarchicalLayoutFactory layoutFactory = new HierarchicalLayoutFactory();
-        IHierarchicalLayout layout = layoutFactory.getNodeLayoutByModelType(model);
+        IHierarchicalNodeLayout layout = layoutFactory.getNodeLayoutByModelType(model);
         
         layout.initAlgo();
         
@@ -71,7 +71,7 @@ public class DemoGraphFlatSimple {
 		return layout;
 	}
     
-    public static IHierarchicalModel model(){
+    public static IHierarchicalNodeModel model(){
         String d1 = new String("d1");
         String d2 = new String("d2");
         String d3 = new String("d3");

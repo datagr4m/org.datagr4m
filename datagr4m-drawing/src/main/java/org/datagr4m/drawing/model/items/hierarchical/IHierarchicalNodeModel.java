@@ -17,12 +17,12 @@ import org.datagr4m.viewer.IView;
 import org.jzy3d.maths.Coord2d;
 
 
-public interface IHierarchicalModel extends IBoundedItem, ICollapsable{
+public interface IHierarchicalNodeModel extends IBoundedItem, ICollapsable{
     /** 
      * Returns the parent of the current model, or null if the model is a root.
      */
     @Override
-	public IHierarchicalModel getParent();
+	public IHierarchicalNodeModel getParent();
     
     /** 
      * Returns the parent of the given item, i.e.:
@@ -33,7 +33,7 @@ public interface IHierarchicalModel extends IBoundedItem, ICollapsable{
      * <li>null if the current model is a root
      * </ul>
      */
-    public IHierarchicalModel getParent(IBoundedItem item);
+    public IHierarchicalNodeModel getParent(IBoundedItem item);
 
     /**
      * Return the depth of the item, relative to the caller model, or -1 if the
@@ -54,7 +54,7 @@ public interface IHierarchicalModel extends IBoundedItem, ICollapsable{
     public int getMaxLeafLevel();
     
     /** 
-     * Returns the children {@link IBoundedItem}, possibly instance of {@link IHierarchicalModel} or
+     * Returns the children {@link IBoundedItem}, possibly instance of {@link IHierarchicalNodeModel} or
      * sub interfaces.
      */
     public List<IBoundedItem> getChildren();
@@ -94,7 +94,7 @@ public interface IHierarchicalModel extends IBoundedItem, ICollapsable{
     /** 
      * Returns all descendant models of the hierarchy.
      */
-    public List<IHierarchicalModel> getDescendantModels();
+    public List<IHierarchicalNodeModel> getDescendantModels();
     
     /**
      * Returns the neighbours of the model, i.e. all other children of the parent

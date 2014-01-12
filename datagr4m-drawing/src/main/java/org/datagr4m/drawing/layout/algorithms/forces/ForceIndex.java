@@ -4,14 +4,14 @@ import java.util.Collection;
 
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphModel;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
 public class ForceIndex {
-    public void register(IHierarchicalModel model){
+    public void register(IHierarchicalNodeModel model){
         if(model instanceof IHierarchicalGraphModel){
             IHierarchicalGraphModel g = (IHierarchicalGraphModel)model;
             
@@ -23,8 +23,8 @@ public class ForceIndex {
         
         // register all sub model forces
         for(IBoundedItem i: model.getChildren()){
-            if(i instanceof IHierarchicalModel)
-                register((IHierarchicalModel)i);
+            if(i instanceof IHierarchicalNodeModel)
+                register((IHierarchicalNodeModel)i);
         }
     }
     

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.pair.IHierarchicalPairModel;
@@ -58,7 +58,7 @@ public class MouseOverProcessor extends AbstractSlotHitHandler {
 
     protected void setMouseOverStatus(Point2D mousePoint, ISlotHitPolicy slotHitPolicy, double manhattanDistance, INavigationController navigation, IClickableItem item) {
         boolean hasOneOrMoreOver;
-        if (!(item instanceof IHierarchicalModel) && !(item instanceof IEdge)) {
+        if (!(item instanceof IHierarchicalNodeModel) && !(item instanceof IEdge)) {
             IBoundedItem bi = ((IBoundedItem) item);
             bi.setState(ItemState.MOUSE_OVER);
             processItemRollOver(bi, mousePoint, slotHitPolicy, navigation, manhattanDistance);

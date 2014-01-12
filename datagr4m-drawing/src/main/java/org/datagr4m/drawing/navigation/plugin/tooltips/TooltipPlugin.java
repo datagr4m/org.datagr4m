@@ -1,6 +1,6 @@
 package org.datagr4m.drawing.navigation.plugin.tooltips;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.navigation.plugin.AbstractNavigationPlugin;
@@ -14,7 +14,7 @@ import org.datagr4m.viewer.renderer.annotations.IAnnotationRendererSettings;
 
 
 public class TooltipPlugin extends AbstractNavigationPlugin{
-    public TooltipPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model) {
+    public TooltipPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model) {
         super(controller, display, layered, animator, mouse, model);
         settings = new AnnotationRendererSettings();
         annotationModel = new AnnotationModel();

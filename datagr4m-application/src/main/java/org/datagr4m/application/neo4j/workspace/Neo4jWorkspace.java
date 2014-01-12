@@ -9,10 +9,10 @@ import org.datagr4m.application.neo4j.factories.Neo4jTopologyFactory;
 import org.datagr4m.application.neo4j.navigation.plugins.louposcope.Neo4jLouposcopeLayer;
 import org.datagr4m.application.neo4j.renderers.Neo4jRelationshipRendererSettings;
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunner;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.renderer.items.hierarchical.IHierarchicalRenderer;
@@ -63,14 +63,14 @@ public class Neo4jWorkspace extends Workspace {
     	
         // Build layout model
     	modelFactory = new Neo4jModelFactory();
-        model = (IHierarchicalModel)modelFactory.getLayoutModel(topology);
+        model = (IHierarchicalNodeModel)modelFactory.getLayoutModel(topology);
         edgeModel = model.getEdgeModel();
 
         // Build layout
         Neo4jGraphModel typeModel = new Neo4jGraphModel();
         HierarchicalLayoutFactory lfact = new Neo4jLayoutFactory(typeModel);
         layout = lfact.getLayout(model);
-        layout.getTubeLayout().setEdgePostProcess(null);
+        layout.getEdgeLayout().setEdgePostProcess(null);
 
         // finalize workspace
         annotationModel = new AnnotationModel();
@@ -127,7 +127,7 @@ public class Neo4jWorkspace extends Workspace {
 
         // Build layout model
         modelFactory = new Neo4jModelFactory(gio.getGraphModel());
-        model = (IHierarchicalModel)modelFactory.getLayoutModel(topology);
+        model = (IHierarchicalNodeModel)modelFactory.getLayoutModel(topology);
         edgeModel = model.getEdgeModel();
         applyLayoutMLConfiguration(model, layoutML);
        
@@ -139,7 +139,7 @@ public class Neo4jWorkspace extends Workspace {
         }
 
         layout = layoutFactory.getLayout(model);
-        layout.getTubeLayout().setEdgePostProcess(null);
+        layout.getEdgeLayout().setEdgePostProcess(null);
 
         // finalize workspace
         annotationModel = new AnnotationModel();
@@ -151,7 +151,7 @@ public class Neo4jWorkspace extends Workspace {
     }
     
     
-    public Neo4jWorkspace(GraphDatabaseService database, GlobalGraphOperations operation, Neo4jTopology topology, IHierarchicalModel model, IHierarchicalEdgeModel tubeModel, AnnotationModel amodel, IHierarchicalLayout layout, ViewsManager views, Layout layoutML, Map<String, Object> metadata) {
+    public Neo4jWorkspace(GraphDatabaseService database, GlobalGraphOperations operation, Neo4jTopology topology, IHierarchicalNodeModel model, IHierarchicalEdgeModel tubeModel, AnnotationModel amodel, IHierarchicalNodeLayout layout, ViewsManager views, Layout layoutML, Map<String, Object> metadata) {
         this.database = database;
         this.operation = operation;
         this.topology = topology;
@@ -199,7 +199,7 @@ public class Neo4jWorkspace extends Workspace {
         final Neo4jLouposcopeLayer nll = new Neo4jLouposcopeLayer(model, display);
         pluginRenderer = new PluginLayeredRenderer(display, model, edgeModel, annotationModel){
             @Override
-			public void initLayerLouposcope(IDisplay display, IHierarchicalModel model) {
+			public void initLayerLouposcope(IDisplay display, IHierarchicalNodeModel model) {
                 Neo4jRelationshipRendererSettings s;
                 // TODO: should not configure louposcope through renderers
                 louposcopeLayer = nll;
@@ -230,7 +230,7 @@ public class Neo4jWorkspace extends Workspace {
      * configuration
      */
     @Override
-	protected ILayoutRunner getOrCreateRunner(IHierarchicalLayout root, IView view) {
+	protected ILayoutRunner getOrCreateRunner(IHierarchicalNodeLayout root, IView view) {
         if (runner == null) {
             //runner = LayoutRunnerLookup.get(root, view);
             runner = new LayoutRunner(root, view);

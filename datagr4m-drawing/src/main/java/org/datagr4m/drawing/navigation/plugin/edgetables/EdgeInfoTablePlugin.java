@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
 import org.datagr4m.drawing.navigation.INavigationController;
@@ -23,7 +23,7 @@ import org.datagr4m.viewer.mouse.ILocalizedMouse;
 public class EdgeInfoTablePlugin extends AbstractNavigationPlugin {
     protected IPopupLayer layeredDisplay;
     
-    public EdgeInfoTablePlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay) {
+    public EdgeInfoTablePlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model, IPopupLayer layeredDisplay) {
         super(controller, display, layered, animator, mouse, model);
         this.layeredDisplay = layeredDisplay;
     }

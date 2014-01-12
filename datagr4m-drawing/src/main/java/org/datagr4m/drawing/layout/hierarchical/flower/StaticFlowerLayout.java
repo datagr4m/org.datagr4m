@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.datagr4m.drawing.layout.geometrical.flower.FlowerGeometry;
 import org.datagr4m.drawing.layout.geometrical.flower.FlowerSolver;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.flower.AbstractFlowerModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.IFlowerModel;
@@ -18,7 +18,7 @@ public class StaticFlowerLayout extends ForceFlowerLayout{
         super(model);
     }
 
-    public StaticFlowerLayout(IHierarchicalLayout parent, IFlowerModel<?> model) {
+    public StaticFlowerLayout(IHierarchicalNodeLayout parent, IFlowerModel<?> model) {
         super(parent, model);
     }
 

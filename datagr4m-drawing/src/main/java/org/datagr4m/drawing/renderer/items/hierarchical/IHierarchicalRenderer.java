@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.datagr4m.drawing.model.bounds.IBounds;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.renderer.IHasDifferedRenderingSupport;
 import org.datagr4m.drawing.renderer.items.IItemRenderer;
 import org.datagr4m.viewer.IDisplay;
@@ -19,8 +19,8 @@ public interface IHierarchicalRenderer extends IRenderer, IHasDifferedRenderingS
     public IHierarchicalRenderer getParent();
 
     // Attach a model to handle
-    public void setModel(IHierarchicalModel model);
-    public IHierarchicalModel getModel();
+    public void setModel(IHierarchicalNodeModel model);
+    public IHierarchicalNodeModel getModel();
     
     // IRenderer methods
     @Override

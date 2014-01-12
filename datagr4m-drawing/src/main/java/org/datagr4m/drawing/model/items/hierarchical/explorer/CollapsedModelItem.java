@@ -4,14 +4,14 @@ import javax.swing.Icon;
 
 import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItemIcon;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.jzy3d.maths.Coord2d;
 
 
 public class CollapsedModelItem extends DefaultBoundedItemIcon implements IBoundedItemIcon{
     private static final long serialVersionUID = 6723996304245319449L;
 
-    public CollapsedModelItem(String name, Icon icon, IHierarchicalModel real){
+    public CollapsedModelItem(String name, Icon icon, IHierarchicalNodeModel real){
         super(name, icon);
         this.real = real;
     }
@@ -55,5 +55,5 @@ public class CollapsedModelItem extends DefaultBoundedItemIcon implements IBound
         return clon;
     }*/
     
-    protected IHierarchicalModel real;
+    protected IHierarchicalNodeModel real;
 }

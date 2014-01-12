@@ -2,7 +2,7 @@ package org.datagr4m.drawing.renderer.policy;
 
 import java.awt.Color;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.renderer.items.hierarchical.graph.edges.hierarchical.MonochromeTubeRendererSettings;
 
 
@@ -14,7 +14,7 @@ public class ShadeGrayRendereringPolicy extends RenderingPolicy implements IRend
     Color gray = new Color(250, 250, 250);
     
     @Override
-    public void setup(IHierarchicalModel model){
+    public void setup(IHierarchicalNodeModel model){
         monocolorAllItems(model, gray);
         tubeSettings = new MonochromeTubeRendererSettings(gray);
         //colorGroupNodesWithGroupType(model);
@@ -26,10 +26,10 @@ public class ShadeGrayRendereringPolicy extends RenderingPolicy implements IRend
     }
 
 	@Override
-	protected void setupEdgeColorPolicy(IHierarchicalModel model) {
+	protected void setupEdgeColorPolicy(IHierarchicalNodeModel model) {
 	}
 
 	@Override
-	protected void setupNodeColorPolicy(IHierarchicalModel model, Color color) {
+	protected void setupNodeColorPolicy(IHierarchicalNodeModel model, Color color) {
 	}
 }

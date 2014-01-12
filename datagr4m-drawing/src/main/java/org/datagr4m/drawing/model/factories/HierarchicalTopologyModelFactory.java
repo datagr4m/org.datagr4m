@@ -11,7 +11,7 @@ import org.datagr4m.drawing.model.factories.filters.GroupFilter;
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemShape;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.explorer.CollapsedModelItem;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphModel;
@@ -74,10 +74,10 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 			if (rectangularGroups) {
 				ItemVisitorAdapter visitor = new ItemVisitorAdapter() {
 					@Override
-					public void doVisitElement(IHierarchicalModel parent,
+					public void doVisitElement(IHierarchicalNodeModel parent,
 							IBoundedItem element, int depth) {
-						if (element instanceof IHierarchicalModel) {
-							IHierarchicalModel model = ((IHierarchicalModel) element);
+						if (element instanceof IHierarchicalNodeModel) {
+							IHierarchicalNodeModel model = ((IHierarchicalNodeModel) element);
 							int level = model.getMaxLeafLevel();
 							if (level >= 2)
 								model.setShape(ItemShape.RECTANGLE);
@@ -315,7 +315,7 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 	 * If item exist, either throw exception or return false, according to value
 	 * crashOnDuplicateItemLocation.
 	 */
-	protected boolean verifyNoExistYet(IHierarchicalModel parent, V item) {
+	protected boolean verifyNoExistYet(IHierarchicalNodeModel parent, V item) {
 		IBoundedItem p = parent.getRoot().getItem(item);
 		if (p != null) {
 			if (crashOnDuplicateItemLocation) {
@@ -502,17 +502,17 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 							HierarchicalGraphModel ancestor = (HierarchicalGraphModel) item1
 									.getFirstCommonAncestor(item2);
 							if (ancestor != null) {
-								IHierarchicalModel p1 = item1
+								IHierarchicalNodeModel p1 = item1
 										.getChildrenOfAncestor(ancestor);
-								IHierarchicalModel p2 = item2
+								IHierarchicalNodeModel p2 = item2
 										.getChildrenOfAncestor(ancestor);
 
 								// accepte les mecs qui sont descendant direct
 								// du point commun
 								if (p1 == null && ancestor.hasChild(item1))
-									p1 = (IHierarchicalModel) item1;
+									p1 = (IHierarchicalNodeModel) item1;
 								if (p2 == null && ancestor.hasChild(item2))
-									p2 = (IHierarchicalModel) item2;
+									p2 = (IHierarchicalNodeModel) item2;
 
 								if (p1 != null && p2 != null) {
 									if (p1 != p2) { // should never happen
@@ -579,22 +579,22 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 				// sinon, on va placer une attraction sur les parents
 				else {
 					if (allowAncestorForce) {
-						IHierarchicalModel firstAncestor = item1
+						IHierarchicalNodeModel firstAncestor = item1
 								.getFirstCommonAncestor(item2);
 						if (firstAncestor instanceof HierarchicalGraphModel) {
 							HierarchicalGraphModel ancestor = (HierarchicalGraphModel) firstAncestor;
 							if (ancestor != null) {
-								IHierarchicalModel p1 = item1
+								IHierarchicalNodeModel p1 = item1
 										.getChildrenOfAncestor(ancestor);
-								IHierarchicalModel p2 = item2
+								IHierarchicalNodeModel p2 = item2
 										.getChildrenOfAncestor(ancestor);
 
 								// accepte les mecs qui sont descendant direct
 								// du point commun
 								if (p1 == null && ancestor.hasChild(item1))
-									p1 = (IHierarchicalModel) item1;
+									p1 = (IHierarchicalNodeModel) item1;
 								if (p2 == null && ancestor.hasChild(item2))
-									p2 = (IHierarchicalModel) item2;
+									p2 = (IHierarchicalNodeModel) item2;
 
 								if (p1 != null && p2 != null) {
 									if (!ancestor.hasAttractionEdges(p1, p2)) {

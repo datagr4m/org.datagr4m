@@ -2,7 +2,7 @@ package org.datagr4m.drawing.model.factories;
 
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.HierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ModelEdgesVisitor;
 import org.datagr4m.topology.Topology;
@@ -20,7 +20,7 @@ public class HierarchicalModelFactory<V,E> implements IHierarchicalModelFactory{
         return new DefaultBoundedItem(data.toString(), 30);
     }
     
-    public  HierarchicalEdgeModel getTubeModel(IHierarchicalModel model, Topology<V,E> topology) {
+    public  HierarchicalEdgeModel getTubeModel(IHierarchicalNodeModel model, Topology<V,E> topology) {
         ModelEdgesVisitor edgeFinder = new ModelEdgesVisitor();
         edgeFinder.visit(model);
         HierarchicalEdgeModel tubeModel = new HierarchicalEdgeModel();

@@ -38,7 +38,7 @@ import org.datagr4m.drawing.layout.runner.ILayoutRunner;
 import org.datagr4m.drawing.layout.runner.LayoutRunnerListenerAdapter;
 import org.datagr4m.drawing.layout.runner.sequence.LayoutRunnerSequenceTwoPhase;
 import org.datagr4m.drawing.model.items.hierarchical.AbstractHierarchicalModel;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.NavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.IBringAndGoPlugin;
@@ -316,7 +316,7 @@ public class Datagr4mViewer extends AbstractDatagr4mViewer implements IDesktopDe
             // Rendering policy
             RenderingPolicy policy = new RenderingPolicy() {
                 @Override
-				public void setup(IHierarchicalModel model) {
+				public void setup(IHierarchicalNodeModel model) {
                 }
 
                 @Override
@@ -329,13 +329,13 @@ public class Datagr4mViewer extends AbstractDatagr4mViewer implements IDesktopDe
                 }
 
 				@Override
-				protected void setupEdgeColorPolicy(IHierarchicalModel model) {
+				protected void setupEdgeColorPolicy(IHierarchicalNodeModel model) {
 					// TODO Auto-generated method stub
 					
 				}
 
 				@Override
-				protected void setupNodeColorPolicy(IHierarchicalModel model,
+				protected void setupNodeColorPolicy(IHierarchicalNodeModel model,
 						Color color) {
 					// TODO Auto-generated method stub
 					

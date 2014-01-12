@@ -1,11 +1,11 @@
 package org.datagr4m.drawing.layout.algorithms.forceAtlas;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 public class RandomInitializer implements IInitializer {
     @Override
-    public void apply(IHierarchicalModel model) {
+    public void apply(IHierarchicalNodeModel model) {
         if(model.getChildren().size()==1){
             model.getChildren().get(0).changePosition(0,0);
         }

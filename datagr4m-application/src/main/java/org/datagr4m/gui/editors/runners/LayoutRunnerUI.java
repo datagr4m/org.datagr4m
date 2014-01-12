@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunner;
 
@@ -34,11 +34,11 @@ public class LayoutRunnerUI extends JPanel{
         return runner;
     }
 
-    public IHierarchicalLayout getRootLayout() {
+    public IHierarchicalNodeLayout getRootLayout() {
         return root;
     }
     
-    public void setRootLayout(IHierarchicalLayout root) {
+    public void setRootLayout(IHierarchicalNodeLayout root) {
         this.root = root;
         
         if(root instanceof HierarchicalGraphLayout)
@@ -103,7 +103,7 @@ public class LayoutRunnerUI extends JPanel{
     
     protected LayoutRunner runner;
     
-    protected IHierarchicalLayout root;
+    protected IHierarchicalNodeLayout root;
     
     private static final long serialVersionUID = -130800220679157938L;
 }

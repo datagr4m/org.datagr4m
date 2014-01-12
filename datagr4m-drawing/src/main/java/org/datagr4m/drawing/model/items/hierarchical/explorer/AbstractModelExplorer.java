@@ -3,13 +3,13 @@ package org.datagr4m.drawing.model.items.hierarchical.explorer;
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
 
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.viewer.IDisplay;
 
 
 public abstract class AbstractModelExplorer implements IModelExplorer{
     protected JPopupMenu menu;
-    protected IHierarchicalModel model;
+    protected IHierarchicalNodeModel model;
 
     @Override
     public void showPopupMenuController(IDisplay display, int x, int y) {

@@ -4,8 +4,11 @@ import java.util.Collection;
 
 import org.datagr4m.drawing.layout.IStaticLayout;
 import org.datagr4m.drawing.layout.hierarchical.AbstractHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.matrix.HierarchicalMatrixLayout;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
+import org.datagr4m.monitors.ITimeMonitor;
+import org.datagr4m.monitors.TimeMonitor;
 import org.jzy3d.maths.Coord2d;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -13,18 +16,39 @@ import com.google.common.collect.ArrayListMultimap;
 public class CategoryLayout extends AbstractHierarchicalLayout implements IStaticLayout{
     private static final long serialVersionUID = 8119255818627497594L;
     
-    public CategoryLayout(IHierarchicalModel model, ICategoryProcessor processor){
+    protected IHierarchicalNodeModel model;
+    protected ICategoryProcessor processor;
+    protected ArrayListMultimap<String,IBoundedItem> categories;
+    
+    private ITimeMonitor timeMonitor;
+
+    public CategoryLayout(){
+        this(null, null);
+    }
+    
+    public CategoryLayout(IHierarchicalNodeModel model, ICategoryProcessor processor){
         this.model = model;
         this.processor = processor;
+        
+        initMonitor();
+    }
+  
+    private void initMonitor() {
+        timeMonitor = new TimeMonitor(this);
     }
     
     @Override
-    public void setModel(IHierarchicalModel model) {
+    public ITimeMonitor getTimeMonitor() {
+        return timeMonitor;
+    }
+    
+    @Override
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = model;
     }
     
     @Override
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
 
@@ -73,11 +97,4 @@ public class CategoryLayout extends AbstractHierarchicalLayout implements IStati
                 max = i.getRawCorridorRectangleBounds().getHeight();
         return max;
     }
-    
-    /***********************/
-
-    protected IHierarchicalModel model;
-    protected ICategoryProcessor processor;
-    protected ArrayListMultimap<String,IBoundedItem> categories;
-
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemShape;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.renderer.items.IItemRenderer;
 import org.datagr4m.drawing.renderer.items.IItemRendererSettings;
 import org.datagr4m.viewer.IDisplay;
@@ -17,7 +17,7 @@ public class MultiShapeItemIconRenderer implements IItemRenderer{
     protected IItemRenderer circle;
     protected IItemRenderer rectangle;
     
-    public MultiShapeItemIconRenderer(IHierarchicalModel root, IDisplay display){
+    public MultiShapeItemIconRenderer(IHierarchicalNodeModel root, IDisplay display){
         circle = new CircleItemIconRenderer(root, display);
         rectangle = new RectangleItemIconRenderer(root, display);
     }
@@ -26,13 +26,13 @@ public class MultiShapeItemIconRenderer implements IItemRenderer{
     
     @Override
     public void render(Graphics2D graphic, IBoundedItem item, IItemRendererSettings settings) {
-        if(item instanceof IHierarchicalModel)
-            renderGroup(graphic, (IHierarchicalModel)item, settings);
+        if(item instanceof IHierarchicalNodeModel)
+            renderGroup(graphic, (IHierarchicalNodeModel)item, settings);
         else
             renderItem(graphic, item, settings);
     }
     
-    protected void renderGroup(Graphics2D graphic, IHierarchicalModel item, IItemRendererSettings settings){
+    protected void renderGroup(Graphics2D graphic, IHierarchicalNodeModel item, IItemRendererSettings settings){
         // show a collapsed group
         if(item.isCollapsed()){
             IBoundedItem collapsedRep = item.getCollapsedModel();
@@ -65,13 +65,13 @@ public class MultiShapeItemIconRenderer implements IItemRenderer{
     
     @Override
     public boolean hit(IBoundedItem item, int x, int y){
-        if(item instanceof IHierarchicalModel)
-            return hitGroup((IHierarchicalModel)item, x, y);
+        if(item instanceof IHierarchicalNodeModel)
+            return hitGroup((IHierarchicalNodeModel)item, x, y);
         else
             return hitItem(item, x, y);
     }
     
-    protected boolean hitGroup(IHierarchicalModel item, int x, int y){
+    protected boolean hitGroup(IHierarchicalNodeModel item, int x, int y){
         // show a collapsed group
         if(item.isCollapsed()){
             IBoundedItem collapsedRep = item.getCollapsedModel();
@@ -92,7 +92,7 @@ public class MultiShapeItemIconRenderer implements IItemRenderer{
     }
     
     protected boolean hitItem(IBoundedItem item, int x, int y){
-        if(item instanceof IHierarchicalModel)
+        if(item instanceof IHierarchicalNodeModel)
             return circle.hit(item, x, y);
         else
             return rectangle.hit(item, x, y);

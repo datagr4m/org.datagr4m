@@ -63,7 +63,7 @@ public class TestWorkspaceInitFromXMLTopologyFlat{
         LayoutRunnerSequenceSinglePhase seq = (LayoutRunnerSequenceSinglePhase)runner.getConfiguration().getSequence();
         seq.setFirstPhaseBreakCriteria(criteria);
         
-        LayoutLevelSettings settings = runner.getLayoutSettings(w.getLayout().getChildren().get(0));
+        LayoutLevelSettings settings = runner.getLayoutSettings(w.getNodeLayout().getChildren().get(0));
         System.out.println(settings.getRepulsion());
         settings.setRepulsion(500);
         settings.setAttraction(1);

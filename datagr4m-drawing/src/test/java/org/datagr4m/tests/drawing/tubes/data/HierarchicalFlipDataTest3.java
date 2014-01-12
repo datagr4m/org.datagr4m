@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.HierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
@@ -154,7 +154,7 @@ public class HierarchicalFlipDataTest3 extends AbstractTubeDataTest implements I
     }
 
     @Override
-    public IHierarchicalModel getItemModel() {
+    public IHierarchicalNodeModel getItemModel() {
         return items;
     }
 
@@ -164,9 +164,9 @@ public class HierarchicalFlipDataTest3 extends AbstractTubeDataTest implements I
     }
 
     @Override
-    public IHierarchicalLayout makeTestLayout() {
+    public IHierarchicalNodeLayout makeTestLayout() {
         HierarchicalLayoutFactory layoutFactory = new HierarchicalLayoutFactory();
-        IHierarchicalLayout layout = layoutFactory.getLayout(items, edges);
+        IHierarchicalNodeLayout layout = layoutFactory.getLayout(items, edges);
         layout.initAlgo();
 
         items.changePosition(0, 0);

@@ -1,10 +1,10 @@
 package org.datagr4m.drawing.layout.hierarchical.matrix;
 
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 
 
-public interface IHierarchicalMatrixLayout extends IHierarchicalLayout{
+public interface IHierarchicalMatrixLayout extends IHierarchicalNodeLayout{
     public void setSize(int nLine, int nColumn) throws IllegalArgumentException;
     public void setItemCell(IBoundedItem item, int lineIndex, int columnIndex) throws IllegalArgumentException;
     

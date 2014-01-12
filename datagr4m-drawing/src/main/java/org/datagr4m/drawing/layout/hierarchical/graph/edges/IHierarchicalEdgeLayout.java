@@ -7,9 +7,10 @@ import org.datagr4m.drawing.layout.ILayoutListener;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.bundling.IEdgeBundling;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.post.IEdgePostProcessor;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
+import org.datagr4m.monitors.ITimeMonitorable;
 
 
-public interface IHierarchicalEdgeLayout extends Serializable{
+public interface IHierarchicalEdgeLayout extends ITimeMonitorable, Serializable{
 	public void build(IHierarchicalEdgeModel model);
     
     public IItemSlotLayout getItemSlotLayout();

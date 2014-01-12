@@ -3,10 +3,10 @@ package org.datagr4m.tests.drawing.tubes.data;
 import java.awt.geom.Point2D;
 
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.IHierarchicalEdgeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.SlotedTubeLayout;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
@@ -28,10 +28,10 @@ public class HierarchicalFlipDataTest4WithInsertion extends HierarchicalFlipData
     }
 
     @Override
-    public IHierarchicalLayout makeTestLayout() {
+    public IHierarchicalNodeLayout makeTestLayout() {
         HierarchicalLayoutFactory layoutFactory = new HierarchicalLayoutFactory(){
             @Override
-            public IHierarchicalEdgeLayout getHierarchicalEdgeLayout(IHierarchicalModel model){
+            public IHierarchicalEdgeLayout getHierarchicalEdgeLayout(IHierarchicalNodeModel model){
                 return new SlotedTubeLayout(pathFactory){
                     @Override
 					protected void doPostProcessTubeAndEdgeLayout(IHierarchicalEdgeModel model){
@@ -45,7 +45,7 @@ public class HierarchicalFlipDataTest4WithInsertion extends HierarchicalFlipData
                 };
             }
         };
-        IHierarchicalLayout layout = layoutFactory.getLayout(items, edges);
+        IHierarchicalNodeLayout layout = layoutFactory.getLayout(items, edges);
         layout.initAlgo();
 
         items.changePosition(0, 0);

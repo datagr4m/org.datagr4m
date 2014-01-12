@@ -13,7 +13,7 @@ import org.datagr4m.drawing.layout.algorithms.forces.IForce;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.AbstractHierarchicalModel;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -22,7 +22,7 @@ public abstract class AbstractHierarchicalGraphModel extends
 		AbstractHierarchicalModel implements IHierarchicalGraphModel {
 	private static final long serialVersionUID = -7766840768858722210L;
 
-	public AbstractHierarchicalGraphModel(IHierarchicalModel parent,
+	public AbstractHierarchicalGraphModel(IHierarchicalNodeModel parent,
 			List<IBoundedItem> children, Collection<IBoundedItem> neighbours) {
 		super(parent, children, neighbours);
 		localEdges = new ArrayList<Pair<IBoundedItem, IBoundedItem>>();
@@ -37,12 +37,12 @@ public abstract class AbstractHierarchicalGraphModel extends
 		this(null, new ArrayList<IBoundedItem>(), new ArrayList<IBoundedItem>());
 	}
 
-	public AbstractHierarchicalGraphModel(IHierarchicalModel parent,
+	public AbstractHierarchicalGraphModel(IHierarchicalNodeModel parent,
 			List<IBoundedItem> children) {
 		super(parent, children);
 	}
 
-	public AbstractHierarchicalGraphModel(IHierarchicalModel parent) {
+	public AbstractHierarchicalGraphModel(IHierarchicalNodeModel parent) {
 		super(parent);
 	}
 

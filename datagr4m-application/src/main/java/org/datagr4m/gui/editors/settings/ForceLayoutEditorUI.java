@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.ForceAtlasLayout;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.hierarchical.pair.HierarchicalPairLayout;
 import org.datagr4m.drawing.layout.hierarchical.visitor.AbstractLayoutParameterVisitor;
 import org.datagr4m.viewer.Display;
@@ -25,11 +25,11 @@ public class ForceLayoutEditorUI extends JPanel{
     public ForceLayoutEditorUI(boolean showStartStop){
         this(null, showStartStop);
     }
-    public ForceLayoutEditorUI(IHierarchicalLayout root){
+    public ForceLayoutEditorUI(IHierarchicalNodeLayout root){
         this(root, true);
     }
     
-    public ForceLayoutEditorUI(IHierarchicalLayout root, boolean showStartStop){
+    public ForceLayoutEditorUI(IHierarchicalNodeLayout root, boolean showStartStop){
         super();
         int n = 13;
         if(!showStartStop)
@@ -59,18 +59,18 @@ public class ForceLayoutEditorUI extends JPanel{
             setRootLayout(root);
     }
     
-    public IHierarchicalLayout getRootLayout() {
+    public IHierarchicalNodeLayout getRootLayout() {
         return root;
     }
     
-    public void setRootLayout(IHierarchicalLayout root) {
+    public void setRootLayout(IHierarchicalNodeLayout root) {
         this.root = root;
         mountAll(root);
     }
     
     /****************************/
     
-    protected void mountAll(IHierarchicalLayout root){
+    protected void mountAll(IHierarchicalNodeLayout root){
         AbstractLayoutParameterVisitor v = new AbstractLayoutParameterVisitor() {
             @Override
             public void editForceAtlas(ForceAtlasLayout layout) {
@@ -84,7 +84,7 @@ public class ForceLayoutEditorUI extends JPanel{
         v.visit(root);
     }
     
-    protected void updateAll(IHierarchicalLayout root){
+    protected void updateAll(IHierarchicalNodeLayout root){
         AbstractLayoutParameterVisitor v = new AbstractLayoutParameterVisitor() {
             @Override
             public void editForceAtlas(ForceAtlasLayout layout) {
@@ -350,7 +350,7 @@ public class ForceLayoutEditorUI extends JPanel{
     protected Thread runner;
     protected boolean doRun = false;
     
-    protected IHierarchicalLayout root;
+    protected IHierarchicalNodeLayout root;
     
     /**************************/
     

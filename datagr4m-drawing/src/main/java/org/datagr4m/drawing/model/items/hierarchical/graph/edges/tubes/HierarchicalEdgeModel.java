@@ -14,7 +14,7 @@ import org.datagr4m.datastructures.pairs.CommutativePair;
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.Edge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.infos.DefaultEdgeInfo;
@@ -83,7 +83,7 @@ public class HierarchicalEdgeModel implements IHierarchicalEdgeModel, Serializab
      * extract actual network informations
      */
     @Override
-    public <V,E> void build(Topology<V, E> topology, IHierarchicalModel model) {
+    public <V,E> void build(Topology<V, E> topology, IHierarchicalNodeModel model) {
         Graph<V, E> graph = topology.getGraph();
 
         for (E edge : graph.getEdges()) {
@@ -153,8 +153,8 @@ public class HierarchicalEdgeModel implements IHierarchicalEdgeModel, Serializab
     }
 
     protected CommutativePair<IBoundedItem> createSmartParentTubeKey(Pair<IBoundedItem, IBoundedItem> link) {
-        IHierarchicalModel p1 = link.a.getParent();
-        IHierarchicalModel p2 = link.b.getParent();
+        IHierarchicalNodeModel p1 = link.a.getParent();
+        IHierarchicalNodeModel p2 = link.b.getParent();
 
         if (p1.hasDescendant(p2))
             return createTubeKey(link.a, p2);
@@ -246,8 +246,8 @@ public class HierarchicalEdgeModel implements IHierarchicalEdgeModel, Serializab
         // qui retourne vrai pour a.getDescendants(true).contains(a)
         else if(areInSimilarGroups(parentKey)){
             boolean didRoot = false;
-            if(parentKey.a instanceof IHierarchicalModel){
-                IHierarchicalModel hm = (IHierarchicalModel)parentKey.a;
+            if(parentKey.a instanceof IHierarchicalNodeModel){
+                IHierarchicalNodeModel hm = (IHierarchicalNodeModel)parentKey.a;
                 if(hm.isRoot()){
                     didRoot = true;                    
                     if (!rootTubes.contains(tube)) 
@@ -314,8 +314,8 @@ public class HierarchicalEdgeModel implements IHierarchicalEdgeModel, Serializab
     /** Left parent (a in key) has b as child.*/
     protected boolean isNestedHierarchyLeftHigher(CommutativePair<IBoundedItem> parentKey) {
         boolean nestedB = false;
-        if (parentKey.a instanceof IHierarchicalModel) {
-            List<IBoundedItem> descendants = ((IHierarchicalModel) parentKey.a).getDescendants(true);
+        if (parentKey.a instanceof IHierarchicalNodeModel) {
+            List<IBoundedItem> descendants = ((IHierarchicalNodeModel) parentKey.a).getDescendants(true);
             nestedB = descendants.contains(parentKey.b);
         }
         return nestedB;
@@ -324,8 +324,8 @@ public class HierarchicalEdgeModel implements IHierarchicalEdgeModel, Serializab
     /** Right parent (b in key) has a as child.*/
     protected boolean isNestedHierarchyRightHigher(CommutativePair<IBoundedItem> parentKey) {
         boolean nestedA = false;
-        if (parentKey.b instanceof IHierarchicalModel) {
-            List<IBoundedItem> descendants = ((IHierarchicalModel) parentKey.b).getDescendants(true);
+        if (parentKey.b instanceof IHierarchicalNodeModel) {
+            List<IBoundedItem> descendants = ((IHierarchicalNodeModel) parentKey.b).getDescendants(true);
             nestedA = descendants.contains(parentKey.a);
         }
         return nestedA;

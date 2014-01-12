@@ -3,27 +3,49 @@ package org.datagr4m.drawing.layout.hierarchical.graph;
 import org.datagr4m.drawing.layout.IRunnableLayout;
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.BoundedForceAtlasLayout;
 import org.datagr4m.drawing.layout.hierarchical.AbstractHierarchicalLayout;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphModel;
+import org.datagr4m.monitors.ITimeMonitor;
+import org.datagr4m.monitors.TimeMonitor;
 
 
-public class HierarchicalGraphLayout extends AbstractHierarchicalLayout implements IHierarchicalLayout, IRunnableLayout{
+public class HierarchicalGraphLayout extends AbstractHierarchicalLayout implements IHierarchicalNodeLayout, IRunnableLayout{
     private static final long serialVersionUID = -90450336667215378L;
 
+    protected HierarchicalGraphModel model;
+    protected BoundedForceAtlasLayout delegate;
+    
+    private ITimeMonitor timeMonitor;
+    
+
+    public HierarchicalGraphLayout(){
+        this(null, null);
+    }
+    
     public HierarchicalGraphLayout(IHierarchicalGraphModel model){
         this(null, model);
     }
     
-    public HierarchicalGraphLayout(IHierarchicalLayout parent, IHierarchicalGraphModel model) {
+    public HierarchicalGraphLayout(IHierarchicalNodeLayout parent, IHierarchicalGraphModel model) {
         super(parent);
+        initMonitor();
         setModel(model);
     }
 
+    private void initMonitor() {
+        timeMonitor = new TimeMonitor(this);
+    }
+
     @Override
-    public void setModel(IHierarchicalModel model) {
+    public ITimeMonitor getTimeMonitor() {
+        return timeMonitor;
+    }
+    
+    @Override
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = (HierarchicalGraphModel) model;        
         this.delegate = new BoundedForceAtlasLayout(this.model);
         this.delegate.resetPropertiesValues();
@@ -63,6 +85,8 @@ public class HierarchicalGraphLayout extends AbstractHierarchicalLayout implemen
      * @return
      */
     public boolean goAlgo(boolean handleChildren) {
+        timeMonitor.startMonitor();
+
         if(handleChildren)
             super.goAlgo();
         
@@ -77,11 +101,15 @@ public class HierarchicalGraphLayout extends AbstractHierarchicalLayout implemen
             }
             delegate.incCounter();
             onDoneAlgo();
+            
+            timeMonitor.stopMonitor();
             return changed;
         }
         else{
             delegate.goAlgo();
             onDoneAlgo();
+
+            timeMonitor.stopMonitor();
             return true;
         }
     }
@@ -101,14 +129,4 @@ public class HierarchicalGraphLayout extends AbstractHierarchicalLayout implemen
             return super.canAlgo();
         }
     }
-    
-    /*@Override
-    public void onDoneAlgo(){
-        
-    }*/
-    
-    /*****************/
-    
-    protected HierarchicalGraphModel model;
-    protected BoundedForceAtlasLayout delegate;
 }

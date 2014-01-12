@@ -11,7 +11,7 @@ import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.CommonParentExtractor;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.FlowerEdge;
 import org.datagr4m.drawing.model.items.hierarchical.flower.HyperEdgeStructure;
 import org.datagr4m.drawing.model.items.hierarchical.flower.IEdgeFactory;
@@ -23,7 +23,7 @@ import edu.uci.ics.jung.graph.Graph;
 
 /**
  * A tool able to build a {@link StaticFlowerModel} 
- * from a source {@link IHierarchicalModel} and {@link Graph<DeviceKey,NetworkEdge}.
+ * from a source {@link IHierarchicalNodeModel} and {@link Graph<DeviceKey,NetworkEdge}.
  * 
  * Any entity is cloned using an {@link AvatarManager} that ensure the flower model
  * will not reuse existing items (which is required to keep the global view static).
@@ -35,7 +35,7 @@ public abstract class AbstractStaticFlowerBuilder<V,E> implements IStaticFlowerB
     protected FlowerBuilderConfiguration configuration;
 
     // source
-    protected IHierarchicalModel model;
+    protected IHierarchicalNodeModel model;
     protected Topology<V,E> data;
     
     // target
@@ -45,11 +45,11 @@ public abstract class AbstractStaticFlowerBuilder<V,E> implements IStaticFlowerB
     protected AvatarManager avatarManager;
     protected IEdgeFactory<E> edgeFactory;
     
-    public AbstractStaticFlowerBuilder(IHierarchicalModel model, Topology<V,E> data, AvatarManager manager, IEdgeFactory<E> edgeFactory){
+    public AbstractStaticFlowerBuilder(IHierarchicalNodeModel model, Topology<V,E> data, AvatarManager manager, IEdgeFactory<E> edgeFactory){
         this(model, data, manager, edgeFactory, new FlowerBuilderConfiguration());
     }    
     
-    public AbstractStaticFlowerBuilder(IHierarchicalModel model, Topology<V,E> data, AvatarManager manager, IEdgeFactory<E> edgeFactory, FlowerBuilderConfiguration configuration){
+    public AbstractStaticFlowerBuilder(IHierarchicalNodeModel model, Topology<V,E> data, AvatarManager manager, IEdgeFactory<E> edgeFactory, FlowerBuilderConfiguration configuration){
         this.model = model;
         this.data=data;
         this.avatarManager = manager;
@@ -63,7 +63,7 @@ public abstract class AbstractStaticFlowerBuilder<V,E> implements IStaticFlowerB
         
     @Override
     public void build(IBoundedItem item){
-        if(item instanceof IHierarchicalModel){
+        if(item instanceof IHierarchicalNodeModel){
         	Logger.getLogger(AbstractStaticFlowerBuilder.class).info("no b&g on a model");
         	return;
         }
@@ -74,7 +74,7 @@ public abstract class AbstractStaticFlowerBuilder<V,E> implements IStaticFlowerB
     }
 
     @SuppressWarnings("unchecked")
-    public StaticFlowerModel<E> buildFlower(IBoundedItem center, IHierarchicalModel model, Topology<V, E> data, IEdgeFactory<E> edgeFactory){
+    public StaticFlowerModel<E> buildFlower(IBoundedItem center, IHierarchicalNodeModel model, Topology<V, E> data, IEdgeFactory<E> edgeFactory){
     	IBoundedItem centerAvatar = ((DefaultBoundedItemIcon) center).clone();
         centerAvatar.changePosition(center.getAbsolutePosition());
 
@@ -141,7 +141,7 @@ public abstract class AbstractStaticFlowerBuilder<V,E> implements IStaticFlowerB
     		parentIndex.add(item);
         }
         
-        IHierarchicalModel parent = parentIndex.getParent(item);
+        IHierarchicalNodeModel parent = parentIndex.getParent(item);
         
         // if can collapse and option to true
         if(returnParentIfCollapsable && parentIndex.canCollapse(parent)){ 

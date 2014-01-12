@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.listeners.IItemListener;
 import org.datagr4m.drawing.model.slots.ISlotableItem;
 import org.datagr4m.viewer.IDisplay;
@@ -144,15 +144,15 @@ public interface IBoundedItem extends ISlotableItem, IClickableItem{
     public boolean intersects(IBoundedItem item);
     
     // HIERARCHY
-    public void setParent(IHierarchicalModel model);
-    public IHierarchicalModel getParent();
+    public void setParent(IHierarchicalNodeModel model);
+    public IHierarchicalNodeModel getParent();
     public int getDepth();
     /** 
      * Returns the root of this hierarchy, i.e. the first model having a null parent
      * starting from this one.
      */
-    public IHierarchicalModel getRoot();
-    public IHierarchicalModel computeRoot();
+    public IHierarchicalNodeModel getRoot();
+    public IHierarchicalNodeModel computeRoot();
     
     /** Returns true if this item has no parent.*/
     public boolean isRoot();
@@ -161,7 +161,7 @@ public interface IBoundedItem extends ISlotableItem, IClickableItem{
      * Returns the first ancestor of the current item that is ancestor
      * of the input sibbling item, or null if no ancestor are shared.
      */
-    public IHierarchicalModel getFirstCommonAncestor(IBoundedItem sibbling);
+    public IHierarchicalNodeModel getFirstCommonAncestor(IBoundedItem sibbling);
 
     /**
      * Returns a parent of the current item that is a child of the input ancestor,
@@ -170,7 +170,7 @@ public interface IBoundedItem extends ISlotableItem, IClickableItem{
      * Warning: if A is a child of B, B is root, and one calls A.getCHildrenOfAncestor(B),
      * result will be null, since there is no intermediate item between A and B.
      */
-    public IHierarchicalModel getChildrenOfAncestor(IHierarchicalModel ancestor);
+    public IHierarchicalNodeModel getChildrenOfAncestor(IHierarchicalNodeModel ancestor);
 
     
     

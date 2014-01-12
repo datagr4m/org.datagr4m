@@ -14,7 +14,7 @@ import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.items.BoundsType;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.IHierarchicalPairModel;
 import org.datagr4m.viewer.IDisplay;
 
@@ -43,7 +43,7 @@ public class ItemRendererSettings implements IItemRendererSettings {
     public Color getNodeBorderColor(IBoundedItem item) {
         Color color = nodeBorderColorMap.get(item);
         if (color == null) {
-            if (item instanceof IHierarchicalModel){
+            if (item instanceof IHierarchicalNodeModel){
                 // pair only have border on roll over
                 if(item instanceof IHierarchicalPairModel)
                  // direct return: do not store a contextual color (depend on mouse over)
@@ -97,7 +97,7 @@ public class ItemRendererSettings implements IItemRendererSettings {
      */
     @Override
     public boolean isNodeLabelScaled(IBoundedItem item) {
-        if(item instanceof IHierarchicalModel){
+        if(item instanceof IHierarchicalNodeModel){
             /*Group<?> group = (Group<?>)item.getObject();
             if(group.depth()>0)
                 return false;

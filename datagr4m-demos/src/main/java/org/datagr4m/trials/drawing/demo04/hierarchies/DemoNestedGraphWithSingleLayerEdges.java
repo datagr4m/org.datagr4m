@@ -10,7 +10,7 @@ import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
 import org.datagr4m.drawing.model.factories.HierarchicalModelFactory;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.items.ItemShape;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.renderer.factories.HierarchicalRendererFactory;
 import org.datagr4m.drawing.renderer.factories.IHierarchicalRendererFactory;
@@ -25,7 +25,7 @@ import edu.uci.ics.jung.graph.Graph;
 
 public class DemoNestedGraphWithSingleLayerEdges {
     public static void main(String[] args){
-        final IHierarchicalModel model = model();
+        final IHierarchicalNodeModel model = model();
         final HierarchicalGraphLayout layout = layout(model);
         final Display display = display(model);
         
@@ -42,7 +42,7 @@ public class DemoNestedGraphWithSingleLayerEdges {
         runner.start();
     }
 
-	public static Display display(final IHierarchicalModel model) {
+	public static Display display(final IHierarchicalNodeModel model) {
 		// display
         final Display display = new Display(true, new MouseItemControllerFactory());
         IHierarchicalRendererFactory rendererFactory = new HierarchicalRendererFactory();
@@ -54,7 +54,7 @@ public class DemoNestedGraphWithSingleLayerEdges {
 		return display;
 	}
 
-	public static HierarchicalGraphLayout layout(final IHierarchicalModel model) {
+	public static HierarchicalGraphLayout layout(final IHierarchicalNodeModel model) {
 		IHierarchicalLayoutFactory layoutFactory = new HierarchicalLayoutFactory();
         HierarchicalGraphLayout layout = (HierarchicalGraphLayout)layoutFactory.getLayout(model);//getNodeLayoutByModelType(model);
         layout.getDelegate().setRepulsionStrength(1d);
@@ -63,7 +63,7 @@ public class DemoNestedGraphWithSingleLayerEdges {
 		return layout;
 	}
     
-    public static IHierarchicalModel model(){
+    public static IHierarchicalNodeModel model(){
         IHierarchicalModelFactory factory = new HierarchicalModelFactory<String, String>();
 
         

@@ -2,12 +2,12 @@ package org.datagr4m.tests.drawing.items;
 
 import org.datagr4m.drawing.model.items.DefaultBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.pair.HierarchicalPairModel;
 
 
 public class MockupModels {
-    public static IHierarchicalModel buildPairTree(){
+    public static IHierarchicalNodeModel buildPairTree(){
         IBoundedItem left1 = new DefaultBoundedItem("left", 30);
         IBoundedItem right1 = new DefaultBoundedItem("right", 30);
         HierarchicalPairModel child1 = new HierarchicalPairModel(left1, right1);
@@ -21,7 +21,7 @@ public class MockupModels {
         return root;
     }
     
-    public static IHierarchicalModel buildPair(){
+    public static IHierarchicalNodeModel buildPair(){
         IBoundedItem left1 = new DefaultBoundedItem("left", 30);
         IBoundedItem right1 = new DefaultBoundedItem("right", 30);
         return new HierarchicalPairModel(left1, right1);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.listeners.IItemListener;
 
 
@@ -12,12 +12,12 @@ public abstract class AbstractStatefullItem implements IBoundedItem{
     private static final long serialVersionUID = 8075639255184564793L;
         
     @Override
-    public void setParent(IHierarchicalModel parent) {
+    public void setParent(IHierarchicalNodeModel parent) {
         this.parent = parent;
     }
 
     @Override
-    public IHierarchicalModel getParent() {
+    public IHierarchicalNodeModel getParent() {
         return parent;
     }
     
@@ -30,7 +30,7 @@ public abstract class AbstractStatefullItem implements IBoundedItem{
     }
     
     @Override
-    public IHierarchicalModel getRoot(){
+    public IHierarchicalNodeModel getRoot(){
         if(parent==null)
             return null;
         else
@@ -38,7 +38,7 @@ public abstract class AbstractStatefullItem implements IBoundedItem{
     }
     
     @Override
-    public IHierarchicalModel computeRoot(){
+    public IHierarchicalNodeModel computeRoot(){
         if(parent==null)
             return null;
         else
@@ -53,11 +53,11 @@ public abstract class AbstractStatefullItem implements IBoundedItem{
     /***********/
     
     @Override
-    public IHierarchicalModel getFirstCommonAncestor(IBoundedItem sibbling){
-        IHierarchicalModel p1 = getParent();
+    public IHierarchicalNodeModel getFirstCommonAncestor(IBoundedItem sibbling){
+        IHierarchicalNodeModel p1 = getParent();
         
         while(p1!=null){
-            IHierarchicalModel p2 = sibbling.getParent();
+            IHierarchicalNodeModel p2 = sibbling.getParent();
             while(p2!=null){
                 if(p1==p2)
                     return p1;
@@ -70,8 +70,8 @@ public abstract class AbstractStatefullItem implements IBoundedItem{
     }
 
     @Override
-    public IHierarchicalModel getChildrenOfAncestor(IHierarchicalModel ancestor){
-        IHierarchicalModel p1 = getParent();
+    public IHierarchicalNodeModel getChildrenOfAncestor(IHierarchicalNodeModel ancestor){
+        IHierarchicalNodeModel p1 = getParent();
         
         while(p1!=null){
             if(ancestor.hasChild(p1))
@@ -213,7 +213,7 @@ public abstract class AbstractStatefullItem implements IBoundedItem{
     protected boolean locked = false;
     protected ItemState state = new ItemState();
     protected ItemShape shape = ItemShape.CIRCLE;
-    protected IHierarchicalModel parent;
+    protected IHierarchicalNodeModel parent;
     protected Object data;
     protected boolean visible = true;
     //protected boolean parentDirty = true;

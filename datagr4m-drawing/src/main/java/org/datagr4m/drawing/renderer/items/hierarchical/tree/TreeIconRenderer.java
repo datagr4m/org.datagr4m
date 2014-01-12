@@ -14,7 +14,7 @@ import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItemIcon;
 import org.datagr4m.drawing.model.items.ItemState;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.tree.TreeModel;
 import org.datagr4m.drawing.renderer.items.IItemRenderer;
 import org.datagr4m.drawing.renderer.items.IItemRendererSettings;
@@ -29,7 +29,7 @@ import org.jzy3d.maths.Coord2d;
 
 /** The item must be a DeviceKey.*/
 public class TreeIconRenderer extends AbstractExtendedRenderer implements IItemRenderer{
-    public TreeIconRenderer(IHierarchicalModel root, IDisplay display){
+    public TreeIconRenderer(IHierarchicalNodeModel root, IDisplay display){
         if(root!=null)
             setModel((TreeModel)root);
         this.display = display;
@@ -81,7 +81,7 @@ public class TreeIconRenderer extends AbstractExtendedRenderer implements IItemR
                 // compute direction of the text
                 Coord2d nodeCenter = iNode.getPosition(); // point du centre de l'icone du node
                 Coord2d pivotCenter = null; // point de pivot
-                IHierarchicalModel root = iNode.getRoot();
+                IHierarchicalNodeModel root = iNode.getRoot();
                 if(root instanceof TreeModel){
                     TreeModel model = (TreeModel)root;
                     if(model.getPivotPoint()!=null)

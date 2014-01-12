@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.datagr4m.application.neo4j.renderers.Neo4jRelationshipRendererSettings;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.plugin.louposcope.AbstractLouposcopeLayer;
 import org.datagr4m.drawing.navigation.plugin.louposcope.ILouposcopeContent;
 import org.datagr4m.drawing.navigation.plugin.louposcope.ILouposcopeLayer;
@@ -14,7 +14,7 @@ import org.datagr4m.topology.graph.IPropertyNode;
 import org.datagr4m.viewer.IDisplay;
 
 public class Neo4jLouposcopeLayer extends AbstractLouposcopeLayer<IPropertyNode,IPropertyEdge,Neo4jNodeRelationshipSummary> implements ILouposcopeLayer<IPropertyNode,IPropertyEdge,Neo4jNodeRelationshipSummary>{
-    public Neo4jLouposcopeLayer(IHierarchicalModel model, IDisplay display) {
+    public Neo4jLouposcopeLayer(IHierarchicalNodeModel model, IDisplay display) {
         super(model, display);
     }
 

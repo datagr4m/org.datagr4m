@@ -3,14 +3,14 @@ package org.datagr4m.drawing.model.items.hierarchical.graph;
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 import edu.uci.ics.jung.graph.Graph;
 
 public class HierarchicalGraphModel extends AbstractHierarchicalGraphModel{
     public HierarchicalGraphModel(){}
     
-    public HierarchicalGraphModel(IHierarchicalModel parent){
+    public HierarchicalGraphModel(IHierarchicalNodeModel parent){
         super(parent);
     }
     

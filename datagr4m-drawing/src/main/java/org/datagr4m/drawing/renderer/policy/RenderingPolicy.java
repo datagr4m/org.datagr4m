@@ -3,7 +3,7 @@ package org.datagr4m.drawing.renderer.policy;
 import java.awt.Color;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
 import org.datagr4m.drawing.renderer.bounds.BoundsRendererSettings;
@@ -39,7 +39,7 @@ public class RenderingPolicy implements IRenderingPolicy {
     }
     
     @Override
-    public void setup(IHierarchicalModel model){
+    public void setup(IHierarchicalNodeModel model){
         showNodeBorder();
         setupNodeColorPolicy(model, java.awt.Color.WHITE);
         if(EDGE_COLOR)
@@ -52,14 +52,14 @@ public class RenderingPolicy implements IRenderingPolicy {
         isLocalEdgeDisplayed = LOCAL_EDGE_DISPLAY_DO_NOT_EDIT;
     }
     
-    protected void setupEdgeColorPolicy(IHierarchicalModel model) {
+    protected void setupEdgeColorPolicy(IHierarchicalNodeModel model) {
 		// tubeSettings = new
 		// OneColorPerIpTubeRendererSettings(model.getEdgeModel());
 	}
 
-	protected void setupNodeColorPolicy(IHierarchicalModel model, Color color) {
+	protected void setupNodeColorPolicy(IHierarchicalNodeModel model, Color color) {
 		for (IBoundedItem item : model.getChildren()) {
-			if (!(item instanceof IHierarchicalModel)) {
+			if (!(item instanceof IHierarchicalNodeModel)) {
 				itemSettings.setNodeBodyColor(item, color);
 			} else {
 				IBoundedItem delegate = model.getCollapsedModel();
@@ -67,19 +67,19 @@ public class RenderingPolicy implements IRenderingPolicy {
 					itemSettings.setNodeBodyColor(item, color);
 				}
 
-				setupNodeColorPolicy((IHierarchicalModel) item, color);
+				setupNodeColorPolicy((IHierarchicalNodeModel) item, color);
 			}
 		}
 	}
 
-    protected void monocolorAllItems(IHierarchicalModel model, Color color){
+    protected void monocolorAllItems(IHierarchicalNodeModel model, Color color){
         for(IBoundedItem item: model.getChildren()){
             itemSettings.setNodeBodyColor(item, Color.WHITE);
             itemSettings.setNodeBorderColor(item, color);
             itemSettings.setNodeLabelColor(item, color);
             itemSettings.setNodeIconFilterColor(item, color);
-            if(item instanceof IHierarchicalModel){
-                IHierarchicalModel group = (IHierarchicalModel)item;
+            if(item instanceof IHierarchicalNodeModel){
+                IHierarchicalNodeModel group = (IHierarchicalNodeModel)item;
                 if(group.canCollapse())
                     itemSettings.setNodeIconFilterColor(group.getCollapsedModel(), color);
                 monocolorAllItems(group, color);

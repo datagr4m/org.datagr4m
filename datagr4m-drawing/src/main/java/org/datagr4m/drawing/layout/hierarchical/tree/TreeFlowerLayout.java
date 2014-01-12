@@ -10,12 +10,14 @@ import java.util.Map;
 import org.datagr4m.drawing.layout.geometrical.flower.FlowerGeometry;
 import org.datagr4m.drawing.layout.hierarchical.AbstractHierarchicalLayout;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.tree.TreeModel;
 import org.datagr4m.drawing.renderer.policy.DefaultStyleSheet;
 import org.datagr4m.maths.geometry.PointUtils;
 import org.datagr4m.maths.geometry.Pt;
 import org.datagr4m.maths.geometry.functions.LinearFunction;
+import org.datagr4m.monitors.ITimeMonitor;
+import org.datagr4m.monitors.TimeMonitor;
 import org.datagr4m.topology.Group;
 import org.datagr4m.viewer.renderer.annotations.items.ClickableRectangleAnnotation;
 import org.datagr4m.viewer.renderer.annotations.items.IClickableAnnotation;
@@ -26,6 +28,38 @@ import org.jzy3d.maths.Coord2d;
  * min floor height=noderadius*3
  */
 public class TreeFlowerLayout extends AbstractHierarchicalLayout{
+    private ITimeMonitor timeMonitor;
+    
+    protected TreeModel model;
+    protected Point2D sourcePoint;
+    protected Point2D targetPoint;
+    protected Point2D gardenCenter;
+    protected float gardenRadius;
+    protected float rootDistance;
+    protected Point2D root;
+    protected FlowerGeometry flower;
+    protected double[] floors;
+    protected float minFloor;
+    protected double maxAngle;
+    protected double minAngle;
+    protected double preferedAngle;
+    protected double treeHeight;//from center
+    protected double treeAngle;
+    protected int buildLevel;
+    protected float nodeRadius;
+    
+    protected Map<IBoundedItem, Coord2d> polarCoord = new HashMap<IBoundedItem, Coord2d>();
+    
+    private static final long serialVersionUID = 2707510020001523214L;
+
+    public TreeFlowerLayout() {
+        this(0, new Point2D.Float(0,0), new Point2D.Float(0,0), new Point2D.Float(0,0), 0, 0);
+    }
+    public TreeFlowerLayout(TreeModel model, float radius, Point2D rotation, Point2D source, Point2D dest, float rootDistance, float nodeRadius) {
+        this(radius, rotation, source, dest, rootDistance, nodeRadius);
+        setModel(model);
+    }
+
     public TreeFlowerLayout(float radius, Point2D rotation, Point2D source, Point2D target, float rootDistance, float nodeRadius) {
         this.gardenRadius = radius;
         this.gardenCenter = rotation;
@@ -33,21 +67,27 @@ public class TreeFlowerLayout extends AbstractHierarchicalLayout{
         this.targetPoint = target;
         this.rootDistance = rootDistance;
         this.nodeRadius = nodeRadius;
+        
+        initMonitor();
     }
 
-    public TreeFlowerLayout(TreeModel model, float radius, Point2D rotation, Point2D source, Point2D dest, float rootDistance, float nodeRadius) {
-        this(radius, rotation, source, dest, rootDistance, nodeRadius);
-        setModel(model);
+    private void initMonitor() {
+        timeMonitor = new TimeMonitor(this);
     }
     
     @Override
-    public void setModel(IHierarchicalModel model) {
+    public ITimeMonitor getTimeMonitor() {
+        return timeMonitor;
+    }
+    
+    @Override
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = (TreeModel)model;
         initAlgo();
     }
     
     @Override
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
     
@@ -64,6 +104,14 @@ public class TreeFlowerLayout extends AbstractHierarchicalLayout{
     /***************/
     
     public void init(TreeModel model){
+        timeMonitor.startMonitor();
+        
+        doInit(model);
+        
+        timeMonitor.stopMonitor();
+    }
+
+    public void doInit(TreeModel model) {
         // build list of tree leafs
         List<IBoundedItem> leafDevices = model.getDescendants(true);
         int maxDepth = 0;
@@ -291,28 +339,4 @@ public class TreeFlowerLayout extends AbstractHierarchicalLayout{
     public float getNodeRadius() {
         return nodeRadius;
     }
-
-    /*************/
-
-    protected TreeModel model;
-    protected Point2D sourcePoint;
-    protected Point2D targetPoint;
-    protected Point2D gardenCenter;
-    protected float gardenRadius;
-    protected float rootDistance;
-    protected Point2D root;
-    protected FlowerGeometry flower;
-    protected double[] floors;
-    protected float minFloor;
-    protected double maxAngle;
-    protected double minAngle;
-    protected double preferedAngle;
-    protected double treeHeight;//from center
-    protected double treeAngle;
-    protected int buildLevel;
-    protected float nodeRadius;
-    
-    protected Map<IBoundedItem, Coord2d> polarCoord = new HashMap<IBoundedItem, Coord2d>();
-    
-    private static final long serialVersionUID = 2707510020001523214L;
 }

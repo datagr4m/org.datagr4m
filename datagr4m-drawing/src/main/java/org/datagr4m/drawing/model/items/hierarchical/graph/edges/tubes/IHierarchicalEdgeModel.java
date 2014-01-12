@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.IEdge;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.infos.IEdgeInfo;
 import org.datagr4m.drawing.model.slots.ISlotableSetModel;
@@ -28,7 +28,7 @@ public interface IHierarchicalEdgeModel extends ISlotableSetModel{
      * Read the list of edges found in the topology global graph,
      * in order to extract actual network informations
      */
-    public <V,E> void build(Topology<V, E> topology, IHierarchicalModel model);
+    public <V,E> void build(Topology<V, E> topology, IHierarchicalNodeModel model);
 
     /**
      * Verify the existence of a parent tube, and create one if it does not exists yet.

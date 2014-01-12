@@ -1,10 +1,13 @@
 package org.datagr4m.drawing.layout.hierarchical.matrix;
 
+import org.apache.log4j.Logger;
 import org.datagr4m.drawing.layout.hierarchical.AbstractHierarchicalLayout;
-import org.datagr4m.drawing.layout.hierarchical.IHierarchicalLayout;
+import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
+import org.datagr4m.monitors.ITimeMonitor;
+import org.datagr4m.monitors.TimeMonitor;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
@@ -14,29 +17,59 @@ import com.google.common.collect.HashBiMap;
  * la position du mod�le
  */
 public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout implements IHierarchicalMatrixLayout {
+    private static final long serialVersionUID = 2988838649895956485L;
+
+    protected int nLine;
+
+    protected int nColumn;
+
+    protected float[] lineHeight;
+
+    protected float[] columnWidth;
+
+    protected float allLineHeight;
+
+    protected float allColumnWidth;
+
+    protected IHierarchicalNodeModel model;
+
+    protected BiMap<IBoundedItem, CellIndex> mapIndex;
+
+    private ITimeMonitor timeMonitor;
+
     public HierarchicalMatrixLayout() {
+        this(null);
+    }
+
+    public HierarchicalMatrixLayout(IHierarchicalNodeLayout parent) {
+        super(parent);
+        initMonitor();
         init();
     }
 
-    public HierarchicalMatrixLayout(IHierarchicalLayout parent) {
-        super(parent);
-        init();
+    private void initMonitor() {
+        timeMonitor = new TimeMonitor(this);
+    }
+    
+    @Override
+    public ITimeMonitor getTimeMonitor() {
+        return timeMonitor;
     }
 
     @Override
-    public void setModel(IHierarchicalModel model) {
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = model;
     }
 
     @Override
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
 
     @Override
     public void setItemCell(IBoundedItem item, int lineIndex, int columnIndex) throws IllegalArgumentException {
         if (!model.hasChild(item))
-            System.err.println("Item " + item + " is not an IMMEDIATE child of current model " + model);
+            Logger.getLogger(HierarchicalMatrixLayout.class).error("Item " + item + " is not an IMMEDIATE child of current model " + model);
         // throw new IllegalArgumentException("Item " + item + " is not child of current model " + model);
         else
             mapIndex.put(item, new CellIndex(lineIndex, columnIndex));
@@ -112,8 +145,7 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
             super.initAlgo(); // handle children first
             computeLayout();
         } else
-            ;//throw new RuntimeException("Layout has not been completely set!");
-
+            throw new RuntimeException("Layout has not been completely set!");
     }
 
     @Override
@@ -121,10 +153,10 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
         if (isReady()) {
             super.goAlgo();
             computeLayout();
-
         } else
-            ;//throw new RuntimeException("Layout has not been completely set!");
+            throw new RuntimeException("Layout has not been completely set!");
 
+        timeMonitor.stopMonitor();
     }
 
     /********* ACTUAL MATRIX LAYOUT ********/
@@ -187,15 +219,8 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
         allColumnWidth = max;
     }
 
-    /************************/
-
     public boolean isReady() {
-        if (nLine == -1)
-            return false;
-        if (nColumn == -1)
-            return false;
-
-        return true;
+        return (nLine != -1 && nColumn != -1);
     }
 
     protected void init() {
@@ -205,24 +230,4 @@ public class HierarchicalMatrixLayout extends AbstractHierarchicalLayout impleme
         columnWidth = null;
         mapIndex = HashBiMap.create();
     }
-
-    /*************/
-
-    protected int nLine;
-
-    protected int nColumn;
-
-    protected float[] lineHeight;
-
-    protected float[] columnWidth;
-
-    protected float allLineHeight;
-
-    protected float allColumnWidth;
-
-    protected IHierarchicalModel model;
-
-    protected BiMap<IBoundedItem, CellIndex> mapIndex;
-
-    private static final long serialVersionUID = 2988838649895956485L;
 }

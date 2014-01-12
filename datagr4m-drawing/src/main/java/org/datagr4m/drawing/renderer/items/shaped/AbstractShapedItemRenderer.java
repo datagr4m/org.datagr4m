@@ -10,7 +10,7 @@ import java.util.List;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.BoundsType;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.ModelGeometryProcessor;
 import org.datagr4m.drawing.renderer.bounds.BoundsRenderer;
 import org.datagr4m.drawing.renderer.bounds.IBoundsRenderer;
@@ -138,7 +138,7 @@ public abstract class AbstractShapedItemRenderer extends AbstractExtendedRendere
     }
 
     protected IDisplay display;
-    protected IHierarchicalModel root;
+    protected IHierarchicalNodeModel root;
     protected SlotableItemRenderer slotableItemRenderer;
     
     protected List<DifferedRenderer> differed = new ArrayList<DifferedRenderer>(100);

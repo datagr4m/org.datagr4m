@@ -7,12 +7,12 @@ import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.AbstractHierarchicalModel;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.jzy3d.maths.Coord2d;
 
 
 public class HierarchicalPairModel extends AbstractHierarchicalModel implements IHierarchicalPairModel{
-    public HierarchicalPairModel(IHierarchicalModel parent, IBoundedItem first, IBoundedItem second) {
+    public HierarchicalPairModel(IHierarchicalNodeModel parent, IBoundedItem first, IBoundedItem second) {
         super(parent);
         
         // register first and second as children
@@ -30,7 +30,7 @@ public class HierarchicalPairModel extends AbstractHierarchicalModel implements 
         this(null, first, second);
     }
     
-    public HierarchicalPairModel(IHierarchicalModel parent) {
+    public HierarchicalPairModel(IHierarchicalNodeModel parent) {
         this(parent, null, null);
     }
     

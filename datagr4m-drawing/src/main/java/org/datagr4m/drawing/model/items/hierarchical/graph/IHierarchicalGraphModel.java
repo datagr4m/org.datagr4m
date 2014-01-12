@@ -5,7 +5,7 @@ import java.util.Collection;
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.layout.algorithms.forces.IForceModel;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 
 /**
@@ -21,7 +21,7 @@ import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
  * Last, the graph model provides with statistical information on the graph such as 
  * the degree of a node.
  */
-public interface IHierarchicalGraphModel extends IHierarchicalModel, IForceModel{
+public interface IHierarchicalGraphModel extends IHierarchicalNodeModel, IForceModel{
     
     /**
      * Return true if the graph already holds a rendering edge that is equal to the input edge.

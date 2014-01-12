@@ -38,7 +38,7 @@ import org.jzy3d.maths.Coord2d;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
-public abstract class AbstractHierarchicalModel extends AbstractStatefullItem implements IHierarchicalModel{
+public abstract class AbstractHierarchicalModel extends AbstractStatefullItem implements IHierarchicalNodeModel{
     public static float DEFAULT_MARGIN = 40;
     public static float DEFAULT_SLOT_MARGIN = 0;
     public static float DEFAULT_CORRIDOR = 100;
@@ -47,15 +47,15 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
         this(null);
     }
     
-    public AbstractHierarchicalModel(IHierarchicalModel parent){
+    public AbstractHierarchicalModel(IHierarchicalNodeModel parent){
         this(parent, new ArrayList<IBoundedItem>());
     }
     
-    public AbstractHierarchicalModel(IHierarchicalModel parent, List<IBoundedItem> children){
+    public AbstractHierarchicalModel(IHierarchicalNodeModel parent, List<IBoundedItem> children){
         this(parent, children, new ArrayList<IBoundedItem>());
     }
     
-    public AbstractHierarchicalModel(IHierarchicalModel parent, List<IBoundedItem> children, Collection<IBoundedItem> neighbours){
+    public AbstractHierarchicalModel(IHierarchicalNodeModel parent, List<IBoundedItem> children, Collection<IBoundedItem> neighbours){
         super();
         this.parent = parent;
         this.children = children;
@@ -120,8 +120,8 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
         this.shape = shape;
         
         for(IBoundedItem i: children){
-            if(i instanceof IHierarchicalModel){
-                ((IHierarchicalModel)i).setShape(shape, recursive);
+            if(i instanceof IHierarchicalNodeModel){
+                ((IHierarchicalNodeModel)i).setShape(shape, recursive);
             }
         }
     }
@@ -157,8 +157,8 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
             return child;
         else{
             for(IBoundedItem i: children){
-                if(i instanceof IHierarchicalModel){
-                    IHierarchicalModel cm = (IHierarchicalModel)i;
+                if(i instanceof IHierarchicalNodeModel){
+                    IHierarchicalNodeModel cm = (IHierarchicalNodeModel)i;
                     child = cm.getDescendantWithLabel(label);
                     if(child!=null)
                         return child;
@@ -179,8 +179,8 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
             return true;
         else{
             for(IBoundedItem child: getChildren()){
-                if(child instanceof IHierarchicalModel){
-                    if(((IHierarchicalModel)child).hasDescendant(item))
+                if(child instanceof IHierarchicalNodeModel){
+                    if(((IHierarchicalNodeModel)child).hasDescendant(item))
                         return true;
                 }
             }
@@ -192,8 +192,8 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
     public List<IBoundedItem> getDescendants(boolean addModels){
         List<IBoundedItem> descendants = new ArrayList<IBoundedItem>();
         for(IBoundedItem child: getChildren()){
-            if(child instanceof IHierarchicalModel){
-                IHierarchicalModel childModel = (IHierarchicalModel)child;
+            if(child instanceof IHierarchicalNodeModel){
+                IHierarchicalNodeModel childModel = (IHierarchicalNodeModel)child;
                 descendants.addAll( childModel.getDescendants(addModels) );
             }
             else
@@ -206,11 +206,11 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
     }
     
     @Override
-    public List<IHierarchicalModel> getDescendantModels(){
-        List<IHierarchicalModel> descendants = new ArrayList<IHierarchicalModel>();
+    public List<IHierarchicalNodeModel> getDescendantModels(){
+        List<IHierarchicalNodeModel> descendants = new ArrayList<IHierarchicalNodeModel>();
         for(IBoundedItem child: getChildren()){
-            if(child instanceof IHierarchicalModel){
-                IHierarchicalModel childModel = (IHierarchicalModel)child;
+            if(child instanceof IHierarchicalNodeModel){
+                IHierarchicalNodeModel childModel = (IHierarchicalNodeModel)child;
                 descendants.addAll( childModel.getDescendantModels() );
             }
         }
@@ -246,13 +246,13 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
     }
     
     @Override
-    public IHierarchicalModel getParent(IBoundedItem item) {
+    public IHierarchicalNodeModel getParent(IBoundedItem item) {
         if(hasChild(item))
             return this;
         else{
             for(IBoundedItem i: children){
                 if(i instanceof AbstractHierarchicalModel){
-                    IHierarchicalModel submodel = ((AbstractHierarchicalModel)i).getParent(item);
+                    IHierarchicalNodeModel submodel = ((AbstractHierarchicalModel)i).getParent(item);
                     if(submodel!=null)
                         return submodel;
                 }
@@ -265,7 +265,7 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
      * If needing to have
      */
     @Override
-    public IHierarchicalModel getRoot(){
+    public IHierarchicalNodeModel getRoot(){
         if(cache.getRoot()==null){
             if(parent==null)
                 cache.setRoot(this);
@@ -276,7 +276,7 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
     }
     
     @Override
-    public IHierarchicalModel computeRoot(){
+    public IHierarchicalNodeModel computeRoot(){
         if(parent==null)
             return this;
         else
@@ -324,8 +324,8 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
     public int getMaxLeafLevel(){
         int max = 0;
         for(IBoundedItem i: children){
-            if(i instanceof IHierarchicalModel){
-                int level = 1 + ((IHierarchicalModel)i).getMaxLeafLevel();
+            if(i instanceof IHierarchicalNodeModel){
+                int level = 1 + ((IHierarchicalNodeModel)i).getMaxLeafLevel();
                 if(level>max)
                     max = level;
             }
@@ -1099,7 +1099,7 @@ public abstract class AbstractHierarchicalModel extends AbstractStatefullItem im
     
     protected static int UNDEFINED_DEPTH = -1;
     protected int cachedDepth = UNDEFINED_DEPTH;
-    protected IHierarchicalModel cachedRoot;
+    protected IHierarchicalNodeModel cachedRoot;
     
     protected RectangleBounds cachedRectangleBounds = new RectangleBounds(0,0);
     protected float cachedRadialBounds = 0;

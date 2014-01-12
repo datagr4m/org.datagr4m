@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.annotations.IClickableItemAnnotation;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.IIconHierarchicalModel;
 import org.datagr4m.drawing.model.items.hierarchical.tree.TreeModel;
 import org.datagr4m.drawing.renderer.items.hierarchical.AbstractHierarchicalRenderer;
@@ -85,7 +85,7 @@ public class TreeRenderer extends AbstractHierarchicalRenderer implements IRende
     }
     
     @Override
-    public void setModel(IHierarchicalModel model){
+    public void setModel(IHierarchicalNodeModel model){
         if(model!=null){
             this.model = (TreeModel)model; 
         }
@@ -94,7 +94,7 @@ public class TreeRenderer extends AbstractHierarchicalRenderer implements IRende
     }
     
     @Override
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
     

@@ -7,7 +7,7 @@ import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunner;
 import org.datagr4m.drawing.model.factories.HierarchicalTopologyModelFactory;
 import org.datagr4m.drawing.model.factories.IHierarchicalModelFactory;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.renderer.factories.HierarchicalRendererFactory;
 import org.datagr4m.drawing.renderer.factories.IHierarchicalRendererFactory;
 import org.datagr4m.drawing.renderer.items.hierarchical.IHierarchicalRenderer;
@@ -20,7 +20,7 @@ import org.datagr4m.viewer.View;
 
 public class DemoNestedGraphGeneratedWithMultiLayerEdgeBundling {
     public static void main(String[] args){
-        final IHierarchicalModel model = model(2, 3, 100);
+        final IHierarchicalNodeModel model = model(2, 3, 100);
         final HierarchicalGraphLayout layout = layout(model);
         
         // display
@@ -39,7 +39,7 @@ public class DemoNestedGraphGeneratedWithMultiLayerEdgeBundling {
         runner.start();
     }
 
-	public static HierarchicalGraphLayout layout(IHierarchicalModel model) {
+	public static HierarchicalGraphLayout layout(IHierarchicalNodeModel model) {
 		//ForceListing listing = new ForceListing();
         //listing.exportForcesCsv(model, "forces-" + DemoGraphNestedGenerated.class.getSimpleName().toLowerCase() + ".csv");
         IHierarchicalLayoutFactory layoutFactory = new HierarchicalLayoutFactory();
@@ -55,8 +55,8 @@ public class DemoNestedGraphGeneratedWithMultiLayerEdgeBundling {
      * @param nedge number of edges
      * @return
      */
-    public static IHierarchicalModel model(int depth, int width, int nedge) {
+    public static IHierarchicalNodeModel model(int depth, int width, int nedge) {
         IHierarchicalModelFactory factory = new HierarchicalTopologyModelFactory<String, String>();
-        return (IHierarchicalModel)factory.getLayoutModel(TopologyGenerator.buildGraphNested(depth, width, nedge));
+        return (IHierarchicalNodeModel)factory.getLayoutModel(TopologyGenerator.buildGraphNested(depth, width, nedge));
     }   
 }

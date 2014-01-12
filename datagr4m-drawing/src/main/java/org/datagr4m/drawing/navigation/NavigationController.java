@@ -3,7 +3,7 @@ package org.datagr4m.drawing.navigation;
 import org.apache.log4j.Logger;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.AbstractItemVisitor;
 import org.datagr4m.drawing.navigation.context.ContextType;
 import org.datagr4m.drawing.navigation.context.NavigationContext;
@@ -36,7 +36,7 @@ public class NavigationController implements INavigationController {
     protected TooltipPlugin tooltipsPlugin;
     protected EdgeInfoTablePlugin edgeTablesPlugin;
     
-    public NavigationController(IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay, IRenderingPolicy policy) {
+    public NavigationController(IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model, IPopupLayer layeredDisplay, IRenderingPolicy policy) {
         this.display = display;
         this.pluginRenderer = layered;
         this.animator = animator;
@@ -48,7 +48,7 @@ public class NavigationController implements INavigationController {
         initPlugins(display, layered, animator, mouse, model, layeredDisplay);
     }
 
-    public void initRenderingPolicy(IHierarchicalModel model, IRenderingPolicy policy) {
+    public void initRenderingPolicy(IHierarchicalNodeModel model, IRenderingPolicy policy) {
         // rendering policies init
         defaultPolicy = policy;
         if(defaultPolicy==null)
@@ -56,7 +56,7 @@ public class NavigationController implements INavigationController {
         defaultPolicy.setup(model);
     }
 
-    public void initPlugins(IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model, IPopupLayer layeredDisplay) {
+    public void initPlugins(IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model, IPopupLayer layeredDisplay) {
         // navigation plugins
         edgeTablesPlugin = new EdgeInfoTablePlugin(this, display, layered, animator, mouse, model, layeredDisplay);
         tooltipsPlugin = new TooltipPlugin(this, display, layered, animator, mouse, model);
@@ -146,7 +146,7 @@ public class NavigationController implements INavigationController {
     public void unselectAll(){
         AbstractItemVisitor v = new AbstractItemVisitor(){
             @Override
-            public void doVisitElement(IHierarchicalModel parent, IBoundedItem element, int depth) {
+            public void doVisitElement(IHierarchicalNodeModel parent, IBoundedItem element, int depth) {
                 if(element!=null)
                     element.setState(ItemState.NONE);
             }
@@ -241,12 +241,12 @@ public class NavigationController implements INavigationController {
     }
 
     @Override
-    public IHierarchicalModel getModel() {
+    public IHierarchicalNodeModel getModel() {
         return model;
     }
 
     @Override
-    public void setModel(IHierarchicalModel model) {
+    public void setModel(IHierarchicalNodeModel model) {
         this.model = model;
     }
 
@@ -279,7 +279,7 @@ public class NavigationController implements INavigationController {
     protected IAnimationStack animator;
     protected ILocalizedMouse mouse;
 
-    protected IHierarchicalModel model;
+    protected IHierarchicalNodeModel model;
     //protected Topology<DeviceKey, NetworkEdge> topology;
     //protected Graph<DeviceKey, NetworkEdge> graph;
 

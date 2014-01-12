@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.viewer.mouse.edges.slothit.ISlotHitPolicy;
 import org.jzy3d.maths.Coord2d;
@@ -24,7 +24,7 @@ public class MouseAroundProcessor extends AbstractSlotHitHandler{
         IBoundedItem closest = null;
         double minDist = Double.MAX_VALUE;
         for(IBoundedItem item: items){
-            if(!(item instanceof IHierarchicalModel)){
+            if(!(item instanceof IHierarchicalNodeModel)){
                 double iSq = item.getAbsolutePosition().distanceSq(mouse);
                 if(iSq<=minDist){
                     minDist = iSq;

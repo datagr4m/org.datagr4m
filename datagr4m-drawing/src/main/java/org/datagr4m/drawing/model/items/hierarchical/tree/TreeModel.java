@@ -7,24 +7,24 @@ import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.AbstractHierarchicalModel;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.maths.geometry.Pt;
 import org.datagr4m.viewer.IDisplay;
 import org.datagr4m.viewer.renderer.annotations.items.IClickableAnnotation;
 import org.jzy3d.maths.Coord2d;
 
 
-public class TreeModel extends AbstractHierarchicalModel implements IHierarchicalModel{
+public class TreeModel extends AbstractHierarchicalModel implements IHierarchicalNodeModel{
     public TreeModel() {
         super();
     }
-    public TreeModel(IHierarchicalModel parent) {
+    public TreeModel(IHierarchicalNodeModel parent) {
         super(parent);
     }
-    public TreeModel(IHierarchicalModel parent, List<IBoundedItem> children) {
+    public TreeModel(IHierarchicalNodeModel parent, List<IBoundedItem> children) {
         super(parent, children);
     }
-    public TreeModel(IHierarchicalModel parent, List<IBoundedItem> children, Collection<IBoundedItem> neighbours) {
+    public TreeModel(IHierarchicalNodeModel parent, List<IBoundedItem> children, Collection<IBoundedItem> neighbours) {
         super(parent, children, neighbours);
     }
     

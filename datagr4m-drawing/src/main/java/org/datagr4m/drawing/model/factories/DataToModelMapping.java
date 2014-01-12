@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 
 
 /** Ce groupe de m�thode permet d'associer un item a son parent. 
@@ -12,7 +12,7 @@ import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
 public class DataToModelMapping<V> {
     /** Try to see if we registered this item parent, or if the item is part of provided model
      * (without diving in recursion). */
-    public IBoundedItem getLocalItemOrParentModelOrFail(V v, IHierarchicalModel modelToSeekIn){
+    public IBoundedItem getLocalItemOrParentModelOrFail(V v, IHierarchicalNodeModel modelToSeekIn){
         IBoundedItem item = null;
         if(hasParentModel(v)){
             item = getParentModel(v);
@@ -25,7 +25,7 @@ public class DataToModelMapping<V> {
         return item;
     }
     
-    public void registerParentModel(V v, IHierarchicalModel parentModel){
+    public void registerParentModel(V v, IHierarchicalNodeModel parentModel){
         if(hasParentModel(v))
             throw new RuntimeException("this item is already used as key");
         dataToParentModel.put(v, parentModel);
@@ -35,9 +35,9 @@ public class DataToModelMapping<V> {
         return dataToParentModel.keySet().contains(v);
     }
 
-    public IHierarchicalModel getParentModel(V v){
+    public IHierarchicalNodeModel getParentModel(V v){
         return dataToParentModel.get(v);
     }
     
-    protected Map<V,IHierarchicalModel> dataToParentModel = new HashMap<V,IHierarchicalModel>();
+    protected Map<V,IHierarchicalNodeModel> dataToParentModel = new HashMap<V,IHierarchicalNodeModel>();
 }

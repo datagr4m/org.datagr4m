@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.util.List;
 
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.renderer.items.IItemRenderer;
 import org.datagr4m.drawing.renderer.items.IItemRendererSettings;
@@ -27,7 +27,7 @@ import edu.uci.ics.jung.graph.Graph;
  * @param <C>
  */
 public abstract class AbstractLouposcopeLayer<V,E,C> extends AbstractRenderer implements ILouposcopeLayer<V, E, C>{
-    protected IHierarchicalModel model;
+    protected IHierarchicalNodeModel model;
     protected List<IBoundedItem> items;
     
     protected Topology<V,E> topology;
@@ -35,7 +35,7 @@ public abstract class AbstractLouposcopeLayer<V,E,C> extends AbstractRenderer im
     
     protected IDisplay display;
 
-    public AbstractLouposcopeLayer(IHierarchicalModel model, IDisplay display){
+    public AbstractLouposcopeLayer(IHierarchicalNodeModel model, IDisplay display){
         this.model = model;
         this.items = model.getDescendants(true);
         this.display = display;
@@ -46,7 +46,7 @@ public abstract class AbstractLouposcopeLayer<V,E,C> extends AbstractRenderer im
         extractTopology(model);
     }
 
-    protected void extractTopology(IHierarchicalModel model) {
+    protected void extractTopology(IHierarchicalNodeModel model) {
         if(model instanceof HierarchicalGraphModel){
             HierarchicalGraphModel graphModel = (HierarchicalGraphModel)model;
             topology = (Topology<V,E>)graphModel.getObject();

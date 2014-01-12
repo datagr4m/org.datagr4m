@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.viewer.renderer.AbstractExtendedRenderer;
 import org.datagr4m.viewer.renderer.TextUtils;
 import org.datagr4m.viewer.renderer.utils.CrossRenderer;
@@ -14,7 +14,7 @@ public class BoundsRenderer extends AbstractExtendedRenderer implements IBoundsR
     public static boolean DEBUG = true;
     
     @Override
-    public void render(Graphics2D graphic, IHierarchicalModel model){
+    public void render(Graphics2D graphic, IHierarchicalNodeModel model){
         //graphic.setColor(borderColor);
         /*render(graphic, model.getAbsoluteRectangleBounds(), "raw", false);
         render(graphic, model.getExternalRectangleBounds().shiftCenterTo(model.getAbsolutePosition()), "external", false);

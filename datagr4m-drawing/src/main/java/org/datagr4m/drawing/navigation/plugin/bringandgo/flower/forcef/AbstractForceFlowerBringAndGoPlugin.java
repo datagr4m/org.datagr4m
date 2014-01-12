@@ -9,7 +9,7 @@ import org.datagr4m.drawing.layout.hierarchical.flower.StaticFlowerLayout;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.AvatarManager;
 import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalModel;
+import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.ForceFlowerModel;
 import org.datagr4m.drawing.navigation.INavigationController;
 import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
@@ -30,7 +30,7 @@ import org.jzy3d.maths.Coord2d;
 
 
 public abstract class AbstractForceFlowerBringAndGoPlugin<V, E> extends AbstractBringAndGoPlugin<V,E> implements IBringAndGoPlugin{
-    public AbstractForceFlowerBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalModel model) {
+    public AbstractForceFlowerBringAndGoPlugin(INavigationController controller, IDisplay display, PluginLayeredRenderer layered, IAnimationStack animator, ILocalizedMouse mouse, IHierarchicalNodeModel model) {
         super(controller, display, layered, animator, mouse, model);
         buildFlower();
     }
