@@ -7,47 +7,59 @@ public class TimeMonitorTest {
     @Test
     public void testTimeMonitor() throws InterruptedException {
         TimeMonitor m = new TimeMonitor("test-monitor");
-        Assert.assertFalse("time monitor is disabled by default", m.isEnabled());
-        Assert.assertEquals(0, m.getMeasurements().size());
-        Assert.assertEquals("test-monitor", m.getName());
+        assertInitializedDisabledWithName(m);
 
         m.enable(true);
 
         // ensure did measure properly
-        int FIRST_BREAK = 1000;
-        m.startMonitor();
-        Thread.sleep(FIRST_BREAK);
-        m.stopMonitor();
-        Assert.assertEquals(1, m.getMeasurements().size());
-        Assert.assertTrue(m.getMeasurements().get(0).b >= FIRST_BREAK / 1000);
+        double allowedDifferenceBetweenPauseAndMeasure = 0.01; // s
 
-        int SECOND_BREAK = 500;
-        m.startMonitor();
-        Thread.sleep(SECOND_BREAK);
-        m.stopMonitor();
-        Assert.assertEquals(2, m.getMeasurements().size());
-        Assert.assertTrue(m.getMeasurements().get(1).b >= SECOND_BREAK / 1000);
-        Assert.assertTrue(m.getMeasurements().get(1).b <= FIRST_BREAK / 1000);
+        assertMonitorMeasureActualPause(m, 0, 1000, allowedDifferenceBetweenPauseAndMeasure);
+        assertMonitorMeasureActualPause(m, 1, 500, allowedDifferenceBetweenPauseAndMeasure);
+        assertMonitorMeasureActualPause(m, 2, 250, allowedDifferenceBetweenPauseAndMeasure);
 
-        int THIRD_BREAK = 250;
-        m.startMonitor();
-        Thread.sleep(THIRD_BREAK);
-        m.stopMonitor();
-        Assert.assertEquals(3, m.getMeasurements().size());
-        Assert.assertTrue(m.getMeasurements().get(2).b >= THIRD_BREAK / 1000);
-        Assert.assertTrue(m.getMeasurements().get(2).b <= SECOND_BREAK / 1000);
+        assertDontAddMeasureWhenDisabled(m);
+        assertAddMeasureWhenEnabled(m);
+    }
 
+    public void assertInitializedDisabledWithName(TimeMonitor m) {
+        Assert.assertFalse("time monitor is disabled by default", m.isEnabled());
+        Assert.assertEquals(0, m.getMeasurements().size());
+        Assert.assertEquals("test-monitor", m.getName());
+    }
+
+    public void assertAddMeasureWhenEnabled(TimeMonitor m) {
+        int before = m.getMeasurements().size();
+
+        m.enable(true);
+        m.startMonitor();
+        m.stopMonitor();
+        Assert.assertEquals(before + 1, m.getMeasurements().size());
+    }
+
+    public void assertDontAddMeasureWhenDisabled(TimeMonitor m) {
         // disable & ensure stop measuring
         int before = m.getMeasurements().size();
         m.enable(false);
         m.startMonitor();
         m.stopMonitor();
         Assert.assertEquals(before, m.getMeasurements().size());
+    }
 
-        // enable again
-        m.enable(true);
+    public void assertMonitorMeasureActualPause(TimeMonitor m, int id, int miliSecondBreak, double tolerance) throws InterruptedException {
         m.startMonitor();
+        Thread.sleep(miliSecondBreak);
         m.stopMonitor();
-        Assert.assertEquals(before + 1, m.getMeasurements().size());
+        int nExpectedMeasures = id+1;
+        Assert.assertEquals("There are " + nExpectedMeasures + " measures", nExpectedMeasures, m.getMeasurements().size());
+        
+        double measure = m.getMeasurements().get(id).b;
+        double expected = miliSecondBreak / 1000.0;
+
+        Assert.assertTrue("Measure is >= " + expected+" s", measure >= expected);
+    
+        double diff = Math.abs(measure-expected);
+
+        Assert.assertTrue("Measure is in range [-" + tolerance+":"+tolerance+"] s of actual pause time. Diff=" + diff + " s", diff <= tolerance);
     }
 }

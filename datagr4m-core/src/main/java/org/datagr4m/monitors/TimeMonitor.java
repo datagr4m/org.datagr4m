@@ -18,11 +18,11 @@ public class TimeMonitor implements ITimeMonitor{
         this(o, o.getClass().getSimpleName(), false);
     }
 
-    /*public TimeMonitor(String name) {
-        this(name, false);
+    public TimeMonitor(String name) {
+        this(name, name, false);
     }
     
-    public TimeMonitor(String name, boolean enabled) {
+    /*public TimeMonitor(String name, boolean enabled) {
         this(null, name, enabled);
     }*/
 
