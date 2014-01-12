@@ -60,14 +60,14 @@ public class TestWorkspaceInitFromXMLTopology{
         if (test) {
             assertWorkspaceNotNull(w);
             assertDrawingModel(w);
-            assertEdgeModel(w);
+            assertEdgeModel(w, 2, 1, 12);
         }
 
-        display(w);
+        show(w);
         
         //new MeanMoveCriteria(1, 10));
         IBreakCriteria criteria = new MaxStepCriteria(300);
-        runAndTest(test, waitFor, w, criteria);
+        start(test, waitFor, w, criteria);
         
         
         // final tests
@@ -76,7 +76,7 @@ public class TestWorkspaceInitFromXMLTopology{
         }
     }
 
-    private void runAndTest(boolean test, int waitFor, Workspace w, IBreakCriteria criteria) throws Exception {
+    private void start(boolean test, int waitFor, Workspace w, IBreakCriteria criteria) throws Exception {
         ILayoutRunner runner = w.getRunner();
         
         runner.getConfiguration().setAllowAutoFitAtStepEnd(true);
@@ -88,6 +88,7 @@ public class TestWorkspaceInitFromXMLTopology{
         else
             runner.start();
     }
+    
     public void assertInterface(Workspace w) {
         Assert.assertFalse(checkItemHasInterface(w.getModel(), "rt1", "InterfaceNotDeclaredInXml"));
 
@@ -113,14 +114,14 @@ public class TestWorkspaceInitFromXMLTopology{
             Assert.assertTrue(edge.getPathGeometry().getPointNumber() > 0);
     }
 
-    public void assertEdgeModel(Workspace w) {
-        Assert.assertEquals("model contains two tubes at level 0", w.getEdgeModel().getRootTubes().size(), 2);
+    public void assertEdgeModel(Workspace w, int nRootTubes, int nChildrenAtLevel0, int nChildrenAtLevel1) {
+        Assert.assertEquals("model contains two tubes at level 0", w.getEdgeModel().getRootTubes().size(), nRootTubes);
 
         Tube tube1 = w.getEdgeModel().getRootTubes().get(0);
-        Assert.assertEquals("tube at level 0 has N children tube", 1, tube1.getChildren().size());
+        Assert.assertEquals("tube at level 0 has "+nChildrenAtLevel0+" children tube", nChildrenAtLevel0, tube1.getChildren().size());
 
         Tube tube2 = (Tube) tube1.getChildren().get(0);
-        Assert.assertEquals("tube at level 1 has N children edge", 12, tube2.getChildren().size());
+        Assert.assertEquals("tube at level 1 has "+nChildrenAtLevel0+" children edge", nChildrenAtLevel1, tube2.getChildren().size());
     }
 
     public void assertTopology(Topology<IPropertyNode, IPropertyEdge> topology, int vertexCount, int edgeCount, int groupCount, int depth) {
@@ -165,13 +166,8 @@ public class TestWorkspaceInitFromXMLTopology{
         return false;
     }
 
-    public void display(Workspace w) {
+    public void show(Workspace w) {
         DisplayInitilizer di = new DisplayInitilizer(EdgeComputationPolicy.ALWAYS, EdgeRenderingPolicy.ALWAYS, ViewPolicy.AUTOFIT_AT_RUN);
         di.init(w).openFrame();
     }
-
-    {
-        Workspace.defaultRunnerFactory = new LayoutRunnerFactory();
-    }
-
 }

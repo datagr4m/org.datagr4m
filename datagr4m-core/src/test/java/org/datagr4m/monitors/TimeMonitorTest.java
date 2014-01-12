@@ -8,18 +8,17 @@ public class TimeMonitorTest {
     public void testTimeMonitor() throws InterruptedException {
         TimeMonitor m = new TimeMonitor("test-monitor");
         assertInitializedDisabledWithName(m);
-
-        m.enable(true);
-
-        // ensure did measure properly
         double allowedDifferenceBetweenPauseAndMeasure = 0.01; // s
+        assertMonitorMeasureActualPause(m, allowedDifferenceBetweenPauseAndMeasure);
+        assertDontAddMeasureWhenDisabled(m);
+        assertAddMeasureWhenEnabled(m);
+    }
 
+    public void assertMonitorMeasureActualPause(TimeMonitor m, double allowedDifferenceBetweenPauseAndMeasure) throws InterruptedException {
+        m.enable(true);
         assertMonitorMeasureActualPause(m, 0, 1000, allowedDifferenceBetweenPauseAndMeasure);
         assertMonitorMeasureActualPause(m, 1, 500, allowedDifferenceBetweenPauseAndMeasure);
         assertMonitorMeasureActualPause(m, 2, 250, allowedDifferenceBetweenPauseAndMeasure);
-
-        assertDontAddMeasureWhenDisabled(m);
-        assertAddMeasureWhenEnabled(m);
     }
 
     public void assertInitializedDisabledWithName(TimeMonitor m) {

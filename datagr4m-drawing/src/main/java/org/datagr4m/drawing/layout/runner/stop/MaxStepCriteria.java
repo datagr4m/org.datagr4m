@@ -17,7 +17,7 @@ public class MaxStepCriteria implements IBreakCriteria{
     @Override
     public boolean shouldBreak(IHierarchicalNodeLayout layout) {
         if(layout.getDelegate()==null) // TODO : do not point on delegate but on MultiStepLayout.getCounter
-            return true;
+            return false;
         
         if(layout.getDelegate().getCounter()>maxSteps)
             return true;

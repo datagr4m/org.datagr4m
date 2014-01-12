@@ -195,57 +195,63 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 	protected void createChildrenGroup(Topology<V, E> topology,
 			HierarchicalGraphModel parent, Group<V> group, int depth)
 			throws RuntimeException {
-		// a standard group
 		if (!isPair(group)) {
-			HierarchicalGraphModel groupModel = getGroupLayoutModel(group);
-
-			// COLLAPSED FARM
-			if (group.getType() == null)
-				Logger.getLogger(this.getClass()).warn(
-						"no group type for group '" + group + "'");
-			if (matchCollapsedPredicate(group)) {
-				Icon i;
-				// if(type.equals("farm"))
-				i = getCollapsableIcon(group, groupModel);
-				// else
-				// i = IconLibrary.getIcon("data/images/" + type);
-				CollapsedModelItem farm = new CollapsedModelItem(
-						group.getName(), i, groupModel);// new
-														// DefaultBoundedItemIcon(group.getName(),
-														// i);
-				groupModel.setCollapsedModel(farm);
-				groupModel.setCanCollapse(true);
-				groupModel.setCollapsed(true);
-				groupModel.setCanExpand(false);
-			}
-
-			int degree = topology.getGroupDegree(group);
-			parent.registerChild(group, groupModel);
-			parent.setNodeDegree(groupModel, degree);
-
-			createChildrenItems(topology, groupModel, group);
-
-			if (group.getSubGroups() != null)
-				for (Group<V> subGroup : group.getSubGroups()) {
-					createChildrenGroup(topology, groupModel, subGroup,
-							depth + 1);
-				}
-
-			// setup layout
-			// createGroupForces(topology, group, groupModel, depth);
-			// System.out.println("done! " + group.getName());
+			createChildrenGraph(topology, parent, group, depth);
 		}
-		// a pair
 		else {
-			HierarchicalPairModel pairModel = getPairLayoutModel(group);
-			int degree = topology.getGroupDegree(group);
-			parent.registerChild(group, pairModel);
-			parent.setNodeDegree(pairModel, degree);
-
-			createChildrenItem(topology, pairModel, group.get(0));
-			createChildrenItem(topology, pairModel, group.get(1));
+			createChildrenPair(topology, parent, group);
 		}
 	}
+
+    public void createChildrenGraph(Topology<V, E> topology, HierarchicalGraphModel parent, Group<V> group, int depth) {
+        HierarchicalGraphModel groupModel = getGroupLayoutModel(group);
+
+        // COLLAPSED FARM
+        if (group.getType() == null)
+        	Logger.getLogger(this.getClass()).warn(
+        			"no group type for group '" + group + "'");
+        if (matchCollapsedPredicate(group)) {
+        	Icon i;
+        	// if(type.equals("farm"))
+        	i = getCollapsableIcon(group, groupModel);
+        	// else
+        	// i = IconLibrary.getIcon("data/images/" + type);
+        	CollapsedModelItem farm = new CollapsedModelItem(
+        			group.getName(), i, groupModel);// new
+        											// DefaultBoundedItemIcon(group.getName(),
+        											// i);
+        	groupModel.setCollapsedModel(farm);
+        	groupModel.setCanCollapse(true);
+        	groupModel.setCollapsed(true);
+        	groupModel.setCanExpand(false);
+        }
+
+        int degree = topology.getGroupDegree(group);
+        parent.registerChild(group, groupModel);
+        parent.setNodeDegree(groupModel, degree);
+
+        createChildrenItems(topology, groupModel, group);
+
+        if (group.getSubGroups() != null)
+        	for (Group<V> subGroup : group.getSubGroups()) {
+        		createChildrenGroup(topology, groupModel, subGroup,
+        				depth + 1);
+        	}
+
+        // setup layout
+        // createGroupForces(topology, group, groupModel, depth);
+        // System.out.println("done! " + group.getName());
+    }
+
+    public void createChildrenPair(Topology<V, E> topology, HierarchicalGraphModel parent, Group<V> group) {
+        HierarchicalPairModel pairModel = getPairLayoutModel(group);
+        int degree = topology.getGroupDegree(group);
+        parent.registerChild(group, pairModel);
+        parent.setNodeDegree(pairModel, degree);
+
+        createChildrenItem(topology, pairModel, group.get(0));
+        createChildrenItem(topology, pairModel, group.get(1));
+    }
 
 	protected Icon getCollapsableIcon(Group<V> group, HierarchicalGraphModel groupModel) {
 		Icon i;

@@ -31,7 +31,7 @@ public class TopologyGenerator {
                 g.addSubGroups(generateGroups(depth, width, currentDepth+1));
             }
             else{
-                for (int j = 0; j < depth; j++) {
+                for (int j = 0; j < width; j++) {
                     g.add(genItem());                    
                 }
             }

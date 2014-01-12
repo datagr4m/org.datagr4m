@@ -307,24 +307,22 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
 
         ILayoutRunnerSequence sequence = configuration.getSequence();
         sequence.setRunner(this);
-        exec.execute(sequence);
 
         fireStart();
+        exec.execute(sequence);
     }
 
     @Override
 	public void start() {
-        timeMonitor.startMonitor();
-        
         isRunning = true;
         if (mainThread == null) {
             ILayoutRunnerSequence sequence = configuration.getSequence();
             sequence.setRunner(this);
             mainThread = getThread(sequence);
+            
+            fireStart();
             mainThread.start();
         }
-
-        fireStart();
     }
 
     @Override
@@ -462,17 +460,21 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
         for (ILayoutRunnerListener listener : listeners) {
             listener.runnerStarted();
         }
+
+        timeMonitor.startMonitor();
     }
 
     protected void fireStop() {
+        timeMonitor.stopMonitor();
+
         for (ILayoutRunnerListener listener : listeners) {
             listener.runnerStopped();
         }
-        
-        timeMonitor.stopMonitor();
     }
     
     protected void fireFailed(String message, Exception e) {
+        timeMonitor.stopMonitor();
+
         for (ILayoutRunnerListener listener : listeners) {
             listener.runnerFailed(message, e);
         }
@@ -484,6 +486,8 @@ public class LayoutRunner extends AbstractLayoutVisitor implements ILayoutRunner
      */
     @Override
 	public void fireFinished() {
+        timeMonitor.stopMonitor();
+
         for (ILayoutRunnerListener listener : listeners) {
             listener.runnerFinished();
         }
