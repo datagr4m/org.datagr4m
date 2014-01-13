@@ -8,39 +8,39 @@ import org.datagr4m.viewer.renderer.TextUtils;
 import org.jzy3d.maths.Coord2d;
 
 
-public class DefaultBoundedItemIcon extends DefaultBoundedItem implements IBoundedItemIcon{
-    public DefaultBoundedItemIcon(String label, Coord2d position, Icon icon) {
+public class BoundedItemIcon extends BoundedItem implements IBoundedItemIcon{
+    public BoundedItemIcon(String label, Coord2d position, Icon icon) {
         super(label, position);
         setIcon(icon);
     }
 
-    public DefaultBoundedItemIcon(Pair<String,? extends Icon> labelIcon) {
+    public BoundedItemIcon(Pair<String,? extends Icon> labelIcon) {
         this(labelIcon.a, labelIcon.b);
     }
     
-    public DefaultBoundedItemIcon(String label, Icon icon) {
+    public BoundedItemIcon(String label, Icon icon) {
         super(label);
         setIcon(icon);
     }
     
-    public DefaultBoundedItemIcon(Object o, Icon icon) {
+    public BoundedItemIcon(Object o, Icon icon) {
         this(o, icon, DEFAULT_SLOT_HEIGHT);
     }
     
-    public DefaultBoundedItemIcon(Object o, Icon icon, float margin) {
+    public BoundedItemIcon(Object o, Icon icon, float margin) {
         super(o);
         setIcon(icon, margin);
     }
 
-    public DefaultBoundedItemIcon(Object o, Pair<String,? extends Icon> labelIcon) {
+    public BoundedItemIcon(Object o, Pair<String,? extends Icon> labelIcon) {
         this(o, labelIcon.a, labelIcon.b, DEFAULT_SLOT_HEIGHT);
     }
 
-    public DefaultBoundedItemIcon(Object o, String label, Icon icon) {
+    public BoundedItemIcon(Object o, String label, Icon icon) {
         this(o, label, icon, DEFAULT_SLOT_HEIGHT);
     }
     
-    public DefaultBoundedItemIcon(Object o, String label, Icon icon, float margin) {
+    public BoundedItemIcon(Object o, String label, Icon icon, float margin) {
         super(o, label);
         setIcon(icon, margin);
     }
@@ -88,7 +88,7 @@ public class DefaultBoundedItemIcon extends DefaultBoundedItem implements IBound
     
     @Override
 	public IBoundedItem clone(){
-        DefaultBoundedItemIcon clon = new DefaultBoundedItemIcon(getObject(), getLabel(), getIcon(), getSlotMargin());
+        BoundedItemIcon clon = new BoundedItemIcon(getObject(), getLabel(), getIcon(), getSlotMargin());
         clon.rectangleBounds = getRawRectangleBounds().clone();
         clon.radialBounds = getRadialBounds();
         clon.position = getPosition().clone();

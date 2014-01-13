@@ -2,7 +2,7 @@ package org.datagr4m.drawing.tubes.data;
 
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.HierarchicalEdgeModel;
@@ -25,20 +25,20 @@ public class HsrpPartialMeshDataTest extends AbstractTubeDataTest implements ITu
     public HierarchicalPairModel p2;
     public HierarchicalGraphModel graph;
     
-    public DefaultBoundedItem i11;
-    public DefaultBoundedItem i12;
-    public DefaultBoundedItem i21;
-    public DefaultBoundedItem i22;
+    public BoundedItem i11;
+    public BoundedItem i12;
+    public BoundedItem i21;
+    public BoundedItem i22;
     
     public HsrpPartialMeshDataTest(){
-        i11 = new DefaultBoundedItem("i11");
-        i12 = new DefaultBoundedItem("i12");
+        i11 = new BoundedItem("i11");
+        i12 = new BoundedItem("i12");
         p1 = new HierarchicalPairModel();
         p1.setObject("pair1");
         p1.addChild(i11);
         p1.addChild(i12);
         
-        i21 = new DefaultBoundedItem("i21");
+        i21 = new BoundedItem("i21");
         i21.changePosition(Coord2d.ORIGIN);
         
         graph = new HierarchicalGraphModel();

@@ -7,7 +7,7 @@ import org.datagr4m.drawing.animation.ForceLayoutAnimation;
 import org.datagr4m.drawing.layout.algorithms.forces.ForceDebugger;
 import org.datagr4m.drawing.layout.hierarchical.flower.ForceFlowerLayout;
 import org.datagr4m.drawing.layout.runner.impl.LayoutRunnerFactory;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.flower.ForceFlowerModel;
 import org.datagr4m.drawing.renderer.items.hierarchical.flower.FlowerRenderer;
@@ -74,13 +74,13 @@ public class DemoFlowerForce {
         double min = 300;
         double max = 310;
         
-        final IBoundedItem center = new DefaultBoundedItem("center", r1);
+        final IBoundedItem center = new BoundedItem("center", r1);
         
         List<IBoundedItem> neighbours = new ArrayList<IBoundedItem>();
         double step = Math.PI*2/n;
         double angle = 0;
         for (int i = 0; i < n; i++) {
-            IBoundedItem item = new DefaultBoundedItem(i+"", r2);
+            IBoundedItem item = new BoundedItem(i+"", r2);
             item.changePosition(new Coord2d(/*angle+0.01*/Math.random()*2*Math.PI, radius).cartesian());
             neighbours.add(item);
             angle+=step;
@@ -91,7 +91,7 @@ public class DemoFlowerForce {
         angle = 0;
         for (int i = 0; i < nsteps; i++) {
             for (int j = 0; j < n2; j++) {
-                IBoundedItem item = new DefaultBoundedItem("add."+i+"."+j, r2);
+                IBoundedItem item = new BoundedItem("add."+i+"."+j, r2);
                 item.changePosition(new Coord2d(angle+0.01, radius).cartesian());
                 neighbours.add(item);
             }

@@ -13,7 +13,7 @@ import org.datagr4m.drawing.layout.PositionMapTransition;
 import org.datagr4m.drawing.layout.hierarchical.flower.StaticFlowerLayout;
 import org.datagr4m.drawing.model.bounds.RectangleBounds;
 import org.datagr4m.drawing.model.items.AvatarManager;
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.StaticFlowerModel;
@@ -92,7 +92,7 @@ public abstract class AbstractBringAndGoPlugin<V,E> extends AbstractNavigationPl
                 if (it == null)
                     System.err.println("can't find:" + dd);
                 else {
-                    IBoundedItem avatar = ((DefaultBoundedItemIcon) it).clone();
+                    IBoundedItem avatar = ((BoundedItemIcon) it).clone();
 
                     if (copyAbsolutePositionToPosition)
                         avatar.changePosition(it.getAbsolutePosition());

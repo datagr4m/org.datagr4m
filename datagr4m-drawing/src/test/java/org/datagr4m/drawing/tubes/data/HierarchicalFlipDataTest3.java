@@ -6,7 +6,7 @@ import java.util.List;
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
@@ -30,38 +30,38 @@ public class HierarchicalFlipDataTest3 extends AbstractTubeDataTest implements I
     public HierarchicalGraphModel groupI;
     public HierarchicalPairModel pI1;
     public HierarchicalPairModel pI2;
-    public DefaultBoundedItem i11;
-    public DefaultBoundedItem i12;
-    public DefaultBoundedItem i21;
-    public DefaultBoundedItem i22;
+    public BoundedItem i11;
+    public BoundedItem i12;
+    public BoundedItem i21;
+    public BoundedItem i22;
 
     public HierarchicalGraphModel groupJ;
     public HierarchicalPairModel pJ1;
     public HierarchicalPairModel pJ2;
-    public DefaultBoundedItem j11;
-    public DefaultBoundedItem j12;
-    public DefaultBoundedItem j21;
-    public DefaultBoundedItem j22;
+    public BoundedItem j11;
+    public BoundedItem j12;
+    public BoundedItem j21;
+    public BoundedItem j22;
     
     public HierarchicalGraphModel groupGroup2;
     public HierarchicalPairModel pK1;
-    public DefaultBoundedItem k11;
-    public DefaultBoundedItem k12;
-    public DefaultBoundedItem k21;
-    public DefaultBoundedItem k22;
+    public BoundedItem k11;
+    public BoundedItem k12;
+    public BoundedItem k21;
+    public BoundedItem k22;
 
     public HierarchicalFlipDataTest3() {
         // I Part
-        i11 = new DefaultBoundedItem("i11");
-        i12 = new DefaultBoundedItem("i12");
+        i11 = new BoundedItem("i11");
+        i12 = new BoundedItem("i12");
         pI1 = new HierarchicalPairModel();
         pI1.setObject("pairI1");
         pI1.setLabel("pairI1");
         pI1.addChild(i11);
         pI1.addChild(i12);
 
-        i21 = new DefaultBoundedItem("i21");
-        i22 = new DefaultBoundedItem("i22");
+        i21 = new BoundedItem("i21");
+        i22 = new BoundedItem("i22");
         pI2 = new HierarchicalPairModel();
         pI2.setObject("pairI2");
         pI2.setLabel("pairI2");
@@ -76,16 +76,16 @@ public class HierarchicalFlipDataTest3 extends AbstractTubeDataTest implements I
         groupI.createAllMutualRepulsorsNoSymetry();
 
         // J Part
-        j11 = new DefaultBoundedItem("j11");
-        j12 = new DefaultBoundedItem("j12");
+        j11 = new BoundedItem("j11");
+        j12 = new BoundedItem("j12");
         pJ1 = new HierarchicalPairModel();
         pJ1.setObject("pairJ1");
         pJ1.setLabel("pairJ1");
         pJ1.addChild(j11);
         pJ1.addChild(j12);
 
-        j21 = new DefaultBoundedItem("j21");
-        j22 = new DefaultBoundedItem("j22");
+        j21 = new BoundedItem("j21");
+        j22 = new BoundedItem("j22");
         pJ2 = new HierarchicalPairModel();
         pJ2.setObject("pairI2");
         pJ2.setLabel("pairJ2");
@@ -100,8 +100,8 @@ public class HierarchicalFlipDataTest3 extends AbstractTubeDataTest implements I
         groupJ.createAllMutualRepulsorsNoSymetry();
 
         // K Part
-        k11 = new DefaultBoundedItem("k11");
-        k12 = new DefaultBoundedItem("k12");
+        k11 = new BoundedItem("k11");
+        k12 = new BoundedItem("k12");
         pK1 = new HierarchicalPairModel();
         pK1.setObject("pairK1");
         pK1.setLabel("pairK1");

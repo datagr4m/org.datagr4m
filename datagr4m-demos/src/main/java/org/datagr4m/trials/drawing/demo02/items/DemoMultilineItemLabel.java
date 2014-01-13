@@ -6,7 +6,7 @@ import java.util.List;
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.factories.IHierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
@@ -44,8 +44,8 @@ public class DemoMultilineItemLabel {
     	labels.add("left1.line1");
     	labels.add("left1.line2");
     	labels.add("left1.line3");
-    	IBoundedItem left1 = new DefaultBoundedItem(labels);
-        IBoundedItem right1 = new DefaultBoundedItem("right1", 30);
+    	IBoundedItem left1 = new BoundedItem(labels);
+        IBoundedItem right1 = new BoundedItem("right1", 30);
 
     	HierarchicalPairModel child1 = new HierarchicalPairModel(left1, right1);
         

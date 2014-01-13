@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class AvatarManager {
     public IBoundedItem createAvatar(IBoundedItem item){
-        IBoundedItem avatar = ((DefaultBoundedItemIcon) item).clone();
+        IBoundedItem avatar = ((BoundedItemIcon) item).clone();
         avatar.changePosition(item.getAbsolutePosition());
         avatarSource.put(avatar, item);
         return avatar;

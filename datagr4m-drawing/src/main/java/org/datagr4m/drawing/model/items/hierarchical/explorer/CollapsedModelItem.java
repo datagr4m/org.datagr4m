@@ -2,13 +2,13 @@ package org.datagr4m.drawing.model.items.hierarchical.explorer;
 
 import javax.swing.Icon;
 
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItemIcon;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.jzy3d.maths.Coord2d;
 
 
-public class CollapsedModelItem extends DefaultBoundedItemIcon implements IBoundedItemIcon{
+public class CollapsedModelItem extends BoundedItemIcon implements IBoundedItemIcon{
     private static final long serialVersionUID = 6723996304245319449L;
 
     public CollapsedModelItem(String name, Icon icon, IHierarchicalNodeModel real){

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.datagr4m.datastructures.pairs.Pair;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.jzy3d.maths.Coord2d;
 
@@ -53,7 +53,7 @@ public class StringModel2 extends StringModel{
         attractionEdges.remove(new Pair<IBoundedItem,IBoundedItem>(prev, next));
         
         // add item
-        IBoundedItem item = new DefaultBoundedItem("livemagnet", c.clone());
+        IBoundedItem item = new BoundedItem("livemagnet", c.clone());
         registerChild(item, false);
         string.add(nextI, item);
         

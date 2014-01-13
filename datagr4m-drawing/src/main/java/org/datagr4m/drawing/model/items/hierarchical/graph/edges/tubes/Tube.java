@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.datagr4m.datastructures.pairs.CommutativePair;
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
 import org.datagr4m.drawing.model.items.annotations.ClickableRectangleAnnotationItem;
@@ -291,7 +291,7 @@ public class Tube implements IHierarchicalEdge {
                     // On r�cup�re toute l'arborescence situ� sous l'item courant
                     IBoundedItem childSourceParent = tubeChild.getSourceItem().getParent();
                     if(/*childSourceParent == item*/isSameOrDescendant(item, childSourceParent)){
-                        DefaultBoundedItemIcon bii = (DefaultBoundedItemIcon)tubeChild.getSourceItem();
+                        BoundedItemIcon bii = (BoundedItemIcon)tubeChild.getSourceItem();
                         if(!model.hasChildWithLabel(bii.getLabel())){
                             IIconHierarchicalModel node = IconHierarchicalModel.clone(bii);
                             model.addChild(node);
@@ -313,7 +313,7 @@ public class Tube implements IHierarchicalEdge {
                     // l'item courant pouvant �tre une target et non une source
                     IBoundedItem childTargetParent = tubeChild.getTargetItem().getParent();
                     if(/*childTargetParent == item*/isSameOrDescendant(item, childTargetParent)){
-                        DefaultBoundedItemIcon bii = (DefaultBoundedItemIcon)tubeChild.getTargetItem();
+                        BoundedItemIcon bii = (BoundedItemIcon)tubeChild.getTargetItem();
                         if(!model.hasChildWithLabel(bii.getLabel())){
                             IIconHierarchicalModel node = IconHierarchicalModel.clone(bii);
                             
@@ -345,7 +345,7 @@ public class Tube implements IHierarchicalEdge {
         // si la cible de ce tube est un device directement
         else{
             // adding a node with an item
-            DefaultBoundedItemIcon bii = (DefaultBoundedItemIcon)item;
+            BoundedItemIcon bii = (BoundedItemIcon)item;
             if(!model.hasChildWithLabel(bii.getLabel())){
                 IIconHierarchicalModel node = IconHierarchicalModel.clone(bii);
                 model.addChild(node);

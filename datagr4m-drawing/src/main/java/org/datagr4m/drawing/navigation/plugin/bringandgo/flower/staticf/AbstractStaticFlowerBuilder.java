@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.datagr4m.drawing.model.items.AvatarManager;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.CommonParentExtractor;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
@@ -75,7 +75,7 @@ public abstract class AbstractStaticFlowerBuilder<V,E> implements IStaticFlowerB
 
     @SuppressWarnings("unchecked")
     public StaticFlowerModel<E> buildFlower(IBoundedItem center, IHierarchicalNodeModel model, Topology<V, E> data, IEdgeFactory<E> edgeFactory){
-    	IBoundedItem centerAvatar = ((DefaultBoundedItemIcon) center).clone();
+    	IBoundedItem centerAvatar = ((BoundedItemIcon) center).clone();
         centerAvatar.changePosition(center.getAbsolutePosition());
 
     	// cherche le voisin de l'objet cliqué
@@ -95,7 +95,7 @@ public abstract class AbstractStaticFlowerBuilder<V,E> implements IStaticFlowerB
     	    
     	    // init hyperedge
     	    if(hyperEdge==null){
-    	        IBoundedItem edgeItem = new DefaultBoundedItem(elabel);
+    	        IBoundedItem edgeItem = new BoundedItem(elabel);
     	        hyperEdge = new HyperEdgeStructure(center, edgeItem);
     	        edgeItem.setVisible(false); // TODO: FlowerRenderer is not able to render "hyperedge edges"
     	        //bbbbbbbbbbbbSystem.out.println(edgeItem.getLabel() + " invisible");

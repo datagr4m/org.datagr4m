@@ -19,7 +19,7 @@ import org.datagr4m.viewer.renderer.TextUtils;
 import org.jzy3d.maths.Coord2d;
 
 
-public class DefaultBoundedItem extends AbstractStatefullItem implements IBoundedItem{
+public class BoundedItem extends AbstractStatefullItem implements IBoundedItem{
     public static float RADIUS = 10;
     public static float DEFAULT_SLOT_HEIGHT = 20;
     
@@ -27,37 +27,37 @@ public class DefaultBoundedItem extends AbstractStatefullItem implements IBounde
         
     }*/
 
-    public static DefaultBoundedItem fromLabelSize(String name, Object o, Coord2d position){
+    public static BoundedItem fromLabelSize(String name, Object o, Coord2d position){
         int width = TextUtils.textWidth(name);
         int height = TextUtils.textHeight();
         RectangleBounds textBounds = new RectangleBounds(width,height);
         float radius = textBounds.getRadius();        
-        return new DefaultBoundedItem(name, position, textBounds, radius, DEFAULT_SLOT_HEIGHT, o);
+        return new BoundedItem(name, position, textBounds, radius, DEFAULT_SLOT_HEIGHT, o);
     }
 
     /****************/
     
-    public DefaultBoundedItem(Object o) {
+    public BoundedItem(Object o) {
         this(o!=null?o.toString():"", new Coord2d(), RADIUS, o);
     }
     
-    public DefaultBoundedItem(Object o, String label) {
+    public BoundedItem(Object o, String label) {
         this(label, new Coord2d(), RADIUS, o);
     }
     
-    public DefaultBoundedItem(Object o, String label, float radius) {
+    public BoundedItem(Object o, String label, float radius) {
         this(label, new Coord2d(), radius, o);
     }
 
-    public DefaultBoundedItem(Object o, Coord2d location) {
+    public BoundedItem(Object o, Coord2d location) {
         this(o.toString(), location, RADIUS, o);
     }
 
-    public DefaultBoundedItem(Object o, Coord2d location, float radius) {
+    public BoundedItem(Object o, Coord2d location, float radius) {
         this(o.toString(), location, radius, o);
     }
 
-    public DefaultBoundedItem(List<String> labels) {
+    public BoundedItem(List<String> labels) {
     	this(labels, new Coord2d(), listBounds(labels), RADIUS, DEFAULT_SLOT_HEIGHT, labels);
     }
     
@@ -77,30 +77,30 @@ public class DefaultBoundedItem extends AbstractStatefullItem implements IBounde
     }
     
     
-    public DefaultBoundedItem(String label) {
+    public BoundedItem(String label) {
         this(label, new Coord2d(), RADIUS);
     }
     
-    public DefaultBoundedItem(String label, float radius) {
+    public BoundedItem(String label, float radius) {
         this(label, new Coord2d(), radius);
     }
     
-    public DefaultBoundedItem(String label, Coord2d position) {
+    public BoundedItem(String label, Coord2d position) {
         this(label, position, RADIUS);
     }
     
-    public DefaultBoundedItem(String label, Coord2d position, float radius) {
+    public BoundedItem(String label, Coord2d position, float radius) {
         this(label, position, radius, label);
     }
     
-    public DefaultBoundedItem(String label, Coord2d position, float radius, Object data) {
+    public BoundedItem(String label, Coord2d position, float radius, Object data) {
         this(label, position, new RectangleBounds(TextUtils.textWidth(label) + 10, TextUtils.textHeight() + 5), radius, DEFAULT_SLOT_HEIGHT, data);
         
     }
     
     /*protected DefaultBoundedItem(String label, Coord2d position, float radius, float margin, Object data) {
     }*/
-    protected DefaultBoundedItem(String label, Coord2d position, RectangleBounds bounds, float radius, float margin, Object data) {
+    protected BoundedItem(String label, Coord2d position, RectangleBounds bounds, float radius, float margin, Object data) {
     	this(list(label), position, bounds, radius, margin, data);
     }    
     protected static List<String> list(String s){
@@ -109,7 +109,7 @@ public class DefaultBoundedItem extends AbstractStatefullItem implements IBounde
     	return list;
     }
     
-    protected DefaultBoundedItem(List<String> labels, Coord2d position, RectangleBounds bounds, float radius, float margin, Object data) {
+    protected BoundedItem(List<String> labels, Coord2d position, RectangleBounds bounds, float radius, float margin, Object data) {
         this.shape = ItemShape.RECTANGLE;
         this.labels = labels;
         this.position = position;
@@ -461,7 +461,7 @@ public class DefaultBoundedItem extends AbstractStatefullItem implements IBounde
     
     @Override
 	public IBoundedItem clone(){
-        return new DefaultBoundedItem(labels+"", position.clone(), rectangleBounds, radialBounds, margin, data);
+        return new BoundedItem(labels+"", position.clone(), rectangleBounds, radialBounds, margin, data);
     }
 
     @Override

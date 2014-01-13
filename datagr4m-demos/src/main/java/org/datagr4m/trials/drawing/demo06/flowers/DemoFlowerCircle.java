@@ -6,7 +6,7 @@ import java.util.List;
 import org.datagr4m.drawing.layout.algorithms.forces.ForceDebugger;
 import org.datagr4m.drawing.layout.hierarchical.flower.ForceFlowerLayout;
 import org.datagr4m.drawing.layout.hierarchical.flower.StaticFlowerLayout;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.flower.AbstractFlowerModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.ForceFlowerModel;
@@ -63,14 +63,14 @@ public class DemoFlowerCircle {
         double min = 300;
         double max = 310;
         
-        final IBoundedItem center = new DefaultBoundedItem("center", r1);
+        final IBoundedItem center = new BoundedItem("center", r1);
         
         // voisins r�guliers
         List<IBoundedItem> neighbours = new ArrayList<IBoundedItem>();
         double step = Math.PI*2/n;
         double angle = 0;
         for (int i = 0; i < n; i++) {
-            IBoundedItem item = new DefaultBoundedItem(i+"", r2);
+            IBoundedItem item = new BoundedItem(i+"", r2);
             item.changePosition(new Coord2d(/*angle+0.01*/Math.random()*2*Math.PI, radius).cartesian());
             neighbours.add(item);
             angle+=step;
@@ -81,7 +81,7 @@ public class DemoFlowerCircle {
         angle = 0;
         for (int i = 0; i < nagllomerats; i++) {
             for (int j = 0; j < n2; j++) {
-                IBoundedItem item = new DefaultBoundedItem("add."+i+"."+j, r2);
+                IBoundedItem item = new BoundedItem("add."+i+"."+j, r2);
                 item.changePosition(new Coord2d(angle+0.01, radius).cartesian());
                 neighbours.add(item);
             }
@@ -94,7 +94,7 @@ public class DemoFlowerCircle {
         int to = from+hsize;
         List<HyperEdgeStructure> hydres = new ArrayList<HyperEdgeStructure>();
         for (int i = 0; i < h; i++) {
-            IBoundedItem network = new DefaultBoundedItem("H:10.10.10."+i);
+            IBoundedItem network = new BoundedItem("H:10.10.10."+i);
             HyperEdgeStructure hydre = new HyperEdgeStructure(network, center, neighbours.subList(from, to));
             //from = to;
             //to = from+hsize;

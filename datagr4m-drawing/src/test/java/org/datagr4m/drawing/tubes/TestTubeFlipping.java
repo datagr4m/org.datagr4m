@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import junit.framework.TestCase;
 
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.Edge;
@@ -15,8 +15,8 @@ import org.datagr4m.drawing.model.pathfinder.path.PathFactory;
 
 public class TestTubeFlipping extends TestCase{
     public void testIt() throws IOException, ClassNotFoundException{
-        IBoundedItem i1 = new DefaultBoundedItem("item1");
-        IBoundedItem i2 = new DefaultBoundedItem("item2");
+        IBoundedItem i1 = new BoundedItem("item1");
+        IBoundedItem i2 = new BoundedItem("item2");
         
         HierarchicalGraphModel g1 = new HierarchicalGraphModel();
         g1.addChild(i1);

@@ -8,7 +8,7 @@ import org.datagr4m.drawing.layout.PositionMapTransition;
 import org.datagr4m.drawing.layout.hierarchical.flower.ForceFlowerLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.HierarchicalGraphLayout;
 import org.datagr4m.drawing.layout.runner.stop.MeanMoveOrMaxStepCriteria;
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.flower.ForceFlowerModel;
@@ -94,7 +94,7 @@ public class ForceBringAndGoPlugin<V,E> extends SimpleBringAndGoPlugin<V,E>{
     
     @Override
 	protected void setup(final IBoundedItem item) {
-        IBoundedItem center = ((DefaultBoundedItemIcon) item).clone();
+        IBoundedItem center = ((BoundedItemIcon) item).clone();
         center.changePosition(item.getAbsolutePosition());
         
         List<IBoundedItem> neighbours = getItemNeighbourAvatars(item, true);

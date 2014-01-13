@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -173,7 +173,7 @@ public class StaticFlowerModel<E> extends AbstractFlowerModel<E>{
 				removeEdge(e);
 		}
 		
-		IBoundedItem mergedInternals = new DefaultBoundedItem(labels);
+		IBoundedItem mergedInternals = new BoundedItem(labels);
 		
 		HyperEdgeStructure s = new HyperEdgeStructure(mergedInternals, mergedExtremities);
 		addHyperEdge(s);

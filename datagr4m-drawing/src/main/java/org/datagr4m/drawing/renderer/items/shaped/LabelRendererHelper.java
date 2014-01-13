@@ -3,7 +3,7 @@ package org.datagr4m.drawing.renderer.items.shaped;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItemIcon;
 import org.datagr4m.drawing.model.items.ItemShape;
@@ -15,8 +15,8 @@ import org.jzy3d.maths.Coord2d;
 public class LabelRendererHelper {
     public void renderLabel(AbstractShapedItemRenderer renderer, Graphics2D graphic, IBoundedItem item, IItemRendererSettings settings, final Coord2d c) {
         if(settings.isNodeLabelDisplayed(item)){
-        	if(item instanceof DefaultBoundedItem){
-        		DefaultBoundedItem i = ((DefaultBoundedItem)item);
+        	if(item instanceof BoundedItem){
+        		BoundedItem i = ((BoundedItem)item);
         		
         		Coord2d labelCoord = c.clone();
         		for(String label: i.getLabels()){

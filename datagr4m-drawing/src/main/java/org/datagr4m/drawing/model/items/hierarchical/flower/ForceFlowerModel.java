@@ -12,8 +12,8 @@ import org.datagr4m.drawing.layout.algorithms.forceAtlas.forces.FARepulsionLimit
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.forces.standalone.polar.PolarAngleAttractionForce2;
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.forces.standalone.polar.PolarDistanceRangeForce2;
 import org.datagr4m.drawing.layout.algorithms.forces.IForce;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -144,11 +144,11 @@ public class ForceFlowerModel<E> extends AbstractFlowerModel<E> implements IFlow
     
 
     protected void createExtremities(int kH, HyperEdgeStructure hydre, List<IBoundedItem> actualExtremities, IBoundedItem item) {
-        DefaultBoundedItem hydreExtremity = null;
-        if(item instanceof DefaultBoundedItemIcon)
-            hydreExtremity = (DefaultBoundedItemIcon)((DefaultBoundedItemIcon)item).clone();
+        BoundedItem hydreExtremity = null;
+        if(item instanceof BoundedItemIcon)
+            hydreExtremity = (BoundedItemIcon)((BoundedItemIcon)item).clone();
         else
-            hydreExtremity = (DefaultBoundedItem)((DefaultBoundedItem)item).clone();
+            hydreExtremity = (BoundedItem)((BoundedItem)item).clone();
             
         hydreExtremity.setLabel(item.getLabel()+"#" + kH);
         

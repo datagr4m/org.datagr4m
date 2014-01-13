@@ -8,7 +8,7 @@ import javax.swing.Icon;
 import org.apache.log4j.Logger;
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.model.factories.filters.GroupFilter;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemShape;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
@@ -645,7 +645,7 @@ public class HierarchicalTopologyModelFactory<V, E> implements
 	}
 
 	public IBoundedItem getItemLayoutModel(V item) {
-		return new DefaultBoundedItem(item);
+		return new BoundedItem(item);
 	}
 
 	protected IHierarchicalEdgeModel getHierarchicalEdgeModel() {

@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import org.datagr4m.drawing.model.items.BoundsType;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.renderer.policy.IRenderingPolicy;
@@ -25,10 +25,10 @@ public class DemoItemBounds extends AbstractDemo{
     
 	@Override
 	public void makeModel() {
-        IBoundedItem item1 = new DefaultBoundedItem("item1");
-        IBoundedItem item2 = new DefaultBoundedItem("item2");
-        IBoundedItem item3 = new DefaultBoundedItemIcon("router", IconSet.ROUTER);
-        IBoundedItem item4 = new DefaultBoundedItemIcon("firewall-with-longer-label", IconSet.FIREWALL);
+        IBoundedItem item1 = new BoundedItem("item1");
+        IBoundedItem item2 = new BoundedItem("item2");
+        IBoundedItem item3 = new BoundedItemIcon("router", IconSet.ROUTER);
+        IBoundedItem item4 = new BoundedItemIcon("firewall-with-longer-label", IconSet.FIREWALL);
         
         HierarchicalGraphModel graph = new HierarchicalGraphModel();
         graph.addChild(item1);

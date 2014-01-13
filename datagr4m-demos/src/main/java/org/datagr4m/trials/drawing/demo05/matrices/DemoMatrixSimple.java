@@ -2,7 +2,7 @@ package org.datagr4m.trials.drawing.demo05.matrices;
 
 import org.datagr4m.drawing.layout.hierarchical.matrix.HierarchicalMatrixLayout;
 import org.datagr4m.drawing.layout.hierarchical.matrix.IHierarchicalMatrixLayout;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.renderer.factories.HierarchicalRendererFactory;
@@ -17,22 +17,22 @@ import org.datagr4m.viewer.View;
 public class DemoMatrixSimple {
     public static void main(String[] args){
         // model
-        IBoundedItem i1 = new DefaultBoundedItem("i1", 30);
-        IBoundedItem i2 = new DefaultBoundedItem("i2", 30);
-        IBoundedItem i3 = new DefaultBoundedItem("i3", 30);
+        IBoundedItem i1 = new BoundedItem("i1", 30);
+        IBoundedItem i2 = new BoundedItem("i2", 30);
+        IBoundedItem i3 = new BoundedItem("i3", 30);
 
         HierarchicalGraphModel i4 = new HierarchicalGraphModel();
-        i4.addChild(new DefaultBoundedItem("i4.child1"));
-        i4.addChild(new DefaultBoundedItem("i4.child2"));
+        i4.addChild(new BoundedItem("i4.child1"));
+        i4.addChild(new BoundedItem("i4.child2"));
 
         HierarchicalGraphModel i5 = new HierarchicalGraphModel();
-        i5.addChild(new DefaultBoundedItem("i5.child1"));
+        i5.addChild(new BoundedItem("i5.child1"));
         
         HierarchicalGraphModel i6 = new HierarchicalGraphModel();
-        i6.addChild(new DefaultBoundedItem("i6.child1"));
-        i6.addChild(new DefaultBoundedItem("i6.child2"));
-        i6.addChild(new DefaultBoundedItem("i6.child3"));
-        i6.addChild(new DefaultBoundedItem("i6.child4"));
+        i6.addChild(new BoundedItem("i6.child1"));
+        i6.addChild(new BoundedItem("i6.child2"));
+        i6.addChild(new BoundedItem("i6.child3"));
+        i6.addChild(new BoundedItem("i6.child4"));
         
         HierarchicalGraphModel model = new HierarchicalGraphModel();
         model.addChild(i1);

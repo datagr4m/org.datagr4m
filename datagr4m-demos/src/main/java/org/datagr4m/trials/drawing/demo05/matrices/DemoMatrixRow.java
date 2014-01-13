@@ -1,7 +1,7 @@
 package org.datagr4m.trials.drawing.demo05.matrices;
 
 import org.datagr4m.drawing.layout.hierarchical.matrix.HierarchicalRowLayout;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
 import org.datagr4m.drawing.renderer.factories.HierarchicalRendererFactory;
 import org.datagr4m.drawing.renderer.factories.IHierarchicalRendererFactory;
@@ -19,7 +19,7 @@ public class DemoMatrixRow {
         // model
         HierarchicalGraphModel model = new HierarchicalGraphModel();
         for (int i = 0; i < n; i++) 
-            model.addChild(new DefaultBoundedItem("i"+i));
+            model.addChild(new BoundedItem("i"+i));
         
         // layout
         HierarchicalRowLayout layout = new HierarchicalRowLayout();

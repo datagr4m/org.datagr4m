@@ -9,7 +9,7 @@ import java.util.Vector;
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.layout.algorithms.forceAtlas.forces.FARepulsion;
 import org.datagr4m.drawing.layout.algorithms.forces.IForce;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
@@ -43,7 +43,7 @@ public class StringModel extends HierarchicalGraphModel{
         List<IBoundedItem> istring = new Vector<IBoundedItem>(string.size());
         for(Coord2d c: string){
             String label = ""+(k);
-            IBoundedItem item = new DefaultBoundedItem(label, c.clone());
+            IBoundedItem item = new BoundedItem(label, c.clone());
             k++;
             istring.add(item);
         }
@@ -131,7 +131,7 @@ public class StringModel extends HierarchicalGraphModel{
             attractionEdges.remove(new Pair<IBoundedItem,IBoundedItem>(prev, next));
             
             // add item
-            IBoundedItem item = new DefaultBoundedItem("livemagnet", c.clone());
+            IBoundedItem item = new BoundedItem("livemagnet", c.clone());
             registerChild(item, false);
             string.add(nextI, item);
             
@@ -230,7 +230,7 @@ public class StringModel extends HierarchicalGraphModel{
     }
     
     public void addObstacle(String name, Coord2d position, float radius, Object o){
-        IBoundedItem item = new DefaultBoundedItem(name, position, radius);
+        IBoundedItem item = new BoundedItem(name, position, radius);
         item.setObject(o);
         registerChild(name, item);
         setNodeDegree(item, 0);

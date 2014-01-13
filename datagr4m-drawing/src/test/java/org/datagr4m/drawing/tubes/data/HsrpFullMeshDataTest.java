@@ -6,7 +6,7 @@ import java.util.List;
 import org.datagr4m.datastructures.pairs.Pair;
 import org.datagr4m.drawing.layout.factories.HierarchicalLayoutFactory;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
@@ -30,23 +30,23 @@ public class HsrpFullMeshDataTest extends AbstractTubeDataTest implements ITubeD
     public HierarchicalPairModel p1;
     public HierarchicalPairModel p2;
     
-    public DefaultBoundedItem i11;
-    public DefaultBoundedItem i12;
-    public DefaultBoundedItem i21;
-    public DefaultBoundedItem i22;
+    public BoundedItem i11;
+    public BoundedItem i12;
+    public BoundedItem i21;
+    public BoundedItem i22;
     
     public HsrpFullMeshDataTest(){
      
-        i11 = new DefaultBoundedItem("i11");
-        i12 = new DefaultBoundedItem("i12");
+        i11 = new BoundedItem("i11");
+        i12 = new BoundedItem("i12");
         p1 = new HierarchicalPairModel();
         p1.setObject("pair1");
         p1.setLabel("pair1");
         p1.addChild(i11);
         p1.addChild(i12);
         
-        i21 = new DefaultBoundedItem("i21");
-        i22 = new DefaultBoundedItem("i22");
+        i21 = new BoundedItem("i21");
+        i22 = new BoundedItem("i22");
         p2 = new HierarchicalPairModel();
         p2.setObject("pair2");
         p2.setLabel("pair2");

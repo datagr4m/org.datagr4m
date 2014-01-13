@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.Icon;
 
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItemIcon;
 import org.jzy3d.maths.Coord2d;
@@ -64,7 +64,7 @@ public class IconHierarchicalModel extends AbstractHierarchicalModel implements 
     
     @Override
 	public IBoundedItem clone(){
-        return new DefaultBoundedItemIcon(data, icon, 0);
+        return new BoundedItemIcon(data, icon, 0);
     }
     
     public static IIconHierarchicalModel clone(IBoundedItemIcon item){

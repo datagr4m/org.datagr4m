@@ -1,31 +1,29 @@
-package org.datagr4m.drawing.items;
+package org.datagr4m.drawing.model.items;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
+import org.junit.Test;
 
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
-import org.datagr4m.drawing.model.items.IBoundedItem;
-import org.datagr4m.drawing.model.items.ItemState;
-
-public class TestBoundedItem extends TestCase{
+public class BoundedItemIconTest {
+    @Test
     public void testDefaultItemGetSet(){
         IBoundedItem item = new DefaultBoundedItem("node", 30);
-        assertTrue(item.getLabel().equals("node"));
-        assertTrue(item.getRadialBounds()==30);
-        assertTrue(item.getRadialBounds(0)==30);
-        assertTrue(item.getRadialBounds(Math.PI)==30);
+        Assert.assertTrue(item.getLabel().equals("node"));
+        Assert.assertTrue(item.getRadialBounds()==30);
+        Assert.assertTrue(item.getRadialBounds(0)==30);
+        Assert.assertTrue(item.getRadialBounds(Math.PI)==30);
         
         // verify statefull attributes
-        assertTrue(item.locked()==false);
+        Assert.assertTrue(item.locked()==false);
         item.lock();
-        assertTrue(item.locked()==true);
+        Assert.assertTrue(item.locked()==true);
         item.unlock();
-        assertTrue(item.locked()==false);
+        Assert.assertTrue(item.locked()==false);
         
-        assertTrue(item.getState().isNone());
+        Assert.assertTrue(item.getState().isNone());
         item.setState(ItemState.selected());
-        assertTrue(item.getState().isSelected());
+        Assert.assertTrue(item.getState().isSelected());
         item.setState(ItemState.mouseover());
-        assertTrue(item.getState().isMouseOver());
+        Assert.assertTrue(item.getState().isMouseOver());
     }
     
     /*public void testIconItemSize(){

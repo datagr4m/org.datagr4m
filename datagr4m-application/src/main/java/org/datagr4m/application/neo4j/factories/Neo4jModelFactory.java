@@ -7,7 +7,7 @@ import java.util.Set;
 import org.datagr4m.application.neo4j.model.Neo4jEdgeInfo;
 import org.datagr4m.application.neo4j.model.Neo4jHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.factories.HierarchicalTopologyModelFactory;
-import org.datagr4m.drawing.model.items.DefaultBoundedItemIcon;
+import org.datagr4m.drawing.model.items.BoundedItemIcon;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.graph.IHierarchicalGraphModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.infos.DefaultEdgeInfo;
@@ -35,7 +35,7 @@ public class Neo4jModelFactory extends HierarchicalTopologyModelFactory<IPropert
     
     @Override
     public IBoundedItem getItemLayoutModel(IPropertyNode node) {
-        return new DefaultBoundedItemIcon(node, GenericGraphModel.getIdentity(node));
+        return new BoundedItemIcon(node, GenericGraphModel.getIdentity(node));
     }
    
     @Override

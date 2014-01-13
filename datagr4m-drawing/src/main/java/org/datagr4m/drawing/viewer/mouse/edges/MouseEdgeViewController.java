@@ -12,7 +12,7 @@ import javax.swing.JComponent;
 import org.apache.log4j.Logger;
 import org.datagr4m.drawing.layout.hierarchical.IHierarchicalNodeLayout;
 import org.datagr4m.drawing.layout.runner.LayoutUtils;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemState;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
@@ -216,7 +216,7 @@ public class MouseEdgeViewController extends MouseItemViewController {
             if(descendants==null)
                 descendants = rootModel.getDescendants();
             if(maxradius==-1)
-                maxradius = DefaultBoundedItem.getMaxRadius(descendants);
+                maxradius = BoundedItem.getMaxRadius(descendants);
             
             List<IBoundedItem> foundMouseAround = mouseAroundProcessor.hitSlotAround(descendants, Pt.cloneAsCoord2d(mousePoint), maxradius+around, mousePoint, slotHitPolicy, manhattan, navigation);
             

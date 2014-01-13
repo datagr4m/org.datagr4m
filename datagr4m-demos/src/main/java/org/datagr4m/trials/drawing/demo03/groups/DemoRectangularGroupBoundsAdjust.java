@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import org.datagr4m.drawing.model.items.BoundsType;
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemShape;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
@@ -23,10 +23,10 @@ public class DemoRectangularGroupBoundsAdjust extends AbstractDemo{
 
 	@Override
 	public void makeModel() {
-		IBoundedItem item1 = new DefaultBoundedItem("item1", 30);
-        IBoundedItem item2 = new DefaultBoundedItem("item2", 30);
-        IBoundedItem item3 = new DefaultBoundedItem("item3");
-        IBoundedItem item4 = new DefaultBoundedItem("item4 with longer label");
+		IBoundedItem item1 = new BoundedItem("item1", 30);
+        IBoundedItem item2 = new BoundedItem("item2", 30);
+        IBoundedItem item3 = new BoundedItem("item3");
+        IBoundedItem item4 = new BoundedItem("item4 with longer label");
 
         HierarchicalGraphModel graph = new HierarchicalGraphModel();
         graph.addChild(item1);

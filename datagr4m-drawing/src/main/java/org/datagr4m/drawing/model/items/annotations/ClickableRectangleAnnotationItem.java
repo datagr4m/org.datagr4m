@@ -6,14 +6,14 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.datagr4m.drawing.model.items.DefaultBoundedItem;
+import org.datagr4m.drawing.model.items.BoundedItem;
 import org.datagr4m.viewer.mouse.IClickableItem;
 import org.datagr4m.viewer.renderer.AbstractRenderer;
 import org.datagr4m.viewer.renderer.DefaultRenderer;
 import org.datagr4m.viewer.renderer.hit.IHitProcessor;
 
 
-public class ClickableRectangleAnnotationItem extends DefaultBoundedItem implements IClickableItemAnnotation{
+public class ClickableRectangleAnnotationItem extends BoundedItem implements IClickableItemAnnotation{
     private static final long serialVersionUID = -2573183619877326652L;
 
     public ClickableRectangleAnnotationItem(Object o, String label){
