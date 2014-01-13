@@ -8,12 +8,11 @@ import java.util.regex.Pattern;
 import org.datagr4m.application.neo4j.workspace.Neo4jWorkspaceSettings;
 import org.datagr4m.io.xml.generated.layout.Layout;
 import org.datagr4m.io.xml.layout.LMLEditor;
+import org.datagr4m.neo4j.topology.graph.readers.FullGraphReader;
+import org.datagr4m.neo4j.topology.graph.readers.INeo4jGraphReader;
+import org.datagr4m.neo4j.topology.graph.readers.ReaderFactory;
 import org.datagr4m.utils.IParserHelper;
 import org.jzy3d.io.SimpleFile;
-
-import com.datagr4m.neo4j.topology.graph.readers.FullGraphReader;
-import com.datagr4m.neo4j.topology.graph.readers.INeo4jGraphReader;
-import com.datagr4m.neo4j.topology.graph.readers.ReaderFactory;
 
 public class WorkspaceView implements IParserHelper{
     String name;

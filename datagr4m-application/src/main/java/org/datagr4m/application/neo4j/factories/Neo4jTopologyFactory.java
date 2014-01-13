@@ -1,10 +1,9 @@
 package org.datagr4m.application.neo4j.factories;
 
+import org.datagr4m.neo4j.topology.Neo4jTopology;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
-
-import com.datagr4m.neo4j.topology.Neo4jTopology;
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
 
 import edu.uci.ics.jung.graph.Graph;
 

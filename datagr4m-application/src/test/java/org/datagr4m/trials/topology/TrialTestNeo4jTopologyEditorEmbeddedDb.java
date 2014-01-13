@@ -11,6 +11,11 @@ import org.datagr4m.io.xml.generated.dataprism.Andby;
 import org.datagr4m.io.xml.generated.dataprism.Attribute;
 import org.datagr4m.io.xml.generated.dataprism.Dataprism;
 import org.datagr4m.io.xml.generated.dataprism.Groupby;
+import org.datagr4m.neo4j.topology.Neo4jTopology;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModelIO;
+import org.datagr4m.neo4j.topology.graph.readers.FullGraphReader;
+import org.datagr4m.neo4j.topology.graph.readers.INeo4jGraphReader;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
@@ -19,12 +24,6 @@ import org.junit.Before;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.tooling.GlobalGraphOperations;
-
-import com.datagr4m.neo4j.topology.Neo4jTopology;
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModelIO;
-import com.datagr4m.neo4j.topology.graph.readers.FullGraphReader;
-import com.datagr4m.neo4j.topology.graph.readers.INeo4jGraphReader;
 
 import edu.uci.ics.jung.graph.Graph;
 

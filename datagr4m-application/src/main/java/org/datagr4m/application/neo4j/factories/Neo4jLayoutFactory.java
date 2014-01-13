@@ -7,8 +7,7 @@ import org.datagr4m.drawing.layout.hierarchical.graph.edges.DefaultItemSlotLayou
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.IHierarchicalEdgeLayout;
 import org.datagr4m.drawing.layout.hierarchical.graph.edges.SlotedTubeLayout;
 import org.datagr4m.drawing.model.items.hierarchical.IHierarchicalNodeModel;
-
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
 
 public class Neo4jLayoutFactory extends HierarchicalLayoutFactory {
     Neo4jGraphModel graphModel;

@@ -4,9 +4,8 @@ import org.datagr4m.datastructures.pairs.CommutativePair;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.infos.DefaultEdgeInfo;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.HierarchicalEdgeModel;
+import org.datagr4m.neo4j.topology.edges.Neo4jEdge;
 import org.neo4j.graphdb.Relationship;
-
-import com.datagr4m.neo4j.topology.edges.Neo4jEdge;
 
 public class Neo4jHierarchicalEdgeModel extends HierarchicalEdgeModel{
 

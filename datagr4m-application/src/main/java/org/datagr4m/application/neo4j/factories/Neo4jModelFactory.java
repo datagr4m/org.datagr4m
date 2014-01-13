@@ -15,13 +15,12 @@ import org.datagr4m.drawing.model.items.hierarchical.graph.edges.infos.IEdgeInfo
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.IHierarchicalEdgeModel;
 import org.datagr4m.drawing.model.items.hierarchical.graph.edges.tubes.Tube;
 import org.datagr4m.drawing.model.items.hierarchical.visitor.ModelEdgesVisitor;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.graph.GenericGraphModel;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
 import org.neo4j.graphdb.RelationshipType;
-
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
 
 public class Neo4jModelFactory extends HierarchicalTopologyModelFactory<IPropertyNode,IPropertyEdge>{
     protected Neo4jGraphModel graphModel;

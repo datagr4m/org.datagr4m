@@ -14,10 +14,9 @@ import org.datagr4m.drawing.model.links.ILink;
 import org.datagr4m.drawing.model.pathfinder.path.IPath;
 import org.datagr4m.drawing.model.pathfinder.path.IPathFactory;
 import org.datagr4m.drawing.model.slots.ISlotableItem;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Relationship;
-
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
 
 /**
  * A la construction d'un slot target, si on ne donne pas un objet unique pour l'interface,

@@ -22,6 +22,10 @@ import org.datagr4m.drawing.renderer.items.hierarchical.hit.HierarchicalHitPolic
 import org.datagr4m.io.xml.JAXBHandler;
 import org.datagr4m.io.xml.generated.dataprism.Dataprism;
 import org.datagr4m.io.xml.generated.layout.Layout;
+import org.datagr4m.neo4j.topology.Neo4jTopology;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModelIO;
+import org.datagr4m.neo4j.topology.graph.readers.INeo4jGraphReader;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
 import org.datagr4m.viewer.IDisplay;
@@ -34,11 +38,6 @@ import org.jzy3d.io.SimpleFile;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.tooling.GlobalGraphOperations;
-
-import com.datagr4m.neo4j.topology.Neo4jTopology;
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModel;
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModelIO;
-import com.datagr4m.neo4j.topology.graph.readers.INeo4jGraphReader;
 
 import edu.uci.ics.jung.graph.Graph;
 

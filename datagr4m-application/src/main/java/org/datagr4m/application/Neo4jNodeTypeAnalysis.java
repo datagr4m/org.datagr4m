@@ -6,6 +6,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.datagr4m.datastructures.pairs.Pair;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphAnalysis;
+import org.datagr4m.neo4j.topology.graph.Neo4jGraphModelIO;
 import org.datagr4m.topology.graph.NodeType;
 import org.jzy3d.io.SimpleFile;
 import org.neo4j.graphdb.GraphDatabaseService;
@@ -15,8 +17,6 @@ import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.tooling.GlobalGraphOperations;
 
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphAnalysis;
-import com.datagr4m.neo4j.topology.graph.Neo4jGraphModelIO;
 import com.google.common.collect.Multimap;
 
 import edu.uci.ics.jung.graph.DirectedSparseGraph;

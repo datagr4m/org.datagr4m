@@ -44,6 +44,7 @@ import org.datagr4m.drawing.navigation.PluginLayeredRenderer;
 import org.datagr4m.drawing.navigation.plugin.bringandgo.IBringAndGoPlugin;
 import org.datagr4m.drawing.renderer.policy.RenderingPolicy;
 import org.datagr4m.drawing.viewer.mouse.edges.MouseEdgeViewController;
+import org.datagr4m.neo4j.topology.Neo4jTopology;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.graph.IPropertyEdge;
 import org.datagr4m.topology.graph.IPropertyNode;
@@ -58,8 +59,6 @@ import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeRenderingPol
 import org.datagr4m.workspace.configuration.ConfigurationFacade.ViewPolicy;
 import org.datagr4m.workspace.factories.Datagr4mFactories;
 import org.datagr4m.workspace.factories.IDatagr4mFactories;
-
-import com.datagr4m.neo4j.topology.Neo4jTopology;
 
 public class Datagr4mViewer extends AbstractDatagr4mViewer implements IDesktopDesigner {
     protected JPanel mainPanel = new JPanel();

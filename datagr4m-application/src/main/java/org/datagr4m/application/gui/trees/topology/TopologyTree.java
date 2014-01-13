@@ -24,9 +24,8 @@ import org.datagr4m.application.gui.trees.listeners.TreeKeyListener;
 import org.datagr4m.application.gui.trees.listeners.TreeMouseListener;
 import org.datagr4m.application.gui.trees.node.NodeCellFilterList;
 import org.datagr4m.application.neo4j.renderers.Neo4jRelationshipRendererSettings;
+import org.datagr4m.neo4j.topology.Neo4jTopology;
 import org.datagr4m.topology.TopologyStatistics;
-
-import com.datagr4m.neo4j.topology.Neo4jTopology;
 
 public class TopologyTree extends JPanel{
     TopologyTreeModel topologyTreeModel;

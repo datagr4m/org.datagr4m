@@ -17,12 +17,12 @@ import javax.swing.tree.TreePath;
 import org.datagr4m.application.gui.trees.node.NodeCellFilterList;
 import org.datagr4m.application.gui.trees.nodes.builder.INodeVisitPredicate;
 import org.datagr4m.application.gui.trees.nodes.builder.ShowContentOfFirstNodeOnly;
+import org.datagr4m.neo4j.topology.Neo4jTopology;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.graph.IPropertyNode;
 import org.datagr4m.topology.graph.NodeType;
 import org.neo4j.graphdb.RelationshipType;
 
-import com.datagr4m.neo4j.topology.Neo4jTopology;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
