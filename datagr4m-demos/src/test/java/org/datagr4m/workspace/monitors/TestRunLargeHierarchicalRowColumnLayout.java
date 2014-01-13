@@ -13,7 +13,7 @@ import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemShape;
 import org.datagr4m.drawing.model.items.QualityScores;
 import org.datagr4m.drawing.model.items.hierarchical.graph.HierarchicalGraphModel;
-import org.datagr4m.drawing.monitors.ConsoleMonitorReport;
+import org.datagr4m.drawing.monitors.FileMonitorReport;
 import org.datagr4m.topology.Group;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.generator.TopologyGenerator;
@@ -26,12 +26,28 @@ import org.datagr4m.workspace.configuration.ConfigurationFacade.ViewPolicy;
 
 public class TestRunLargeHierarchicalRowColumnLayout {
     public static void main(String[] args) throws Exception {
-        int depth = 1;
+        int depth = 2;
         int width = 3;
-        int edges = depth*width*depth*width;
-        Topology<String, String> topology = TopologyGenerator.buildGraphNested(depth, width, edges);
+        int nchild = 10;
+        int edges = 100;
+        
+        Topology<String, String> topology = TopologyGenerator.buildGraphNested(depth, width, nchild, edges);
+        
+        Workspace w = createWorkspace(topology);
+        
+        // configure force
+        //SimpleCsv.writeLines(lines, file, separator);
+        
+        show(w); // before start
+        startAndReport(w, new MaxStepCriteria(10000));
+    }
 
-        //-------------
+    public static Workspace createWorkspace(Topology<String, String> topology) {
+        Workspace w = new Workspace(topology);
+        return w;
+    }
+    
+    public static Workspace createRowColumnLayoutWorkspace(Topology<String, String> topology) {
         Workspace.defaultModelFactory = new HierarchicalTopologyModelFactory<String,String>(){
             // avoid pair model generation
             protected void createChildrenGroup(Topology<String, String> topology,
@@ -50,27 +66,16 @@ public class TestRunLargeHierarchicalRowColumnLayout {
         };
         Workspace w = new Workspace(topology);
         w.getModel().setShape(ItemShape.RECTANGLE, true);
-
-        //-------------
-        show(w); // before start
-        start(w, new MaxStepCriteria(10));
+        return w;
     }
 
-    public static void report(Workspace w, WorkspaceTimeMonitor monitor) {
-        ConsoleMonitorReport report = new ConsoleMonitorReport();
-        report.report(monitor);
-
-        Set<CommutativePair<IBoundedItem>> overlapping = QualityScores.countOverlappingItems(w.getModel());
-        if (overlapping.size() > 0)
-            System.out.println(overlapping);
-    }
 
     public static void show(Workspace w) {
         DisplayInitilizer di = new DisplayInitilizer(EdgeComputationPolicy.COMPUTE_AT_END, EdgeRenderingPolicy.ALWAYS, ViewPolicy.AUTOFIT_AT_RUN);
         di.init(w).openFrame();
     }
 
-    public static void start(final Workspace w, IBreakCriteria criteria) {
+    public static void startAndReport(final Workspace w, IBreakCriteria criteria) {
         ILayoutRunner runner = w.getRunner();
         runner.getConfiguration().getSequence().setFirstPhaseBreakCriteria(criteria);
         runner.start();
@@ -92,6 +97,16 @@ public class TestRunLargeHierarchicalRowColumnLayout {
             public void runnerFailed(String message, Exception e) {
                 report(w, monitor);
             }
+            
+            public void report(Workspace w, WorkspaceTimeMonitor monitor) {
+                FileMonitorReport report = new FileMonitorReport("data/monitors/monitors.csv");
+                report.report(monitor);
+                
+                Set<CommutativePair<IBoundedItem>> overlapping = QualityScores.countOverlappingItems(w.getModel());
+                if (overlapping.size() > 0)
+                    System.out.println(overlapping);
+            }
+
         });
     }
 }

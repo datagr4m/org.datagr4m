@@ -23,6 +23,23 @@ public class BoundedItem extends AbstractStatefullItem implements IBoundedItem{
     public static float RADIUS = 10;
     public static float DEFAULT_SLOT_HEIGHT = 20;
     
+    protected List<String> labels = list("");
+    protected Coord2d position;  
+    protected float radialBounds = 0;
+    protected float margin = 0;
+    protected float corridor = 0;
+    
+    //protected float margin = 0;
+    protected RectangleBounds rectangleBounds;
+    protected List<Coord2d> polygonBounds;
+    
+    protected Map<SlotSide,SlotGroup> sideSlots;
+    protected float slotMargin = 0;
+    
+    protected static ISlotGeometryBuilder SLOT_GEOMETRY_BUILDER = new DefaultSlotGeometryBuilder();
+    
+    private static final long serialVersionUID = -4679115231998026821L;
+    
     /*public static DefaultBoundedItem fromRadius(String name, Object o, Coord2d position, float radius){
         
     }*/
@@ -98,8 +115,6 @@ public class BoundedItem extends AbstractStatefullItem implements IBoundedItem{
         
     }
     
-    /*protected DefaultBoundedItem(String label, Coord2d position, float radius, float margin, Object data) {
-    }*/
     protected BoundedItem(String label, Coord2d position, RectangleBounds bounds, float radius, float margin, Object data) {
     	this(list(label), position, bounds, radius, margin, data);
     }    
@@ -257,10 +272,6 @@ public class BoundedItem extends AbstractStatefullItem implements IBoundedItem{
         return null;
     }
     
-    /** 
-     * Returns a new rectangle instance centered at (0,0),
-     * that includes the implicit circle returned by radial bounds.
-     */
     @Override
     public RectangleBounds getRawRectangleBounds() {
         return rectangleBounds;
@@ -308,6 +319,9 @@ public class BoundedItem extends AbstractStatefullItem implements IBoundedItem{
         return getRawRectangleBounds();
     }
     
+    /**
+     * @return getCorridorRectangleBounds()
+     */
     @Override
     public RectangleBounds getCorridorRectangleBounds() {
         return getExternalRectangleBounds();
@@ -469,23 +483,4 @@ public class BoundedItem extends AbstractStatefullItem implements IBoundedItem{
         return "";
     }
 
-    
-    /******************/
-
-    protected List<String> labels = list("");
-    protected Coord2d position;  
-    protected float radialBounds = 0;
-    protected float margin = 0;
-    protected float corridor = 0;
-    
-    //protected float margin = 0;
-    protected RectangleBounds rectangleBounds;
-    protected List<Coord2d> polygonBounds;
-    
-    protected Map<SlotSide,SlotGroup> sideSlots;
-    protected float slotMargin = 0;
-    
-    protected static ISlotGeometryBuilder SLOT_GEOMETRY_BUILDER = new DefaultSlotGeometryBuilder();
-    
-    private static final long serialVersionUID = -4679115231998026821L;
 }

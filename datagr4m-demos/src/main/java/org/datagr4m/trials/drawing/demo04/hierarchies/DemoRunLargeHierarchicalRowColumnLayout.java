@@ -11,7 +11,7 @@ import org.datagr4m.drawing.layout.runner.stop.MaxStepCriteria;
 import org.datagr4m.drawing.model.items.IBoundedItem;
 import org.datagr4m.drawing.model.items.ItemShape;
 import org.datagr4m.drawing.model.items.QualityScores;
-import org.datagr4m.drawing.monitors.ConsoleMonitorReport;
+import org.datagr4m.drawing.monitors.LogMonitorReport;
 import org.datagr4m.topology.Topology;
 import org.datagr4m.topology.generator.TopologyGenerator;
 import org.datagr4m.trials.drawing.DisplayInitilizer;
@@ -44,7 +44,7 @@ public class DemoRunLargeHierarchicalRowColumnLayout {
     }
 
     public static void report(Workspace w, WorkspaceTimeMonitor monitor) {
-        ConsoleMonitorReport report = new ConsoleMonitorReport();
+        LogMonitorReport report = new LogMonitorReport();
         report.report(monitor);
         
         Set<CommutativePair<IBoundedItem>> overlapping = QualityScores.countOverlappingItems(w.getModel());

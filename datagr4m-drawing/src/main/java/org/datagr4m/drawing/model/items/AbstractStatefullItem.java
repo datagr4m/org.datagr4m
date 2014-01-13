@@ -10,6 +10,16 @@ import org.datagr4m.drawing.model.items.listeners.IItemListener;
 
 public abstract class AbstractStatefullItem implements IBoundedItem{
     private static final long serialVersionUID = 8075639255184564793L;
+    
+    protected boolean locked = false;
+    protected ItemState state = new ItemState();
+    protected ItemShape shape = ItemShape.CIRCLE;
+    protected IHierarchicalNodeModel parent;
+    protected Object data;
+    protected boolean visible = true;
+    //protected boolean parentDirty = true;
+    protected GeometryFlags flags = new GeometryFlags();
+    protected List<IItemListener> listeners = new ArrayList<IItemListener>(0);
         
     @Override
     public void setParent(IHierarchicalNodeModel parent) {
@@ -205,18 +215,4 @@ public abstract class AbstractStatefullItem implements IBoundedItem{
         
         return distSq < (rads*rads);
     }
-
-    
-    /******************/
-
-    
-    protected boolean locked = false;
-    protected ItemState state = new ItemState();
-    protected ItemShape shape = ItemShape.CIRCLE;
-    protected IHierarchicalNodeModel parent;
-    protected Object data;
-    protected boolean visible = true;
-    //protected boolean parentDirty = true;
-    protected GeometryFlags flags = new GeometryFlags();
-    protected List<IItemListener> listeners = new ArrayList<IItemListener>(0);
 }

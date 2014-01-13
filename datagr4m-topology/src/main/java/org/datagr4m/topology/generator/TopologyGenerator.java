@@ -16,23 +16,38 @@ import edu.uci.ics.jung.graph.Graph;
 public class TopologyGenerator {
     public static Topology<String,String> buildGraphNested(int depth, int width, int nedge){
         Topology<String,String> topo = new Topology<String,String>();
-        topo.addGroups(generateGroups(depth, width, 0), true);
+        topo.addGroups(generateGroups(depth, width, width, 0), true);
         generateGraph(topo, nedge);
         topo.index();
         return topo;
     }
 
-    protected static List<Group<String>> generateGroups(int depth, int width, int currentDepth) {
+    public static Topology<String,String> buildGraphNested(int depth, int width, int nChildren, int nedge){
+        Topology<String,String> topo = new Topology<String,String>();
+        
+        if(depth>0)
+            topo.addGroups(generateGroups(depth, width, nChildren, 0), true);
+        else{
+            for (int i = 0; i < nChildren; i++) {
+                topo.getGraph().addVertex(genItem());
+            }
+        }
+        generateGraph(topo, nedge);
+        topo.index();
+        return topo;
+    }
+
+    protected static List<Group<String>> generateGroups(int depth, int width, int nChildren, int currentDepth) {
         List<Group<String>> groups = new ArrayList<Group<String>>();
         
         for (int i = 0; i < width; i++) {
             Group<String> g = new Group<String>(genGroup());
             
             if(currentDepth<depth){
-                g.addSubGroups(generateGroups(depth, width, currentDepth+1));
+                g.addSubGroups(generateGroups(depth, width, nChildren, currentDepth+1));
             }
             else{
-                for (int j = 0; j < width; j++) {
+                for (int j = 0; j < nChildren; j++) {
                     g.add(genItem());                    
                 }
             }

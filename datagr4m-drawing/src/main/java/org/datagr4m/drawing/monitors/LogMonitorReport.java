@@ -6,8 +6,9 @@ import org.apache.log4j.Logger;
 import org.datagr4m.monitors.ITimeMonitor;
 import org.datagr4m.monitors.ITimeMonitorable;
 
-public class ConsoleMonitorReport implements IMonitorReport {
-
+public class LogMonitorReport implements IMonitorReport {
+    
+    
     @Override
     public void report(TimeMonitorCollection monitors) {
         StringBuilder sb = new StringBuilder();
@@ -24,7 +25,7 @@ public class ConsoleMonitorReport implements IMonitorReport {
             }
             appendln(sb);
         }
-        Logger.getLogger(ConsoleMonitorReport.class).info("\n"+sb);
+        Logger.getLogger(LogMonitorReport.class).info("\n"+sb);
     }
 
 
