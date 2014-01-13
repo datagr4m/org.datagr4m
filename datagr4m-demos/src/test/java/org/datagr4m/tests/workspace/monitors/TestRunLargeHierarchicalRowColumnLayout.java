@@ -24,15 +24,16 @@ import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeComputationP
 import org.datagr4m.workspace.configuration.ConfigurationFacade.EdgeRenderingPolicy;
 import org.datagr4m.workspace.configuration.ConfigurationFacade.ViewPolicy;
 
-public class DemoRunLargeHierarchicalRowColumnLayout {
+public class TestRunLargeHierarchicalRowColumnLayout {
     public static void main(String[] args) throws Exception {
-        int depth = 5;
+        int depth = 1;
         int width = 3;
         int edges = depth*width*depth*width;
         Topology<String, String> topology = TopologyGenerator.buildGraphNested(depth, width, edges);
 
         //-------------
         Workspace.defaultModelFactory = new HierarchicalTopologyModelFactory<String,String>(){
+            // avoid pair model generation
             protected void createChildrenGroup(Topology<String, String> topology,
                     HierarchicalGraphModel parent, Group<String> group, int depth)
                     throws RuntimeException {

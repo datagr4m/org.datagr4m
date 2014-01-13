@@ -24,6 +24,7 @@ public class TopologyGenerator {
 
     protected static List<Group<String>> generateGroups(int depth, int width, int currentDepth) {
         List<Group<String>> groups = new ArrayList<Group<String>>();
+        
         for (int i = 0; i < width; i++) {
             Group<String> g = new Group<String>(genGroup());
             
